@@ -1,0 +1,3 @@
+[submodule "oss"]
+	path = oss
+	url = https://github.com/howtographql/howtographql2.git

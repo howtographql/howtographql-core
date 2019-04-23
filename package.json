@@ -9,7 +9,8 @@
   "scripts": {},
   "workspaces": {
     "packages": [
-      "packages/**"
+      "packages/**",
+      "oss/packages/**"
     ],
     "nohoist": [
       "**/gatsby",
