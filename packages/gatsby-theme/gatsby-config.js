@@ -24,19 +24,19 @@ module.exports = (opts = {}) => {
             default: require.resolve("./src/components/postLayout.tsx"),
             ...mdxLayouts
           },
-          extensions: [".mdx", ".md"],
-          gatsbyRemarkPlugins: [
-            {
-              resolve: "gatsby-remark-prismjs",
-              options: {
-                classPrefix: "language-",
-                inlineCodeMarker: {
-                  tsx: "tsx"
-                },
-                aliases: {}
-              }
-            }
-          ]
+          extensions: [".mdx", ".md"]
+          // gatsbyRemarkPlugins: [
+          //   {
+          //     resolve: "gatsby-remark-prismjs",
+          //     options: {
+          //       classPrefix: "language-",
+          //       inlineCodeMarker: {
+          //         tsx: "tsx"
+          //       },
+          //       aliases: {}
+          //     }
+          //   }
+          // ]
         }
       },
       {
