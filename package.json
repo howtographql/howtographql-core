@@ -7,12 +7,12 @@
   "license": "MIT",
   "private": true,
   "scripts": {
-    "site": "yarn workspace site"
+    "site": "yarn workspace @howtographql/oss"
   },
   "workspaces": {
     "packages": [
       "packages/**",
-      "oss/packages/**"
+      "oss"
     ]
   },
   "devDependencies": {
