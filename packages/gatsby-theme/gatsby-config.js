@@ -12,18 +12,17 @@ module.exports = (opts = {}) => {
       "gatsby-plugin-sharp",
       "gatsby-plugin-typescript",
       "gatsby-plugin-root-import",
-      "gatsby-transformer-remark",
       "gatsby-image",
       "gatsby-plugin-styled-components",
       "gatsby-plugin-offline",
       {
         resolve: `gatsby-mdx`,
         options: {
-          decks: [],
-          defaultLayouts: {
-            default: require.resolve("./src/components/postLayout.tsx"),
-            ...mdxLayouts
-          },
+          // decks: [],
+          // defaultLayouts: {
+          //   default: require.resolve("./src/components/postLayout.tsx"),
+          //   ...mdxLayouts
+          // },
           extensions: [".mdx", ".md"]
           // gatsbyRemarkPlugins: [
           //   {
