@@ -1,9 +1,10 @@
-import { graphql, useStaticQuery } from 'gatsby';
-import { LayoutQueryData } from '../interfaces/LayoutQuery.interface';
+import { graphql, useStaticQuery } from "gatsby";
+
+import { LayoutInformationQuery } from "src/graphqlTypes";
 
 export const useLayoutQuery = () => {
-  const { site }: LayoutQueryData = useStaticQuery(graphql`
-    query SiteTitleQuery {
+  const { site }: LayoutInformationQuery = useStaticQuery(graphql`
+    query LayoutInformation {
       site {
         siteMetadata {
           # change siteMetaData in 'gatsby-config.js'
