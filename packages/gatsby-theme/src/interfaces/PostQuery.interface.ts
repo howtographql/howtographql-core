@@ -3,12 +3,12 @@ export interface PostQueryData {
     mdx: {
       frontmatter: {
         path: string;
-        title: string;
-        date: Date
+        pageTitle: string;
+        date: Date;
       };
       code: {
-        body: any
-      }
+        body: any;
+      };
     };
   };
 }

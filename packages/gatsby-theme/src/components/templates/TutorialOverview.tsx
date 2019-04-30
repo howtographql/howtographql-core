@@ -1,32 +1,49 @@
 import React from "react";
 import { graphql } from "gatsby";
 import Layout from "../layout";
+
 // import { MDXRenderer } from 'gatsby-mdx';
 
 function PageTemplate({ data }: { data: any }) {
   return (
     <Layout>
       <div>
-        <h1>{data.allMdx.totalCount}</h1>
-        {/* <MDXRenderer>{mdx.code.body}</MDXRenderer> */}
+        <img src={data.overview.frontmatter.banner} />
+        <h1>{data.overview.frontmatter.tutorialTitle}</h1>
       </div>
     </Layout>
   );
 }
 export const query = graphql`
   query TutorialOverviewQuery($folderRegex: String) {
-    allMdx(filter: { fileAbsolutePath: { regex: $folderRegex } }) {
+    allMdx(
+      filter: {
+        frontmatter: { pageTitle: { ne: null } }
+        fileAbsolutePath: { regex: $folderRegex }
+      }
+    ) {
       totalCount
       edges {
         node {
           id
           frontmatter {
+            tutorialTitle
+            pageTitle
             title
-          }
-          code {
-            body
+            banner
           }
         }
+      }
+    }
+    overview: mdx(
+      frontmatter: { tutorialTitle: { ne: null } }
+      fileAbsolutePath: { regex: $folderRegex }
+    ) {
+      id
+      frontmatter {
+        tutorialTitle
+        title
+        banner
       }
     }
   }

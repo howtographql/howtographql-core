@@ -1,5 +1,5 @@
-import { graphql, useStaticQuery } from 'gatsby';
-import { PostsQueryData } from '../interfaces/PostsQuery.interface';
+import { graphql, useStaticQuery } from "gatsby";
+import { PostsQueryData } from "../interfaces/PostsQuery.interface";
 
 export const useAllTutorialQuery = () => {
   const { allMdx }: PostsQueryData = useStaticQuery(graphql`
@@ -11,7 +11,7 @@ export const useAllTutorialQuery = () => {
             fileAbsolutePath
             frontmatter {
               path
-              title
+              pageTitle
               description
             }
             code {

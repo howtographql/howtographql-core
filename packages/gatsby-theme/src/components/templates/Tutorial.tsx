@@ -15,12 +15,12 @@ const TutorialLayout: React.FunctionComponent<TutorialLayoutProps> = ({
     return null;
   }
 
-  const { title, date } = data.mdx.frontmatter;
+  const { pageTitle, date } = data.mdx.frontmatter;
   const { location } = props;
 
   return (
     <Layout location={location}>
-      <h1>{title}</h1>
+      <h1>{pageTitle}</h1>
       <em>{date}</em>
       <MDXRenderer>{data.mdx.code.body}</MDXRenderer>
     </Layout>
@@ -31,14 +31,14 @@ export default TutorialLayout;
 
 export const pageQuery = graphql`
   query MDXQuery($id: String!) {
-    mdx(frontmatter: { id: { eq: $id } }) {
+    mdx(id: { eq: $id }) {
       id
       code {
         body
       }
       frontmatter {
         path
-        title
+        pageTitle
       }
     }
   }
