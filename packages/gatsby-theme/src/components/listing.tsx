@@ -1,8 +1,8 @@
-import { Link } from 'gatsby';
-import * as React from 'react';
-import { styled } from '../styles';
-import { useAllTutorialQuery } from '../hooks/useAllTutorialQuery';
-import { getTutorialPath } from '../utils/getTutorialPath';
+import { Link } from "gatsby";
+import * as React from "react";
+import { styled } from "../styles";
+import { useAllTutorialQuery } from "../hooks/useAllTutorialQuery";
+import { getTutorialSlug } from "../utils/getTutorialSlug";
 
 const Post = styled.article`
   box-shadow: 0 0.3rem 1rem rgba(25, 17, 34, 0.05);
@@ -42,11 +42,11 @@ const Listing = () => {
           const { path, title } = node.frontmatter;
           return (
             <Post key={path}>
-              <Link to={getTutorialPath(fileAbsolutePath)}>
+              <Link to={getTutorialSlug(fileAbsolutePath)}>
                 <h2>{title}</h2>
               </Link>
               <p>{node.excerpt}</p>
-              <ReadMoreLink to={getTutorialPath(fileAbsolutePath)}>
+              <ReadMoreLink to={getTutorialSlug(fileAbsolutePath)}>
                 Read More
               </ReadMoreLink>
             </Post>

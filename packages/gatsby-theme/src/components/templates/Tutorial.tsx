@@ -1,18 +1,18 @@
-import * as React from 'react';
-import { RouterProps } from '@reach/router';
-import { PostQueryData } from '../interfaces/PostQuery.interface';
-import Layout from './layout';
+import * as React from "react";
+import { RouterProps } from "@reach/router";
+import { PostQueryData } from "../../interfaces/PostQuery.interface";
+import Layout from "../layout";
 import { MDXRenderer } from "gatsby-mdx";
 import { graphql } from "gatsby";
 
-type PostLayoutProps = PostQueryData & RouterProps;
+type TutorialLayoutProps = PostQueryData & RouterProps;
 
-const PostLayout: React.FunctionComponent<PostLayoutProps> = ({
+const TutorialLayout: React.FunctionComponent<TutorialLayoutProps> = ({
   data,
   ...props
 }) => {
   if (!data) {
-    return null
+    return null;
   }
 
   const { title, date } = data.mdx.frontmatter;
@@ -27,11 +27,11 @@ const PostLayout: React.FunctionComponent<PostLayoutProps> = ({
   );
 };
 
-export default PostLayout;
+export default TutorialLayout;
 
 export const pageQuery = graphql`
-  query MDXQuery($pagePath: String!) {
-    mdx(frontmatter: { path: { eq: $pagePath } }) {
+  query MDXQuery($id: String!) {
+    mdx(frontmatter: { id: { eq: $id } }) {
       id
       code {
         body
