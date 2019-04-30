@@ -1,11 +1,15 @@
 {
   "name": "@howtographql/gatsby-theme",
-  "version": "0.0.1",
+  "version": "1.0.1",
   "description": "The content/gatsby theme for htg2",
   "main": "index.ts",
   "license": "MIT",
+  "private": false,
   "scripts": {
     "generate": "graphql-codegen"
+  },
+  "publishConfig": {
+    "access": "public"
   },
   "devDependencies": {
     "@graphql-codegen/cli": "^1.1.1",

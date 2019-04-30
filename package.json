@@ -7,8 +7,10 @@
   "license": "MIT",
   "private": true,
   "scripts": {
+    "lerna": "lerna",
     "site": "yarn workspace @howtographql/oss",
-    "theme": "yarn workspace @howtographql/gatsby-theme"
+    "theme": "yarn workspace @howtographql/gatsby-theme",
+    "publish": "lerna publish --skip-git"
   },
   "workspaces": {
     "packages": [
