@@ -2,7 +2,7 @@
   "name": "@howtographql/gatsby-theme",
   "version": "0.0.1",
   "description": "The content/gatsby theme for htg2",
-  "main": "index.js",
+  "main": "index.ts",
   "license": "MIT",
   "scripts": {
     "generate": "graphql-codegen"
