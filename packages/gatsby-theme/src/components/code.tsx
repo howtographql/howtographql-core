@@ -1,8 +1,9 @@
 import React from "react";
-import Highlight, { defaultProps, Language } from "prism-react-renderer";
+import Highlight, { defaultProps } from "prism-react-renderer";
 import DraculaTheme from "prism-react-renderer/themes/dracula";
 import { LiveProvider, LiveEditor, LiveError, LivePreview } from "react-live";
 import Prism from "prismjs/components/prism-core";
+import * as CopyToClipboard from "react-copy-to-clipboard";
 
 Prism.languages.graphql = {
   comment: /#.*/,
@@ -20,33 +21,24 @@ Prism.languages.graphql = {
   punctuation: /[!(){}\[\]:=,]/
 };
 
-type CodeProps = {
-  "react-live": boolean;
-  codeString: string;
-  language: Language;
-};
-
-export const Code: React.FunctionComponent<CodeProps> = props => {
+export const Code = props => {
   return (
     <div style={{ position: "relative" }}>
       <CodeRenderer {...props} />
-      <button
-        style={{ position: "absolute", top: 10, right: 10 }}
-        onClick={() => {
-          // Copying code here!
-        }}
+      <CopyToClipboard
+        text={props.codeString}
+        onCopy={() => console.log("copied!")}
       >
-        Copy
-      </button>
+        <button style={{ position: "absolute", top: 10, right: 10 }}>
+          Copy
+        </button>
+      </CopyToClipboard>
     </div>
   );
 };
 
-const CodeRenderer: React.FunctionComponent<CodeProps> = ({
-  codeString,
-  language,
-  ...props
-}) => {
+const CodeRenderer = ({ codeString, language, ...props }) => {
+  console.log(codeString, language);
   if (props["react-live"]) {
     return (
       <LiveProvider code={codeString} noInline={true}>
