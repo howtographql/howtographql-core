@@ -12,6 +12,10 @@ export const useAllTutorialQuery = () => {
             frontmatter {
               path
               title
+              description
+            }
+            code {
+              body
             }
           }
         }

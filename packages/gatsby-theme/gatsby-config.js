@@ -12,31 +12,30 @@ module.exports = (opts = {}) => {
       "gatsby-plugin-sharp",
       "gatsby-plugin-typescript",
       "gatsby-plugin-root-import",
-      "gatsby-transformer-remark",
       "gatsby-image",
       "gatsby-plugin-styled-components",
       "gatsby-plugin-offline",
       {
         resolve: `gatsby-mdx`,
         options: {
-          decks: [],
-          defaultLayouts: {
-            default: require.resolve("./src/components/postLayout.tsx"),
-            ...mdxLayouts
-          },
-          extensions: [".mdx", ".md"],
-          gatsbyRemarkPlugins: [
-            {
-              resolve: "gatsby-remark-prismjs",
-              options: {
-                classPrefix: "language-",
-                inlineCodeMarker: {
-                  tsx: "tsx"
-                },
-                aliases: {}
-              }
-            }
-          ]
+          // decks: [],
+          // defaultLayouts: {
+          //   default: require.resolve("./src/components/postLayout.tsx"),
+          //   ...mdxLayouts
+          // },
+          extensions: [".mdx", ".md"]
+          // gatsbyRemarkPlugins: [
+          //   {
+          //     resolve: "gatsby-remark-prismjs",
+          //     options: {
+          //       classPrefix: "language-",
+          //       inlineCodeMarker: {
+          //         tsx: "tsx"
+          //       },
+          //       aliases: {}
+          //     }
+          //   }
+          // ]
         }
       },
       {

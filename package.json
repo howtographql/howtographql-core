@@ -7,7 +7,8 @@
   "license": "MIT",
   "private": true,
   "scripts": {
-    "site": "yarn workspace @howtographql/oss"
+    "site": "yarn workspace @howtographql/oss",
+    "theme": "yarn workspace @howtographql/gatsby-theme"
   },
   "workspaces": {
     "packages": [
