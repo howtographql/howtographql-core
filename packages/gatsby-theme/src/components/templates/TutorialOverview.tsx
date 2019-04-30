@@ -1,9 +1,9 @@
 import React from "react";
 import { graphql } from "gatsby";
 import Layout from "../layout";
-import { TutorialOverviewQueryQuery } from "src/graphqlTypes";
+import { TutorialOverviewQuery } from "src/graphqlTypes";
 
-function PageTemplate({ data }: { data: TutorialOverviewQueryQuery }) {
+function PageTemplate({ data }: { data: TutorialOverviewQuery }) {
   return (
     <Layout>
       <div>
@@ -24,7 +24,7 @@ function PageTemplate({ data }: { data: TutorialOverviewQueryQuery }) {
   );
 }
 export const query = graphql`
-  query TutorialOverviewQuery($folderRegex: String) {
+  query TutorialOverview($folderRegex: String) {
     allMdx(
       filter: {
         frontmatter: { pageTitle: { ne: null } }

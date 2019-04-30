@@ -1,5 +1,5 @@
 import React from "react";
-import Highlight, { defaultProps } from "prism-react-renderer";
+import Highlight, { defaultProps, Language } from "prism-react-renderer";
 import DraculaTheme from "prism-react-renderer/themes/dracula";
 import { LiveProvider, LiveEditor, LiveError, LivePreview } from "react-live";
 import Prism from "prismjs/components/prism-core";
@@ -20,7 +20,13 @@ Prism.languages.graphql = {
   punctuation: /[!(){}\[\]:=,]/
 };
 
-export const Code = props => {
+type CodeProps = {
+  "react-live": boolean;
+  codeString: string;
+  language: Language;
+};
+
+export const Code: React.FunctionComponent<CodeProps> = props => {
   return (
     <div style={{ position: "relative" }}>
       <CodeRenderer {...props} />
@@ -36,8 +42,11 @@ export const Code = props => {
   );
 };
 
-const CodeRenderer = ({ codeString, language, ...props }) => {
-  console.log(codeString, language);
+const CodeRenderer: React.FunctionComponent<CodeProps> = ({
+  codeString,
+  language,
+  ...props
+}) => {
   if (props["react-live"]) {
     return (
       <LiveProvider code={codeString} noInline={true}>

@@ -8,7 +8,6 @@ module.exports = {
     )}`;
   },
   getTutorialOverviewSlug: relativePath => {
-    console.log(`/${path.basename(path.dirname(relativePath))}`);
     return `/${path.basename(path.dirname(relativePath))}`;
   }
 };

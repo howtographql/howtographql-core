@@ -2469,11 +2469,11 @@ export type WordCountsMdxFilterInput = {
   readonly sentences: Maybe<IntQueryOperatorInput>;
   readonly words: Maybe<IntQueryOperatorInput>;
 };
-export type MdxQueryQueryVariables = {
+export type TutorialMdxQueryVariables = {
   id: Scalars["String"];
 };
 
-export type MdxQueryQuery = {
+export type TutorialMdxQuery = {
   readonly mdx: Maybe<
     Pick<Mdx, "id"> & {
       readonly code: Maybe<Pick<MdxCodeMdx, "body">>;
@@ -2482,11 +2482,11 @@ export type MdxQueryQuery = {
   >;
 };
 
-export type TutorialOverviewQueryQueryVariables = {
+export type TutorialOverviewQueryVariables = {
   folderRegex: Maybe<Scalars["String"]>;
 };
 
-export type TutorialOverviewQueryQuery = {
+export type TutorialOverviewQuery = {
   readonly allMdx: Maybe<
     Pick<MdxConnection, "totalCount"> & {
       readonly edges: ReadonlyArray<{
@@ -2507,12 +2507,12 @@ export type TutorialOverviewQueryQuery = {
   >;
 };
 
-export type All_TutorialsQueryVariables = {};
+export type AllTutorialsQueryVariables = {};
 
-export type All_TutorialsQuery = {
+export type AllTutorialsQuery = {
   readonly allMdx: Maybe<{
     readonly edges: ReadonlyArray<{
-      readonly node: Pick<Mdx, "excerpt" | "fileAbsolutePath"> & {
+      readonly node: Pick<Mdx, "id" | "excerpt" | "fileAbsolutePath"> & {
         readonly frontmatter: Maybe<
           Pick<MdxFrontmatter, "path" | "pageTitle" | "description">
         >;
@@ -2522,9 +2522,9 @@ export type All_TutorialsQuery = {
   }>;
 };
 
-export type SiteTitleQueryQueryVariables = {};
+export type LayoutInformationQueryVariables = {};
 
-export type SiteTitleQueryQuery = {
+export type LayoutInformationQuery = {
   readonly site: Maybe<{
     readonly siteMetadata: Maybe<
       Pick<SiteSiteMetadata, "title" | "description" | "keywords">

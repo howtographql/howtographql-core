@@ -35,7 +35,7 @@ exports.createPages = async ({ graphql, actions }) => {
     const overviewTemplate = require.resolve(
       "./src/components/templates/TutorialOverview.tsx"
     );
-
+    //TODO: find a better way to ID posts & overviews Also a better way to query for them
     if (node.frontmatter.tutorialTitle) {
       return createPage({
         path: overviewPageSlug,

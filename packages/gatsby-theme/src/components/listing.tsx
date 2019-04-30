@@ -39,9 +39,9 @@ const Listing = () => {
         allMdx.edges &&
         allMdx.edges.map(({ node }) => {
           const fileAbsolutePath = node.fileAbsolutePath;
-          const { path, pageTitle } = node.frontmatter;
+          const { pageTitle } = node.frontmatter!;
           return (
-            <Post key={path}>
+            <Post key={node.id}>
               <Link to={getTutorialSlug(fileAbsolutePath)}>
                 <h2>{pageTitle}</h2>
               </Link>

@@ -4,9 +4,9 @@ import { RouterProps } from "@reach/router";
 import Layout from "../layout";
 import { MDXRenderer } from "gatsby-mdx";
 import { graphql } from "gatsby";
-import { MdxQueryQuery } from "src/graphqlTypes";
+import { TutorialMdxQuery } from "src/graphqlTypes";
 
-type TutorialLayoutProps = { data: MdxQueryQuery } & RouterProps;
+type TutorialLayoutProps = { data: TutorialMdxQuery } & RouterProps;
 
 const TutorialLayout: React.FunctionComponent<TutorialLayoutProps> = ({
   data,
@@ -29,7 +29,7 @@ const TutorialLayout: React.FunctionComponent<TutorialLayoutProps> = ({
 export default TutorialLayout;
 
 export const pageQuery = graphql`
-  query MDXQuery($id: String!) {
+  query TutorialMDX($id: String!) {
     mdx(id: { eq: $id }) {
       id
       code {
