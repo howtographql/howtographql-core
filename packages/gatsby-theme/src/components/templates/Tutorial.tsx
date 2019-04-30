@@ -1,11 +1,12 @@
 import * as React from "react";
 import { RouterProps } from "@reach/router";
-import { PostQueryData } from "../../interfaces/PostQuery.interface";
+
 import Layout from "../layout";
 import { MDXRenderer } from "gatsby-mdx";
 import { graphql } from "gatsby";
+import { MdxQueryQuery } from "src/graphqlTypes";
 
-type TutorialLayoutProps = PostQueryData & RouterProps;
+type TutorialLayoutProps = { data: MdxQueryQuery } & RouterProps;
 
 const TutorialLayout: React.FunctionComponent<TutorialLayoutProps> = ({
   data,
@@ -14,15 +15,13 @@ const TutorialLayout: React.FunctionComponent<TutorialLayoutProps> = ({
   if (!data) {
     return null;
   }
-
-  const { pageTitle, date } = data.mdx.frontmatter;
+  const { pageTitle } = data!.mdx!.frontmatter!;
   const { location } = props;
 
   return (
     <Layout location={location}>
       <h1>{pageTitle}</h1>
-      <em>{date}</em>
-      <MDXRenderer>{data.mdx.code.body}</MDXRenderer>
+      <MDXRenderer>{data!.mdx!.code!.body}</MDXRenderer>
     </Layout>
   );
 };

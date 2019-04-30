@@ -4,7 +4,13 @@
   "description": "The content/gatsby theme for htg2",
   "main": "index.js",
   "license": "MIT",
+  "scripts": {
+    "generate": "graphql-codegen"
+  },
   "devDependencies": {
+    "@graphql-codegen/cli": "^1.1.1",
+    "@graphql-codegen/typescript": "^1.1.1",
+    "@graphql-codegen/typescript-operations": "^1.1.1",
     "@types/jest": "^24.0.11",
     "@types/node": "^11.13.7",
     "@types/react-helmet": "^5.0.8",

@@ -1,15 +1,24 @@
 import React from "react";
 import { graphql } from "gatsby";
 import Layout from "../layout";
+import { TutorialOverviewQueryQuery } from "src/graphqlTypes";
 
-// import { MDXRenderer } from 'gatsby-mdx';
-
-function PageTemplate({ data }: { data: any }) {
+function PageTemplate({ data }: { data: TutorialOverviewQueryQuery }) {
   return (
     <Layout>
       <div>
-        <img src={data.overview.frontmatter.banner} />
-        <h1>{data.overview.frontmatter.tutorialTitle}</h1>
+        <img src={data!.overview!.frontmatter!.banner!} />
+        <h1>{data!.overview!.frontmatter!.tutorialTitle}</h1>
+        <div>
+          {data!.allMdx!.edges.map(mdx => {
+            return (
+              <div>
+                {mdx.node.frontmatter!.pageTitle}
+                {mdx.node.frontmatter!.description}
+              </div>
+            );
+          })}
+        </div>
       </div>
     </Layout>
   );
@@ -27,10 +36,8 @@ export const query = graphql`
         node {
           id
           frontmatter {
-            tutorialTitle
             pageTitle
-            title
-            banner
+            description
           }
         }
       }
