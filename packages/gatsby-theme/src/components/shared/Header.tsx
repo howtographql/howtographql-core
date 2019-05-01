@@ -1,11 +1,11 @@
-import React from 'react';
+import React from "react";
 
 // Vectors
-import Logo from './Logo';
-import { styled, withTheme, ThemeInterface } from '../../styles';
-import { Link } from 'gatsby';
-import { Content } from './styledHelpers';
-import { Flex } from '@rebass/grid';
+import Logo from "./Logo";
+import { styled, withTheme, ThemeInterface } from "../../styles";
+import { Link } from "gatsby";
+import { Content } from "./styledHelpers";
+import { Flex } from "./base";
 
 const Wrapper = styled.div`
   display: flex;
@@ -52,6 +52,7 @@ const Nav = withTheme(
             <NavLink to="/tutorials">Fundamentals</NavLink>
             <NavLink to="/tutorials">Guides</NavLink>
             <NavLink to="/tutorials">Community</NavLink>
+            <NavLink to="/components">Components</NavLink>
           </Container>
           <Container justifyContent="flex-end">other stuff</Container>
         </InnerWrapper>
