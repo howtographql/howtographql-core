@@ -8,12 +8,14 @@ import {
   Heading,
   Button,
   Image,
-  Card
+  Card,
+  Link as BaseLink
 } from "../components/shared/base";
 
 const SecondPage = () => (
   <Layout>
     <h3>Check out our rebass components!</h3>
+
     <h3>Box Component</h3>
     <Box p={5} fontSize={4} width={[1, 1, 1 / 2]} color="white" bg="magenta">
       Box
@@ -36,6 +38,7 @@ const SecondPage = () => (
 
     <h3>Heading Component</h3>
     <Heading color="magenta">Hello</Heading>
+
     <h3>Button Component</h3>
     <Button bg="magenta">Button</Button>
 
@@ -45,8 +48,8 @@ const SecondPage = () => (
       src="https://source.unsplash.com/random/1280x720"
       borderRadius={8}
     />
-    <h3>Card Component</h3>
 
+    <h3>Card Component</h3>
     <Card
       fontSize={6}
       fontWeight="bold"
@@ -59,6 +62,12 @@ const SecondPage = () => (
     >
       Card
     </Card>
+
+    <h3>
+      BaseLink Component (Originally Link but conflicts with Gatsby's Link)
+    </h3>
+    <BaseLink href="https://rebassjs.org">Link</BaseLink>
+
     <Link to="/">Go back to the homepage</Link>
     <p />
     <Link to="/about">Go to the About page</Link>
