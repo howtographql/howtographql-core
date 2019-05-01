@@ -1,6 +1,7 @@
 import React from "react";
 import { graphql } from "gatsby";
 import Layout from "../layout";
+import Chapter from "../Chapter";
 import { TutorialOverviewQuery } from "src/graphqlTypes";
 import { Author } from "../Author";
 
@@ -16,11 +17,15 @@ const PageTemplate: React.FunctionComponent<PageTemplateProps> = ({ data }) => {
         <Author name="Kelsey Yim" job="Developer @ Novvum" info="hi" />
         <h1>{data!.overview!.frontmatter!.tutorialTitle}</h1>
         <div>
-          {data!.allMdx!.edges.map(mdx => {
+          {data!.allMdx!.edges.map((mdx, index) => {
+            let num = index + 1;
             return (
               <div>
-                {mdx.node.frontmatter!.pageTitle}
-                {mdx.node.frontmatter!.description}
+                <Chapter
+                  num={num < 10 ? `0${num}` : num}
+                  title={mdx.node.frontmatter!.pageTitle}
+                  description={mdx.node.frontmatter!.description}
+                />
               </div>
             );
           })}
