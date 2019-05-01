@@ -1,20 +1,31 @@
 import React from "react";
 import { graphql } from "gatsby";
 import Layout from "../layout";
+import Chapter from "../Chapter";
 import { TutorialOverviewQuery } from "src/graphqlTypes";
+import { Author } from "../Author";
 
-function PageTemplate({ data }: { data: TutorialOverviewQuery }) {
+interface PageTemplateProps {
+  data: TutorialOverviewQuery;
+}
+
+const PageTemplate: React.FunctionComponent<PageTemplateProps> = ({ data }) => {
   return (
     <Layout>
       <div>
         <img src={data!.overview!.frontmatter!.banner!} />
+        <Author name="Kelsey Yim" job="Developer @ Novvum" info="hi" />
         <h1>{data!.overview!.frontmatter!.tutorialTitle}</h1>
         <div>
-          {data!.allMdx!.edges.map(mdx => {
+          {data!.allMdx!.edges.map((mdx, index) => {
+            let num = index + 1;
             return (
               <div>
-                {mdx.node.frontmatter!.pageTitle}
-                {mdx.node.frontmatter!.description}
+                <Chapter
+                  num={num < 10 ? `0${num}` : num}
+                  title={mdx.node.frontmatter!.pageTitle}
+                  description={mdx.node.frontmatter!.description}
+                />
               </div>
             );
           })}
@@ -22,7 +33,7 @@ function PageTemplate({ data }: { data: TutorialOverviewQuery }) {
       </div>
     </Layout>
   );
-}
+};
 export const query = graphql`
   query TutorialOverview($folderRegex: String) {
     allMdx(
@@ -49,7 +60,6 @@ export const query = graphql`
       id
       frontmatter {
         tutorialTitle
-        title
         banner
       }
     }

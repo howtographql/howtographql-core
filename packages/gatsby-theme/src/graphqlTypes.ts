@@ -1324,8 +1324,8 @@ export enum MdxFieldsEnum {
   FrontmatterAnswers = "frontmatter___answers",
   FrontmatterCorrectAnswer = "frontmatter___correctAnswer",
   FrontmatterVideoId = "frontmatter___videoId",
-  FrontmatterParent = "frontmatter____PARENT",
   FrontmatterDuration = "frontmatter___duration",
+  FrontmatterParent = "frontmatter____PARENT",
   FrontmatterTutorialTitle = "frontmatter___tutorialTitle",
   FrontmatterBanner = "frontmatter___banner",
   RawBody = "rawBody",
@@ -1371,8 +1371,8 @@ export type MdxFrontmatter = {
   readonly answers: Maybe<ReadonlyArray<Maybe<Scalars["String"]>>>;
   readonly correctAnswer: Maybe<Scalars["Int"]>;
   readonly videoId: Maybe<Scalars["String"]>;
-  readonly _PARENT: Maybe<Scalars["String"]>;
   readonly duration: Maybe<Scalars["Int"]>;
+  readonly _PARENT: Maybe<Scalars["String"]>;
   readonly tutorialTitle: Maybe<Scalars["String"]>;
   readonly banner: Maybe<Scalars["String"]>;
 };
@@ -1387,8 +1387,8 @@ export type MdxFrontmatterFilterInput = {
   readonly answers: Maybe<StringQueryOperatorInput>;
   readonly correctAnswer: Maybe<IntQueryOperatorInput>;
   readonly videoId: Maybe<StringQueryOperatorInput>;
-  readonly _PARENT: Maybe<StringQueryOperatorInput>;
   readonly duration: Maybe<IntQueryOperatorInput>;
+  readonly _PARENT: Maybe<StringQueryOperatorInput>;
   readonly tutorialTitle: Maybe<StringQueryOperatorInput>;
   readonly banner: Maybe<StringQueryOperatorInput>;
 };
@@ -2501,7 +2501,7 @@ export type TutorialOverviewQuery = {
   readonly overview: Maybe<
     Pick<Mdx, "id"> & {
       readonly frontmatter: Maybe<
-        Pick<MdxFrontmatter, "tutorialTitle" | "title" | "banner">
+        Pick<MdxFrontmatter, "tutorialTitle" | "banner">
       >;
     }
   >;
