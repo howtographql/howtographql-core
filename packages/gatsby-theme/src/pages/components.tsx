@@ -17,30 +17,30 @@ const SecondPage = () => (
     <h3>Check out our rebass components!</h3>
 
     <h3>Box Component</h3>
-    <Box p={5} fontSize={4} width={[1, 1, 1 / 2]} color="white" bg="magenta">
+    <Box p={5} color="white" bg="primary" fontSize={4} width={[1, 1, 1 / 2]}>
       Box
     </Box>
 
     <h3>Flex Component</h3>
     <Flex>
-      <Box p={3} width={1 / 2} color="magenta" bg="black">
+      <Box p={3} width={1 / 2} color="white" bg="primary">
         Flex
       </Box>
-      <Box p={3} width={1 / 2} color="white" bg="magenta">
+      <Box p={3} width={1 / 2}>
         Box
       </Box>
     </Flex>
 
     <h3>Text Component</h3>
-    <Text fontSize={[3, 4, 5]} fontWeight="bold" color="magenta">
+    <Text fontSize={[3, 4]} fontWeight="bold">
       Text
     </Text>
 
     <h3>Heading Component</h3>
-    <Heading color="magenta">Hello</Heading>
+    <Heading>Hello</Heading>
 
     <h3>Button Component</h3>
-    <Button bg="magenta">Button</Button>
+    <Button>Button</Button>
 
     <h3>Image Component</h3>
     <Image
@@ -50,16 +50,7 @@ const SecondPage = () => (
     />
 
     <h3>Card Component</h3>
-    <Card
-      fontSize={6}
-      fontWeight="bold"
-      width={[1, 1, 1 / 2]}
-      p={5}
-      my={5}
-      bg="#f6f6ff"
-      borderRadius={8}
-      boxShadow="0 2px 16px rgba(0, 0, 0, 0.25)"
-    >
+    <Card fontSize={6} width={[1, 1, 1 / 2]} p={5} my={5} borderRadius={8}>
       Card
     </Card>
 

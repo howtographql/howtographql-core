@@ -14,10 +14,12 @@ const PageTemplate: React.FunctionComponent<PageTemplateProps> = ({ data }) => {
     <Layout>
       <div>
         <img src={data!.overview!.frontmatter!.banner!} />
+        {/* TODO: implement author querying and info */}
         <Author name="Kelsey Yim" job="Developer @ Novvum" info="hi" />
         <h1>{data!.overview!.frontmatter!.tutorialTitle}</h1>
         <div>
           {data!.allMdx!.edges.map((mdx, index) => {
+            console.log(mdx.node.id);
             let num = index + 1;
             return (
               <div>
@@ -37,6 +39,7 @@ const PageTemplate: React.FunctionComponent<PageTemplateProps> = ({ data }) => {
 export const query = graphql`
   query TutorialOverview($folderRegex: String) {
     allMdx(
+      sort: { fields: fileAbsolutePath }
       filter: {
         frontmatter: { pageTitle: { ne: null } }
         fileAbsolutePath: { regex: $folderRegex }

@@ -1,10 +1,7 @@
-import { Colors, Sizes, Shape, ZIndex } from './index';
+import { Colors, Sizes, ZIndex, Shadows } from "./index";
 
-export interface ThemeInterface {
-  mode: 'light' | 'dark';
+export interface ThemeInterface extends Sizes, ZIndex {
+  mode: "light" | "dark";
   colors: Colors;
-  sizes: Sizes;
-  shape: Shape;
-  shadows: any;
-  zIndex: ZIndex;
+  shadows: Shadows;
 }
