@@ -3,7 +3,7 @@ import Layout from "../layout";
 import Chapter from "../chapter";
 import { TutorialOverviewQuery } from "src/graphqlTypes";
 import { Author } from "../Author";
-import TutorialHeader from "../TutorialHeader";
+import TutorialHeader from "../overview/TutorialHeader";
 import { Heading, Flex } from "../shared/base";
 import ProgressBar from "../ProgressBar";
 
@@ -14,6 +14,10 @@ interface PageTemplateProps {
 const PageTemplate: React.FunctionComponent<PageTemplateProps> = ({ data }) => {
   return (
     <Layout>
+      <TutorialButton
+        text="Start Introduction"
+        icon="https://i.ibb.co/MBKTQ9b/Icon.png"
+      />
       <Flex>
         {/* <img src={data!.overview!.frontmatter!.banner!} /> */}
         <TutorialHeader
@@ -23,7 +27,6 @@ const PageTemplate: React.FunctionComponent<PageTemplateProps> = ({ data }) => {
         />
         <div>
           <ProgressBar percentage={33} width={100} />
-
           <button> Spectrum </button>
           <Author authors={authors} />
         </div>
