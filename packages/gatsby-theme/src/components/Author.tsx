@@ -1,39 +1,39 @@
 import React from "react";
-import { styled } from "../styles";
 import { Image, Text, Flex, Box } from "./shared/base";
 
-export const Author = props => {
+interface AuthorProps {
+  authors: Author[];
+}
+
+interface Author {
+  name: string;
+  job: string;
+  info: string;
+  picture: string;
+}
+
+export const Author: React.FunctionComponent<AuthorProps> = props => {
   return (
     <div>
-      <AuthorContainer>
-        <Text> Author Information</Text>
-        <AuthorList authors={props.authors} />
-      </AuthorContainer>
+      <Box p={3} bg="#e5e5e5">
+        <Text fontSize={[1]}>WRITTEN BY</Text>
+        {props.authors.map(author => (
+          <AuthorList author={author} />
+        ))}
+      </Box>
     </div>
   );
 };
 
 const AuthorList = props => {
-  return props.authors.map(author => (
-    <Flex alignItems="center" justifyContent="flex-start">
-      <Box p={3}>
-        <Avatar src={author.picture} />
+  return (
+    <Flex alignItems="center" p={1}>
+      <Box p={1} width={[0.4]}>
+        <Image src={props.author.picture} borderRadius={100} />
       </Box>
-      <Box p={3} flex="2">
-        {author.name}
-        <br />
-        {author.job}
+      <Box p={1} width={[0.6]}>
+        <Text fontSize={[1]}>{props.author.name}</Text>
       </Box>
     </Flex>
-  ));
+  );
 };
-
-const Avatar = styled(Image)`
-  border-radius: 50%;
-  width: 100px;
-`;
-const AuthorContainer = styled(Box)`
-  background-color: #e5e5e5;
-  width: 100%;
-  padding: 25px 100px 25px 100px;
-`;

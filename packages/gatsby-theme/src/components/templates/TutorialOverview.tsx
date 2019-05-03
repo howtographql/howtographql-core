@@ -1,9 +1,10 @@
 import React from "react";
-import { graphql } from "gatsby";
 import Layout from "../layout";
 import Chapter from "../chapter";
 import { TutorialOverviewQuery } from "src/graphqlTypes";
 import { Author } from "../Author";
+import TutorialHeader from "../TutorialHeader";
+import { Heading, Flex } from "../shared/base";
 
 interface PageTemplateProps {
   data: TutorialOverviewQuery;
@@ -12,30 +13,33 @@ interface PageTemplateProps {
 const PageTemplate: React.FunctionComponent<PageTemplateProps> = ({ data }) => {
   return (
     <Layout>
-      <div>
-        <img src={data!.overview!.frontmatter!.banner!} />
-<<<<<<< HEAD
-        {/* TODO: implement author querying and info */}
-        <Author name="Kelsey Yim" job="Developer @ Novvum" info="hi" />
-=======
-        <Author authors={authors} />
->>>>>>> add functionality for multiple authors
-        <h1>{data!.overview!.frontmatter!.tutorialTitle}</h1>
+      <Flex>
+        {/* <img src={data!.overview!.frontmatter!.banner!} /> */}
+        <TutorialHeader
+          title={data!.overview!.frontmatter!.tutorialTitle}
+          description={data!.overview!.frontmatter!.description}
+          tags={["React", "Apollo", "Javascript"]}
+        />
         <div>
-          {data!.allMdx!.edges.map((mdx, index) => {
-            console.log(mdx.node.id);
-            let num = index + 1;
-            return (
-              <div>
-                <Chapter
-                  num={num < 10 ? `0${num}` : num}
-                  title={mdx.node.frontmatter!.pageTitle}
-                  description={mdx.node.frontmatter!.description}
-                />
-              </div>
-            );
-          })}
+          <button> Start the Tutorial </button>
+          <button> Spectrum </button>
+          <Author authors={authors} />
         </div>
+      </Flex>
+      <div>
+        <Heading> Chapters </Heading>
+        {data!.allMdx!.edges.map((mdx, index) => {
+          let num = index + 1;
+          return (
+            <div>
+              <Chapter
+                num={num < 10 ? `0${num}` : num}
+                title={mdx.node.frontmatter!.pageTitle}
+                description={mdx.node.frontmatter!.description}
+              />
+            </div>
+          );
+        })}
       </div>
     </Layout>
   );
@@ -69,6 +73,7 @@ export const query = graphql`
       frontmatter {
         tutorialTitle
         banner
+        description
       }
     }
   }
