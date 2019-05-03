@@ -5,8 +5,8 @@ import { TutorialOverviewQuery } from "src/graphqlTypes";
 import { Author } from "../Author";
 import TutorialHeader from "../overview/TutorialHeader";
 import { Heading, Flex } from "../shared/base";
-import ProgressBar from "../ProgressBar";
-
+import ProgressBar from "../overview/ProgressBar";
+import IconButton from "../Button";
 interface PageTemplateProps {
   data: TutorialOverviewQuery;
 }
@@ -14,10 +14,19 @@ interface PageTemplateProps {
 const PageTemplate: React.FunctionComponent<PageTemplateProps> = ({ data }) => {
   return (
     <Layout>
-      <TutorialButton
-        text="Start Introduction"
-        icon="https://i.ibb.co/MBKTQ9b/Icon.png"
-      />
+      <IconButton type="tutorial" link="http://localhost:8000/components">
+        Start tutorial
+      </IconButton>
+      <IconButton type="github" link="http://localhost:8000/components">
+        Hola soy niña
+      </IconButton>
+      <IconButton link="http://localhost:8000/components">
+        Default Button
+      </IconButton>
+      <IconButton type="spectrum" link="http://localhost:8000/components">
+        Spectrum
+      </IconButton>
+
       <Flex>
         {/* <img src={data!.overview!.frontmatter!.banner!} /> */}
         <TutorialHeader
@@ -27,7 +36,6 @@ const PageTemplate: React.FunctionComponent<PageTemplateProps> = ({ data }) => {
         />
         <div>
           <ProgressBar percentage={33} width={100} />
-          <button> Spectrum </button>
           <Author authors={authors} />
         </div>
       </Flex>
