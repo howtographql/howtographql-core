@@ -7,6 +7,7 @@ import {
   Text,
   Button
 } from "./shared/base";
+import { defaultProps } from "prism-react-renderer";
 interface ButtonProps {
   text: string;
   icon: string;
@@ -29,37 +30,32 @@ const BaseIconButton: React.FunctionComponent<ButtonProps> = props => {
 };
 
 export const IconButton: React.FunctionComponent<ButtonProps> = props => {
+  var icon = "";
+  var color = "";
   switch (props.type) {
     case "tutorial":
-      return (
-        <BaseIconButton
-          text={props.children}
-          icon="https://i.ibb.co/MBKTQ9b/Icon.png"
-          link={props.link}
-          bgColor="primary"
-        />
-      );
+      icon = "https://i.ibb.co/MBKTQ9b/Icon.png";
+      color = "primary";
+      break;
     case "github":
-      return (
-        <BaseIconButton
-          text={props.children}
-          icon="https://i.ibb.co/ftWB3Y1/Github.png"
-          link={props.link}
-          bgColor="grey"
-        />
-      );
+      icon = "https://i.ibb.co/ftWB3Y1/Github.png";
+      color = "grey";
+      break;
     case "spectrum":
-      return (
-        <BaseIconButton
-          text={props.children}
-          icon="https://i.ibb.co/gmtgnsP/Spectrum.png"
-          link={props.link}
-          bgColor="green"
-        />
-      );
+      icon = "https://i.ibb.co/gmtgnsP/Spectrum.png";
+      color = "grey";
+      break;
     default:
       return <Button>{props.children}</Button>;
   }
+  return (
+    <BaseIconButton
+      text={props.children}
+      icon={icon}
+      link={props.link}
+      bgColor={props.bgColor || color}
+    />
+  );
 };
 
 export default IconButton;
