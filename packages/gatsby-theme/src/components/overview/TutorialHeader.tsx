@@ -1,5 +1,5 @@
 import React from "react";
-import { Flex, Box, Image, Heading, Text } from "./shared/base";
+import { Flex, Box, Image, Heading, Text } from "../shared/base";
 
 const TutorialHeader = ({ title, description, tags }) => {
   return (
