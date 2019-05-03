@@ -5,6 +5,7 @@ import { TutorialOverviewQuery } from "src/graphqlTypes";
 import { Author } from "../Author";
 import TutorialHeader from "../TutorialHeader";
 import { Heading, Flex } from "../shared/base";
+import ProgressBar from "../ProgressBar";
 
 interface PageTemplateProps {
   data: TutorialOverviewQuery;
@@ -21,7 +22,8 @@ const PageTemplate: React.FunctionComponent<PageTemplateProps> = ({ data }) => {
           tags={["React", "Apollo", "Javascript"]}
         />
         <div>
-          <button> Start the Tutorial </button>
+          <ProgressBar percentage={33} width={100} />
+
           <button> Spectrum </button>
           <Author authors={authors} />
         </div>
