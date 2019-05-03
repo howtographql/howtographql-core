@@ -81,8 +81,7 @@ export const Heading = styled(Text)<HeadingProps>(themed("Heading"));
 Heading.defaultProps = {
   as: "h2",
   m: 0,
-  fontSize: 4,
-  fontWeight: 2
+  fontSize: 4
 };
 
 export const Link = styled(Box)<LinkProps>(themed("Link"));
@@ -110,14 +109,14 @@ export const Button = styled(Box)<ButtonProps>(
 Button.defaultProps = {
   as: "button",
   fontSize: "inherit",
+  borderRadius: 1,
   fontWeight: 2,
   m: 0,
   px: 3,
   py: 2,
   color: "white",
   bg: "primary",
-  border: 0,
-  borderRadius: 4
+  border: 1
 };
 
 export const Image = styled(Box)<ImageProps>(
@@ -150,3 +149,7 @@ export const Card = styled(Box)<CardProps>(
   cards,
   themed("Card")
 );
+
+Card.defaultProps = {
+  boxShadow: "large"
+};

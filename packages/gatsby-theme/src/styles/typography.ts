@@ -3,10 +3,10 @@ import Typography, { TypographyOptions } from "typography";
 import { theme as styledTheme } from "./theme";
 
 const options: TypographyOptions = {
-  baseFontSize: `${styledTheme.sizes.fontSizes[0]}px`,
+  baseFontSize: `${styledTheme.fontSizes[2]}px`,
   baseLineHeight: 1.625,
   headerFontFamily: [
-    "Open Sans",
+    "Rubik",
     "-apple-system",
     "BlinkMacSystemFont",
     "Segoe UI",
@@ -44,16 +44,17 @@ const options: TypographyOptions = {
   scaleRatio: 2,
   bodyColor: styledTheme.colors.secondaryLight1,
   headerColor: styledTheme.colors.secondaryDark1,
-  headerWeight: styledTheme.sizes.fontWeights[2],
-  bodyWeight: styledTheme.sizes.fontWeights[1],
-  boldWeight: styledTheme.sizes.fontWeights[2],
+  headerWeight: styledTheme.fontWeights[2],
+  bodyWeight: styledTheme.fontWeights[1],
+  boldWeight: styledTheme.fontWeights[2],
   // Github has all block elements use 1/2 rhythm not a full rhythm.
   blockMarginBottom: 1 / 2,
   overrideStyles: ({ rhythm }) => ({
     h1: {
       paddingBottom: `calc(${rhythm(1 / 4)} - 1px)`,
       marginBottom: rhythm(3 / 4),
-      marginTop: rhythm(1.5)
+      marginTop: rhythm(1.5),
+      headerWeight: styledTheme.fontWeights[3]
     },
     h2: {
       paddingBottom: `calc(${rhythm(1 / 3)} - 1px)`,
@@ -89,7 +90,6 @@ const options: TypographyOptions = {
     },
     blockquote: {
       borderLeft: `4px solid ${styledTheme.colors.lightGray}`,
-
       marginTop: 0,
       marginRight: 0,
       marginLeft: 0,

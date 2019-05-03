@@ -1,4 +1,3 @@
-import shadows from "../shadows";
 import { ThemeInterface } from "./ThemeInterface";
 
 // Guide
@@ -13,12 +12,14 @@ import { ThemeInterface } from "./ThemeInterface";
 //    the `Button` component since it's not useful if that button is not
 //    present.
 
-export interface Shape {
-  borderRadius: number;
+export interface Shadows {
+  small: string;
+  large: string;
 }
 
-const shape: Shape = {
-  borderRadius: 4
+const shadows: Shadows = {
+  small: "0px 2px 4px rgba(38, 38, 38, 0.15)",
+  large: "0px 4px 8px rgba(38, 38, 38, 0.15);"
 };
 
 export interface ZIndex {
@@ -86,9 +87,7 @@ export const lightColors: Colors = {
 export interface Sizes {
   breakpoints: string[];
   // Radius
-  radius: number;
-  radiusBig: number;
-  radiusSmall: number;
+  radii: number[];
   // [C] Container
   middleContainerWidth: number;
   middleContainerNarrowWidth: number;
@@ -97,11 +96,6 @@ export interface Sizes {
   brandHeight: number;
   // Spaces
   space: number[];
-  // Z Index
-  diagonalBgZIndex: number;
-  getStartedCardZIndex: number;
-  worldMapZIndex: number;
-  overlayZIndex: number;
 
   // Font Family Stacks
   fontStackMono: string;
@@ -113,9 +107,7 @@ export const sizes: Sizes = {
   ///// Sizes
   breakpoints: ["40em", "52em", "64em"],
   // Radius
-  radius: 6,
-  radiusBig: 8,
-  radiusSmall: 4,
+  radii: [4, 6, 8],
   // [C] Container
   middleContainerWidth: 1200,
   middleContainerNarrowWidth: 1100,
@@ -134,14 +126,9 @@ export const sizes: Sizes = {
     128,
     256
   ],
-  // Z Index
-  diagonalBgZIndex: 1,
-  getStartedCardZIndex: 5,
-  worldMapZIndex: 1,
-  overlayZIndex: 100,
 
   // Font
-  fontSizes: [12, 14, 16, 20, 28, 24, 32, 48],
+  fontSizes: [12, 14, 16, 20, 28, 32, 48, 64],
   fontWeights: [300, 400, 600, 700],
   fontStackMono:
     "SFMono-Regular, 'Roboto Mono', Consolas, 'Liberation Mono', Menlo, Courier, monospace"
@@ -150,8 +137,7 @@ export const sizes: Sizes = {
 export const theme: ThemeInterface = {
   mode: "dark",
   colors: darkColors,
-  sizes,
-  shape,
   shadows,
-  zIndex
+  ...sizes,
+  ...zIndex
 };
