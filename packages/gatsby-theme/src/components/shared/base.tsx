@@ -82,14 +82,13 @@ Heading.defaultProps = {
   as: "h2",
   m: 0,
   fontSize: 4,
-  fontWeight: "bold"
+  fontWeight: 2
 };
 
 export const Link = styled(Box)<LinkProps>(themed("Link"));
 
 Link.defaultProps = {
-  as: "a",
-  color: "blue"
+  as: "a"
 };
 
 export const Button = styled(Box)<ButtonProps>(
@@ -111,12 +110,12 @@ export const Button = styled(Box)<ButtonProps>(
 Button.defaultProps = {
   as: "button",
   fontSize: "inherit",
-  fontWeight: "bold",
+  fontWeight: 2,
   m: 0,
   px: 3,
   py: 2,
   color: "white",
-  bg: "blue",
+  bg: "primary",
   border: 0,
   borderRadius: 4
 };

@@ -1,5 +1,5 @@
-import shadows from '../shadows';
-import { ThemeInterface } from './ThemeInterface';
+import shadows from "../shadows";
+import { ThemeInterface } from "./ThemeInterface";
 
 // Guide
 // [C] means `Component`
@@ -18,7 +18,7 @@ export interface Shape {
 }
 
 const shape: Shape = {
-  borderRadius: 4,
+  borderRadius: 4
 };
 
 export interface ZIndex {
@@ -36,7 +36,7 @@ const zIndex: ZIndex = {
   drawer: 1200,
   modal: 1300,
   snackbar: 1400,
-  tooltip: 1500,
+  tooltip: 1500
 };
 
 export interface Colors {
@@ -46,56 +46,45 @@ export interface Colors {
   secondary: string;
   secondaryDark1: string;
   secondaryLight1: string;
-  blue: string;
-  blueLight1: string;
-  blueDark1: string;
+  info: string;
+  infoLight1: string;
+  infoDark1: string;
   lightGray: string;
   white: string;
 }
 
 export const darkColors: Colors = {
   //// Colors
-  primary: '#e00082',
-  primaryDark1: '#a4036f',
-  primaryLight1: '#EB7BBC',
-  secondary: '#172a3a',
-  secondaryDark1: 'rgb(0, 0, 0)',
-  secondaryLight1: 'rgba(23, 42, 58, .5)',
-  blue: '#2a7ed2',
-  blueLight1: '#C2DCF2',
-  blueDark1: '#2a7ed2',
-  lightGray: 'rgb(244, 244, 244)',
-  white: '#fff',
+  primary: "#e00082",
+  primaryDark1: "#a4036f",
+  primaryLight1: "#EB7BBC",
+  secondary: "#172a3a",
+  secondaryDark1: "rgb(0, 0, 0)",
+  secondaryLight1: "rgba(23, 42, 58, .5)",
+  info: "#2a7ed2",
+  infoLight1: "#C2DCF2",
+  infoDark1: "#2a7ed2",
+  lightGray: "rgb(244, 244, 244)",
+  white: "#fff"
 };
 
 export const lightColors: Colors = {
   //// Colors
-  primary: '#e00082',
-  primaryDark1: '#082333',
-  primaryLight1: '#EB7BBC',
-  secondary: '#082333',
-  secondaryDark1: '#082333',
-  secondaryLight1: '#082333',
-  blue: '#0F7AD8',
-  blueLight1: '#459BF2',
-  blueDark1: '#2a7ed2',
-  lightGray: '#f9f9f9',
-  white: '#fff',
+  primary: "#e00082",
+  primaryDark1: "#082333",
+  primaryLight1: "#EB7BBC",
+  secondary: "#082333",
+  secondaryDark1: "#082333",
+  secondaryLight1: "#082333",
+  info: "#0F7AD8",
+  infoLight1: "#459BF2",
+  infoDark1: "#2a7ed2",
+  lightGray: "#f9f9f9",
+  white: "#fff"
 };
 
 export interface Sizes {
-  sizeHeroTitle: number;
-  sizeHeroSubtitle: number;
-  sizeSectionTitle: number;
-  sizeSectionSubtitle: number;
-  sizeFeatureTitle: number;
-  sizeFeatureDesc: number;
-  sizeBullet: number;
-  sizeParagraphTitle: number;
-  sizeParagraph: number;
-  sizeActions: number /* Buttons, links, nav items, etc */;
-  sizeActionsSmall: number;
-  sizeCode: number;
+  breakpoints: string[];
   // Radius
   radius: number;
   radiusBig: number;
@@ -107,14 +96,7 @@ export interface Sizes {
   navHeight: number;
   brandHeight: number;
   // Spaces
-  space8: number;
-  space12: number;
-  space16: number;
-  space24: number;
-  space32: number;
-  space40: number;
-  space64: number;
-  space128: number;
+  space: number[];
   // Z Index
   diagonalBgZIndex: number;
   getStartedCardZIndex: number;
@@ -123,23 +105,13 @@ export interface Sizes {
 
   // Font Family Stacks
   fontStackMono: string;
+  fontSizes: number[];
+  fontWeights: number[];
 }
 
 export const sizes: Sizes = {
   ///// Sizes
-  // Font Sizes
-  sizeHeroTitle: 48,
-  sizeHeroSubtitle: 24,
-  sizeSectionTitle: 32,
-  sizeSectionSubtitle: 20,
-  sizeFeatureTitle: 28,
-  sizeFeatureDesc: 16,
-  sizeBullet: 16,
-  sizeParagraphTitle: 20,
-  sizeParagraph: 16,
-  sizeActions: 16 /* Buttons, links, nav items, etc */,
-  sizeActionsSmall: 14,
-  sizeCode: 12,
+  breakpoints: ["40em", "52em", "64em"],
   // Radius
   radius: 6,
   radiusBig: 8,
@@ -151,30 +123,35 @@ export const sizes: Sizes = {
   navHeight: 64,
   brandHeight: 40,
   // Spaces
-  space8: 8,
-  space12: 12,
-  space16: 16,
-  space24: 24,
-  space32: 32,
-  space40: 40,
-  space64: 64,
-  space128: 128,
+  space: [
+    // margin and padding
+    0,
+    4,
+    8,
+    16,
+    32,
+    64,
+    128,
+    256
+  ],
   // Z Index
   diagonalBgZIndex: 1,
   getStartedCardZIndex: 5,
   worldMapZIndex: 1,
   overlayZIndex: 100,
 
-  // Font Family Stacks
+  // Font
+  fontSizes: [12, 14, 16, 20, 28, 24, 32, 48],
+  fontWeights: [300, 400, 600, 700],
   fontStackMono:
-    "SFMono-Regular, 'Roboto Mono', Consolas, 'Liberation Mono', Menlo, Courier, monospace",
+    "SFMono-Regular, 'Roboto Mono', Consolas, 'Liberation Mono', Menlo, Courier, monospace"
 };
 
 export const theme: ThemeInterface = {
-  mode: 'dark',
+  mode: "dark",
   colors: darkColors,
   sizes,
   shape,
   shadows,
-  zIndex,
+  zIndex
 };

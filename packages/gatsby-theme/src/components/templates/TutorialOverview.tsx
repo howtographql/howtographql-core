@@ -14,6 +14,7 @@ const PageTemplate: React.FunctionComponent<PageTemplateProps> = ({ data }) => {
     <Layout>
       <div>
         <img src={data!.overview!.frontmatter!.banner!} />
+        {/* TODO: implement author querying and info */}
         <Author name="Kelsey Yim" job="Developer @ Novvum" info="hi" />
         <h1>{data!.overview!.frontmatter!.tutorialTitle}</h1>
         <div>
