@@ -30,8 +30,8 @@ const BaseIconButton: React.FunctionComponent<ButtonProps> = props => {
 };
 
 export const IconButton: React.FunctionComponent<ButtonProps> = props => {
-  var icon = "";
-  var color = "";
+  let icon = "";
+  let color = "";
   switch (props.type) {
     case "tutorial":
       icon = "https://i.ibb.co/MBKTQ9b/Icon.png";
