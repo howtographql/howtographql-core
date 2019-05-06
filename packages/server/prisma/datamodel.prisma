@@ -1,7 +1,16 @@
 type User {
   id: ID! @unique
-  email: String! @unique
+  createdAt: DateTime!
+  updatedAt: DateTime!
+
   name: String!
+  email: String @unique
+
+  githubHandle: String! @unique
+  githubUserId: String! @unique
+  avatarUrl: String
+  bio: String!
+
   posts: [Post!]!
 }
 
