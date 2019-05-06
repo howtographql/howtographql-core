@@ -6,6 +6,7 @@
     "build": "yoga build",
     "build:ci": "npx nexus-prisma-generate --output ./.yoga/nexus-prisma && yarn prisma generate && yoga build",
     "start": "yoga start",
+    "prisma": "prisma",
     "scaffold": "yoga scaffold",
     "lint": "echo linting disabled"
   },
