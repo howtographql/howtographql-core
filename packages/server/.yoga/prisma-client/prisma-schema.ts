@@ -301,7 +301,7 @@ type User {
   createdAt: DateTime!
   updatedAt: DateTime!
   name: String!
-  email: String!
+  email: String
   githubHandle: String!
   githubUserId: String!
   avatarUrl: String
@@ -317,7 +317,7 @@ type UserConnection {
 
 input UserCreateInput {
   name: String!
-  email: String!
+  email: String
   githubHandle: String!
   githubUserId: String!
   avatarUrl: String
@@ -332,7 +332,7 @@ input UserCreateOneWithoutPostsInput {
 
 input UserCreateWithoutPostsInput {
   name: String!
-  email: String!
+  email: String
   githubHandle: String!
   githubUserId: String!
   avatarUrl: String
@@ -370,7 +370,7 @@ type UserPreviousValues {
   createdAt: DateTime!
   updatedAt: DateTime!
   name: String!
-  email: String!
+  email: String
   githubHandle: String!
   githubUserId: String!
   avatarUrl: String

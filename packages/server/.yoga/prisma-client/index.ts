@@ -371,7 +371,7 @@ export interface UserCreateOneWithoutPostsInput {
 
 export interface UserCreateWithoutPostsInput {
   name: String;
-  email: String;
+  email?: Maybe<String>;
   githubHandle: String;
   githubUserId: String;
   avatarUrl?: Maybe<String>;
@@ -414,7 +414,7 @@ export interface PostUpdateManyMutationInput {
 
 export interface UserCreateInput {
   name: String;
-  email: String;
+  email?: Maybe<String>;
   githubHandle: String;
   githubUserId: String;
   avatarUrl?: Maybe<String>;
@@ -616,7 +616,7 @@ export interface User {
   createdAt: DateTimeOutput;
   updatedAt: DateTimeOutput;
   name: String;
-  email: String;
+  email?: String;
   githubHandle: String;
   githubUserId: String;
   avatarUrl?: String;
@@ -917,7 +917,7 @@ export interface UserPreviousValues {
   createdAt: DateTimeOutput;
   updatedAt: DateTimeOutput;
   name: String;
-  email: String;
+  email?: String;
   githubHandle: String;
   githubUserId: String;
   avatarUrl?: String;
