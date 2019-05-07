@@ -97,7 +97,7 @@ input PostWhereInput {
 type Query {
   feed: [Post!]!
   filterPosts(searchString: String!): [Post!]!
-  viewer: Viewer!
+  viewer: Viewer
 }
 
 type User {
@@ -237,5 +237,6 @@ input UserWhereInput {
 }
 
 type Viewer {
+  id: ID!
   user: User!
 }
