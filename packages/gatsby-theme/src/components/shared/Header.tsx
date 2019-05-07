@@ -1,5 +1,7 @@
 import React from "react";
-import OAuth from "../OAuth";
+import { Query } from 'react-apollo';
+import gql from 'graphql-tag';
+import GithubAuth from "../GithubAuth";
 
 // Vectors
 import Logo from "./Logo";
@@ -56,7 +58,26 @@ const Nav = withTheme(
             <NavLink to="/components">Components</NavLink>
           </Container>
           <Container justifyContent="flex-end">
-            <OAuth />
+            <Query query={gql`
+              query Viewer {
+                viewer {
+                  id
+                  user {
+                    id
+                  }
+                }
+              }
+            `}>
+              {({ data, error, loading }) => {
+                if (error || loading) {
+                  return "Loading or error..."
+                }
+                if (data.viewer && data.viewer.user) {
+                  return data.viewer.user.id
+                }
+                return <GithubAuth />
+              }}
+            </Query>
           </Container>
         </InnerWrapper>
       </Wrapper>

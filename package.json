@@ -8,6 +8,7 @@
   "private": true,
   "scripts": {
     "lerna": "lerna",
+    "dev": "npm-run-all --parallel 'site develop' 'server dev'",
     "site": "yarn workspace @howtographql/oss",
     "server": "yarn workspace @howtographql/server",
     "theme": "yarn workspace @howtographql/gatsby-theme",

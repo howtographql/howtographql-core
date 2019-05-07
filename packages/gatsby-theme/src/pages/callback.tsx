@@ -1,4 +1,6 @@
-function getParameterByName(name, url) {
+import * as React from 'react';
+
+function getParameterByName(name: string, url: string) {
   if (!url) url = window.location.href;
   name = name.replace(/[\[\]]/g, "\\$&");
   var regex = new RegExp("[?&]" + name + "(=([^&#]*)|&|#|$)"),
@@ -14,4 +16,13 @@ function Callback() {
   targetWindow.postMessage(githubCode, "*");
 }
 
-export default Callback;
+export default class AuthCallback extends React.Component {
+  componentDidMount() {
+    Callback()
+  }
+  render() {
+    return <div style={{backgroundColor: "tomato"}}>
+      Success!!
+    </div>
+  }
+}
