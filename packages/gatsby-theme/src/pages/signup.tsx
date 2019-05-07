@@ -1,11 +1,12 @@
-import * as React from "react";
-import Layout from "../components/layout";
-import GithubAuth from "../components/GithubAuth";
-import { Query } from "react-apollo";
-import gql from "graphql-tag";
-import { navigate } from "gatsby";
-
-import { Flex, Text, Box } from "../components/shared/base";
+import * as React from 'react';
+import Layout from '../components/layout';
+import GithubAuth from '../components/GithubAuth';
+import { Query } from 'react-apollo';
+import gql from 'graphql-tag';
+import { ViewerQuery } from '../graphqlTypes';
+import { navigate } from 'gatsby';
+import { CenteredLoader } from '../components/Loader';
+import { Flex, Text, Box } from '../components/shared/base';
 
 const Signup = () => (
   <Query
@@ -25,10 +26,10 @@ const Signup = () => (
   >
     {({ data, error, loading }) => {
       if (error || loading) {
-        return "Loading or error...";
+        return <CenteredLoader />;
       }
       if (data.viewer && data.viewer.user) {
-        navigate("/profile/");
+        navigate('/profile/');
         return null;
       }
       return <SignupPage />;

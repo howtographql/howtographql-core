@@ -1,9 +1,11 @@
-import React from "react";
-import { Query } from "react-apollo";
-import gql from "graphql-tag";
-import GithubAuth from "./GithubAuth";
-import { Text, Image, Flex } from "./shared/base";
-import { Link } from "gatsby";
+import React from 'react';
+import { Query } from 'react-apollo';
+import { ViewerQuery } from '../graphqlTypes';
+import gql from 'graphql-tag';
+import GithubAuth from './GithubAuth';
+import { Text, Image, Flex } from './shared/base';
+import { Link } from 'gatsby';
+import { CenteredLoader } from './Loader';
 
 const Account = () => {
   return (
@@ -23,7 +25,7 @@ const Account = () => {
     >
       {({ data, error, loading }) => {
         if (error || loading) {
-          return "Loading or error...";
+          return <CenteredLoader />;
         }
         if (data.viewer && data.viewer.user) {
           return <Profile user={data.viewer.user} />;

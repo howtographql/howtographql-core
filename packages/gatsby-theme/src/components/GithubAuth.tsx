@@ -1,20 +1,20 @@
-import React, { Component } from "react";
-import config from "../../config";
-import { authenticateUser } from "../utils/auth";
-import IconButton from "./Button";
+import React, { Component } from 'react';
+import config from '../../config';
+import { authenticateUser } from '../utils/auth';
+import CustomButton from './CustomButton';
 
 export default class GithubAuth extends Component {
   popup: any;
   listen(): Promise<string> {
     return new Promise(resolve => {
-      window.addEventListener("message", receiveMessage, false);
+      window.addEventListener('message', receiveMessage, false);
       function receiveMessage(event: any) {
         if (event.data) {
-          window.removeEventListener("message", receiveMessage);
-          resolve(event.data)
+          window.removeEventListener('message', receiveMessage);
+          resolve(event.data);
         }
       }
-    })
+    });
   }
 
   openPopup() {
@@ -27,10 +27,10 @@ export default class GithubAuth extends Component {
     }`;
     return window.open(
       url,
-      "",
+      '',
       `toolbar=no, location=no, directories=no, status=no, menubar=no,
       scrollbars=no, resizable=no, copyhistory=no, width=${width},
-      height=${height}, top=${top}, left=${left}`
+      height=${height}, top=${top}, left=${left}`,
     );
   }
 
@@ -49,7 +49,7 @@ export default class GithubAuth extends Component {
   render() {
     return (
       <div onClick={() => this.startAuth()}>
-        <IconButton type="github"> {this.props.children}</IconButton>
+        <CustomButton type="github"> {this.props.children}</CustomButton>
       </div>
     );
   }

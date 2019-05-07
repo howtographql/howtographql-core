@@ -1,10 +1,12 @@
-import * as React from "react";
-import Layout from "../components/layout";
-import { Query } from "react-apollo";
-import gql from "graphql-tag";
-import { Text, Image, Flex } from "../components/shared/base";
-import { logoutUser } from "../utils/auth";
-import { navigate } from "gatsby";
+import * as React from 'react';
+import Layout from '../components/layout';
+import { Query } from 'react-apollo';
+import gql from 'graphql-tag';
+import { ViewerQuery } from '../graphqlTypes';
+import { Text, Image, Flex } from '../components/shared/base';
+import { logoutUser } from '../utils/auth';
+import { navigate } from 'gatsby';
+import { CenteredLoader } from '../components/Loader';
 
 const Profile = () => (
   <Query
@@ -24,12 +26,12 @@ const Profile = () => (
   >
     {({ data, error, loading }) => {
       if (error || loading) {
-        return "Loading or error...";
+        return <CenteredLoader />;
       }
       if (data.viewer && data.viewer.user) {
         return <ProfilePage user={data.viewer.user} />;
       }
-      navigate("/signup/");
+      navigate('/signup/');
       return null;
     }}
   </Query>
