@@ -4,7 +4,7 @@ import Chapter from "../chapter";
 import { TutorialOverviewQuery } from "src/graphqlTypes";
 import { Author } from "../Author";
 import TutorialHeader from "../overview/TutorialHeader";
-import { Heading, Flex } from "../shared/base";
+import { Heading, Flex, Box } from "../shared/base";
 import ProgressBar from "../overview/ProgressBar";
 import IconButton from "../Button";
 import { Content } from "../shared/styledHelpers";
@@ -18,19 +18,35 @@ const PageTemplate: React.FunctionComponent<PageTemplateProps> = ({ data }) => {
     <Layout>
       <Content>
         <Flex>
-          {/* <img src={data!.overview!.frontmatter!.banner!} /> */}
-          <TutorialHeader
-            title={data!.overview!.frontmatter!.tutorialTitle}
-            description={data!.overview!.frontmatter!.description}
-            tags={["React", "Apollo", "Javascript"]}
-          />
-          <div>
-            <ProgressBar percentage={33} width={100} />
+          <Box width={3 / 4} aligncontent="center">
+            <TutorialHeader
+              width={1 / 2}
+              title={data!.overview!.frontmatter!.tutorialTitle}
+              description={data!.overview!.frontmatter!.description}
+              tags={["React", "Apollo", "Javascript"]}
+            />
+          </Box>
+          <Box width={1 / 4} m={3}>
             <IconButton type="tutorial" link="http://localhost:8000/components">
-              Start tutorial
+              Continue Tutorial
             </IconButton>
+            <Box m={3}>
+              <ProgressBar percentage={33} width={100} />
+            </Box>
+            <Flex>
+              <IconButton type="github" link="http://localhost:8000/components">
+                Github
+              </IconButton>
+              <IconButton
+                type="spectrum"
+                link="http://localhost:8000/components"
+              >
+                Spectrum
+              </IconButton>
+            </Flex>
+
             <Author authors={authors} />
-          </div>
+          </Box>
         </Flex>
         <div>
           <Heading> Chapters </Heading>
