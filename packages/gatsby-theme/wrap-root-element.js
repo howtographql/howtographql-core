@@ -1,6 +1,10 @@
 import React from "react";
 import { MDXProvider } from "@mdx-js/react";
 import { preToCodeBlock } from "mdx-utils";
+import { ApolloProvider } from "react-apollo";
+
+import { client } from "./src/Apollo";
+
 import { Code } from "./src/components/code";
 
 // components is its own object outside of render so that the references to
@@ -18,5 +22,9 @@ const components = {
   }
 };
 export const wrapRootElement = ({ element }) => {
-  return <MDXProvider components={components}>{element}</MDXProvider>;
+  return (
+    <ApolloProvider client={client}>
+      <MDXProvider components={components}>{element}</MDXProvider>
+    </ApolloProvider>
+  );
 };

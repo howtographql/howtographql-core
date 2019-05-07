@@ -9,6 +9,7 @@
   "scripts": {
     "lerna": "lerna",
     "site": "yarn workspace @howtographql/oss",
+    "server": "yarn workspace @howtographql/server",
     "theme": "yarn workspace @howtographql/gatsby-theme",
     "publish": "lerna publish --skip-git"
   },

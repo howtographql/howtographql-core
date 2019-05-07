@@ -1,5 +1,5 @@
 {
-  "name": "with-db",
+  "name": "@howtographql/server",
   "private": true,
   "scripts": {
     "dev": "yoga dev",
