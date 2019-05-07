@@ -1,0 +1,84 @@
+# Javascript Node CircleCI 2.0 configuration file
+#
+# Check https://circleci.com/docs/2.0/language-javascript/ for more details
+#
+version: 2.1
+
+commands:
+  deploy-now-sh:
+    description: "A command to deploy to now.sh."
+    steps:
+      - checkout
+      - restore_cache:
+          name: Restore Yarn Package Cache
+          keys:
+            - yarn-packages-{{ checksum "yarn.lock" }}
+      - run:
+          name: Install Dependencies
+          command: yarn install --frozen-lockfile
+      - save_cache:
+          name: Save Yarn Package Cache
+          key: yarn-packages-{{ checksum "yarn.lock" }}
+          paths:
+            - ~/.cache/yarn
+      - run: yarn server build && yarn deploy
+
+
+jobs:
+  production:
+    docker:
+      - image: circleci/node:8.10.0
+        environment:
+          STAGE: production
+          NOW_ALIAS: https://api-prod.howtographql.now.sh
+    working_directory: ~/repo
+    steps:
+      - deploy-now-sh
+  
+  staging:
+    docker:
+      - image: circleci/node:8.10.0
+        environment:
+          STAGE: staging
+          NOW_ALIAS: https://api-staging.howtographql.now.sh
+    working_directory: ~/repo
+    steps:
+      - deploy-now-sh
+  
+  publish-apollo:
+    docker:
+      # specify the version you desire here
+      - image: circleci/node:8.10.0
+    working_directory: ~/repo
+    steps:
+      - checkout
+      - run: yarn install
+      # Start the GraphQL server.  If a different command is used to
+      # start the server, use it in place of `npm start` here.
+      - run:
+          name: Starting server
+          command: yarn server start
+          background: true
+      # make sure the server has enough time to start up before running
+      # commands against it
+      - run: sleep 5
+      # When running on the 'master' branch, push the latest version
+      # of the schema to Apollo Engine.
+      - run: |
+          yarn apollo service:push --tag="${CIRCLE_BRANCH}"
+
+workflows:
+  version: 2
+  deploy-publish:
+    jobs:
+      - production:
+          filters:
+            branches:
+              only:
+                - master
+      - staging:
+          filters:
+            branches:
+              ignore:
+                - master
+      # - publish-apollo

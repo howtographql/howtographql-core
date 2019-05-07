@@ -3,7 +3,7 @@ import { yogaContext } from 'yoga'
 
 export interface Context {
   prisma: Prisma
-  req: Request
+  req: any
 }
 
 export default yogaContext(({ req }) => ({

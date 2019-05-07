@@ -1,7 +1,7 @@
 import React from "react";
 import { graphql } from "gatsby";
 import Layout from "../layout";
-import Chapter from "../Chapter";
+import Chapter from "../chapter";
 import { TutorialOverviewQuery } from "src/graphqlTypes";
 import { Author } from "../Author";
 
