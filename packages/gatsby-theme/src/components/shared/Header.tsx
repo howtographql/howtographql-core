@@ -1,4 +1,5 @@
 import React from "react";
+import OAuth from "../OAuth";
 
 // Vectors
 import Logo from "./Logo";
@@ -54,7 +55,9 @@ const Nav = withTheme(
             <NavLink to="/community">Community</NavLink>
             <NavLink to="/components">Components</NavLink>
           </Container>
-          <Container justifyContent="flex-end">other stuff</Container>
+          <Container justifyContent="flex-end">
+            <OAuth />
+          </Container>
         </InnerWrapper>
       </Wrapper>
     );
