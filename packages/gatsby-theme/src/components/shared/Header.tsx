@@ -1,7 +1,8 @@
 import React from 'react';
 import { Query } from 'react-apollo';
-
 import GithubAuth from '../GithubAuth';
+import React from 'react';
+import Account from '../Account';
 
 // Vectors
 import Logo from './Logo';

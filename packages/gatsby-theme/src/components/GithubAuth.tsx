@@ -1,6 +1,7 @@
 import React, { Component } from "react";
-import config from '../../config';
+import config from "../../config";
 import { authenticateUser } from "../utils/auth";
+import IconButton from "./Button";
 
 export default class GithubAuth extends Component {
   popup: any;
@@ -23,7 +24,7 @@ export default class GithubAuth extends Component {
     const top = window.innerHeight / 2 - height / 2;
     const url = `https://github.com/login/oauth/authorize?scope=user:email&client_id=${
       config.githubClientId
-      }`;
+    }`;
     return window.open(
       url,
       "",
@@ -37,16 +38,19 @@ export default class GithubAuth extends Component {
     this.popup = this.openPopup();
     const code = await this.listen();
     try {
-      await authenticateUser(code)
+      await authenticateUser(code);
     } catch (e) {
       console.error(e);
     }
     this.popup.close();
+    window.location.reload();
   };
 
   render() {
     return (
-      <button onClick={() => this.startAuth()}> Log in </button>
+      <div onClick={() => this.startAuth()}>
+        <IconButton type="github"> {this.props.children}</IconButton>
+      </div>
     );
   }
 }
