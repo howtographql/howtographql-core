@@ -4,6 +4,7 @@ import { Query } from "react-apollo";
 import gql from "graphql-tag";
 import { Text, Image, Flex } from "../components/shared/base";
 import { logoutUser } from "../utils/auth";
+import { navigate } from "gatsby";
 
 const Profile = () => (
   <Query
@@ -28,11 +29,8 @@ const Profile = () => (
       if (data.viewer && data.viewer.user) {
         return <ProfilePage user={data.viewer.user} />;
       }
-      return (
-        <Layout>
-          <h1> Redirect to /signup </h1>
-        </Layout>
-      );
+      navigate("/signup/");
+      return null;
     }}
   </Query>
 );

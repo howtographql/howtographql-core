@@ -100,7 +100,7 @@ type User {
   avatarUrl: String
   bio: String!
   createdAt: DateTime!
-  email: String!
+  email: String
   githubHandle: String!
   githubUserId: String!
   id: ID!
