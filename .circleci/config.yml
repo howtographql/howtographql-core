@@ -21,7 +21,7 @@ commands:
           key: yarn-packages-{{ checksum "yarn.lock" }}
           paths:
             - ~/.cache/yarn
-      - run: yarn deploy
+      - run: yarn server build && yarn deploy
 
 
 jobs:
