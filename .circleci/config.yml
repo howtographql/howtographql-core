@@ -4,15 +4,9 @@
 #
 version: 2
 
-jobs:
-  production:
-    docker:
-      - image: circleci/node:8.10.0
-        environment:
-          STAGE: production
-          NOW_PROJECT: marvel-graphql
-          NOW_ALIAS: https://api.marvelql.com
-    working_directory: ~/repo
+commands:
+  deploy-now:
+    description: "A command to deploy to now.sh."
     steps:
       - checkout
       - restore_cache:
@@ -26,27 +20,29 @@ jobs:
             - node_modules
           key: v1-dependencies-13.1.2
       - run: yarn deploy
+
+
+jobs:
+  production:
+    docker:
+      - image: circleci/node:8.10.0
+        environment:
+          STAGE: production
+          NOW_ALIAS: https://api.howtographql.now.sh
+    working_directory: ~/repo
+    steps:
+      - deploy-now
   
   staging:
     docker:
       - image: circleci/node:8.10.0
         environment:
           STAGE: staging
-          NOW_PROJECT: marvel-graphql-staging
-          NOW_ALIAS: https://staging.api.marvelql.com
+          NOW_ALIAS: https://staging.api.howtographql.now.sh
     working_directory: ~/repo
     steps:
-      - checkout
-      - restore_cache:
-          keys:
-            - v1-dependencies-13.1.2
-            - v1-dependencies-
-      - run: yarn install
-      - save_cache:
-          paths:
-            - node_modules
-          key: v1-dependencies-13.1.2
-      - run: yarn deploy
+      steps:
+        - deploy-now
   
   publish-apollo:
     docker:
@@ -60,7 +56,7 @@ jobs:
       # start the server, use it in place of `npm start` here.
       - run:
           name: Starting server
-          command: yarn start
+          command: yarn server start
           background: true
       # make sure the server has enough time to start up before running
       # commands against it

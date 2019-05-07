@@ -1,7 +1,11 @@
 {
   "version": 2,
-  "name": "server",
-  "env": {},
+  "name": "api",
+  "scope": "howtographql",
+  "alias": "api.howtogaphql.now.sh",
+  "env": {
+    "NODE_ENV": "dev"
+  },
   "builds": [
     {
       "src": "packages/server/dist/src/index.js",
