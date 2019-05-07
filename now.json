@@ -2,7 +2,7 @@
   "version": 2,
   "name": "api",
   "scope": "howtographql",
-  "alias": "api.howtogaphql.now.sh",
+  "alias": "howtogaphql.now.sh",
   "env": {
     "NODE_ENV": "dev"
   },
