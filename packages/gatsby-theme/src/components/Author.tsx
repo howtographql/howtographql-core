@@ -28,7 +28,7 @@ export const Author: React.FunctionComponent<AuthorProps> = props => {
 const AuthorList = props => {
   return (
     <Flex alignItems="center" p={1}>
-      <Box p={1} width={[0.4]}>
+      <Box p={1} width={[0.2]}>
         <Image src={props.author.picture} borderRadius={100} />
       </Box>
       <Box p={1} width={[0.6]}>

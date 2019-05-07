@@ -20,8 +20,8 @@ const BaseIconButton: React.FunctionComponent<ButtonProps> = props => {
   return (
     <BaseLink href={props.link}>
       <Button bg={props.bgColor}>
-        <Flex alignItems="center" p={1} flexDirection="row">
-          <Image src={props.icon} margin="10px 10px 10px 10px" />
+        <Flex alignItems="center" p={0} flexDirection="row">
+          <Image src={props.icon} m={1} />
           <Text>{props.text}</Text>
         </Flex>
       </Button>
