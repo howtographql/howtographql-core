@@ -1,31 +1,35 @@
-import React from "react";
-import { Image, Text, Flex, Box } from "./shared/base";
+import React from 'react';
+import { Image, Text, Flex, Box } from './shared/base';
 
-interface AuthorProps {
-  authors: Author[];
-}
-
-interface Author {
+type Author = {
   name: string;
   job: string;
   info: string;
   picture: string;
-}
+};
 
-export const Author: React.FunctionComponent<AuthorProps> = props => {
+type AuthorListProps = {
+  authors: Author[];
+};
+
+export const AuthorList: React.FunctionComponent<AuthorListProps> = props => {
   return (
     <div>
       <Box p={3} bg="#e5e5e5">
         <Text fontSize={[1]}>WRITTEN BY</Text>
         {props.authors.map(author => (
-          <AuthorList author={author} />
+          <Author author={author} />
         ))}
       </Box>
     </div>
   );
 };
 
-const AuthorList = props => {
+type AuthorProps = {
+  author: Author;
+};
+
+const Author: React.FunctionComponent<AuthorProps> = props => {
   return (
     <Flex alignItems="center" p={1}>
       <Box p={1} width={[0.2]}>

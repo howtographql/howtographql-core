@@ -1,5 +1,5 @@
-import React from "react";
-import { Heading, Text, Flex, Card } from "./shared/base";
+import React from 'react';
+import { Heading, Text, Flex, Card } from './shared/base';
 
 const Chapter = ({ num, title, description }) => {
   return (
