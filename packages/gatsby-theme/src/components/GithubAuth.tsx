@@ -43,7 +43,6 @@ export default class GithubAuth extends Component {
       console.error(e);
     }
     this.popup.close();
-    window.location.reload();
   };
 
   render() {

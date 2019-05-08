@@ -37,7 +37,18 @@ const Profile = () => (
   </Query>
 );
 
-const ProfilePage = ({ user }) => {
+type ProfileProps = {
+  user: User;
+};
+
+type User = {
+  id: string;
+  avatarUrl: string;
+  name: string;
+  githubHandle: string;
+};
+
+const ProfilePage: React.FunctionComponent<ProfileProps> = ({ user }) => {
   return (
     <Layout>
       <Flex flexDirection="column">
