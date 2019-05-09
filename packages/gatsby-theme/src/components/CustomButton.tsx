@@ -1,26 +1,25 @@
 import React from 'react';
 import { ButtonProps } from './shared/base.d';
-import { Flex, Image, Text, Button } from './shared/base';
+import { Flex, Image, Button } from './shared/base';
 
 interface CustomButtonProps extends ButtonProps {
   type?: string;
 }
 
-const CustomButton: React.FunctionComponent<CustomButtonProps> = (props) => {
-  const {type, children, ...(buttonProps as ButtonProps)} = props;
-  if(!type) {
-    return <Button {...props} />
-  }
-  const { icon, bg } =
-    customButtonTypes[type] || customButtonTypes.default;
-
+export const CustomButton: React.FunctionComponent<CustomButtonProps> = ({
+  type,
+  children,
+  ...buttonProps
+}) => {
+  const { icon, bg } = customButtonTypes[type] || customButtonTypes.default;
   const text = children;
 
+  if (!type) {
+    return <Button {...buttonProps}>{text}</Button>;
+  }
+
   return (
-    <Button
-      {...buttonProps}
-      bg={buttonProps.bg || bg}
-    >
+    <Button {...buttonProps} bg={buttonProps.bg || bg}>
       <Flex alignItems="center" p={0} flexDirection="row">
         <Image src={icon} m={1} />
         {text}

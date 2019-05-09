@@ -1,8 +1,13 @@
-import * as React from "react";
-import { styled } from "../../styles";
-import { Text } from "../shared/base";
+import * as React from 'react';
+import { styled } from '../../styles';
+import { Text } from '../shared/base';
 
-const ProgressBar = ({ percentage, width }) => {
+interface ProgressBarProps extends FillerProps, ContainerProps {}
+
+const ProgressBar: React.FunctionComponent<ProgressBarProps> = ({
+  percentage,
+  width,
+}) => {
   return (
     <Container width={width}>
       <Outside>
@@ -15,8 +20,12 @@ const ProgressBar = ({ percentage, width }) => {
   );
 };
 
-const Container = styled.div`
-  width: ${props => props.width || "100"}%;
+interface ContainerProps {
+  width: number;
+}
+
+const Container = styled.div<ContainerProps>`
+  width: ${props => props.width || '100'}%;
 `;
 
 const Outside = styled.div`
@@ -28,12 +37,16 @@ const Outside = styled.div`
   border-color: ${props => props.theme.colors.primary};
 `;
 
-const Filler = styled.div`
+interface FillerProps {
+  percentage: number;
+}
+
+const Filler = styled('div')<FillerProps>`
   background: ${props => props.theme.colors.primary};
   height: 100%;
   border-radius: inherit;
   transition: width 0.2s ease-in;
-  width: ${props => props.percentage || "0"}%;
+  width: ${props => props.percentage || '0'}%;
 `;
 
 export default ProgressBar;

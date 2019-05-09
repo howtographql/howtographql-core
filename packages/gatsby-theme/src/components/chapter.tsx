@@ -1,7 +1,17 @@
 import React from 'react';
 import { Heading, Text, Flex, Card } from './shared/base';
 
-const Chapter = ({ num, title, description }) => {
+type ChapterProps = {
+  num: string | number;
+  title: string | null;
+  description: string | null;
+};
+
+const Chapter: React.FunctionComponent<ChapterProps> = ({
+  num,
+  title,
+  description,
+}) => {
   return (
     <Card width={[1]} p={4} my={4} borderRadius={8} boxShadow="small">
       <Flex alignItems="center">

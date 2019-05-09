@@ -1,7 +1,17 @@
-import React from "react";
-import { Flex, Box, Image, Heading, Text } from "../shared/base";
+import React from 'react';
+import { Box, Image, Heading, Text } from '../shared/base';
 
-const TutorialHeader = ({ title, description, tags }) => {
+interface TutorialHeaderProps {
+  title: string | null;
+  description: string | null;
+  tags?: string[];
+}
+
+const TutorialHeader: React.FunctionComponent<TutorialHeaderProps> = ({
+  title,
+  description,
+  tags,
+}) => {
   return (
     <Box p={2}>
       <Image
@@ -14,7 +24,7 @@ const TutorialHeader = ({ title, description, tags }) => {
         width={[0.025, 0.025, 0.025]}
         src="https://image.flaticon.com/icons/svg/84/84510.svg"
       />
-      <Text>{tags.join("  ")}</Text>
+      {tags && <Text>{tags.join('  ')}</Text>}
     </Box>
   );
 };

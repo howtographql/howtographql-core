@@ -1,12 +1,12 @@
 import React from 'react';
 import Layout from '../layout';
-import Chapter from '../chapter';
+import Chapter from '../Chapter';
 import { TutorialOverviewQuery } from 'src/graphqlTypes';
-import AuthorList  from '../Author';
+import AuthorList from '../AuthorList';
 import TutorialHeader from '../overview/TutorialHeader';
 import { Heading, Flex, Box } from '../shared/base';
 import ProgressBar from '../overview/ProgressBar';
-import CustomButton from '../Button';
+import CustomButton from '../CustomButton';
 import { Content } from '../shared/styledHelpers';
 
 interface PageTemplateProps {

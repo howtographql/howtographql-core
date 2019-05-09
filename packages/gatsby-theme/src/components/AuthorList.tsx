@@ -4,7 +4,6 @@ import { Image, Text, Flex, Box } from './shared/base';
 type Author = {
   name: string;
   job: string;
-  info: string;
   picture: string;
 };
 
@@ -12,12 +11,12 @@ type AuthorListProps = {
   authors: Author[];
 };
 
-export const AuthorList: React.FunctionComponent<AuthorListProps> = props => {
+const AuthorList: React.FunctionComponent<AuthorListProps> = ({ authors }) => {
   return (
     <div>
       <Box p={3} bg="#e5e5e5">
         <Text fontSize={[1]}>WRITTEN BY</Text>
-        {props.authors.map(author => (
+        {authors.map(author => (
           <Author author={author} />
         ))}
       </Box>
@@ -41,3 +40,5 @@ const Author: React.FunctionComponent<AuthorProps> = props => {
     </Flex>
   );
 };
+
+export default AuthorList;
