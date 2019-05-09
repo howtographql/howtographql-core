@@ -36,7 +36,18 @@ const Account = () => {
   );
 };
 
-const Profile = ({ user }) => {
+interface ProfileProps {
+  user: User;
+}
+
+type User = {
+  id: string;
+  avatarUrl: string;
+  name: string;
+  githubHandle: string;
+};
+
+const Profile: React.FunctionComponent<ProfileProps> = ({ user }) => {
   return (
     <Link to="/profile">
       <Flex alignItems="center" justifyContent="center">
