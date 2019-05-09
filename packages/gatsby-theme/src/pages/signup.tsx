@@ -9,7 +9,7 @@ import { CenteredLoader } from '../components/Loader';
 import { Flex, Text, Box } from '../components/shared/base';
 
 const Signup = () => (
-  <Query
+  <Query<ViewerQuery>
     query={gql`
       query Viewer {
         viewer {

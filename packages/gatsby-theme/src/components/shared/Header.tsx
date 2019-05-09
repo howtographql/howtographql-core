@@ -1,17 +1,12 @@
 import React from 'react';
-import { Query } from 'react-apollo';
-import GithubAuth from '../GithubAuth';
-import React from 'react';
 import Account from '../Account';
 
 // Vectors
 import Logo from './Logo';
 import { styled, withTheme, ThemeInterface } from '../../styles';
-import { ViewerQuery } from '../../graphqlTypes';
-import { Link } from 'gatsby';
 import { Content } from './styledHelpers';
 import { Flex } from './base';
-import gql from 'graphql-tag';
+import { Link } from 'gatsby';
 
 const Wrapper = styled.div`
   display: flex;
@@ -61,28 +56,7 @@ const Nav = withTheme(
             <NavLink to="/components">Components</NavLink>
           </Container>
           <Container justifyContent="flex-end">
-            <Query<ViewerQuery>
-              query={gql`
-                query Viewer {
-                  viewer {
-                    id
-                    user {
-                      id
-                    }
-                  }
-                }
-              `}
-            >
-              {({ data, error, loading }) => {
-                if (error || loading) {
-                  return 'Loading or error...';
-                }
-                if (data!.viewer && data!.viewer.user) {
-                  return data!.viewer.user.id;
-                }
-                return <GithubAuth />;
-              }}
-            </Query>
+            <Account />
           </Container>
         </InnerWrapper>
       </Wrapper>

@@ -9,7 +9,7 @@ import { CenteredLoader } from './Loader';
 
 const Account = () => {
   return (
-    <Query
+    <Query<ViewerQuery>
       query={gql`
         query Viewer {
           viewer {

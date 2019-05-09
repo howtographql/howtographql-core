@@ -9,7 +9,7 @@ import { navigate } from 'gatsby';
 import { CenteredLoader } from '../components/Loader';
 
 const Profile = () => (
-  <Query
+  <Query<ViewerQuery>
     query={gql`
       query Viewer {
         viewer {
