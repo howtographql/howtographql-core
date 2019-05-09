@@ -1,6 +1,2 @@
 // no-op
-import Button from './src/components/Button'
-
-export {
-    Button
-}
+export * from './src/components/shared/base';

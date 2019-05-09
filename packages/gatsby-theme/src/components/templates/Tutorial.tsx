@@ -1,10 +1,10 @@
-import * as React from "react";
-import { RouterProps } from "@reach/router";
+import * as React from 'react';
+import { RouterProps } from '@reach/router';
 
-import Layout from "../layout";
-import { MDXRenderer } from "gatsby-mdx";
-import { graphql } from "gatsby";
-import { TutorialMdxQuery } from "src/graphqlTypes";
+import Layout from '../layout';
+import { MDXRenderer } from 'gatsby-mdx';
+import { graphql } from 'gatsby';
+import { TutorialMdxQuery } from 'src/graphqlTypes';
 
 type TutorialLayoutProps = { data: TutorialMdxQuery } & RouterProps;
 

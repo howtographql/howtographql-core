@@ -1,9 +1,13 @@
-import React from "react";
-import { graphql } from "gatsby";
-import Layout from "../layout";
-import Chapter from "../chapter";
-import { TutorialOverviewQuery } from "src/graphqlTypes";
-import { Author } from "../Author";
+import React from 'react';
+import Layout from '../layout';
+import Chapter from '../Chapter';
+import { TutorialOverviewQuery } from 'src/graphqlTypes';
+import AuthorList from '../AuthorList';
+import TutorialHeader from '../overview/TutorialHeader';
+import { Heading, Flex, Box } from '../shared/base';
+import ProgressBar from '../overview/ProgressBar';
+import CustomButton from '../CustomButton';
+import { Content } from '../shared/styledHelpers';
 
 interface PageTemplateProps {
   data: TutorialOverviewQuery;
@@ -12,14 +16,31 @@ interface PageTemplateProps {
 const PageTemplate: React.FunctionComponent<PageTemplateProps> = ({ data }) => {
   return (
     <Layout>
-      <div>
-        <img src={data!.overview!.frontmatter!.banner!} />
-        {/* TODO: implement author querying and info */}
-        <Author name="Kelsey Yim" job="Developer @ Novvum" info="hi" />
-        <h1>{data!.overview!.frontmatter!.tutorialTitle}</h1>
+      <Content>
+        <Flex>
+          <Box width={3 / 4} aligncontent="center">
+            <TutorialHeader
+              width={1 / 2}
+              title={data!.overview!.frontmatter!.tutorialTitle}
+              description={data!.overview!.frontmatter!.description}
+              tags={['React', 'Apollo', 'Javascript']}
+            />
+          </Box>
+          <Box width={1 / 4} m={3}>
+            <CustomButton type="tutorial">Continue Tutorial</CustomButton>
+            <Box m={3}>
+              <ProgressBar percentage={33} width={100} />
+            </Box>
+            <Flex>
+              <CustomButton type="github">Github</CustomButton>
+              <CustomButton type="spectrum">Spectrum</CustomButton>
+            </Flex>
+            <AuthorList authors={authors} />
+          </Box>
+        </Flex>
         <div>
+          <Heading> Chapters </Heading>
           {data!.allMdx!.edges.map((mdx, index) => {
-            console.log(mdx.node.id);
             let num = index + 1;
             return (
               <div>
@@ -32,10 +53,11 @@ const PageTemplate: React.FunctionComponent<PageTemplateProps> = ({ data }) => {
             );
           })}
         </div>
-      </div>
+      </Content>
     </Layout>
   );
 };
+
 export const query = graphql`
   query TutorialOverview($folderRegex: String) {
     allMdx(
@@ -64,8 +86,23 @@ export const query = graphql`
       frontmatter {
         tutorialTitle
         banner
+        description
       }
     }
   }
 `;
+
+let authors = [
+  {
+    name: 'Kelsey Yim',
+    job: 'Software Developer',
+    picture: 'https://www.w3schools.com/howto/img_avatar2.png',
+  },
+  {
+    name: 'Alli Colyer',
+    job: 'Party Planner',
+    picture: 'https://www.w3schools.com/howto/img_avatar2.png',
+  },
+];
+
 export default PageTemplate;

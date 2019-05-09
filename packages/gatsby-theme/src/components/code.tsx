@@ -1,9 +1,9 @@
-import React from "react";
-import Highlight, { defaultProps } from "prism-react-renderer";
-import DraculaTheme from "prism-react-renderer/themes/dracula";
-import { LiveProvider, LiveEditor, LiveError, LivePreview } from "react-live";
-import Prism from "prismjs/components/prism-core";
-import * as CopyToClipboard from "react-copy-to-clipboard";
+import React from 'react';
+import Highlight, { defaultProps } from 'prism-react-renderer';
+import DraculaTheme from 'prism-react-renderer/themes/dracula';
+import { LiveProvider, LiveEditor, LiveError, LivePreview } from 'react-live';
+import Prism from 'prismjs/components/prism-core';
+import * as CopyToClipboard from 'react-copy-to-clipboard';
 
 Prism.languages.graphql = {
   comment: /#.*/,
@@ -11,25 +11,29 @@ Prism.languages.graphql = {
   number: /(?:\B-|\b)\d+(?:\.\d+)?(?:e[+-]?\d+)?\b/i,
   boolean: /\b(?:true|false)\b/,
   variable: /\$[a-z_]\w*/i,
-  directive: { pattern: /@[a-z_]\w*/i, alias: "function" },
-  "attr-name": /[a-z_]\w*(?=\s*(?:\([^()]*\))?:)/i,
+  directive: { pattern: /@[a-z_]\w*/i, alias: 'function' },
+  'attr-name': /[a-z_]\w*(?=\s*(?:\([^()]*\))?:)/i,
   keyword: [
     { pattern: /(fragment\s+(?!on)[a-z_]\w*\s+|\.{3}\s*)on\b/, lookbehind: !0 },
-    /\b(?:query|fragment|mutation)\b/
+    /\b(?:query|fragment|mutation)\b/,
   ],
   operator: /!|=|\.{3}/,
-  punctuation: /[!(){}\[\]:=,]/
+  punctuation: /[!(){}\[\]:=,]/,
 };
 
-export const Code = props => {
+interface CodeProps extends CodeRendererProps {
+  props: CodeRendererProps;
+}
+
+export const Code: React.FunctionComponent<CodeProps> = props => {
   return (
-    <div style={{ position: "relative" }}>
+    <div style={{ position: 'relative' }}>
       <CodeRenderer {...props} />
       <CopyToClipboard
         text={props.codeString}
-        onCopy={() => console.log("copied!")}
+        onCopy={() => console.log('copied!')}
       >
-        <button style={{ position: "absolute", top: 10, right: 10 }}>
+        <button style={{ position: 'absolute', top: 10, right: 10 }}>
           Copy
         </button>
       </CopyToClipboard>
@@ -37,9 +41,19 @@ export const Code = props => {
   );
 };
 
-const CodeRenderer = ({ codeString, language, ...props }) => {
+type CodeRendererProps = {
+  codeString: string;
+  language: any;
+  'react-live': boolean;
+};
+
+const CodeRenderer: React.FunctionComponent<CodeRendererProps> = ({
+  codeString,
+  language,
+  ...props
+}) => {
   console.log(codeString, language);
-  if (props["react-live"]) {
+  if (props['react-live']) {
     return (
       <LiveProvider code={codeString} noInline={true}>
         <LiveEditor />

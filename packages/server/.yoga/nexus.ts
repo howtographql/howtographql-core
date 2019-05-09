@@ -223,10 +223,6 @@ export interface NexusGenFieldTypes {
   }
   Mutation: { // field return type
     authenticate: NexusGenRootTypes['AuthenticateUserPayload'] | null; // AuthenticateUserPayload
-    createDraft: NexusGenRootTypes['Post']; // Post!
-    deletePost: NexusGenRootTypes['Post'] | null; // Post
-    publish: NexusGenRootTypes['Post']; // Post!
-    signupUser: NexusGenRootTypes['User']; // User!
   }
   Post: { // field return type
     author: NexusGenRootTypes['User']; // User!
@@ -262,21 +258,6 @@ export interface NexusGenArgTypes {
   Mutation: {
     authenticate: { // args
       githubCode: string; // String!
-    }
-    createDraft: { // args
-      authorEmail: string; // String!
-      content: string; // String!
-      title: string; // String!
-    }
-    deletePost: { // args
-      id: string; // ID!
-    }
-    publish: { // args
-      id: string; // ID!
-    }
-    signupUser: { // args
-      email: string; // String!
-      name: string; // String!
     }
   }
   Query: {

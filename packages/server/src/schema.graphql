@@ -14,10 +14,6 @@ type Mutation {
     """GitHub OAuth Token from the client."""
     githubCode: String!
   ): AuthenticateUserPayload
-  createDraft(authorEmail: String!, content: String!, title: String!): Post!
-  deletePost(id: ID!): Post
-  publish(id: ID!): Post!
-  signupUser(email: String!, name: String!): User!
 }
 
 type Post {
