@@ -1332,10 +1332,10 @@ export enum MdxFieldsEnum {
   FrontmatterVideoId = 'frontmatter___videoId',
   FrontmatterParent = 'frontmatter____PARENT',
   FrontmatterDuration = 'frontmatter___duration',
-  FrontmatterVideoAuthor = 'frontmatter___videoAuthor',
-  FrontmatterDraft = 'frontmatter___draft',
   FrontmatterTutorialTitle = 'frontmatter___tutorialTitle',
   FrontmatterBanner = 'frontmatter___banner',
+  FrontmatterVideoAuthor = 'frontmatter___videoAuthor',
+  FrontmatterDraft = 'frontmatter___draft',
   RawBody = 'rawBody',
   FileAbsolutePath = 'fileAbsolutePath',
   CodeBody = 'code___body',
@@ -1381,10 +1381,10 @@ export type MdxFrontmatter = {
   readonly videoId: Maybe<Scalars['String']>;
   readonly _PARENT: Maybe<Scalars['String']>;
   readonly duration: Maybe<Scalars['Int']>;
-  readonly videoAuthor: Maybe<Scalars['String']>;
-  readonly draft: Maybe<Scalars['Boolean']>;
   readonly tutorialTitle: Maybe<Scalars['String']>;
   readonly banner: Maybe<Scalars['String']>;
+  readonly videoAuthor: Maybe<Scalars['String']>;
+  readonly draft: Maybe<Scalars['Boolean']>;
 };
 
 export type MdxFrontmatterFilterInput = {
@@ -1399,10 +1399,10 @@ export type MdxFrontmatterFilterInput = {
   readonly videoId: Maybe<StringQueryOperatorInput>;
   readonly _PARENT: Maybe<StringQueryOperatorInput>;
   readonly duration: Maybe<IntQueryOperatorInput>;
-  readonly videoAuthor: Maybe<StringQueryOperatorInput>;
-  readonly draft: Maybe<BooleanQueryOperatorInput>;
   readonly tutorialTitle: Maybe<StringQueryOperatorInput>;
   readonly banner: Maybe<StringQueryOperatorInput>;
+  readonly videoAuthor: Maybe<StringQueryOperatorInput>;
+  readonly draft: Maybe<BooleanQueryOperatorInput>;
 };
 
 export type MdxGroupConnection = {
