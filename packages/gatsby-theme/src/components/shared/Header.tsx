@@ -1,14 +1,16 @@
-import React from "react";
+import React from 'react';
 import { Query } from 'react-apollo';
-import gql from 'graphql-tag';
-import GithubAuth from "../GithubAuth";
+
+import GithubAuth from '../GithubAuth';
 
 // Vectors
-import Logo from "./Logo";
-import { styled, withTheme, ThemeInterface } from "../../styles";
-import { Link } from "gatsby";
-import { Content } from "./styledHelpers";
-import { Flex } from "./base";
+import Logo from './Logo';
+import { styled, withTheme, ThemeInterface } from '../../styles';
+import { ViewerQuery } from '../../graphqlTypes';
+import { Link } from 'gatsby';
+import { Content } from './styledHelpers';
+import { Flex } from './base';
+import gql from 'graphql-tag';
 
 const Wrapper = styled.div`
   display: flex;
@@ -58,31 +60,33 @@ const Nav = withTheme(
             <NavLink to="/components">Components</NavLink>
           </Container>
           <Container justifyContent="flex-end">
-            <Query query={gql`
-              query Viewer {
-                viewer {
-                  id
-                  user {
+            <Query<ViewerQuery>
+              query={gql`
+                query Viewer {
+                  viewer {
                     id
+                    user {
+                      id
+                    }
                   }
                 }
-              }
-            `}>
+              `}
+            >
               {({ data, error, loading }) => {
                 if (error || loading) {
-                  return "Loading or error..."
+                  return 'Loading or error...';
                 }
-                if (data.viewer && data.viewer.user) {
-                  return data.viewer.user.id
+                if (data!.viewer && data!.viewer.user) {
+                  return data!.viewer.user.id;
                 }
-                return <GithubAuth />
+                return <GithubAuth />;
               }}
             </Query>
           </Container>
         </InnerWrapper>
       </Wrapper>
     );
-  }
+  },
 );
 
 export default Nav;

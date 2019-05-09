@@ -1,5 +1,5 @@
-import { graphql, useStaticQuery } from "gatsby";
-import { AllTutorialsQuery } from "src/graphqlTypes";
+import { graphql, useStaticQuery } from 'gatsby';
+import { AllTutorialsQuery } from 'src/graphqlTypes';
 
 export const useAllTutorialQuery = () => {
   const { allMdx }: AllTutorialsQuery = useStaticQuery(graphql`
