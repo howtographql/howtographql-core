@@ -1,4 +1,4 @@
-import { styled } from "../../styles";
+import { styled } from '../../styles';
 import {
   space,
   color,
@@ -27,8 +27,8 @@ import {
   backgroundPosition,
   backgroundRepeat,
   opacity,
-  variant
-} from "styled-system";
+  variant,
+} from 'styled-system';
 import {
   BoxProps,
   FlexProps,
@@ -37,14 +37,14 @@ import {
   LinkProps,
   ButtonProps,
   ImageProps,
-  CardProps
-} from "./base.d";
+  CardProps,
+} from './base.d';
 
-const themed = key => props => props.theme[key];
+const themed = (key: string) => (props: any) => props.theme[key];
 
-export const Box = styled("div")<BoxProps>(
+export const Box = styled('div')<BoxProps>(
   {
-    boxSizing: "border-box"
+    boxSizing: 'border-box',
   },
   space,
   width,
@@ -53,18 +53,18 @@ export const Box = styled("div")<BoxProps>(
   flex,
   order,
   alignSelf,
-  themed("Box")
+  themed('Box'),
 );
 
 export const Flex = styled(Box)<FlexProps>(
   {
-    display: "flex"
+    display: 'flex',
   },
   flexWrap,
   flexDirection,
   alignItems,
   justifyContent,
-  themed("Flex")
+  themed('Flex'),
 );
 
 export const Text = styled(Box)<TextProps>(
@@ -73,68 +73,68 @@ export const Text = styled(Box)<TextProps>(
   textAlign,
   lineHeight,
   letterSpacing,
-  themed("Text")
+  themed('Text'),
 );
 
-export const Heading = styled(Text)<HeadingProps>(themed("Heading"));
+export const Heading = styled(Text)<HeadingProps>(themed('Heading'));
 
 Heading.defaultProps = {
-  as: "h2",
+  as: 'h2',
   m: 0,
-  fontSize: 4
+  fontSize: 4,
 };
 
-export const Link = styled(Box)<LinkProps>(themed("Link"));
+export const Link = styled(Box)<LinkProps>(themed('Link'));
 
 Link.defaultProps = {
-  as: "a"
+  as: 'a',
 };
 
 export const Button = styled(Box)<ButtonProps>(
   {
-    appearance: "none",
-    display: "inline-block",
-    textAlign: "center",
-    lineHeight: "inherit",
-    textDecoration: "none"
+    appearance: 'none',
+    display: 'inline-block',
+    textAlign: 'center',
+    lineHeight: 'inherit',
+    textDecoration: 'none',
   },
   fontWeight,
   borders,
   borderColor,
   borderRadius,
   buttonStyle,
-  themed("Button")
+  themed('Button'),
 );
 
 Button.defaultProps = {
-  as: "button",
-  fontSize: "inherit",
+  as: 'button',
+  fontSize: 'inherit',
   borderRadius: 1,
   fontWeight: 2,
   m: 0,
   px: 3,
   py: 2,
-  color: "white",
-  bg: "primary",
-  border: 1
+  color: 'white',
+  bg: 'primary',
+  border: 1,
 };
 
 export const Image = styled(Box)<ImageProps>(
   {
-    maxWidth: "100%",
-    height: "auto"
+    maxWidth: '100%',
+    height: 'auto',
   },
   height,
   borderRadius,
-  themed("Image")
+  themed('Image'),
 );
 
 Image.defaultProps = {
-  as: "img",
-  m: 0
+  as: 'img',
+  m: 0,
 };
 
-const cards = variant({ key: "cards" });
+const cards = variant({ key: 'cards' });
 
 export const Card = styled(Box)<CardProps>(
   borders,
@@ -147,9 +147,9 @@ export const Card = styled(Box)<CardProps>(
   backgroundRepeat,
   opacity,
   cards,
-  themed("Card")
+  themed('Card'),
 );
 
 Card.defaultProps = {
-  boxShadow: "large"
+  boxShadow: 'large',
 };
