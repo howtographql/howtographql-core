@@ -2,33 +2,39 @@ import React from 'react';
 import { ButtonProps } from './shared/base.d';
 import { Flex, Image, Button } from './shared/base';
 
-interface CustomButtonProps extends ButtonProps {
-  type?: string;
-}
-
-export const CustomButton: React.FunctionComponent<CustomButtonProps> = ({
-  type,
-  children,
-  ...buttonProps
-}) => {
+export const CustomButton: React.FunctionComponent<
+  CustomButtonProps,
+  { type?: 'github' | 'tutorial' | 'spectrum' | 'default' }
+> = ({ type, children, ...buttonProps }) => {
   const { icon, bg } = customButtonTypes[type] || customButtonTypes.default;
-  const text = children;
 
   if (!type) {
-    return <Button {...buttonProps}>{text}</Button>;
+    return <Button {...buttonProps}>{children}</Button>;
   }
 
   return (
     <Button {...buttonProps} bg={buttonProps.bg || bg}>
       <Flex alignItems="center" p={0} flexDirection="row">
         <Image src={icon} m={1} />
-        {text}
+        {children}
       </Flex>
     </Button>
   );
 };
 
-const customButtonTypes = {
+interface ButtonType {
+  icon: string;
+  bg: string;
+}
+
+interface CustomButtonType {
+  tutorial: ButtonType;
+  github: ButtonType;
+  spectrum: ButtonType;
+  default: ButtonType;
+}
+
+const customButtonTypes: CustomButtonType = {
   tutorial: {
     icon: 'https://i.ibb.co/MBKTQ9b/Icon.png',
     bg: 'primary',
