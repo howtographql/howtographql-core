@@ -1,12 +1,13 @@
 import * as React from 'react';
 import Layout from '../components/layout';
-import GithubAuth from '../components/GithubAuth';
 import { Query } from 'react-apollo';
 import gql from 'graphql-tag';
 import { ViewerQuery } from '../graphqlTypes';
 import { navigate } from 'gatsby';
 import { CenteredLoader } from '../components/Loader';
 import { Flex, Text, Box } from '../components/shared/base';
+import CustomButton from '../components/CustomButton';
+import { loginUser } from '../utils/auth';
 
 const Signup = () => (
   <Query<ViewerQuery>
@@ -47,7 +48,9 @@ const SignupPage = () => {
           Lorem ipsum dolor sit amet.
         </Text>
         <Box m={4}>
-          <GithubAuth> Sign in with Github </GithubAuth>
+          <CustomButton onClick={() => loginUser()} type="github">
+            Sign in with Github
+          </CustomButton>
         </Box>
       </Flex>
     </Layout>

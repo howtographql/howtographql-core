@@ -2,10 +2,11 @@ import React from 'react';
 import { Query } from 'react-apollo';
 import { ViewerQuery } from '../graphqlTypes';
 import gql from 'graphql-tag';
-import GithubAuth from './GithubAuth';
 import { Text, Image, Flex } from './shared/base';
 import { Link } from 'gatsby';
 import { CenteredLoader } from './Loader';
+import CustomButton from './CustomButton';
+import { loginUser } from '../utils/auth';
 
 const Account = () => {
   return (
@@ -30,7 +31,11 @@ const Account = () => {
         if (data.viewer && data.viewer.user) {
           return <Profile user={data.viewer.user} />;
         }
-        return <GithubAuth> Sign up </GithubAuth>;
+        return (
+          <CustomButton onClick={() => loginUser()} type="github">
+            Sign up
+          </CustomButton>
+        );
       }}
     </Query>
   );
