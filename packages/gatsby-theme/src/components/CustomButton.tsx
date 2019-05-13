@@ -3,10 +3,9 @@ import { ButtonProps } from './shared/base.d';
 import { Flex, Image, Button } from './shared/base';
 
 export const CustomButton: React.FunctionComponent<
-  CustomButtonProps,
-  { type?: 'github' | 'tutorial' | 'spectrum' | 'default' }
-> = ({ type, children, ...buttonProps }) => {
-  const { icon, bg } = customButtonTypes[type] || customButtonTypes.default;
+  ButtonProps & { type?: 'github' | 'tutorial' | 'spectrum' | 'default' }
+> = ({ type = 'default', children, ...buttonProps }) => {
+  const { icon, bg } = customButtonTypes[type];
 
   if (!type) {
     return <Button {...buttonProps}>{children}</Button>;
