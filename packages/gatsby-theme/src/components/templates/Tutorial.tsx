@@ -1,6 +1,5 @@
 import * as React from 'react';
 import { RouterProps } from '@reach/router';
-
 import Layout from '../layout';
 import { MDXRenderer } from 'gatsby-mdx';
 import { graphql } from 'gatsby';

@@ -21,8 +21,6 @@ export default class AuthCallback extends React.Component {
     Callback()
   }
   render() {
-    return <div style={{backgroundColor: "tomato"}}>
-      Success!!
-    </div>
+    return null
   }
 }
