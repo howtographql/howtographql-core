@@ -1,35 +1,20 @@
 import * as React from 'react';
 import Layout from '../components/layout';
-import { Content } from '../shared/styledHelpers';
+import { Content } from '../components/shared/styledHelpers';
 import { graphql } from 'gatsby';
-import { Heading, Text, Card } from '../components/shared/base';
-import { getTutorialSlug } from '../utils/getTutorialSlug';
-import { Link } from 'gatsby';
+import TutorialListing from '../components/TutorialListing';
+import { Heading } from '../components/shared/base';
 
 const Community = data => {
-  console.log(data);
-  console.log(data.data.tutorials.edges);
   const tutorials = data.data.tutorials.edges;
   return (
     <Layout>
-      <Heading> Community Tutorials </Heading>
-      {tutorials.map(tutorial => {
-        return (
-          <Card
-            width={[1]}
-            p={4}
-            my={4}
-            borderRadius={8}
-            boxShadow="small"
-            key={tutorial.node.id}
-          >
-            <Link to={getTutorialSlug(tutorial.node.fileAbsolutePath)}>
-              <Heading>{tutorial.node.frontmatter.tutorialTitle}</Heading>
-            </Link>
-            <Text>{tutorial.node.frontmatter.description}</Text>
-          </Card>
-        );
-      })}
+      <Content>
+        <Heading> Community Tutorials </Heading>
+        {tutorials.map(tutorial => {
+          return <TutorialListing tutorial={tutorial.node} />;
+        })}
+      </Content>
     </Layout>
   );
 };
