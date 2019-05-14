@@ -1,13 +1,13 @@
-const path = require("path");
+const path = require('path');
 
 module.exports = {
   getTutorialSlug: relativePath => {
     return `/${path.basename(path.dirname(relativePath))}/${path.basename(
       relativePath,
-      ".mdx"
+      '.mdx',
     )}`;
   },
   getTutorialOverviewSlug: relativePath => {
     return `/${path.basename(path.dirname(relativePath))}`;
-  }
+  },
 };

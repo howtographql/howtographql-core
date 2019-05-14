@@ -8,6 +8,8 @@ import { Heading, Flex, Box } from '../shared/base';
 import ProgressBar from '../overview/ProgressBar';
 import CustomButton from '../CustomButton';
 import { Content } from '../shared/styledHelpers';
+import { authors } from '../../utils/sampleData';
+import { graphql } from 'gatsby';
 
 interface PageTemplateProps {
   data: TutorialOverviewQuery;
@@ -91,18 +93,5 @@ export const query = graphql`
     }
   }
 `;
-
-let authors = [
-  {
-    name: 'Kelsey Yim',
-    job: 'Software Developer',
-    picture: 'https://www.w3schools.com/howto/img_avatar2.png',
-  },
-  {
-    name: 'Alli Colyer',
-    job: 'Party Planner',
-    picture: 'https://www.w3schools.com/howto/img_avatar2.png',
-  },
-];
 
 export default PageTemplate;

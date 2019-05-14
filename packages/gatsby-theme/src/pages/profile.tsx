@@ -7,28 +7,17 @@ import { Text, Image, Flex } from '../components/shared/base';
 import { logoutUser } from '../utils/auth';
 import { navigate } from 'gatsby';
 import { CenteredLoader } from '../components/Loader';
+import { optionalChaining } from '../utils/helpers';
+
+import { CURRENT_USER } from '../components/queries/userQueries';
 
 const Profile = () => (
-  <Query<ViewerQuery>
-    query={gql`
-      query Viewer {
-        viewer {
-          id
-          user {
-            id
-            avatarUrl
-            name
-            githubHandle
-          }
-        }
-      }
-    `}
-  >
+  <Query<ViewerQuery> query={CURRENT_USER}>
     {({ data, error, loading }) => {
       if (error || loading) {
         return <CenteredLoader />;
       }
-      if (data.viewer && data.viewer.user) {
+      if (optionalChaining(() => data.viewer.user)) {
         return <ProfilePage user={data.viewer.user} />;
       }
       navigate('/signup/');
