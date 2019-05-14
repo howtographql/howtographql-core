@@ -1,10 +1,18 @@
 import React from 'react';
-import { Card, Image, Heading, Flex, Text } from './shared/base';
+import { Card, Image, Heading, Flex } from './shared/base';
 import { authors } from '../utils/sampleData';
 import AuthorList from './AuthorList';
 import CustomButton from './CustomButton';
 
-export const Sidebar = ({ tutorialTitle, chapters }) => {
+type SidebarProps = {
+  tutorialTitle: string;
+  chapters: string[];
+};
+
+export const Sidebar: React.FunctionComponent<SidebarProps> = ({
+  tutorialTitle,
+  chapters,
+}) => {
   return (
     <div>
       <Card p={3} m={2}>
@@ -23,7 +31,10 @@ export const Sidebar = ({ tutorialTitle, chapters }) => {
   );
 };
 
-export const TabletSidebar = ({ tutorialTitle, chapters }) => {
+export const TabletSidebar: React.FunctionComponent<SidebarProps> = ({
+  tutorialTitle,
+  chapters,
+}) => {
   console.log(tutorialTitle);
   console.log(chapters);
   return (

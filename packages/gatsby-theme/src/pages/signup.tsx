@@ -7,7 +7,7 @@ import { CenteredLoader } from '../components/Loader';
 import { Flex, Text, Box } from '../components/shared/base';
 import CustomButton from '../components/CustomButton';
 import { loginUser } from '../utils/auth';
-import { CURRENT_USER } from '../components/queries/UserQueries';
+import { CURRENT_USER } from '../components/queries/userQueries';
 import { optionalChaining } from '../utils/helpers';
 
 const Signup = () => (
