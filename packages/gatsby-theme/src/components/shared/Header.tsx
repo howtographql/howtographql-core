@@ -51,8 +51,8 @@ const Nav = withTheme(
           </Container>
           <Container justifyContent="center">
             <NavLink to="/fundamentals">Fundamentals</NavLink>
-            <NavLink to="/guides">Guides</NavLink>
-            <NavLink to="/community">Community</NavLink>
+            <NavLink to="/courses">FullStack Course</NavLink>
+            <NavLink to="/community">Community Tutorials</NavLink>
             <NavLink to="/components">Components</NavLink>
           </Container>
           <Container justifyContent="flex-end">
