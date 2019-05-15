@@ -12,7 +12,11 @@ const Community = data => {
       <Content>
         <Heading> Community Tutorials </Heading>
         {tutorials.map(tutorial => {
-          return <TutorialListing tutorial={tutorial.node} />;
+          return (
+            <div key={tutorial.node.id}>
+              <TutorialListing tutorial={tutorial.node} />
+            </div>
+          );
         })}
       </Content>
     </Layout>

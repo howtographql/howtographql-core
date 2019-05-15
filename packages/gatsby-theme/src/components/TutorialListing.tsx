@@ -22,14 +22,7 @@ const TutorialListing: React.FunctionComponent<TutorialListingProps> = ({
   tutorial,
 }) => {
   return (
-    <Card
-      width={[1]}
-      p={4}
-      my={4}
-      borderRadius={8}
-      boxShadow="small"
-      key={tutorial.id}
-    >
+    <Card width={[1]} p={4} my={4} borderRadius={8} boxShadow="small">
       <Link to={getTutorialOverviewSlug(tutorial.fileAbsolutePath)}>
         <Heading>{tutorial.frontmatter.tutorialTitle}</Heading>
       </Link>
