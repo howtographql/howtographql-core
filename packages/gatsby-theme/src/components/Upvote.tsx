@@ -1,8 +1,8 @@
 import * as React from 'react';
 import { Heading, Flex } from './shared/base';
 import CustomButton from './CustomButton';
-import { loginUser } from '../utils/auth';
-import WithCurrentUser from '../utils/WithCurrentUser';
+import { loginUser } from '../utils/auth/auth';
+import WithCurrentUser from '../utils/auth/WithCurrentUser';
 
 const Upvote = () => {
   return (

@@ -4,7 +4,7 @@ import { HttpLink } from 'apollo-link-http';
 import { InMemoryCache } from 'apollo-cache-inmemory';
 import fetch from 'isomorphic-fetch';
 import config from '../config';
-import { getAuthToken } from './utils/auth';
+import { getAuthToken } from './utils/auth/auth';
 
 const authLink = setContext((_, { headers }) => {
     // get the authentication token from local storage if it exists

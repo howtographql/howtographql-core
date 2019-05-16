@@ -1,9 +1,9 @@
 import * as React from 'react';
 import Layout from '../components/layout';
 import { Text, Image, Flex } from '../components/shared/base';
-import { logoutUser } from '../utils/auth';
+import { logoutUser } from '../utils/auth/auth';
 import { navigate } from 'gatsby';
-import WithCurrentUser from '../utils/WithCurrentUser';
+import WithCurrentUser from '../utils/auth/WithCurrentUser';
 import { CenteredLoader } from '../components/Loader';
 
 const Profile = () => {

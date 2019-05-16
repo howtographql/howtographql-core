@@ -2,8 +2,8 @@ import React from 'react';
 import { Text, Image, Flex } from './shared/base';
 import { Link } from 'gatsby';
 import CustomButton from './CustomButton';
-import { loginUser } from '../utils/auth';
-import WithCurrentUser from '../utils/WithCurrentUser';
+import { loginUser } from '../utils/auth/auth';
+import WithCurrentUser from '../utils/auth/WithCurrentUser';
 import { CenteredLoader } from '../components/Loader';
 
 const Account = () => {

@@ -4,13 +4,8 @@ import { navigate } from 'gatsby';
 import { CenteredLoader } from '../components/Loader';
 import { Flex, Text, Box } from '../components/shared/base';
 import CustomButton from '../components/CustomButton';
-import { loginUser } from '../utils/auth';
-<<<<<<< HEAD
-import { CURRENT_USER } from '../components/queries/userQueries';
-import { optionalChaining } from '../utils/helpers';
-=======
-import WithCurrentUser from '../utils/WithCurrentUser';
->>>>>>> create WithCurrentUser component
+import WithCurrentUser from '../utils/auth/WithCurrentUser';
+import { loginUser } from '../utils/auth/auth';
 
 const Signup = () => {
   return (

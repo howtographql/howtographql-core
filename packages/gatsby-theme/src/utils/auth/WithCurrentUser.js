@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { Query } from 'react-apollo';
-import { CURRENT_USER } from '../components/queries/userQueries';
-import { optionalChaining } from './helpers';
+import { optionalChaining } from '../helpers';
+import gql from 'graphql-tag';
 
 const WithCurrentUser = ({ children }) => {
   return (
@@ -19,5 +19,19 @@ const WithCurrentUser = ({ children }) => {
     </Query>
   );
 };
+
+export const CURRENT_USER = gql`
+  query currentUser {
+    viewer {
+      id
+      user {
+        id
+        name
+        avatarUrl
+        githubHandle
+      }
+    }
+  }
+`;
 
 export default WithCurrentUser;
