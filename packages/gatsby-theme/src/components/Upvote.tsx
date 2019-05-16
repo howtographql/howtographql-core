@@ -4,6 +4,11 @@ import CustomButton from './CustomButton';
 import { loginUser } from '../utils/auth/auth';
 import WithCurrentUser from '../utils/auth/WithCurrentUser';
 
+// Still to-do:
+// Query the backend with the ID of the tutorial to see whcih tutorial was upvoted
+// Create a way to store which user has upvoted the tutorial so that they can only
+// upvote it once
+
 const Upvote = () => {
   return (
     <WithCurrentUser>

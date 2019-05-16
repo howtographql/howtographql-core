@@ -13,7 +13,7 @@ const MainLayout = styled.main`
 
 type LayoutProps = React.ReactNode & RouterProps;
 
-const Layout = ({ children }) => {
+const Layout: React.FunctionComponent<LayoutProps> = ({ children }) => {
   const { site } = useLayoutQuery();
 
   const { title, description, keywords } = site!.siteMetadata;
