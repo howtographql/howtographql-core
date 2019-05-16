@@ -1,35 +1,22 @@
 import * as React from 'react';
 import Layout from '../components/layout';
 import { Query } from 'react-apollo';
-import gql from 'graphql-tag';
-import { ViewerQuery } from '../graphqlTypes';
+import { CurrentUserQuery } from '../graphqlTypes';
 import { navigate } from 'gatsby';
 import { CenteredLoader } from '../components/Loader';
 import { Flex, Text, Box } from '../components/shared/base';
 import CustomButton from '../components/CustomButton';
 import { loginUser } from '../utils/auth';
+import { CURRENT_USER } from '../components/queries/userQueries';
+import { optionalChaining } from '../utils/helpers';
 
 const Signup = () => (
-  <Query<ViewerQuery>
-    query={gql`
-      query Viewer {
-        viewer {
-          id
-          user {
-            id
-            avatarUrl
-            name
-            githubHandle
-          }
-        }
-      }
-    `}
-  >
+  <Query<CurrentUserQuery> query={CURRENT_USER}>
     {({ data, error, loading }) => {
       if (error || loading) {
         return <CenteredLoader />;
       }
-      if (data.viewer && data.viewer.user) {
+      if (optionalChaining(() => data.viewer.user)) {
         navigate('/profile/');
         return null;
       }

@@ -66,7 +66,7 @@ export type Directory = Node & {
   readonly gid: Maybe<Scalars['Int']>;
   readonly rdev: Maybe<Scalars['Int']>;
   readonly blksize: Maybe<Scalars['Int']>;
-  readonly ino: Maybe<Scalars['Int']>;
+  readonly ino: Maybe<Scalars['Float']>;
   readonly blocks: Maybe<Scalars['Int']>;
   readonly atimeMs: Maybe<Scalars['Float']>;
   readonly mtimeMs: Maybe<Scalars['Float']>;
@@ -309,7 +309,7 @@ export type DirectoryFilterInput = {
   readonly gid: Maybe<IntQueryOperatorInput>;
   readonly rdev: Maybe<IntQueryOperatorInput>;
   readonly blksize: Maybe<IntQueryOperatorInput>;
-  readonly ino: Maybe<IntQueryOperatorInput>;
+  readonly ino: Maybe<FloatQueryOperatorInput>;
   readonly blocks: Maybe<IntQueryOperatorInput>;
   readonly atimeMs: Maybe<FloatQueryOperatorInput>;
   readonly mtimeMs: Maybe<FloatQueryOperatorInput>;
@@ -369,7 +369,7 @@ export type File = Node & {
   readonly gid: Maybe<Scalars['Int']>;
   readonly rdev: Maybe<Scalars['Int']>;
   readonly blksize: Maybe<Scalars['Int']>;
-  readonly ino: Maybe<Scalars['Int']>;
+  readonly ino: Maybe<Scalars['Float']>;
   readonly blocks: Maybe<Scalars['Int']>;
   readonly atimeMs: Maybe<Scalars['Float']>;
   readonly mtimeMs: Maybe<Scalars['Float']>;
@@ -617,7 +617,7 @@ export type FileFilterInput = {
   readonly gid: Maybe<IntQueryOperatorInput>;
   readonly rdev: Maybe<IntQueryOperatorInput>;
   readonly blksize: Maybe<IntQueryOperatorInput>;
-  readonly ino: Maybe<IntQueryOperatorInput>;
+  readonly ino: Maybe<FloatQueryOperatorInput>;
   readonly blocks: Maybe<IntQueryOperatorInput>;
   readonly atimeMs: Maybe<FloatQueryOperatorInput>;
   readonly mtimeMs: Maybe<FloatQueryOperatorInput>;
@@ -1616,7 +1616,7 @@ export type QueryFileArgs = {
   gid: Maybe<IntQueryOperatorInput>;
   rdev: Maybe<IntQueryOperatorInput>;
   blksize: Maybe<IntQueryOperatorInput>;
-  ino: Maybe<IntQueryOperatorInput>;
+  ino: Maybe<FloatQueryOperatorInput>;
   blocks: Maybe<IntQueryOperatorInput>;
   atimeMs: Maybe<FloatQueryOperatorInput>;
   mtimeMs: Maybe<FloatQueryOperatorInput>;
@@ -1732,7 +1732,7 @@ export type QueryDirectoryArgs = {
   gid: Maybe<IntQueryOperatorInput>;
   rdev: Maybe<IntQueryOperatorInput>;
   blksize: Maybe<IntQueryOperatorInput>;
-  ino: Maybe<IntQueryOperatorInput>;
+  ino: Maybe<FloatQueryOperatorInput>;
   blocks: Maybe<IntQueryOperatorInput>;
   atimeMs: Maybe<FloatQueryOperatorInput>;
   mtimeMs: Maybe<FloatQueryOperatorInput>;
@@ -2752,4 +2752,14 @@ export type AuthenticateUserMutationVariables = {
 
 export type AuthenticateUserMutation = {
   readonly authenticate: Maybe<Pick<AuthenticateUserPayload, 'token'>>;
+};
+
+export type CurrentUserQueryVariables = {};
+
+export type CurrentUserQuery = {
+  readonly viewer: Maybe<
+    Pick<Viewer, 'id'> & {
+      readonly user: Pick<User, 'id' | 'name' | 'avatarUrl' | 'githubHandle'>;
+    }
+  >;
 };

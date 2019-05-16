@@ -1,13 +1,13 @@
 // const componentWithMDXScope = require('gatsby-mdx/component-with-mdx-scope');
 const {
   getTutorialSlug,
-  getTutorialOverviewSlug
-} = require("./src/utils/getTutorialSlug.js");
+  getTutorialOverviewSlug,
+} = require('./src/utils/getTutorialSlug.js');
 
 exports.createPages = async ({ graphql, actions }) => {
   const { createPage } = actions;
   const TutorialLayout = require.resolve(
-    `./src/components/templates/Tutorial.tsx`
+    `./src/components/templates/Tutorial.tsx`,
   );
 
   const { data } = await graphql(`
@@ -33,7 +33,7 @@ exports.createPages = async ({ graphql, actions }) => {
     const tutorialPath = getTutorialSlug(node.fileAbsolutePath);
     const overviewPageSlug = getTutorialOverviewSlug(node.fileAbsolutePath);
     const overviewTemplate = require.resolve(
-      "./src/components/templates/TutorialOverview.tsx"
+      './src/components/templates/TutorialOverview.tsx',
     );
     //TODO: find a better way to ID posts & overviews Also a better way to query for them
     if (node.frontmatter.tutorialTitle) {
@@ -42,16 +42,17 @@ exports.createPages = async ({ graphql, actions }) => {
         component: overviewTemplate,
         context: {
           id: node.id,
-          folderRegex: `/(${overviewPageSlug})/`
-        }
+          folderRegex: `/(${overviewPageSlug})/`,
+        },
       });
     }
     createPage({
       path: tutorialPath,
       component: TutorialLayout, // node.fileAbsolutePath,
       context: {
-        id: node.id
-      }
+        id: node.id,
+        folderRegex: `/(${overviewPageSlug})/`,
+      },
     });
   });
 };

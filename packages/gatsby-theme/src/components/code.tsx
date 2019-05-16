@@ -52,7 +52,6 @@ const CodeRenderer: React.FunctionComponent<CodeRendererProps> = ({
   language,
   ...props
 }) => {
-  console.log(codeString, language);
   if (props['react-live']) {
     return (
       <LiveProvider code={codeString} noInline={true}>

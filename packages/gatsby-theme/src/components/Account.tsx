@@ -1,34 +1,22 @@
 import React from 'react';
 import { Query } from 'react-apollo';
-import { ViewerQuery } from '../graphqlTypes';
-import gql from 'graphql-tag';
+import { CurrentUserQuery } from '../graphqlTypes';
 import { Text, Image, Flex } from './shared/base';
 import { Link } from 'gatsby';
 import { CenteredLoader } from './Loader';
 import CustomButton from './CustomButton';
+import { optionalChaining } from '../utils/helpers';
 import { loginUser } from '../utils/auth';
+import { CURRENT_USER } from './queries/userQueries';
 
 const Account = () => {
   return (
-    <Query<ViewerQuery>
-      query={gql`
-        query Viewer {
-          viewer {
-            id
-            user {
-              id
-              avatarUrl
-              name
-            }
-          }
-        }
-      `}
-    >
+    <Query<CurrentUserQuery> query={CURRENT_USER}>
       {({ data, error, loading }) => {
         if (error || loading) {
           return <CenteredLoader />;
         }
-        if (data.viewer && data.viewer.user) {
+        if (optionalChaining(() => data.viewer.user)) {
           return <Profile user={data.viewer.user} />;
         }
         return (

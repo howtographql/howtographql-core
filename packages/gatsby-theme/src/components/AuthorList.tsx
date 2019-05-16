@@ -5,6 +5,7 @@ type Author = {
   name: string;
   job: string;
   picture: string;
+  id: string;
 };
 
 type AuthorListProps = {
@@ -17,7 +18,9 @@ const AuthorList: React.FunctionComponent<AuthorListProps> = ({ authors }) => {
       <Box p={3} bg="#e5e5e5">
         <Text fontSize={[1]}>WRITTEN BY</Text>
         {authors.map(author => (
-          <Author author={author} />
+          <div key={author.id}>
+            <Author author={author} />
+          </div>
         ))}
       </Box>
     </div>
