@@ -1,32 +1,31 @@
 import * as React from 'react';
-import { Query } from 'react-apollo';
-import { CurrentUserQuery } from '../graphqlTypes';
-import { Image, Heading, Flex } from './shared/base';
+import { Heading, Flex } from './shared/base';
 import CustomButton from './CustomButton';
-import { optionalChaining } from '../utils/helpers';
 import { loginUser } from '../utils/auth';
-import { CURRENT_USER } from './queries/userQueries';
+import WithCurrentUser from '../utils/WithCurrentUser';
 
 const Upvote = () => {
   return (
-    <Query<CurrentUserQuery> query={CURRENT_USER}>
-      {({ data, error, loading }) => {
-        if (error || loading) {
-          return null;
-        }
-        if (optionalChaining(() => data.viewer.user)) {
+    <WithCurrentUser>
+      {({ user }) => {
+        if (user) {
           return <UpvoteData event={() => console.log('upvoted!')} />;
+        } else {
+          return <UpvoteData event={() => loginUser()} />;
         }
-        return <UpvoteData event={() => loginUser()} />;
       }}
-    </Query>
+    </WithCurrentUser>
   );
 };
 
-const UpvoteData = props => {
+type UpvoteDataProps = {
+  event: string;
+};
+
+const UpvoteData: React.FunctionComponent<UpvoteDataProps> = ({ event }) => {
   return (
     <Flex flexDirection="column" alignItems="center" justifyContent="center">
-      <CustomButton type="vote" onClick={props.event} />
+      <CustomButton type="vote" onClick={event} />
       <Heading>{Math.floor(Math.random() * 100)}</Heading>
     </Flex>
   );

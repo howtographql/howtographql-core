@@ -1,31 +1,29 @@
 import React from 'react';
-import { Query } from 'react-apollo';
-import { CurrentUserQuery } from '../graphqlTypes';
 import { Text, Image, Flex } from './shared/base';
 import { Link } from 'gatsby';
-import { CenteredLoader } from './Loader';
 import CustomButton from './CustomButton';
-import { optionalChaining } from '../utils/helpers';
 import { loginUser } from '../utils/auth';
-import { CURRENT_USER } from './queries/userQueries';
+import WithCurrentUser from '../utils/WithCurrentUser';
+import { CenteredLoader } from '../components/Loader';
 
 const Account = () => {
   return (
-    <Query<CurrentUserQuery> query={CURRENT_USER}>
-      {({ data, error, loading }) => {
-        if (error || loading) {
+    <WithCurrentUser>
+      {({ user, loading }) => {
+        if (loading) {
           return <CenteredLoader />;
         }
-        if (optionalChaining(() => data.viewer.user)) {
-          return <Profile user={data.viewer.user} />;
+        if (user) {
+          return <Profile user={user} />;
+        } else {
+          return (
+            <CustomButton onClick={() => loginUser()} type="github">
+              Sign up
+            </CustomButton>
+          );
         }
-        return (
-          <CustomButton onClick={() => loginUser()} type="github">
-            Sign up
-          </CustomButton>
-        );
       }}
-    </Query>
+    </WithCurrentUser>
   );
 };
 
