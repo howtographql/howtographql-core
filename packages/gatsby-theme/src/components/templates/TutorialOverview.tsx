@@ -48,8 +48,7 @@ const PageTemplate: React.FunctionComponent<PageTemplateProps> = ({ data }) => {
               <div>
                 <Chapter
                   num={num < 10 ? `0${num}` : num}
-                  title={mdx.node.frontmatter!.pageTitle}
-                  description={mdx.node.frontmatter!.description}
+                  tutorial = {mdx.node}
                 />
               </div>
             );
@@ -73,6 +72,7 @@ export const query = graphql`
       edges {
         node {
           id
+          fileAbsolutePath
           frontmatter {
             pageTitle
             description
