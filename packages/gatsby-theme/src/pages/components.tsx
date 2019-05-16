@@ -1,6 +1,6 @@
-import { Link } from 'gatsby';
-import * as React from 'react';
-import Layout from '../components/layout';
+import { Link } from "gatsby";
+import * as React from "react";
+import Layout from "../components/layout";
 import {
   Box,
   Flex,
@@ -9,10 +9,10 @@ import {
   Button,
   Image,
   Card,
-  Link as BaseLink,
-} from '../components/shared/base';
+  Link as BaseLink
+} from "../components/shared/base";
 
-const Components = () => (
+const SecondPage = () => (
   <Layout>
     <h3>Check out our rebass components!</h3>
 
@@ -65,4 +65,4 @@ const Components = () => (
   </Layout>
 );
 
-export default Components;
+export default SecondPage;
