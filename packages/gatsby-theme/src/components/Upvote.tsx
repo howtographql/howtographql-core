@@ -15,9 +15,8 @@ const Upvote = () => {
       {({ user }) => {
         if (user) {
           return <UpvoteData event={() => console.log('upvoted!')} />;
-        } else {
-          return <UpvoteData event={() => loginUser()} />;
         }
+        return <UpvoteData event={() => loginUser()} />;
       }}
     </WithCurrentUser>
   );
@@ -27,6 +26,8 @@ type UpvoteDataProps = {
   event: string;
 };
 
+// place holder until we have a backend that stores the number of upvotes
+// and can keep track of which tutorials a user upvotes
 const UpvoteData: React.FunctionComponent<UpvoteDataProps> = ({ event }) => {
   return (
     <Flex flexDirection="column" alignItems="center" justifyContent="center">

@@ -17,9 +17,8 @@ const Signup = () => {
         if (user) {
           navigate('/profile/');
           return null;
-        } else {
-          return <SignupPage />;
         }
+        return <SignupPage />;
       }}
     </WithCurrentUser>
   );

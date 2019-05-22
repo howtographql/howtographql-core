@@ -18,7 +18,7 @@ const TutorialLayout: React.FunctionComponent<TutorialLayoutProps> = ({
     return null;
   }
   const { pageTitle } = data!.mdx!.frontmatter!;
-  const tutorialTitle = data!.tutorialTitle!.frontmatter!.tutorialTitle!;
+  const { tutorialTitle } = data!.tutorialTitle!.frontmatter!;
   const chapters = data!.pageTitles!.edges!.map(
     a => a.node!.frontmatter!.pageTitle!,
   );

@@ -15,11 +15,8 @@ const Account = () => {
         }
         if (user) {
           return <Profile user={user} />;
-        } else {
-          return (
-            <GithubButton onClick={() => loginUser()}>Sign up</GithubButton>
-          );
         }
+        return <GithubButton onClick={() => loginUser()}>Sign up</GithubButton>;
       }}
     </WithCurrentUser>
   );

@@ -15,10 +15,9 @@ const Profile = () => {
         }
         if (user) {
           return <ProfilePage user={user} />;
-        } else {
-          navigate('/signup/');
-          return null;
         }
+        navigate('/signup/');
+        return null;
       }}
     </WithCurrentUser>
   );
