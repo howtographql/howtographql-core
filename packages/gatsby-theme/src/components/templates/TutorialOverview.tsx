@@ -6,7 +6,7 @@ import AuthorList from '../AuthorList';
 import TutorialHeader from '../overview/TutorialHeader';
 import { Heading, Flex, Box } from '../shared/base';
 import ProgressBar from '../overview/ProgressBar';
-import CustomButton from '../CustomButton';
+import { GithubButton, SpectrumButton, TutorialButton } from '../buttons';
 import { Content } from '../shared/styledHelpers';
 import { authors } from '../../utils/sampleData';
 import { graphql } from 'gatsby';
@@ -29,13 +29,13 @@ const PageTemplate: React.FunctionComponent<PageTemplateProps> = ({ data }) => {
             />
           </Box>
           <Box width={1 / 4} m={3}>
-            <CustomButton type="tutorial">Continue Tutorial</CustomButton>
+            <TutorialButton>Continue Tutorial</TutorialButton>
             <Box m={3}>
               <ProgressBar percentage={33} width={100} />
             </Box>
             <Flex>
-              <CustomButton type="github">Github</CustomButton>
-              <CustomButton type="spectrum">Spectrum</CustomButton>
+              <GithubButton>Github</GithubButton>
+              <SpectrumButton>Spectrum</SpectrumButton>
             </Flex>
             <AuthorList authors={authors} />
           </Box>
@@ -46,10 +46,7 @@ const PageTemplate: React.FunctionComponent<PageTemplateProps> = ({ data }) => {
             let num = index + 1;
             return (
               <div>
-                <Chapter
-                  num={num < 10 ? `0${num}` : num}
-                  tutorial = {mdx.node}
-                />
+                <Chapter num={num < 10 ? `0${num}` : num} tutorial={mdx.node} />
               </div>
             );
           })}

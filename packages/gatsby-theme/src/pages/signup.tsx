@@ -3,9 +3,9 @@ import Layout from '../components/layout';
 import { navigate } from 'gatsby';
 import { CenteredLoader } from '../components/Loader';
 import { Flex, Text, Box } from '../components/shared/base';
-import CustomButton from '../components/CustomButton';
+import { GithubButton } from '../components/buttons';
 import WithCurrentUser from '../utils/auth/WithCurrentUser';
-import { loginUser } from '../utils/auth/auth';
+import { loginUser } from '../utils/auth/';
 
 const Signup = () => {
   return (
@@ -35,9 +35,9 @@ const SignupPage = () => {
           Lorem ipsum dolor sit amet.
         </Text>
         <Box m={4}>
-          <CustomButton onClick={() => loginUser()} type="github">
+          <GithubButton onClick={() => loginUser()}>
             Sign in with Github
-          </CustomButton>
+          </GithubButton>
         </Box>
       </Flex>
     </Layout>

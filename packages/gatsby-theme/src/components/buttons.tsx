@@ -1,6 +1,22 @@
 import React from 'react';
-import { ButtonProps } from './shared/base.d';
+import { ButtonProps } from './shared/base';
 import { Flex, Image, Button } from './shared/base';
+
+export const VoteButton: React.FunctionComponent<ButtonProps> = props => (
+  <CustomButton {...props} type="vote" />
+);
+
+export const GithubButton: React.FunctionComponent<ButtonProps> = props => (
+  <CustomButton {...props} type="github" />
+);
+
+export const TutorialButton: React.FunctionComponent<ButtonProps> = props => (
+  <CustomButton {...props} type="tutorial" />
+);
+
+export const SpectrumButton: React.FunctionComponent<ButtonProps> = props => (
+  <CustomButton {...props} type="tutorial" />
+);
 
 export const CustomButton: React.FunctionComponent<
   ButtonProps & {
@@ -58,5 +74,3 @@ const customButtonTypes: CustomButtonType = {
     bg: 'primary',
   },
 };
-
-export default CustomButton;

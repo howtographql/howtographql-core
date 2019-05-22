@@ -2,7 +2,7 @@ import React from 'react';
 import { Card, Image, Heading, Flex } from './shared/base';
 import { authors } from '../utils/sampleData';
 import AuthorList from './AuthorList';
-import CustomButton from './CustomButton';
+import { SpectrumButton } from './buttons';
 
 type SidebarProps = {
   tutorialTitle: string;
@@ -26,7 +26,7 @@ export const Sidebar: React.FunctionComponent<SidebarProps> = ({
         ))}
       </ul>
       <AuthorList authors={authors} />
-      <CustomButton type="spectrum"> Get help on Spectrum </CustomButton>
+      <SpectrumButton> Get help on Spectrum </SpectrumButton>
     </div>
   );
 };

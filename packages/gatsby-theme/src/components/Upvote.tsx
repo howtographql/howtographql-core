@@ -1,7 +1,7 @@
 import * as React from 'react';
 import { Heading, Flex } from './shared/base';
-import CustomButton from './CustomButton';
-import { loginUser } from '../utils/auth/auth';
+import { VoteButton } from './buttons';
+import { loginUser } from '../utils/auth/';
 import WithCurrentUser from '../utils/auth/WithCurrentUser';
 
 // Still to-do:
@@ -30,7 +30,7 @@ type UpvoteDataProps = {
 const UpvoteData: React.FunctionComponent<UpvoteDataProps> = ({ event }) => {
   return (
     <Flex flexDirection="column" alignItems="center" justifyContent="center">
-      <CustomButton type="vote" onClick={event} />
+      <VoteButton onClick={event} />
       <Heading>{Math.floor(Math.random() * 100)}</Heading>
     </Flex>
   );

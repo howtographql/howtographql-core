@@ -1,8 +1,8 @@
 import React from 'react';
 import { Text, Image, Flex } from './shared/base';
 import { Link } from 'gatsby';
-import CustomButton from './CustomButton';
-import { loginUser } from '../utils/auth/auth';
+import { GithubButton } from './buttons';
+import { loginUser } from '../utils/auth';
 import WithCurrentUser from '../utils/auth/WithCurrentUser';
 import { CenteredLoader } from '../components/Loader';
 
@@ -17,9 +17,7 @@ const Account = () => {
           return <Profile user={user} />;
         } else {
           return (
-            <CustomButton onClick={() => loginUser()} type="github">
-              Sign up
-            </CustomButton>
+            <GithubButton onClick={() => loginUser()}>Sign up</GithubButton>
           );
         }
       }}
