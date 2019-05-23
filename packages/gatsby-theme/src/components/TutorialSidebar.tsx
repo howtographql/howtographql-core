@@ -35,8 +35,8 @@ export const TabletSidebar: React.FunctionComponent<SidebarProps> = ({
   tutorialTitle,
   chapters,
 }) => {
-  console.log(tutorialTitle);
-  console.log(chapters);
+  // console.log(tutorialTitle);
+  // console.log(chapters);
   return (
     <div>
       <Image
