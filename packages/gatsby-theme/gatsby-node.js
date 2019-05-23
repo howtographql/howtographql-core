@@ -46,7 +46,6 @@ exports.createPages = async ({ graphql, actions }) => {
         }
       });
     }
-    console.log(overviewPageSlug);
     createPage({
       path: tutorialPath,
       component: TutorialLayout, // node.fileAbsolutePath,
