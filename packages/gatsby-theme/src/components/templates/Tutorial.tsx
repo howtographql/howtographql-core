@@ -4,10 +4,10 @@ import Layout from '../layout';
 import { MDXRenderer } from 'gatsby-mdx';
 import { graphql } from 'gatsby';
 import { Sidebar, TabletSidebar } from '../TutorialSidebar';
-import { TutorialMdxQuery } from 'src/graphqlTypes';
+import { TutorialMdxQuery } from '../../graphqlTypes';
 import { HideOnTablet, ShowOnTablet } from '../../utils/responsive';
 import { Flex, Box } from '../shared/base';
-import { optionalChaining } from 'src/utils/helpers';
+import { optionalChaining } from '../../utils/helpers';
 
 type TutorialLayoutProps = { data: TutorialMdxQuery } & RouterProps;
 
