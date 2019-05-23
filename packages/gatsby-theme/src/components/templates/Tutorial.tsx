@@ -7,6 +7,7 @@ import { Sidebar, TabletSidebar } from '../TutorialSidebar';
 import { TutorialMdxQuery } from 'src/graphqlTypes';
 import { HideOnTablet, ShowOnTablet } from '../../utils/responsive';
 import { Flex, Box } from '../shared/base';
+import { optionalChaining } from 'src/utils/helpers';
 
 type TutorialLayoutProps = { data: TutorialMdxQuery } & RouterProps;
 
@@ -18,7 +19,7 @@ const TutorialLayout: React.FunctionComponent<TutorialLayoutProps> = ({
     return null;
   }
   const { pageTitle } = data!.mdx!.frontmatter!;
-  const { tutorialTitle } = data!.tutorialTitle!.frontmatter!;
+  const tutorialTitle = optionalChaining(() => data!.tutorialTitle!.frontmatter!.tutorialTitle!);
   const chapters = data!.pageTitles!.edges!.map(
     a => a.node!.frontmatter!.pageTitle!,
   );
