@@ -18,7 +18,7 @@ const TutorialLayout: React.FunctionComponent<TutorialLayoutProps> = ({
   if (!data) {
     return null;
   }
-  console.log(data);
+  console.log(JSON.stringify(data.tutorialTitle, null, 2));
   const { pageTitle } = data!.mdx!.frontmatter!;
   const tutorialTitle = optionalChaining(() => data!.tutorialTitle!.frontmatter!.tutorialTitle!);
   const chapters = optionalChaining(() => data!.pageTitles!.edges!.map(
