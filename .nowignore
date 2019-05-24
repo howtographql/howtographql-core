@@ -1,2 +1,4 @@
 .next
 node_modules
+oss
+packages/gatsby-theme
