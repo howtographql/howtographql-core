@@ -1,6 +1,7 @@
 [build]
   command = "yarn site build"
   publish = "./oss/public"
+  functions = "./.netlify/functions"
 
 [build.environment]
   NODE_VERSION = "v11.14.0"
