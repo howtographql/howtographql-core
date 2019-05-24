@@ -1,29 +1,28 @@
 import * as React from 'react';
 import Layout from '../components/layout';
-import { Query } from 'react-apollo';
-import { CurrentUserQuery } from '../graphqlTypes';
 import { navigate } from 'gatsby';
 import { CenteredLoader } from '../components/Loader';
 import { Flex, Text, Box } from '../components/shared/base';
-import CustomButton from '../components/CustomButton';
-import { loginUser } from '../utils/auth';
-import { CURRENT_USER } from '../components/queries/userQueries';
-import { optionalChaining } from '../utils/helpers';
+import { GithubButton } from '../components/buttons';
+import WithCurrentUser from '../utils/auth/WithCurrentUser';
+import { loginUser } from '../utils/auth/';
 
-const Signup = () => (
-  <Query<CurrentUserQuery> query={CURRENT_USER}>
-    {({ data, error, loading }) => {
-      if (error || loading) {
-        return <CenteredLoader />;
-      }
-      if (optionalChaining(() => data.viewer.user)) {
-        navigate('/profile/');
-        return null;
-      }
-      return <SignupPage />;
-    }}
-  </Query>
-);
+const Signup = () => {
+  return (
+    <WithCurrentUser>
+      {({ user, loading }) => {
+        if (loading) {
+          return <CenteredLoader />;
+        }
+        if (user) {
+          navigate('/profile/');
+          return null;
+        }
+        return <SignupPage />;
+      }}
+    </WithCurrentUser>
+  );
+};
 
 const SignupPage = () => {
   return (
@@ -35,9 +34,9 @@ const SignupPage = () => {
           Lorem ipsum dolor sit amet.
         </Text>
         <Box m={4}>
-          <CustomButton onClick={() => loginUser()} type="github">
+          <GithubButton onClick={() => loginUser()}>
             Sign in with Github
-          </CustomButton>
+          </GithubButton>
         </Box>
       </Flex>
     </Layout>

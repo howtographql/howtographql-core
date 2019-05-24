@@ -1,6 +1,6 @@
 import gql from 'graphql-tag';
-import { client } from '../Apollo';
-import config from '../../config';
+import { client } from '../../Apollo';
+import config from '../../../config';
 
 const TOKEN_KEY = 'token';
 

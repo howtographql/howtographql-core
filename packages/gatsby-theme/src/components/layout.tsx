@@ -1,9 +1,9 @@
-import { RouterProps } from "@reach/router";
-import * as React from "react";
-import Helmet from "react-helmet";
-import { theme, ThemeProvider, styled } from "../styles";
-import { useLayoutQuery } from "../hooks/useLayoutQuery";
-import Header from "./shared/Header";
+import { RouterProps } from '@reach/router';
+import * as React from 'react';
+import Helmet from 'react-helmet';
+import { theme, ThemeProvider, styled } from '../styles';
+import { useLayoutQuery } from '../hooks/useLayoutQuery';
+import Header from './shared/Header';
 
 const MainLayout = styled.main`
   max-width: 90%;
@@ -24,8 +24,8 @@ const Layout: React.FunctionComponent<LayoutProps> = ({ children }) => {
         <Helmet
           title={title}
           meta={[
-            { name: "description", content: description },
-            { name: "keywords", content: keywords || undefined }
+            { name: 'description', content: description },
+            { name: 'keywords', content: keywords || undefined },
           ]}
         >
           <html lang="en" />

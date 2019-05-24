@@ -1,30 +1,27 @@
 import * as React from 'react';
 import Layout from '../components/layout';
-import { Query } from 'react-apollo';
-import gql from 'graphql-tag';
-import { ViewerQuery } from '../graphqlTypes';
 import { Text, Image, Flex } from '../components/shared/base';
 import { logoutUser } from '../utils/auth';
 import { navigate } from 'gatsby';
+import WithCurrentUser from '../utils/auth/WithCurrentUser';
 import { CenteredLoader } from '../components/Loader';
-import { optionalChaining } from '../utils/helpers';
 
-import { CURRENT_USER } from '../components/queries/userQueries';
-
-const Profile = () => (
-  <Query<ViewerQuery> query={CURRENT_USER}>
-    {({ data, error, loading }) => {
-      if (error || loading) {
-        return <CenteredLoader />;
-      }
-      if (optionalChaining(() => data.viewer.user)) {
-        return <ProfilePage user={data.viewer.user} />;
-      }
-      navigate('/signup/');
-      return null;
-    }}
-  </Query>
-);
+const Profile = () => {
+  return (
+    <WithCurrentUser>
+      {({ user, loading }) => {
+        if (loading) {
+          return <CenteredLoader />;
+        }
+        if (user) {
+          return <ProfilePage user={user} />;
+        }
+        navigate('/signup/');
+        return null;
+      }}
+    </WithCurrentUser>
+  );
+};
 
 type ProfileProps = {
   user: User;
