@@ -62,7 +62,7 @@ const openPopup = () => {
   const top = window.innerHeight / 2 - height / 2;
   const url = `https://github.com/login/oauth/authorize?scope=user:email&client_id=${
     config.githubClientId
-    }&redirect_uri=${window.location.origin}/callback`;
+    }`;
 
   return window.open(
     url,
