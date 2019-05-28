@@ -423,9 +423,9 @@ type UserTutorial {
   updatedAt: DateTime!
   user: User
   tutorial: Tutorial
-  upvoted: Boolean!
-  saved: Boolean!
-  currentChapter: Int!
+  upvoted: Boolean
+  saved: Boolean
+  currentChapter: Int
 }
 
 type UserTutorialConnection {
@@ -437,9 +437,9 @@ type UserTutorialConnection {
 input UserTutorialCreateInput {
   user: UserCreateOneWithoutUserTutorialsInput
   tutorial: TutorialCreateOneWithoutUserTutorialsInput
-  upvoted: Boolean!
-  saved: Boolean!
-  currentChapter: Int!
+  upvoted: Boolean
+  saved: Boolean
+  currentChapter: Int
 }
 
 input UserTutorialCreateManyWithoutTutorialInput {
@@ -454,16 +454,16 @@ input UserTutorialCreateManyWithoutUserInput {
 
 input UserTutorialCreateWithoutTutorialInput {
   user: UserCreateOneWithoutUserTutorialsInput
-  upvoted: Boolean!
-  saved: Boolean!
-  currentChapter: Int!
+  upvoted: Boolean
+  saved: Boolean
+  currentChapter: Int
 }
 
 input UserTutorialCreateWithoutUserInput {
   tutorial: TutorialCreateOneWithoutUserTutorialsInput
-  upvoted: Boolean!
-  saved: Boolean!
-  currentChapter: Int!
+  upvoted: Boolean
+  saved: Boolean
+  currentChapter: Int
 }
 
 type UserTutorialEdge {
@@ -490,9 +490,9 @@ type UserTutorialPreviousValues {
   id: ID!
   createdAt: DateTime!
   updatedAt: DateTime!
-  upvoted: Boolean!
-  saved: Boolean!
-  currentChapter: Int!
+  upvoted: Boolean
+  saved: Boolean
+  currentChapter: Int
 }
 
 input UserTutorialScalarWhereInput {

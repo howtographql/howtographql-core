@@ -24,6 +24,7 @@ export const authenticate = mutationField("authenticate", {
         }
 
         return {
+            success: true,
             token: jwt.sign({ userId: user.id }, config.jwt.SECRET),
             user
         }
@@ -33,6 +34,7 @@ export const authenticate = mutationField("authenticate", {
 export const AuthenticateUserPayload = objectType({
     name: "AuthenticateUserPayload",
     definition: (t) => {
+        t.implements("PayloadInterface");
         t.field("user", {
             type: "User"
         })

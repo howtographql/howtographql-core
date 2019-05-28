@@ -552,7 +552,7 @@ export interface UserTutorialFieldDetails {
     args: {}
     description: string
     list: undefined
-    nullable: false
+    nullable: true
     resolve: undefined
   }
   saved: {
@@ -560,7 +560,7 @@ export interface UserTutorialFieldDetails {
     args: {}
     description: string
     list: undefined
-    nullable: false
+    nullable: true
     resolve: undefined
   }
   currentChapter: {
@@ -568,7 +568,7 @@ export interface UserTutorialFieldDetails {
     args: {}
     description: string
     list: undefined
-    nullable: false
+    nullable: true
     resolve: undefined
   }
 }
@@ -1861,7 +1861,7 @@ export interface UserTutorialPreviousValuesFieldDetails {
     args: {}
     description: string
     list: undefined
-    nullable: false
+    nullable: true
     resolve: undefined
   }
   saved: {
@@ -1869,7 +1869,7 @@ export interface UserTutorialPreviousValuesFieldDetails {
     args: {}
     description: string
     list: undefined
-    nullable: false
+    nullable: true
     resolve: undefined
   }
   currentChapter: {
@@ -1877,7 +1877,7 @@ export interface UserTutorialPreviousValuesFieldDetails {
     args: {}
     description: string
     list: undefined
-    nullable: false
+    nullable: true
     resolve: undefined
   }
 }
@@ -2669,9 +2669,9 @@ export type UserTutorialCreateManyWithoutUserInputInputObject =
   
 export interface UserTutorialCreateWithoutUserInput {
   tutorial?: TutorialCreateOneWithoutUserTutorialsInput | null
-  upvoted?: boolean
-  saved?: boolean
-  currentChapter?: number
+  upvoted?: boolean | null
+  saved?: boolean | null
+  currentChapter?: number | null
 }
 export type UserTutorialCreateWithoutUserInputInputObject =
   | Extract<keyof UserTutorialCreateWithoutUserInput, string>
@@ -2963,9 +2963,9 @@ export type UserUpdateManyMutationInputInputObject =
 export interface UserTutorialCreateInput {
   user?: UserCreateOneWithoutUserTutorialsInput | null
   tutorial?: TutorialCreateOneWithoutUserTutorialsInput | null
-  upvoted?: boolean
-  saved?: boolean
-  currentChapter?: number
+  upvoted?: boolean | null
+  saved?: boolean | null
+  currentChapter?: number | null
 }
 export type UserTutorialCreateInputInputObject =
   | Extract<keyof UserTutorialCreateInput, string>
@@ -3106,9 +3106,9 @@ export type UserTutorialCreateManyWithoutTutorialInputInputObject =
   
 export interface UserTutorialCreateWithoutTutorialInput {
   user?: UserCreateOneWithoutUserTutorialsInput | null
-  upvoted?: boolean
-  saved?: boolean
-  currentChapter?: number
+  upvoted?: boolean | null
+  saved?: boolean | null
+  currentChapter?: number | null
 }
 export type UserTutorialCreateWithoutTutorialInputInputObject =
   | Extract<keyof UserTutorialCreateWithoutTutorialInput, string>

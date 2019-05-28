@@ -560,9 +560,9 @@ export interface UserTutorialCreateManyWithoutTutorialInput {
 
 export interface UserTutorialCreateWithoutTutorialInput {
   user?: Maybe<UserCreateOneWithoutUserTutorialsInput>;
-  upvoted: Boolean;
-  saved: Boolean;
-  currentChapter: Int;
+  upvoted?: Maybe<Boolean>;
+  saved?: Maybe<Boolean>;
+  currentChapter?: Maybe<Int>;
 }
 
 export interface UserCreateOneWithoutUserTutorialsInput {
@@ -753,9 +753,9 @@ export interface UserTutorialCreateManyWithoutUserInput {
 
 export interface UserTutorialCreateWithoutUserInput {
   tutorial?: Maybe<TutorialCreateOneWithoutUserTutorialsInput>;
-  upvoted: Boolean;
-  saved: Boolean;
-  currentChapter: Int;
+  upvoted?: Maybe<Boolean>;
+  saved?: Maybe<Boolean>;
+  currentChapter?: Maybe<Int>;
 }
 
 export interface TutorialCreateOneWithoutUserTutorialsInput {
@@ -866,9 +866,9 @@ export interface UserUpdateManyMutationInput {
 export interface UserTutorialCreateInput {
   user?: Maybe<UserCreateOneWithoutUserTutorialsInput>;
   tutorial?: Maybe<TutorialCreateOneWithoutUserTutorialsInput>;
-  upvoted: Boolean;
-  saved: Boolean;
-  currentChapter: Int;
+  upvoted?: Maybe<Boolean>;
+  saved?: Maybe<Boolean>;
+  currentChapter?: Maybe<Int>;
 }
 
 export interface UserTutorialUpdateInput {
@@ -1011,9 +1011,9 @@ export interface UserTutorial {
   id: ID_Output;
   createdAt: DateTimeOutput;
   updatedAt: DateTimeOutput;
-  upvoted: Boolean;
-  saved: Boolean;
-  currentChapter: Int;
+  upvoted?: Boolean;
+  saved?: Boolean;
+  currentChapter?: Int;
 }
 
 export interface UserTutorialPromise
@@ -1509,9 +1509,9 @@ export interface UserTutorialPreviousValues {
   id: ID_Output;
   createdAt: DateTimeOutput;
   updatedAt: DateTimeOutput;
-  upvoted: Boolean;
-  saved: Boolean;
-  currentChapter: Int;
+  upvoted?: Boolean;
+  saved?: Boolean;
+  currentChapter?: Int;
 }
 
 export interface UserTutorialPreviousValuesPromise

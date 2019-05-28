@@ -23,9 +23,9 @@ type UserTutorial {
   updatedAt: DateTime!
   user: User @relation(name: "UseronUserTutorial")
   tutorial: Tutorial @relation(name: "TutorialonUserTutorial")
-  upvoted: Boolean!
-  saved: Boolean!
-  currentChapter: Int!
+  upvoted: Boolean @default(value: false)
+  saved: Boolean @default(value: false)
+  currentChapter: Int @default(value: 0)
 }
 
 type Tutorial {

@@ -2,7 +2,10 @@
 ### Do not make changes to this file directly
 
 
-type AuthenticateUserPayload {
+type AuthenticateUserPayload implements PayloadInterface {
+  code: String!
+  message: String!
+  success: Boolean!
   token: String!
   user: User!
 }
@@ -14,6 +17,16 @@ type Mutation {
     """GitHub OAuth Token from the client."""
     githubCode: String!
   ): AuthenticateUserPayload
+
+  """A user can upvote a tutorial."""
+  upvote(tutorialId: ID!): UserTutorialPayload!
+}
+
+"""The standard interface for all mutation responses"""
+interface PayloadInterface {
+  code: String!
+  message: String!
+  success: Boolean!
 }
 
 type Query {
@@ -140,12 +153,12 @@ type User {
 
 type UserTutorial {
   createdAt: DateTime!
-  currentChapter: Int!
+  currentChapter: Int
   id: ID!
-  saved: Boolean!
+  saved: Boolean
   tutorial: Tutorial
   updatedAt: DateTime!
-  upvoted: Boolean!
+  upvoted: Boolean
   user: User
 }
 
@@ -162,6 +175,13 @@ enum UserTutorialOrderByInput {
   updatedAt_DESC
   upvoted_ASC
   upvoted_DESC
+}
+
+type UserTutorialPayload implements PayloadInterface {
+  code: String!
+  message: String!
+  success: Boolean!
+  userTutorial: UserTutorial!
 }
 
 input UserTutorialWhereInput {
