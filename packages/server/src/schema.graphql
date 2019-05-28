@@ -124,11 +124,14 @@ input TutorialWhereInput {
 }
 
 type User {
+  avatarUrl: String
   bio: String
-  contributor: Boolean!
+  contributor: Boolean
   createdAt: DateTime!
-  email: String!
+  email: String
   expertise: String
+  githubHandle: String!
+  githubUserId: String!
   id: ID!
   name: String!
   updatedAt: DateTime!
@@ -213,6 +216,20 @@ input UserTutorialWhereInput {
 
 input UserWhereInput {
   AND: [UserWhereInput!]
+  avatarUrl: String
+  avatarUrl_contains: String
+  avatarUrl_ends_with: String
+  avatarUrl_gt: String
+  avatarUrl_gte: String
+  avatarUrl_in: [String!]
+  avatarUrl_lt: String
+  avatarUrl_lte: String
+  avatarUrl_not: String
+  avatarUrl_not_contains: String
+  avatarUrl_not_ends_with: String
+  avatarUrl_not_in: [String!]
+  avatarUrl_not_starts_with: String
+  avatarUrl_starts_with: String
   bio: String
   bio_contains: String
   bio_ends_with: String
@@ -265,6 +282,34 @@ input UserWhereInput {
   expertise_not_in: [String!]
   expertise_not_starts_with: String
   expertise_starts_with: String
+  githubHandle: String
+  githubHandle_contains: String
+  githubHandle_ends_with: String
+  githubHandle_gt: String
+  githubHandle_gte: String
+  githubHandle_in: [String!]
+  githubHandle_lt: String
+  githubHandle_lte: String
+  githubHandle_not: String
+  githubHandle_not_contains: String
+  githubHandle_not_ends_with: String
+  githubHandle_not_in: [String!]
+  githubHandle_not_starts_with: String
+  githubHandle_starts_with: String
+  githubUserId: String
+  githubUserId_contains: String
+  githubUserId_ends_with: String
+  githubUserId_gt: String
+  githubUserId_gte: String
+  githubUserId_in: [String!]
+  githubUserId_lt: String
+  githubUserId_lte: String
+  githubUserId_not: String
+  githubUserId_not_contains: String
+  githubUserId_not_ends_with: String
+  githubUserId_not_in: [String!]
+  githubUserId_not_starts_with: String
+  githubUserId_starts_with: String
   id: ID
   id_contains: ID
   id_ends_with: ID

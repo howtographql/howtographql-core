@@ -327,24 +327,30 @@ export interface QueryFieldDetails {
 type UserObject =
   | UserFields
   | { name: 'id', args?: [] | false, alias?: string  } 
-  | { name: 'name', args?: [] | false, alias?: string  } 
-  | { name: 'email', args?: [] | false, alias?: string  } 
   | { name: 'createdAt', args?: [] | false, alias?: string  } 
   | { name: 'updatedAt', args?: [] | false, alias?: string  } 
+  | { name: 'name', args?: [] | false, alias?: string  } 
+  | { name: 'email', args?: [] | false, alias?: string  } 
+  | { name: 'githubHandle', args?: [] | false, alias?: string  } 
+  | { name: 'githubUserId', args?: [] | false, alias?: string  } 
+  | { name: 'avatarUrl', args?: [] | false, alias?: string  } 
+  | { name: 'bio', args?: [] | false, alias?: string  } 
   | { name: 'contributor', args?: [] | false, alias?: string  } 
   | { name: 'expertise', args?: [] | false, alias?: string  } 
-  | { name: 'bio', args?: [] | false, alias?: string  } 
   | { name: 'userTutorials', args?: UserUserTutorialsArgs[] | false, alias?: string  } 
 
 type UserFields =
   | 'id'
-  | 'name'
-  | 'email'
   | 'createdAt'
   | 'updatedAt'
+  | 'name'
+  | 'email'
+  | 'githubHandle'
+  | 'githubUserId'
+  | 'avatarUrl'
+  | 'bio'
   | 'contributor'
   | 'expertise'
-  | 'bio'
   | 'userTutorials'
 
 
@@ -367,22 +373,6 @@ export interface UserFieldDetails {
     nullable: false
     resolve: undefined
   }
-  name: {
-    type: 'String'
-    args: {}
-    description: string
-    list: undefined
-    nullable: false
-    resolve: undefined
-  }
-  email: {
-    type: 'String'
-    args: {}
-    description: string
-    list: undefined
-    nullable: false
-    resolve: undefined
-  }
   createdAt: {
     type: 'DateTime'
     args: {}
@@ -399,15 +389,39 @@ export interface UserFieldDetails {
     nullable: false
     resolve: undefined
   }
-  contributor: {
-    type: 'Boolean'
+  name: {
+    type: 'String'
     args: {}
     description: string
     list: undefined
     nullable: false
     resolve: undefined
   }
-  expertise: {
+  email: {
+    type: 'String'
+    args: {}
+    description: string
+    list: undefined
+    nullable: true
+    resolve: undefined
+  }
+  githubHandle: {
+    type: 'String'
+    args: {}
+    description: string
+    list: undefined
+    nullable: false
+    resolve: undefined
+  }
+  githubUserId: {
+    type: 'String'
+    args: {}
+    description: string
+    list: undefined
+    nullable: false
+    resolve: undefined
+  }
+  avatarUrl: {
     type: 'String'
     args: {}
     description: string
@@ -416,6 +430,22 @@ export interface UserFieldDetails {
     resolve: undefined
   }
   bio: {
+    type: 'String'
+    args: {}
+    description: string
+    list: undefined
+    nullable: true
+    resolve: undefined
+  }
+  contributor: {
+    type: 'Boolean'
+    args: {}
+    description: string
+    list: undefined
+    nullable: true
+    resolve: undefined
+  }
+  expertise: {
     type: 'String'
     args: {}
     description: string
@@ -1588,23 +1618,29 @@ export interface UserSubscriptionPayloadFieldDetails {
 type UserPreviousValuesObject =
   | UserPreviousValuesFields
   | { name: 'id', args?: [] | false, alias?: string  } 
-  | { name: 'name', args?: [] | false, alias?: string  } 
-  | { name: 'email', args?: [] | false, alias?: string  } 
   | { name: 'createdAt', args?: [] | false, alias?: string  } 
   | { name: 'updatedAt', args?: [] | false, alias?: string  } 
+  | { name: 'name', args?: [] | false, alias?: string  } 
+  | { name: 'email', args?: [] | false, alias?: string  } 
+  | { name: 'githubHandle', args?: [] | false, alias?: string  } 
+  | { name: 'githubUserId', args?: [] | false, alias?: string  } 
+  | { name: 'avatarUrl', args?: [] | false, alias?: string  } 
+  | { name: 'bio', args?: [] | false, alias?: string  } 
   | { name: 'contributor', args?: [] | false, alias?: string  } 
   | { name: 'expertise', args?: [] | false, alias?: string  } 
-  | { name: 'bio', args?: [] | false, alias?: string  } 
 
 type UserPreviousValuesFields =
   | 'id'
-  | 'name'
-  | 'email'
   | 'createdAt'
   | 'updatedAt'
+  | 'name'
+  | 'email'
+  | 'githubHandle'
+  | 'githubUserId'
+  | 'avatarUrl'
+  | 'bio'
   | 'contributor'
   | 'expertise'
-  | 'bio'
 
 
 
@@ -1613,22 +1649,6 @@ type UserPreviousValuesFields =
 export interface UserPreviousValuesFieldDetails {
   id: {
     type: 'ID'
-    args: {}
-    description: string
-    list: undefined
-    nullable: false
-    resolve: undefined
-  }
-  name: {
-    type: 'String'
-    args: {}
-    description: string
-    list: undefined
-    nullable: false
-    resolve: undefined
-  }
-  email: {
-    type: 'String'
     args: {}
     description: string
     list: undefined
@@ -1651,15 +1671,39 @@ export interface UserPreviousValuesFieldDetails {
     nullable: false
     resolve: undefined
   }
-  contributor: {
-    type: 'Boolean'
+  name: {
+    type: 'String'
     args: {}
     description: string
     list: undefined
     nullable: false
     resolve: undefined
   }
-  expertise: {
+  email: {
+    type: 'String'
+    args: {}
+    description: string
+    list: undefined
+    nullable: true
+    resolve: undefined
+  }
+  githubHandle: {
+    type: 'String'
+    args: {}
+    description: string
+    list: undefined
+    nullable: false
+    resolve: undefined
+  }
+  githubUserId: {
+    type: 'String'
+    args: {}
+    description: string
+    list: undefined
+    nullable: false
+    resolve: undefined
+  }
+  avatarUrl: {
     type: 'String'
     args: {}
     description: string
@@ -1668,6 +1712,22 @@ export interface UserPreviousValuesFieldDetails {
     resolve: undefined
   }
   bio: {
+    type: 'String'
+    args: {}
+    description: string
+    list: undefined
+    nullable: true
+    resolve: undefined
+  }
+  contributor: {
+    type: 'Boolean'
+    args: {}
+    description: string
+    list: undefined
+    nullable: true
+    resolve: undefined
+  }
+  expertise: {
     type: 'String'
     args: {}
     description: string
@@ -1991,11 +2051,17 @@ export interface TutorialPreviousValuesFieldDetails {
 
 export interface UserWhereUniqueInput {
   id?: string | null
+  email?: string | null
+  githubHandle?: string | null
+  githubUserId?: string | null
   expertise?: string | null
 }
 export type UserWhereUniqueInputInputObject =
   | Extract<keyof UserWhereUniqueInput, string>
   | { name: 'id', alias?: string  } 
+  | { name: 'email', alias?: string  } 
+  | { name: 'githubHandle', alias?: string  } 
+  | { name: 'githubUserId', alias?: string  } 
   | { name: 'expertise', alias?: string  } 
   
 export interface UserTutorialWhereInput {
@@ -2112,6 +2178,22 @@ export interface UserWhereInput {
   id_not_starts_with?: string | null
   id_ends_with?: string | null
   id_not_ends_with?: string | null
+  createdAt?: string | null
+  createdAt_not?: string | null
+  createdAt_in?: string[]
+  createdAt_not_in?: string[]
+  createdAt_lt?: string | null
+  createdAt_lte?: string | null
+  createdAt_gt?: string | null
+  createdAt_gte?: string | null
+  updatedAt?: string | null
+  updatedAt_not?: string | null
+  updatedAt_in?: string[]
+  updatedAt_not_in?: string[]
+  updatedAt_lt?: string | null
+  updatedAt_lte?: string | null
+  updatedAt_gt?: string | null
+  updatedAt_gte?: string | null
   name?: string | null
   name_not?: string | null
   name_in?: string[]
@@ -2140,22 +2222,62 @@ export interface UserWhereInput {
   email_not_starts_with?: string | null
   email_ends_with?: string | null
   email_not_ends_with?: string | null
-  createdAt?: string | null
-  createdAt_not?: string | null
-  createdAt_in?: string[]
-  createdAt_not_in?: string[]
-  createdAt_lt?: string | null
-  createdAt_lte?: string | null
-  createdAt_gt?: string | null
-  createdAt_gte?: string | null
-  updatedAt?: string | null
-  updatedAt_not?: string | null
-  updatedAt_in?: string[]
-  updatedAt_not_in?: string[]
-  updatedAt_lt?: string | null
-  updatedAt_lte?: string | null
-  updatedAt_gt?: string | null
-  updatedAt_gte?: string | null
+  githubHandle?: string | null
+  githubHandle_not?: string | null
+  githubHandle_in?: string[]
+  githubHandle_not_in?: string[]
+  githubHandle_lt?: string | null
+  githubHandle_lte?: string | null
+  githubHandle_gt?: string | null
+  githubHandle_gte?: string | null
+  githubHandle_contains?: string | null
+  githubHandle_not_contains?: string | null
+  githubHandle_starts_with?: string | null
+  githubHandle_not_starts_with?: string | null
+  githubHandle_ends_with?: string | null
+  githubHandle_not_ends_with?: string | null
+  githubUserId?: string | null
+  githubUserId_not?: string | null
+  githubUserId_in?: string[]
+  githubUserId_not_in?: string[]
+  githubUserId_lt?: string | null
+  githubUserId_lte?: string | null
+  githubUserId_gt?: string | null
+  githubUserId_gte?: string | null
+  githubUserId_contains?: string | null
+  githubUserId_not_contains?: string | null
+  githubUserId_starts_with?: string | null
+  githubUserId_not_starts_with?: string | null
+  githubUserId_ends_with?: string | null
+  githubUserId_not_ends_with?: string | null
+  avatarUrl?: string | null
+  avatarUrl_not?: string | null
+  avatarUrl_in?: string[]
+  avatarUrl_not_in?: string[]
+  avatarUrl_lt?: string | null
+  avatarUrl_lte?: string | null
+  avatarUrl_gt?: string | null
+  avatarUrl_gte?: string | null
+  avatarUrl_contains?: string | null
+  avatarUrl_not_contains?: string | null
+  avatarUrl_starts_with?: string | null
+  avatarUrl_not_starts_with?: string | null
+  avatarUrl_ends_with?: string | null
+  avatarUrl_not_ends_with?: string | null
+  bio?: string | null
+  bio_not?: string | null
+  bio_in?: string[]
+  bio_not_in?: string[]
+  bio_lt?: string | null
+  bio_lte?: string | null
+  bio_gt?: string | null
+  bio_gte?: string | null
+  bio_contains?: string | null
+  bio_not_contains?: string | null
+  bio_starts_with?: string | null
+  bio_not_starts_with?: string | null
+  bio_ends_with?: string | null
+  bio_not_ends_with?: string | null
   contributor?: boolean | null
   contributor_not?: boolean | null
   expertise?: string | null
@@ -2172,20 +2294,6 @@ export interface UserWhereInput {
   expertise_not_starts_with?: string | null
   expertise_ends_with?: string | null
   expertise_not_ends_with?: string | null
-  bio?: string | null
-  bio_not?: string | null
-  bio_in?: string[]
-  bio_not_in?: string[]
-  bio_lt?: string | null
-  bio_lte?: string | null
-  bio_gt?: string | null
-  bio_gte?: string | null
-  bio_contains?: string | null
-  bio_not_contains?: string | null
-  bio_starts_with?: string | null
-  bio_not_starts_with?: string | null
-  bio_ends_with?: string | null
-  bio_not_ends_with?: string | null
   userTutorials_every?: UserTutorialWhereInput | null
   userTutorials_some?: UserTutorialWhereInput | null
   userTutorials_none?: UserTutorialWhereInput | null
@@ -2209,6 +2317,22 @@ export type UserWhereInputInputObject =
   | { name: 'id_not_starts_with', alias?: string  } 
   | { name: 'id_ends_with', alias?: string  } 
   | { name: 'id_not_ends_with', alias?: string  } 
+  | { name: 'createdAt', alias?: string  } 
+  | { name: 'createdAt_not', alias?: string  } 
+  | { name: 'createdAt_in', alias?: string  } 
+  | { name: 'createdAt_not_in', alias?: string  } 
+  | { name: 'createdAt_lt', alias?: string  } 
+  | { name: 'createdAt_lte', alias?: string  } 
+  | { name: 'createdAt_gt', alias?: string  } 
+  | { name: 'createdAt_gte', alias?: string  } 
+  | { name: 'updatedAt', alias?: string  } 
+  | { name: 'updatedAt_not', alias?: string  } 
+  | { name: 'updatedAt_in', alias?: string  } 
+  | { name: 'updatedAt_not_in', alias?: string  } 
+  | { name: 'updatedAt_lt', alias?: string  } 
+  | { name: 'updatedAt_lte', alias?: string  } 
+  | { name: 'updatedAt_gt', alias?: string  } 
+  | { name: 'updatedAt_gte', alias?: string  } 
   | { name: 'name', alias?: string  } 
   | { name: 'name_not', alias?: string  } 
   | { name: 'name_in', alias?: string  } 
@@ -2237,22 +2361,62 @@ export type UserWhereInputInputObject =
   | { name: 'email_not_starts_with', alias?: string  } 
   | { name: 'email_ends_with', alias?: string  } 
   | { name: 'email_not_ends_with', alias?: string  } 
-  | { name: 'createdAt', alias?: string  } 
-  | { name: 'createdAt_not', alias?: string  } 
-  | { name: 'createdAt_in', alias?: string  } 
-  | { name: 'createdAt_not_in', alias?: string  } 
-  | { name: 'createdAt_lt', alias?: string  } 
-  | { name: 'createdAt_lte', alias?: string  } 
-  | { name: 'createdAt_gt', alias?: string  } 
-  | { name: 'createdAt_gte', alias?: string  } 
-  | { name: 'updatedAt', alias?: string  } 
-  | { name: 'updatedAt_not', alias?: string  } 
-  | { name: 'updatedAt_in', alias?: string  } 
-  | { name: 'updatedAt_not_in', alias?: string  } 
-  | { name: 'updatedAt_lt', alias?: string  } 
-  | { name: 'updatedAt_lte', alias?: string  } 
-  | { name: 'updatedAt_gt', alias?: string  } 
-  | { name: 'updatedAt_gte', alias?: string  } 
+  | { name: 'githubHandle', alias?: string  } 
+  | { name: 'githubHandle_not', alias?: string  } 
+  | { name: 'githubHandle_in', alias?: string  } 
+  | { name: 'githubHandle_not_in', alias?: string  } 
+  | { name: 'githubHandle_lt', alias?: string  } 
+  | { name: 'githubHandle_lte', alias?: string  } 
+  | { name: 'githubHandle_gt', alias?: string  } 
+  | { name: 'githubHandle_gte', alias?: string  } 
+  | { name: 'githubHandle_contains', alias?: string  } 
+  | { name: 'githubHandle_not_contains', alias?: string  } 
+  | { name: 'githubHandle_starts_with', alias?: string  } 
+  | { name: 'githubHandle_not_starts_with', alias?: string  } 
+  | { name: 'githubHandle_ends_with', alias?: string  } 
+  | { name: 'githubHandle_not_ends_with', alias?: string  } 
+  | { name: 'githubUserId', alias?: string  } 
+  | { name: 'githubUserId_not', alias?: string  } 
+  | { name: 'githubUserId_in', alias?: string  } 
+  | { name: 'githubUserId_not_in', alias?: string  } 
+  | { name: 'githubUserId_lt', alias?: string  } 
+  | { name: 'githubUserId_lte', alias?: string  } 
+  | { name: 'githubUserId_gt', alias?: string  } 
+  | { name: 'githubUserId_gte', alias?: string  } 
+  | { name: 'githubUserId_contains', alias?: string  } 
+  | { name: 'githubUserId_not_contains', alias?: string  } 
+  | { name: 'githubUserId_starts_with', alias?: string  } 
+  | { name: 'githubUserId_not_starts_with', alias?: string  } 
+  | { name: 'githubUserId_ends_with', alias?: string  } 
+  | { name: 'githubUserId_not_ends_with', alias?: string  } 
+  | { name: 'avatarUrl', alias?: string  } 
+  | { name: 'avatarUrl_not', alias?: string  } 
+  | { name: 'avatarUrl_in', alias?: string  } 
+  | { name: 'avatarUrl_not_in', alias?: string  } 
+  | { name: 'avatarUrl_lt', alias?: string  } 
+  | { name: 'avatarUrl_lte', alias?: string  } 
+  | { name: 'avatarUrl_gt', alias?: string  } 
+  | { name: 'avatarUrl_gte', alias?: string  } 
+  | { name: 'avatarUrl_contains', alias?: string  } 
+  | { name: 'avatarUrl_not_contains', alias?: string  } 
+  | { name: 'avatarUrl_starts_with', alias?: string  } 
+  | { name: 'avatarUrl_not_starts_with', alias?: string  } 
+  | { name: 'avatarUrl_ends_with', alias?: string  } 
+  | { name: 'avatarUrl_not_ends_with', alias?: string  } 
+  | { name: 'bio', alias?: string  } 
+  | { name: 'bio_not', alias?: string  } 
+  | { name: 'bio_in', alias?: string  } 
+  | { name: 'bio_not_in', alias?: string  } 
+  | { name: 'bio_lt', alias?: string  } 
+  | { name: 'bio_lte', alias?: string  } 
+  | { name: 'bio_gt', alias?: string  } 
+  | { name: 'bio_gte', alias?: string  } 
+  | { name: 'bio_contains', alias?: string  } 
+  | { name: 'bio_not_contains', alias?: string  } 
+  | { name: 'bio_starts_with', alias?: string  } 
+  | { name: 'bio_not_starts_with', alias?: string  } 
+  | { name: 'bio_ends_with', alias?: string  } 
+  | { name: 'bio_not_ends_with', alias?: string  } 
   | { name: 'contributor', alias?: string  } 
   | { name: 'contributor_not', alias?: string  } 
   | { name: 'expertise', alias?: string  } 
@@ -2269,20 +2433,6 @@ export type UserWhereInputInputObject =
   | { name: 'expertise_not_starts_with', alias?: string  } 
   | { name: 'expertise_ends_with', alias?: string  } 
   | { name: 'expertise_not_ends_with', alias?: string  } 
-  | { name: 'bio', alias?: string  } 
-  | { name: 'bio_not', alias?: string  } 
-  | { name: 'bio_in', alias?: string  } 
-  | { name: 'bio_not_in', alias?: string  } 
-  | { name: 'bio_lt', alias?: string  } 
-  | { name: 'bio_lte', alias?: string  } 
-  | { name: 'bio_gt', alias?: string  } 
-  | { name: 'bio_gte', alias?: string  } 
-  | { name: 'bio_contains', alias?: string  } 
-  | { name: 'bio_not_contains', alias?: string  } 
-  | { name: 'bio_starts_with', alias?: string  } 
-  | { name: 'bio_not_starts_with', alias?: string  } 
-  | { name: 'bio_ends_with', alias?: string  } 
-  | { name: 'bio_not_ends_with', alias?: string  } 
   | { name: 'userTutorials_every', alias?: string  } 
   | { name: 'userTutorials_some', alias?: string  } 
   | { name: 'userTutorials_none', alias?: string  } 
@@ -2487,19 +2637,25 @@ export type TutorialWhereUniqueInputInputObject =
   
 export interface UserCreateInput {
   name?: string
-  email?: string
-  contributor?: boolean
-  expertise?: string | null
+  email?: string | null
+  githubHandle?: string
+  githubUserId?: string
+  avatarUrl?: string | null
   bio?: string | null
+  contributor?: boolean | null
+  expertise?: string | null
   userTutorials?: UserTutorialCreateManyWithoutUserInput | null
 }
 export type UserCreateInputInputObject =
   | Extract<keyof UserCreateInput, string>
   | { name: 'name', alias?: string  } 
   | { name: 'email', alias?: string  } 
+  | { name: 'githubHandle', alias?: string  } 
+  | { name: 'githubUserId', alias?: string  } 
+  | { name: 'avatarUrl', alias?: string  } 
+  | { name: 'bio', alias?: string  } 
   | { name: 'contributor', alias?: string  } 
   | { name: 'expertise', alias?: string  } 
-  | { name: 'bio', alias?: string  } 
   | { name: 'userTutorials', alias?: string  } 
   
 export interface UserTutorialCreateManyWithoutUserInput {
@@ -2551,18 +2707,24 @@ export type TutorialCreateWithoutUserTutorialsInputInputObject =
 export interface UserUpdateInput {
   name?: string | null
   email?: string | null
+  githubHandle?: string | null
+  githubUserId?: string | null
+  avatarUrl?: string | null
+  bio?: string | null
   contributor?: boolean | null
   expertise?: string | null
-  bio?: string | null
   userTutorials?: UserTutorialUpdateManyWithoutUserInput | null
 }
 export type UserUpdateInputInputObject =
   | Extract<keyof UserUpdateInput, string>
   | { name: 'name', alias?: string  } 
   | { name: 'email', alias?: string  } 
+  | { name: 'githubHandle', alias?: string  } 
+  | { name: 'githubUserId', alias?: string  } 
+  | { name: 'avatarUrl', alias?: string  } 
+  | { name: 'bio', alias?: string  } 
   | { name: 'contributor', alias?: string  } 
   | { name: 'expertise', alias?: string  } 
-  | { name: 'bio', alias?: string  } 
   | { name: 'userTutorials', alias?: string  } 
   
 export interface UserTutorialUpdateManyWithoutUserInput {
@@ -2780,17 +2942,23 @@ export type UserTutorialUpdateManyDataInputInputObject =
 export interface UserUpdateManyMutationInput {
   name?: string | null
   email?: string | null
+  githubHandle?: string | null
+  githubUserId?: string | null
+  avatarUrl?: string | null
+  bio?: string | null
   contributor?: boolean | null
   expertise?: string | null
-  bio?: string | null
 }
 export type UserUpdateManyMutationInputInputObject =
   | Extract<keyof UserUpdateManyMutationInput, string>
   | { name: 'name', alias?: string  } 
   | { name: 'email', alias?: string  } 
+  | { name: 'githubHandle', alias?: string  } 
+  | { name: 'githubUserId', alias?: string  } 
+  | { name: 'avatarUrl', alias?: string  } 
+  | { name: 'bio', alias?: string  } 
   | { name: 'contributor', alias?: string  } 
   | { name: 'expertise', alias?: string  } 
-  | { name: 'bio', alias?: string  } 
   
 export interface UserTutorialCreateInput {
   user?: UserCreateOneWithoutUserTutorialsInput | null
@@ -2818,18 +2986,24 @@ export type UserCreateOneWithoutUserTutorialsInputInputObject =
   
 export interface UserCreateWithoutUserTutorialsInput {
   name?: string
-  email?: string
-  contributor?: boolean
-  expertise?: string | null
+  email?: string | null
+  githubHandle?: string
+  githubUserId?: string
+  avatarUrl?: string | null
   bio?: string | null
+  contributor?: boolean | null
+  expertise?: string | null
 }
 export type UserCreateWithoutUserTutorialsInputInputObject =
   | Extract<keyof UserCreateWithoutUserTutorialsInput, string>
   | { name: 'name', alias?: string  } 
   | { name: 'email', alias?: string  } 
+  | { name: 'githubHandle', alias?: string  } 
+  | { name: 'githubUserId', alias?: string  } 
+  | { name: 'avatarUrl', alias?: string  } 
+  | { name: 'bio', alias?: string  } 
   | { name: 'contributor', alias?: string  } 
   | { name: 'expertise', alias?: string  } 
-  | { name: 'bio', alias?: string  } 
   
 export interface UserTutorialUpdateInput {
   user?: UserUpdateOneWithoutUserTutorialsInput | null
@@ -2866,17 +3040,23 @@ export type UserUpdateOneWithoutUserTutorialsInputInputObject =
 export interface UserUpdateWithoutUserTutorialsDataInput {
   name?: string | null
   email?: string | null
+  githubHandle?: string | null
+  githubUserId?: string | null
+  avatarUrl?: string | null
+  bio?: string | null
   contributor?: boolean | null
   expertise?: string | null
-  bio?: string | null
 }
 export type UserUpdateWithoutUserTutorialsDataInputInputObject =
   | Extract<keyof UserUpdateWithoutUserTutorialsDataInput, string>
   | { name: 'name', alias?: string  } 
   | { name: 'email', alias?: string  } 
+  | { name: 'githubHandle', alias?: string  } 
+  | { name: 'githubUserId', alias?: string  } 
+  | { name: 'avatarUrl', alias?: string  } 
+  | { name: 'bio', alias?: string  } 
   | { name: 'contributor', alias?: string  } 
   | { name: 'expertise', alias?: string  } 
-  | { name: 'bio', alias?: string  } 
   
 export interface UserUpsertWithoutUserTutorialsInput {
   update?: UserUpdateWithoutUserTutorialsDataInput
@@ -3106,20 +3286,26 @@ export type UserTutorialOrderByInputValues =
 export type UserOrderByInputValues =
   | 'id_ASC'
   | 'id_DESC'
-  | 'name_ASC'
-  | 'name_DESC'
-  | 'email_ASC'
-  | 'email_DESC'
   | 'createdAt_ASC'
   | 'createdAt_DESC'
   | 'updatedAt_ASC'
   | 'updatedAt_DESC'
+  | 'name_ASC'
+  | 'name_DESC'
+  | 'email_ASC'
+  | 'email_DESC'
+  | 'githubHandle_ASC'
+  | 'githubHandle_DESC'
+  | 'githubUserId_ASC'
+  | 'githubUserId_DESC'
+  | 'avatarUrl_ASC'
+  | 'avatarUrl_DESC'
+  | 'bio_ASC'
+  | 'bio_DESC'
   | 'contributor_ASC'
   | 'contributor_DESC'
   | 'expertise_ASC'
   | 'expertise_DESC'
-  | 'bio_ASC'
-  | 'bio_DESC'
   
 export type TutorialOrderByInputValues =
   | 'id_ASC'

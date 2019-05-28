@@ -1,27 +1,19 @@
-# type User {
-#   id: ID! @unique
-#   createdAt: DateTime!
-#   updatedAt: DateTime!
-
-#   name: String!
-#   email: String @unique
-
-#   githubHandle: String! @unique
-#   githubUserId: String! @unique
-#   avatarUrl: String
-#   bio: String!
-
-#   posts: [Post!]!
-# }
 type User {
   id: ID! @unique
-  name: String!
-  email: String!
   createdAt: DateTime!
   updatedAt: DateTime!
-  contributor: Boolean!
-  expertise: String @unique
+
+  name: String!
+  email: String @unique
+
+  githubHandle: String! @unique
+  githubUserId: String! @unique
+  avatarUrl: String
   bio: String
+
+  contributor: Boolean
+  expertise: String @unique
+
   userTutorials: [UserTutorial!]! @relation(name: "UseronUserTutorial")
 }
 

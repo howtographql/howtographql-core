@@ -153,6 +153,20 @@ export interface NexusGenInputs {
   }
   UserWhereInput: { // input type
     AND?: NexusGenInputs['UserWhereInput'][] | null; // [UserWhereInput!]
+    avatarUrl?: string | null; // String
+    avatarUrl_contains?: string | null; // String
+    avatarUrl_ends_with?: string | null; // String
+    avatarUrl_gt?: string | null; // String
+    avatarUrl_gte?: string | null; // String
+    avatarUrl_in?: string[] | null; // [String!]
+    avatarUrl_lt?: string | null; // String
+    avatarUrl_lte?: string | null; // String
+    avatarUrl_not?: string | null; // String
+    avatarUrl_not_contains?: string | null; // String
+    avatarUrl_not_ends_with?: string | null; // String
+    avatarUrl_not_in?: string[] | null; // [String!]
+    avatarUrl_not_starts_with?: string | null; // String
+    avatarUrl_starts_with?: string | null; // String
     bio?: string | null; // String
     bio_contains?: string | null; // String
     bio_ends_with?: string | null; // String
@@ -205,6 +219,34 @@ export interface NexusGenInputs {
     expertise_not_in?: string[] | null; // [String!]
     expertise_not_starts_with?: string | null; // String
     expertise_starts_with?: string | null; // String
+    githubHandle?: string | null; // String
+    githubHandle_contains?: string | null; // String
+    githubHandle_ends_with?: string | null; // String
+    githubHandle_gt?: string | null; // String
+    githubHandle_gte?: string | null; // String
+    githubHandle_in?: string[] | null; // [String!]
+    githubHandle_lt?: string | null; // String
+    githubHandle_lte?: string | null; // String
+    githubHandle_not?: string | null; // String
+    githubHandle_not_contains?: string | null; // String
+    githubHandle_not_ends_with?: string | null; // String
+    githubHandle_not_in?: string[] | null; // [String!]
+    githubHandle_not_starts_with?: string | null; // String
+    githubHandle_starts_with?: string | null; // String
+    githubUserId?: string | null; // String
+    githubUserId_contains?: string | null; // String
+    githubUserId_ends_with?: string | null; // String
+    githubUserId_gt?: string | null; // String
+    githubUserId_gte?: string | null; // String
+    githubUserId_in?: string[] | null; // [String!]
+    githubUserId_lt?: string | null; // String
+    githubUserId_lte?: string | null; // String
+    githubUserId_not?: string | null; // String
+    githubUserId_not_contains?: string | null; // String
+    githubUserId_not_ends_with?: string | null; // String
+    githubUserId_not_in?: string[] | null; // [String!]
+    githubUserId_not_starts_with?: string | null; // String
+    githubUserId_starts_with?: string | null; // String
     id?: string | null; // ID
     id_contains?: string | null; // ID
     id_ends_with?: string | null; // ID
@@ -304,11 +346,14 @@ export interface NexusGenFieldTypes {
     userTutorials: NexusGenRootTypes['UserTutorial'][] | null; // [UserTutorial!]
   }
   User: { // field return type
+    avatarUrl: string | null; // String
     bio: string | null; // String
-    contributor: boolean; // Boolean!
+    contributor: boolean | null; // Boolean
     createdAt: any; // DateTime!
-    email: string; // String!
+    email: string | null; // String
     expertise: string | null; // String
+    githubHandle: string; // String!
+    githubUserId: string; // String!
     id: string; // ID!
     name: string; // String!
     updatedAt: any; // DateTime!

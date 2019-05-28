@@ -308,13 +308,16 @@ input TutorialWhereUniqueInput {
 
 type User {
   id: ID!
-  name: String!
-  email: String!
   createdAt: DateTime!
   updatedAt: DateTime!
-  contributor: Boolean!
-  expertise: String
+  name: String!
+  email: String
+  githubHandle: String!
+  githubUserId: String!
+  avatarUrl: String
   bio: String
+  contributor: Boolean
+  expertise: String
   userTutorials(where: UserTutorialWhereInput, orderBy: UserTutorialOrderByInput, skip: Int, after: String, before: String, first: Int, last: Int): [UserTutorial!]
 }
 
@@ -326,10 +329,13 @@ type UserConnection {
 
 input UserCreateInput {
   name: String!
-  email: String!
-  contributor: Boolean!
-  expertise: String
+  email: String
+  githubHandle: String!
+  githubUserId: String!
+  avatarUrl: String
   bio: String
+  contributor: Boolean
+  expertise: String
   userTutorials: UserTutorialCreateManyWithoutUserInput
 }
 
@@ -340,10 +346,13 @@ input UserCreateOneWithoutUserTutorialsInput {
 
 input UserCreateWithoutUserTutorialsInput {
   name: String!
-  email: String!
-  contributor: Boolean!
-  expertise: String
+  email: String
+  githubHandle: String!
+  githubUserId: String!
+  avatarUrl: String
   bio: String
+  contributor: Boolean
+  expertise: String
 }
 
 type UserEdge {
@@ -354,31 +363,40 @@ type UserEdge {
 enum UserOrderByInput {
   id_ASC
   id_DESC
-  name_ASC
-  name_DESC
-  email_ASC
-  email_DESC
   createdAt_ASC
   createdAt_DESC
   updatedAt_ASC
   updatedAt_DESC
+  name_ASC
+  name_DESC
+  email_ASC
+  email_DESC
+  githubHandle_ASC
+  githubHandle_DESC
+  githubUserId_ASC
+  githubUserId_DESC
+  avatarUrl_ASC
+  avatarUrl_DESC
+  bio_ASC
+  bio_DESC
   contributor_ASC
   contributor_DESC
   expertise_ASC
   expertise_DESC
-  bio_ASC
-  bio_DESC
 }
 
 type UserPreviousValues {
   id: ID!
-  name: String!
-  email: String!
   createdAt: DateTime!
   updatedAt: DateTime!
-  contributor: Boolean!
-  expertise: String
+  name: String!
+  email: String
+  githubHandle: String!
+  githubUserId: String!
+  avatarUrl: String
   bio: String
+  contributor: Boolean
+  expertise: String
 }
 
 type UserSubscriptionPayload {
@@ -685,18 +703,24 @@ input UserTutorialWhereUniqueInput {
 input UserUpdateInput {
   name: String
   email: String
+  githubHandle: String
+  githubUserId: String
+  avatarUrl: String
+  bio: String
   contributor: Boolean
   expertise: String
-  bio: String
   userTutorials: UserTutorialUpdateManyWithoutUserInput
 }
 
 input UserUpdateManyMutationInput {
   name: String
   email: String
+  githubHandle: String
+  githubUserId: String
+  avatarUrl: String
+  bio: String
   contributor: Boolean
   expertise: String
-  bio: String
 }
 
 input UserUpdateOneWithoutUserTutorialsInput {
@@ -711,9 +735,12 @@ input UserUpdateOneWithoutUserTutorialsInput {
 input UserUpdateWithoutUserTutorialsDataInput {
   name: String
   email: String
+  githubHandle: String
+  githubUserId: String
+  avatarUrl: String
+  bio: String
   contributor: Boolean
   expertise: String
-  bio: String
 }
 
 input UserUpsertWithoutUserTutorialsInput {
@@ -736,6 +763,22 @@ input UserWhereInput {
   id_not_starts_with: ID
   id_ends_with: ID
   id_not_ends_with: ID
+  createdAt: DateTime
+  createdAt_not: DateTime
+  createdAt_in: [DateTime!]
+  createdAt_not_in: [DateTime!]
+  createdAt_lt: DateTime
+  createdAt_lte: DateTime
+  createdAt_gt: DateTime
+  createdAt_gte: DateTime
+  updatedAt: DateTime
+  updatedAt_not: DateTime
+  updatedAt_in: [DateTime!]
+  updatedAt_not_in: [DateTime!]
+  updatedAt_lt: DateTime
+  updatedAt_lte: DateTime
+  updatedAt_gt: DateTime
+  updatedAt_gte: DateTime
   name: String
   name_not: String
   name_in: [String!]
@@ -764,22 +807,62 @@ input UserWhereInput {
   email_not_starts_with: String
   email_ends_with: String
   email_not_ends_with: String
-  createdAt: DateTime
-  createdAt_not: DateTime
-  createdAt_in: [DateTime!]
-  createdAt_not_in: [DateTime!]
-  createdAt_lt: DateTime
-  createdAt_lte: DateTime
-  createdAt_gt: DateTime
-  createdAt_gte: DateTime
-  updatedAt: DateTime
-  updatedAt_not: DateTime
-  updatedAt_in: [DateTime!]
-  updatedAt_not_in: [DateTime!]
-  updatedAt_lt: DateTime
-  updatedAt_lte: DateTime
-  updatedAt_gt: DateTime
-  updatedAt_gte: DateTime
+  githubHandle: String
+  githubHandle_not: String
+  githubHandle_in: [String!]
+  githubHandle_not_in: [String!]
+  githubHandle_lt: String
+  githubHandle_lte: String
+  githubHandle_gt: String
+  githubHandle_gte: String
+  githubHandle_contains: String
+  githubHandle_not_contains: String
+  githubHandle_starts_with: String
+  githubHandle_not_starts_with: String
+  githubHandle_ends_with: String
+  githubHandle_not_ends_with: String
+  githubUserId: String
+  githubUserId_not: String
+  githubUserId_in: [String!]
+  githubUserId_not_in: [String!]
+  githubUserId_lt: String
+  githubUserId_lte: String
+  githubUserId_gt: String
+  githubUserId_gte: String
+  githubUserId_contains: String
+  githubUserId_not_contains: String
+  githubUserId_starts_with: String
+  githubUserId_not_starts_with: String
+  githubUserId_ends_with: String
+  githubUserId_not_ends_with: String
+  avatarUrl: String
+  avatarUrl_not: String
+  avatarUrl_in: [String!]
+  avatarUrl_not_in: [String!]
+  avatarUrl_lt: String
+  avatarUrl_lte: String
+  avatarUrl_gt: String
+  avatarUrl_gte: String
+  avatarUrl_contains: String
+  avatarUrl_not_contains: String
+  avatarUrl_starts_with: String
+  avatarUrl_not_starts_with: String
+  avatarUrl_ends_with: String
+  avatarUrl_not_ends_with: String
+  bio: String
+  bio_not: String
+  bio_in: [String!]
+  bio_not_in: [String!]
+  bio_lt: String
+  bio_lte: String
+  bio_gt: String
+  bio_gte: String
+  bio_contains: String
+  bio_not_contains: String
+  bio_starts_with: String
+  bio_not_starts_with: String
+  bio_ends_with: String
+  bio_not_ends_with: String
   contributor: Boolean
   contributor_not: Boolean
   expertise: String
@@ -796,20 +879,6 @@ input UserWhereInput {
   expertise_not_starts_with: String
   expertise_ends_with: String
   expertise_not_ends_with: String
-  bio: String
-  bio_not: String
-  bio_in: [String!]
-  bio_not_in: [String!]
-  bio_lt: String
-  bio_lte: String
-  bio_gt: String
-  bio_gte: String
-  bio_contains: String
-  bio_not_contains: String
-  bio_starts_with: String
-  bio_not_starts_with: String
-  bio_ends_with: String
-  bio_not_ends_with: String
   userTutorials_every: UserTutorialWhereInput
   userTutorials_some: UserTutorialWhereInput
   userTutorials_none: UserTutorialWhereInput
@@ -820,6 +889,9 @@ input UserWhereInput {
 
 input UserWhereUniqueInput {
   id: ID
+  email: String
+  githubHandle: String
+  githubUserId: String
   expertise: String
 }
 `
