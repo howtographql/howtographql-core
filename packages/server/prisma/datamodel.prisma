@@ -1,23 +1,49 @@
+# type User {
+#   id: ID! @unique
+#   createdAt: DateTime!
+#   updatedAt: DateTime!
+
+#   name: String!
+#   email: String @unique
+
+#   githubHandle: String! @unique
+#   githubUserId: String! @unique
+#   avatarUrl: String
+#   bio: String!
+
+#   posts: [Post!]!
+# }
 type User {
+  id: ID! @unique
+  name: String!
+  email: String!
+  createdAt: DateTime!
+  updatedAt: DateTime!
+  contributor: Boolean!
+  expertise: String @unique
+  bio: String
+  userTutorials: [UserTutorial!]! @relation(name: "UseronUserTutorial")
+}
+
+type UserTutorial {
   id: ID! @unique
   createdAt: DateTime!
   updatedAt: DateTime!
-
-  name: String!
-  email: String @unique
-
-  githubHandle: String! @unique
-  githubUserId: String! @unique
-  avatarUrl: String
-  bio: String!
-
-  posts: [Post!]!
+  user: User @relation(name: "UseronUserTutorial")
+  tutorial: Tutorial @relation(name: "TutorialonUserTutorial")
+  upvoted: Boolean!
+  saved: Boolean!
+  currentChapter: Int!
 }
 
-type Post {
+type Tutorial {
   id: ID! @unique
-  title: String!
-  content: String!
-  published: Boolean! @default(value: "false")
-  author: User!
+  createdAt: DateTime!
+  updatedAt: DateTime!
+  name: String!
+  gatsbyID: String!
+  upvotes: Int!
+  numberOfStudents: Int!
+  numberofChapters: Int!
+  userTutorials: [UserTutorial!]! @relation(name: "TutorialonUserTutorial")
 }

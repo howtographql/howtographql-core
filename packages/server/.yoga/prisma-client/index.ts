@@ -16,8 +16,9 @@ export type AtLeastOne<T, U = { [K in keyof T]: Pick<T, K> }> = Partial<T> &
 export type Maybe<T> = T | undefined | null;
 
 export interface Exists {
-  post: (where?: PostWhereInput) => Promise<boolean>;
+  tutorial: (where?: TutorialWhereInput) => Promise<boolean>;
   user: (where?: UserWhereInput) => Promise<boolean>;
+  userTutorial: (where?: UserTutorialWhereInput) => Promise<boolean>;
 }
 
 export interface Node {}
@@ -39,25 +40,25 @@ export interface Prisma {
    * Queries
    */
 
-  post: (where: PostWhereUniqueInput) => PostNullablePromise;
-  posts: (args?: {
-    where?: PostWhereInput;
-    orderBy?: PostOrderByInput;
+  tutorial: (where: TutorialWhereUniqueInput) => TutorialNullablePromise;
+  tutorials: (args?: {
+    where?: TutorialWhereInput;
+    orderBy?: TutorialOrderByInput;
     skip?: Int;
     after?: String;
     before?: String;
     first?: Int;
     last?: Int;
-  }) => FragmentableArray<Post>;
-  postsConnection: (args?: {
-    where?: PostWhereInput;
-    orderBy?: PostOrderByInput;
+  }) => FragmentableArray<Tutorial>;
+  tutorialsConnection: (args?: {
+    where?: TutorialWhereInput;
+    orderBy?: TutorialOrderByInput;
     skip?: Int;
     after?: String;
     before?: String;
     first?: Int;
     last?: Int;
-  }) => PostConnectionPromise;
+  }) => TutorialConnectionPromise;
   user: (where: UserWhereUniqueInput) => UserNullablePromise;
   users: (args?: {
     where?: UserWhereInput;
@@ -77,28 +78,49 @@ export interface Prisma {
     first?: Int;
     last?: Int;
   }) => UserConnectionPromise;
+  userTutorial: (
+    where: UserTutorialWhereUniqueInput
+  ) => UserTutorialNullablePromise;
+  userTutorials: (args?: {
+    where?: UserTutorialWhereInput;
+    orderBy?: UserTutorialOrderByInput;
+    skip?: Int;
+    after?: String;
+    before?: String;
+    first?: Int;
+    last?: Int;
+  }) => FragmentableArray<UserTutorial>;
+  userTutorialsConnection: (args?: {
+    where?: UserTutorialWhereInput;
+    orderBy?: UserTutorialOrderByInput;
+    skip?: Int;
+    after?: String;
+    before?: String;
+    first?: Int;
+    last?: Int;
+  }) => UserTutorialConnectionPromise;
   node: (args: { id: ID_Output }) => Node;
 
   /**
    * Mutations
    */
 
-  createPost: (data: PostCreateInput) => PostPromise;
-  updatePost: (args: {
-    data: PostUpdateInput;
-    where: PostWhereUniqueInput;
-  }) => PostPromise;
-  updateManyPosts: (args: {
-    data: PostUpdateManyMutationInput;
-    where?: PostWhereInput;
+  createTutorial: (data: TutorialCreateInput) => TutorialPromise;
+  updateTutorial: (args: {
+    data: TutorialUpdateInput;
+    where: TutorialWhereUniqueInput;
+  }) => TutorialPromise;
+  updateManyTutorials: (args: {
+    data: TutorialUpdateManyMutationInput;
+    where?: TutorialWhereInput;
   }) => BatchPayloadPromise;
-  upsertPost: (args: {
-    where: PostWhereUniqueInput;
-    create: PostCreateInput;
-    update: PostUpdateInput;
-  }) => PostPromise;
-  deletePost: (where: PostWhereUniqueInput) => PostPromise;
-  deleteManyPosts: (where?: PostWhereInput) => BatchPayloadPromise;
+  upsertTutorial: (args: {
+    where: TutorialWhereUniqueInput;
+    create: TutorialCreateInput;
+    update: TutorialUpdateInput;
+  }) => TutorialPromise;
+  deleteTutorial: (where: TutorialWhereUniqueInput) => TutorialPromise;
+  deleteManyTutorials: (where?: TutorialWhereInput) => BatchPayloadPromise;
   createUser: (data: UserCreateInput) => UserPromise;
   updateUser: (args: {
     data: UserUpdateInput;
@@ -115,6 +137,26 @@ export interface Prisma {
   }) => UserPromise;
   deleteUser: (where: UserWhereUniqueInput) => UserPromise;
   deleteManyUsers: (where?: UserWhereInput) => BatchPayloadPromise;
+  createUserTutorial: (data: UserTutorialCreateInput) => UserTutorialPromise;
+  updateUserTutorial: (args: {
+    data: UserTutorialUpdateInput;
+    where: UserTutorialWhereUniqueInput;
+  }) => UserTutorialPromise;
+  updateManyUserTutorials: (args: {
+    data: UserTutorialUpdateManyMutationInput;
+    where?: UserTutorialWhereInput;
+  }) => BatchPayloadPromise;
+  upsertUserTutorial: (args: {
+    where: UserTutorialWhereUniqueInput;
+    create: UserTutorialCreateInput;
+    update: UserTutorialUpdateInput;
+  }) => UserTutorialPromise;
+  deleteUserTutorial: (
+    where: UserTutorialWhereUniqueInput
+  ) => UserTutorialPromise;
+  deleteManyUserTutorials: (
+    where?: UserTutorialWhereInput
+  ) => BatchPayloadPromise;
 
   /**
    * Subscriptions
@@ -124,12 +166,15 @@ export interface Prisma {
 }
 
 export interface Subscription {
-  post: (
-    where?: PostSubscriptionWhereInput
-  ) => PostSubscriptionPayloadSubscription;
+  tutorial: (
+    where?: TutorialSubscriptionWhereInput
+  ) => TutorialSubscriptionPayloadSubscription;
   user: (
     where?: UserSubscriptionWhereInput
   ) => UserSubscriptionPayloadSubscription;
+  userTutorial: (
+    where?: UserTutorialSubscriptionWhereInput
+  ) => UserTutorialSubscriptionPayloadSubscription;
 }
 
 export interface ClientConstructor<T> {
@@ -140,17 +185,21 @@ export interface ClientConstructor<T> {
  * Types
  */
 
-export type PostOrderByInput =
+export type UserTutorialOrderByInput =
   | "id_ASC"
   | "id_DESC"
-  | "title_ASC"
-  | "title_DESC"
-  | "content_ASC"
-  | "content_DESC"
-  | "published_ASC"
-  | "published_DESC";
+  | "createdAt_ASC"
+  | "createdAt_DESC"
+  | "updatedAt_ASC"
+  | "updatedAt_DESC"
+  | "upvoted_ASC"
+  | "upvoted_DESC"
+  | "saved_ASC"
+  | "saved_DESC"
+  | "currentChapter_ASC"
+  | "currentChapter_DESC";
 
-export type UserOrderByInput =
+export type TutorialOrderByInput =
   | "id_ASC"
   | "id_DESC"
   | "createdAt_ASC"
@@ -159,24 +208,40 @@ export type UserOrderByInput =
   | "updatedAt_DESC"
   | "name_ASC"
   | "name_DESC"
+  | "gatsbyID_ASC"
+  | "gatsbyID_DESC"
+  | "upvotes_ASC"
+  | "upvotes_DESC"
+  | "numberOfStudents_ASC"
+  | "numberOfStudents_DESC"
+  | "numberofChapters_ASC"
+  | "numberofChapters_DESC";
+
+export type UserOrderByInput =
+  | "id_ASC"
+  | "id_DESC"
+  | "name_ASC"
+  | "name_DESC"
   | "email_ASC"
   | "email_DESC"
-  | "githubHandle_ASC"
-  | "githubHandle_DESC"
-  | "githubUserId_ASC"
-  | "githubUserId_DESC"
-  | "avatarUrl_ASC"
-  | "avatarUrl_DESC"
+  | "createdAt_ASC"
+  | "createdAt_DESC"
+  | "updatedAt_ASC"
+  | "updatedAt_DESC"
+  | "contributor_ASC"
+  | "contributor_DESC"
+  | "expertise_ASC"
+  | "expertise_DESC"
   | "bio_ASC"
   | "bio_DESC";
 
 export type MutationType = "CREATED" | "UPDATED" | "DELETED";
 
-export type PostWhereUniqueInput = AtLeastOne<{
+export type TutorialWhereUniqueInput = AtLeastOne<{
   id: Maybe<ID_Input>;
 }>;
 
-export interface PostWhereInput {
+export interface UserTutorialWhereInput {
   id?: Maybe<ID_Input>;
   id_not?: Maybe<ID_Input>;
   id_in?: Maybe<ID_Input[] | ID_Input>;
@@ -191,43 +256,139 @@ export interface PostWhereInput {
   id_not_starts_with?: Maybe<ID_Input>;
   id_ends_with?: Maybe<ID_Input>;
   id_not_ends_with?: Maybe<ID_Input>;
-  title?: Maybe<String>;
-  title_not?: Maybe<String>;
-  title_in?: Maybe<String[] | String>;
-  title_not_in?: Maybe<String[] | String>;
-  title_lt?: Maybe<String>;
-  title_lte?: Maybe<String>;
-  title_gt?: Maybe<String>;
-  title_gte?: Maybe<String>;
-  title_contains?: Maybe<String>;
-  title_not_contains?: Maybe<String>;
-  title_starts_with?: Maybe<String>;
-  title_not_starts_with?: Maybe<String>;
-  title_ends_with?: Maybe<String>;
-  title_not_ends_with?: Maybe<String>;
-  content?: Maybe<String>;
-  content_not?: Maybe<String>;
-  content_in?: Maybe<String[] | String>;
-  content_not_in?: Maybe<String[] | String>;
-  content_lt?: Maybe<String>;
-  content_lte?: Maybe<String>;
-  content_gt?: Maybe<String>;
-  content_gte?: Maybe<String>;
-  content_contains?: Maybe<String>;
-  content_not_contains?: Maybe<String>;
-  content_starts_with?: Maybe<String>;
-  content_not_starts_with?: Maybe<String>;
-  content_ends_with?: Maybe<String>;
-  content_not_ends_with?: Maybe<String>;
-  published?: Maybe<Boolean>;
-  published_not?: Maybe<Boolean>;
-  author?: Maybe<UserWhereInput>;
-  AND?: Maybe<PostWhereInput[] | PostWhereInput>;
-  OR?: Maybe<PostWhereInput[] | PostWhereInput>;
-  NOT?: Maybe<PostWhereInput[] | PostWhereInput>;
+  createdAt?: Maybe<DateTimeInput>;
+  createdAt_not?: Maybe<DateTimeInput>;
+  createdAt_in?: Maybe<DateTimeInput[] | DateTimeInput>;
+  createdAt_not_in?: Maybe<DateTimeInput[] | DateTimeInput>;
+  createdAt_lt?: Maybe<DateTimeInput>;
+  createdAt_lte?: Maybe<DateTimeInput>;
+  createdAt_gt?: Maybe<DateTimeInput>;
+  createdAt_gte?: Maybe<DateTimeInput>;
+  updatedAt?: Maybe<DateTimeInput>;
+  updatedAt_not?: Maybe<DateTimeInput>;
+  updatedAt_in?: Maybe<DateTimeInput[] | DateTimeInput>;
+  updatedAt_not_in?: Maybe<DateTimeInput[] | DateTimeInput>;
+  updatedAt_lt?: Maybe<DateTimeInput>;
+  updatedAt_lte?: Maybe<DateTimeInput>;
+  updatedAt_gt?: Maybe<DateTimeInput>;
+  updatedAt_gte?: Maybe<DateTimeInput>;
+  user?: Maybe<UserWhereInput>;
+  tutorial?: Maybe<TutorialWhereInput>;
+  upvoted?: Maybe<Boolean>;
+  upvoted_not?: Maybe<Boolean>;
+  saved?: Maybe<Boolean>;
+  saved_not?: Maybe<Boolean>;
+  currentChapter?: Maybe<Int>;
+  currentChapter_not?: Maybe<Int>;
+  currentChapter_in?: Maybe<Int[] | Int>;
+  currentChapter_not_in?: Maybe<Int[] | Int>;
+  currentChapter_lt?: Maybe<Int>;
+  currentChapter_lte?: Maybe<Int>;
+  currentChapter_gt?: Maybe<Int>;
+  currentChapter_gte?: Maybe<Int>;
+  AND?: Maybe<UserTutorialWhereInput[] | UserTutorialWhereInput>;
+  OR?: Maybe<UserTutorialWhereInput[] | UserTutorialWhereInput>;
+  NOT?: Maybe<UserTutorialWhereInput[] | UserTutorialWhereInput>;
 }
 
 export interface UserWhereInput {
+  id?: Maybe<ID_Input>;
+  id_not?: Maybe<ID_Input>;
+  id_in?: Maybe<ID_Input[] | ID_Input>;
+  id_not_in?: Maybe<ID_Input[] | ID_Input>;
+  id_lt?: Maybe<ID_Input>;
+  id_lte?: Maybe<ID_Input>;
+  id_gt?: Maybe<ID_Input>;
+  id_gte?: Maybe<ID_Input>;
+  id_contains?: Maybe<ID_Input>;
+  id_not_contains?: Maybe<ID_Input>;
+  id_starts_with?: Maybe<ID_Input>;
+  id_not_starts_with?: Maybe<ID_Input>;
+  id_ends_with?: Maybe<ID_Input>;
+  id_not_ends_with?: Maybe<ID_Input>;
+  name?: Maybe<String>;
+  name_not?: Maybe<String>;
+  name_in?: Maybe<String[] | String>;
+  name_not_in?: Maybe<String[] | String>;
+  name_lt?: Maybe<String>;
+  name_lte?: Maybe<String>;
+  name_gt?: Maybe<String>;
+  name_gte?: Maybe<String>;
+  name_contains?: Maybe<String>;
+  name_not_contains?: Maybe<String>;
+  name_starts_with?: Maybe<String>;
+  name_not_starts_with?: Maybe<String>;
+  name_ends_with?: Maybe<String>;
+  name_not_ends_with?: Maybe<String>;
+  email?: Maybe<String>;
+  email_not?: Maybe<String>;
+  email_in?: Maybe<String[] | String>;
+  email_not_in?: Maybe<String[] | String>;
+  email_lt?: Maybe<String>;
+  email_lte?: Maybe<String>;
+  email_gt?: Maybe<String>;
+  email_gte?: Maybe<String>;
+  email_contains?: Maybe<String>;
+  email_not_contains?: Maybe<String>;
+  email_starts_with?: Maybe<String>;
+  email_not_starts_with?: Maybe<String>;
+  email_ends_with?: Maybe<String>;
+  email_not_ends_with?: Maybe<String>;
+  createdAt?: Maybe<DateTimeInput>;
+  createdAt_not?: Maybe<DateTimeInput>;
+  createdAt_in?: Maybe<DateTimeInput[] | DateTimeInput>;
+  createdAt_not_in?: Maybe<DateTimeInput[] | DateTimeInput>;
+  createdAt_lt?: Maybe<DateTimeInput>;
+  createdAt_lte?: Maybe<DateTimeInput>;
+  createdAt_gt?: Maybe<DateTimeInput>;
+  createdAt_gte?: Maybe<DateTimeInput>;
+  updatedAt?: Maybe<DateTimeInput>;
+  updatedAt_not?: Maybe<DateTimeInput>;
+  updatedAt_in?: Maybe<DateTimeInput[] | DateTimeInput>;
+  updatedAt_not_in?: Maybe<DateTimeInput[] | DateTimeInput>;
+  updatedAt_lt?: Maybe<DateTimeInput>;
+  updatedAt_lte?: Maybe<DateTimeInput>;
+  updatedAt_gt?: Maybe<DateTimeInput>;
+  updatedAt_gte?: Maybe<DateTimeInput>;
+  contributor?: Maybe<Boolean>;
+  contributor_not?: Maybe<Boolean>;
+  expertise?: Maybe<String>;
+  expertise_not?: Maybe<String>;
+  expertise_in?: Maybe<String[] | String>;
+  expertise_not_in?: Maybe<String[] | String>;
+  expertise_lt?: Maybe<String>;
+  expertise_lte?: Maybe<String>;
+  expertise_gt?: Maybe<String>;
+  expertise_gte?: Maybe<String>;
+  expertise_contains?: Maybe<String>;
+  expertise_not_contains?: Maybe<String>;
+  expertise_starts_with?: Maybe<String>;
+  expertise_not_starts_with?: Maybe<String>;
+  expertise_ends_with?: Maybe<String>;
+  expertise_not_ends_with?: Maybe<String>;
+  bio?: Maybe<String>;
+  bio_not?: Maybe<String>;
+  bio_in?: Maybe<String[] | String>;
+  bio_not_in?: Maybe<String[] | String>;
+  bio_lt?: Maybe<String>;
+  bio_lte?: Maybe<String>;
+  bio_gt?: Maybe<String>;
+  bio_gte?: Maybe<String>;
+  bio_contains?: Maybe<String>;
+  bio_not_contains?: Maybe<String>;
+  bio_starts_with?: Maybe<String>;
+  bio_not_starts_with?: Maybe<String>;
+  bio_ends_with?: Maybe<String>;
+  bio_not_ends_with?: Maybe<String>;
+  userTutorials_every?: Maybe<UserTutorialWhereInput>;
+  userTutorials_some?: Maybe<UserTutorialWhereInput>;
+  userTutorials_none?: Maybe<UserTutorialWhereInput>;
+  AND?: Maybe<UserWhereInput[] | UserWhereInput>;
+  OR?: Maybe<UserWhereInput[] | UserWhereInput>;
+  NOT?: Maybe<UserWhereInput[] | UserWhereInput>;
+}
+
+export interface TutorialWhereInput {
   id?: Maybe<ID_Input>;
   id_not?: Maybe<ID_Input>;
   id_in?: Maybe<ID_Input[] | ID_Input>;
@@ -272,215 +433,180 @@ export interface UserWhereInput {
   name_not_starts_with?: Maybe<String>;
   name_ends_with?: Maybe<String>;
   name_not_ends_with?: Maybe<String>;
-  email?: Maybe<String>;
-  email_not?: Maybe<String>;
-  email_in?: Maybe<String[] | String>;
-  email_not_in?: Maybe<String[] | String>;
-  email_lt?: Maybe<String>;
-  email_lte?: Maybe<String>;
-  email_gt?: Maybe<String>;
-  email_gte?: Maybe<String>;
-  email_contains?: Maybe<String>;
-  email_not_contains?: Maybe<String>;
-  email_starts_with?: Maybe<String>;
-  email_not_starts_with?: Maybe<String>;
-  email_ends_with?: Maybe<String>;
-  email_not_ends_with?: Maybe<String>;
-  githubHandle?: Maybe<String>;
-  githubHandle_not?: Maybe<String>;
-  githubHandle_in?: Maybe<String[] | String>;
-  githubHandle_not_in?: Maybe<String[] | String>;
-  githubHandle_lt?: Maybe<String>;
-  githubHandle_lte?: Maybe<String>;
-  githubHandle_gt?: Maybe<String>;
-  githubHandle_gte?: Maybe<String>;
-  githubHandle_contains?: Maybe<String>;
-  githubHandle_not_contains?: Maybe<String>;
-  githubHandle_starts_with?: Maybe<String>;
-  githubHandle_not_starts_with?: Maybe<String>;
-  githubHandle_ends_with?: Maybe<String>;
-  githubHandle_not_ends_with?: Maybe<String>;
-  githubUserId?: Maybe<String>;
-  githubUserId_not?: Maybe<String>;
-  githubUserId_in?: Maybe<String[] | String>;
-  githubUserId_not_in?: Maybe<String[] | String>;
-  githubUserId_lt?: Maybe<String>;
-  githubUserId_lte?: Maybe<String>;
-  githubUserId_gt?: Maybe<String>;
-  githubUserId_gte?: Maybe<String>;
-  githubUserId_contains?: Maybe<String>;
-  githubUserId_not_contains?: Maybe<String>;
-  githubUserId_starts_with?: Maybe<String>;
-  githubUserId_not_starts_with?: Maybe<String>;
-  githubUserId_ends_with?: Maybe<String>;
-  githubUserId_not_ends_with?: Maybe<String>;
-  avatarUrl?: Maybe<String>;
-  avatarUrl_not?: Maybe<String>;
-  avatarUrl_in?: Maybe<String[] | String>;
-  avatarUrl_not_in?: Maybe<String[] | String>;
-  avatarUrl_lt?: Maybe<String>;
-  avatarUrl_lte?: Maybe<String>;
-  avatarUrl_gt?: Maybe<String>;
-  avatarUrl_gte?: Maybe<String>;
-  avatarUrl_contains?: Maybe<String>;
-  avatarUrl_not_contains?: Maybe<String>;
-  avatarUrl_starts_with?: Maybe<String>;
-  avatarUrl_not_starts_with?: Maybe<String>;
-  avatarUrl_ends_with?: Maybe<String>;
-  avatarUrl_not_ends_with?: Maybe<String>;
-  bio?: Maybe<String>;
-  bio_not?: Maybe<String>;
-  bio_in?: Maybe<String[] | String>;
-  bio_not_in?: Maybe<String[] | String>;
-  bio_lt?: Maybe<String>;
-  bio_lte?: Maybe<String>;
-  bio_gt?: Maybe<String>;
-  bio_gte?: Maybe<String>;
-  bio_contains?: Maybe<String>;
-  bio_not_contains?: Maybe<String>;
-  bio_starts_with?: Maybe<String>;
-  bio_not_starts_with?: Maybe<String>;
-  bio_ends_with?: Maybe<String>;
-  bio_not_ends_with?: Maybe<String>;
-  posts_every?: Maybe<PostWhereInput>;
-  posts_some?: Maybe<PostWhereInput>;
-  posts_none?: Maybe<PostWhereInput>;
-  AND?: Maybe<UserWhereInput[] | UserWhereInput>;
-  OR?: Maybe<UserWhereInput[] | UserWhereInput>;
-  NOT?: Maybe<UserWhereInput[] | UserWhereInput>;
+  gatsbyID?: Maybe<String>;
+  gatsbyID_not?: Maybe<String>;
+  gatsbyID_in?: Maybe<String[] | String>;
+  gatsbyID_not_in?: Maybe<String[] | String>;
+  gatsbyID_lt?: Maybe<String>;
+  gatsbyID_lte?: Maybe<String>;
+  gatsbyID_gt?: Maybe<String>;
+  gatsbyID_gte?: Maybe<String>;
+  gatsbyID_contains?: Maybe<String>;
+  gatsbyID_not_contains?: Maybe<String>;
+  gatsbyID_starts_with?: Maybe<String>;
+  gatsbyID_not_starts_with?: Maybe<String>;
+  gatsbyID_ends_with?: Maybe<String>;
+  gatsbyID_not_ends_with?: Maybe<String>;
+  upvotes?: Maybe<Int>;
+  upvotes_not?: Maybe<Int>;
+  upvotes_in?: Maybe<Int[] | Int>;
+  upvotes_not_in?: Maybe<Int[] | Int>;
+  upvotes_lt?: Maybe<Int>;
+  upvotes_lte?: Maybe<Int>;
+  upvotes_gt?: Maybe<Int>;
+  upvotes_gte?: Maybe<Int>;
+  numberOfStudents?: Maybe<Int>;
+  numberOfStudents_not?: Maybe<Int>;
+  numberOfStudents_in?: Maybe<Int[] | Int>;
+  numberOfStudents_not_in?: Maybe<Int[] | Int>;
+  numberOfStudents_lt?: Maybe<Int>;
+  numberOfStudents_lte?: Maybe<Int>;
+  numberOfStudents_gt?: Maybe<Int>;
+  numberOfStudents_gte?: Maybe<Int>;
+  numberofChapters?: Maybe<Int>;
+  numberofChapters_not?: Maybe<Int>;
+  numberofChapters_in?: Maybe<Int[] | Int>;
+  numberofChapters_not_in?: Maybe<Int[] | Int>;
+  numberofChapters_lt?: Maybe<Int>;
+  numberofChapters_lte?: Maybe<Int>;
+  numberofChapters_gt?: Maybe<Int>;
+  numberofChapters_gte?: Maybe<Int>;
+  userTutorials_every?: Maybe<UserTutorialWhereInput>;
+  userTutorials_some?: Maybe<UserTutorialWhereInput>;
+  userTutorials_none?: Maybe<UserTutorialWhereInput>;
+  AND?: Maybe<TutorialWhereInput[] | TutorialWhereInput>;
+  OR?: Maybe<TutorialWhereInput[] | TutorialWhereInput>;
+  NOT?: Maybe<TutorialWhereInput[] | TutorialWhereInput>;
 }
 
 export type UserWhereUniqueInput = AtLeastOne<{
   id: Maybe<ID_Input>;
-  email?: Maybe<String>;
-  githubHandle?: Maybe<String>;
-  githubUserId?: Maybe<String>;
+  expertise?: Maybe<String>;
 }>;
 
-export interface PostCreateInput {
-  title: String;
-  content: String;
-  published?: Maybe<Boolean>;
-  author: UserCreateOneWithoutPostsInput;
+export type UserTutorialWhereUniqueInput = AtLeastOne<{
+  id: Maybe<ID_Input>;
+}>;
+
+export interface TutorialCreateInput {
+  name: String;
+  gatsbyID: String;
+  upvotes: Int;
+  numberOfStudents: Int;
+  numberofChapters: Int;
+  userTutorials?: Maybe<UserTutorialCreateManyWithoutTutorialInput>;
 }
 
-export interface UserCreateOneWithoutPostsInput {
-  create?: Maybe<UserCreateWithoutPostsInput>;
+export interface UserTutorialCreateManyWithoutTutorialInput {
+  create?: Maybe<
+    | UserTutorialCreateWithoutTutorialInput[]
+    | UserTutorialCreateWithoutTutorialInput
+  >;
+  connect?: Maybe<
+    UserTutorialWhereUniqueInput[] | UserTutorialWhereUniqueInput
+  >;
+}
+
+export interface UserTutorialCreateWithoutTutorialInput {
+  user?: Maybe<UserCreateOneWithoutUserTutorialsInput>;
+  upvoted: Boolean;
+  saved: Boolean;
+  currentChapter: Int;
+}
+
+export interface UserCreateOneWithoutUserTutorialsInput {
+  create?: Maybe<UserCreateWithoutUserTutorialsInput>;
   connect?: Maybe<UserWhereUniqueInput>;
 }
 
-export interface UserCreateWithoutPostsInput {
+export interface UserCreateWithoutUserTutorialsInput {
   name: String;
-  email?: Maybe<String>;
-  githubHandle: String;
-  githubUserId: String;
-  avatarUrl?: Maybe<String>;
-  bio: String;
-}
-
-export interface PostUpdateInput {
-  title?: Maybe<String>;
-  content?: Maybe<String>;
-  published?: Maybe<Boolean>;
-  author?: Maybe<UserUpdateOneRequiredWithoutPostsInput>;
-}
-
-export interface UserUpdateOneRequiredWithoutPostsInput {
-  create?: Maybe<UserCreateWithoutPostsInput>;
-  update?: Maybe<UserUpdateWithoutPostsDataInput>;
-  upsert?: Maybe<UserUpsertWithoutPostsInput>;
-  connect?: Maybe<UserWhereUniqueInput>;
-}
-
-export interface UserUpdateWithoutPostsDataInput {
-  name?: Maybe<String>;
-  email?: Maybe<String>;
-  githubHandle?: Maybe<String>;
-  githubUserId?: Maybe<String>;
-  avatarUrl?: Maybe<String>;
+  email: String;
+  contributor: Boolean;
+  expertise?: Maybe<String>;
   bio?: Maybe<String>;
 }
 
-export interface UserUpsertWithoutPostsInput {
-  update: UserUpdateWithoutPostsDataInput;
-  create: UserCreateWithoutPostsInput;
-}
-
-export interface PostUpdateManyMutationInput {
-  title?: Maybe<String>;
-  content?: Maybe<String>;
-  published?: Maybe<Boolean>;
-}
-
-export interface UserCreateInput {
-  name: String;
-  email?: Maybe<String>;
-  githubHandle: String;
-  githubUserId: String;
-  avatarUrl?: Maybe<String>;
-  bio: String;
-  posts?: Maybe<PostCreateManyWithoutAuthorInput>;
-}
-
-export interface PostCreateManyWithoutAuthorInput {
-  create?: Maybe<PostCreateWithoutAuthorInput[] | PostCreateWithoutAuthorInput>;
-  connect?: Maybe<PostWhereUniqueInput[] | PostWhereUniqueInput>;
-}
-
-export interface PostCreateWithoutAuthorInput {
-  title: String;
-  content: String;
-  published?: Maybe<Boolean>;
-}
-
-export interface UserUpdateInput {
+export interface TutorialUpdateInput {
   name?: Maybe<String>;
-  email?: Maybe<String>;
-  githubHandle?: Maybe<String>;
-  githubUserId?: Maybe<String>;
-  avatarUrl?: Maybe<String>;
-  bio?: Maybe<String>;
-  posts?: Maybe<PostUpdateManyWithoutAuthorInput>;
+  gatsbyID?: Maybe<String>;
+  upvotes?: Maybe<Int>;
+  numberOfStudents?: Maybe<Int>;
+  numberofChapters?: Maybe<Int>;
+  userTutorials?: Maybe<UserTutorialUpdateManyWithoutTutorialInput>;
 }
 
-export interface PostUpdateManyWithoutAuthorInput {
-  create?: Maybe<PostCreateWithoutAuthorInput[] | PostCreateWithoutAuthorInput>;
-  delete?: Maybe<PostWhereUniqueInput[] | PostWhereUniqueInput>;
-  connect?: Maybe<PostWhereUniqueInput[] | PostWhereUniqueInput>;
-  set?: Maybe<PostWhereUniqueInput[] | PostWhereUniqueInput>;
-  disconnect?: Maybe<PostWhereUniqueInput[] | PostWhereUniqueInput>;
+export interface UserTutorialUpdateManyWithoutTutorialInput {
+  create?: Maybe<
+    | UserTutorialCreateWithoutTutorialInput[]
+    | UserTutorialCreateWithoutTutorialInput
+  >;
+  delete?: Maybe<UserTutorialWhereUniqueInput[] | UserTutorialWhereUniqueInput>;
+  connect?: Maybe<
+    UserTutorialWhereUniqueInput[] | UserTutorialWhereUniqueInput
+  >;
+  set?: Maybe<UserTutorialWhereUniqueInput[] | UserTutorialWhereUniqueInput>;
+  disconnect?: Maybe<
+    UserTutorialWhereUniqueInput[] | UserTutorialWhereUniqueInput
+  >;
   update?: Maybe<
-    | PostUpdateWithWhereUniqueWithoutAuthorInput[]
-    | PostUpdateWithWhereUniqueWithoutAuthorInput
+    | UserTutorialUpdateWithWhereUniqueWithoutTutorialInput[]
+    | UserTutorialUpdateWithWhereUniqueWithoutTutorialInput
   >;
   upsert?: Maybe<
-    | PostUpsertWithWhereUniqueWithoutAuthorInput[]
-    | PostUpsertWithWhereUniqueWithoutAuthorInput
+    | UserTutorialUpsertWithWhereUniqueWithoutTutorialInput[]
+    | UserTutorialUpsertWithWhereUniqueWithoutTutorialInput
   >;
-  deleteMany?: Maybe<PostScalarWhereInput[] | PostScalarWhereInput>;
+  deleteMany?: Maybe<
+    UserTutorialScalarWhereInput[] | UserTutorialScalarWhereInput
+  >;
   updateMany?: Maybe<
-    PostUpdateManyWithWhereNestedInput[] | PostUpdateManyWithWhereNestedInput
+    | UserTutorialUpdateManyWithWhereNestedInput[]
+    | UserTutorialUpdateManyWithWhereNestedInput
   >;
 }
 
-export interface PostUpdateWithWhereUniqueWithoutAuthorInput {
-  where: PostWhereUniqueInput;
-  data: PostUpdateWithoutAuthorDataInput;
+export interface UserTutorialUpdateWithWhereUniqueWithoutTutorialInput {
+  where: UserTutorialWhereUniqueInput;
+  data: UserTutorialUpdateWithoutTutorialDataInput;
 }
 
-export interface PostUpdateWithoutAuthorDataInput {
-  title?: Maybe<String>;
-  content?: Maybe<String>;
-  published?: Maybe<Boolean>;
+export interface UserTutorialUpdateWithoutTutorialDataInput {
+  user?: Maybe<UserUpdateOneWithoutUserTutorialsInput>;
+  upvoted?: Maybe<Boolean>;
+  saved?: Maybe<Boolean>;
+  currentChapter?: Maybe<Int>;
 }
 
-export interface PostUpsertWithWhereUniqueWithoutAuthorInput {
-  where: PostWhereUniqueInput;
-  update: PostUpdateWithoutAuthorDataInput;
-  create: PostCreateWithoutAuthorInput;
+export interface UserUpdateOneWithoutUserTutorialsInput {
+  create?: Maybe<UserCreateWithoutUserTutorialsInput>;
+  update?: Maybe<UserUpdateWithoutUserTutorialsDataInput>;
+  upsert?: Maybe<UserUpsertWithoutUserTutorialsInput>;
+  delete?: Maybe<Boolean>;
+  disconnect?: Maybe<Boolean>;
+  connect?: Maybe<UserWhereUniqueInput>;
 }
 
-export interface PostScalarWhereInput {
+export interface UserUpdateWithoutUserTutorialsDataInput {
+  name?: Maybe<String>;
+  email?: Maybe<String>;
+  contributor?: Maybe<Boolean>;
+  expertise?: Maybe<String>;
+  bio?: Maybe<String>;
+}
+
+export interface UserUpsertWithoutUserTutorialsInput {
+  update: UserUpdateWithoutUserTutorialsDataInput;
+  create: UserCreateWithoutUserTutorialsInput;
+}
+
+export interface UserTutorialUpsertWithWhereUniqueWithoutTutorialInput {
+  where: UserTutorialWhereUniqueInput;
+  update: UserTutorialUpdateWithoutTutorialDataInput;
+  create: UserTutorialCreateWithoutTutorialInput;
+}
+
+export interface UserTutorialScalarWhereInput {
   id?: Maybe<ID_Input>;
   id_not?: Maybe<ID_Input>;
   id_in?: Maybe<ID_Input[] | ID_Input>;
@@ -495,70 +621,217 @@ export interface PostScalarWhereInput {
   id_not_starts_with?: Maybe<ID_Input>;
   id_ends_with?: Maybe<ID_Input>;
   id_not_ends_with?: Maybe<ID_Input>;
-  title?: Maybe<String>;
-  title_not?: Maybe<String>;
-  title_in?: Maybe<String[] | String>;
-  title_not_in?: Maybe<String[] | String>;
-  title_lt?: Maybe<String>;
-  title_lte?: Maybe<String>;
-  title_gt?: Maybe<String>;
-  title_gte?: Maybe<String>;
-  title_contains?: Maybe<String>;
-  title_not_contains?: Maybe<String>;
-  title_starts_with?: Maybe<String>;
-  title_not_starts_with?: Maybe<String>;
-  title_ends_with?: Maybe<String>;
-  title_not_ends_with?: Maybe<String>;
-  content?: Maybe<String>;
-  content_not?: Maybe<String>;
-  content_in?: Maybe<String[] | String>;
-  content_not_in?: Maybe<String[] | String>;
-  content_lt?: Maybe<String>;
-  content_lte?: Maybe<String>;
-  content_gt?: Maybe<String>;
-  content_gte?: Maybe<String>;
-  content_contains?: Maybe<String>;
-  content_not_contains?: Maybe<String>;
-  content_starts_with?: Maybe<String>;
-  content_not_starts_with?: Maybe<String>;
-  content_ends_with?: Maybe<String>;
-  content_not_ends_with?: Maybe<String>;
-  published?: Maybe<Boolean>;
-  published_not?: Maybe<Boolean>;
-  AND?: Maybe<PostScalarWhereInput[] | PostScalarWhereInput>;
-  OR?: Maybe<PostScalarWhereInput[] | PostScalarWhereInput>;
-  NOT?: Maybe<PostScalarWhereInput[] | PostScalarWhereInput>;
+  createdAt?: Maybe<DateTimeInput>;
+  createdAt_not?: Maybe<DateTimeInput>;
+  createdAt_in?: Maybe<DateTimeInput[] | DateTimeInput>;
+  createdAt_not_in?: Maybe<DateTimeInput[] | DateTimeInput>;
+  createdAt_lt?: Maybe<DateTimeInput>;
+  createdAt_lte?: Maybe<DateTimeInput>;
+  createdAt_gt?: Maybe<DateTimeInput>;
+  createdAt_gte?: Maybe<DateTimeInput>;
+  updatedAt?: Maybe<DateTimeInput>;
+  updatedAt_not?: Maybe<DateTimeInput>;
+  updatedAt_in?: Maybe<DateTimeInput[] | DateTimeInput>;
+  updatedAt_not_in?: Maybe<DateTimeInput[] | DateTimeInput>;
+  updatedAt_lt?: Maybe<DateTimeInput>;
+  updatedAt_lte?: Maybe<DateTimeInput>;
+  updatedAt_gt?: Maybe<DateTimeInput>;
+  updatedAt_gte?: Maybe<DateTimeInput>;
+  upvoted?: Maybe<Boolean>;
+  upvoted_not?: Maybe<Boolean>;
+  saved?: Maybe<Boolean>;
+  saved_not?: Maybe<Boolean>;
+  currentChapter?: Maybe<Int>;
+  currentChapter_not?: Maybe<Int>;
+  currentChapter_in?: Maybe<Int[] | Int>;
+  currentChapter_not_in?: Maybe<Int[] | Int>;
+  currentChapter_lt?: Maybe<Int>;
+  currentChapter_lte?: Maybe<Int>;
+  currentChapter_gt?: Maybe<Int>;
+  currentChapter_gte?: Maybe<Int>;
+  AND?: Maybe<UserTutorialScalarWhereInput[] | UserTutorialScalarWhereInput>;
+  OR?: Maybe<UserTutorialScalarWhereInput[] | UserTutorialScalarWhereInput>;
+  NOT?: Maybe<UserTutorialScalarWhereInput[] | UserTutorialScalarWhereInput>;
 }
 
-export interface PostUpdateManyWithWhereNestedInput {
-  where: PostScalarWhereInput;
-  data: PostUpdateManyDataInput;
+export interface UserTutorialUpdateManyWithWhereNestedInput {
+  where: UserTutorialScalarWhereInput;
+  data: UserTutorialUpdateManyDataInput;
 }
 
-export interface PostUpdateManyDataInput {
-  title?: Maybe<String>;
-  content?: Maybe<String>;
-  published?: Maybe<Boolean>;
+export interface UserTutorialUpdateManyDataInput {
+  upvoted?: Maybe<Boolean>;
+  saved?: Maybe<Boolean>;
+  currentChapter?: Maybe<Int>;
+}
+
+export interface TutorialUpdateManyMutationInput {
+  name?: Maybe<String>;
+  gatsbyID?: Maybe<String>;
+  upvotes?: Maybe<Int>;
+  numberOfStudents?: Maybe<Int>;
+  numberofChapters?: Maybe<Int>;
+}
+
+export interface UserCreateInput {
+  name: String;
+  email: String;
+  contributor: Boolean;
+  expertise?: Maybe<String>;
+  bio?: Maybe<String>;
+  userTutorials?: Maybe<UserTutorialCreateManyWithoutUserInput>;
+}
+
+export interface UserTutorialCreateManyWithoutUserInput {
+  create?: Maybe<
+    UserTutorialCreateWithoutUserInput[] | UserTutorialCreateWithoutUserInput
+  >;
+  connect?: Maybe<
+    UserTutorialWhereUniqueInput[] | UserTutorialWhereUniqueInput
+  >;
+}
+
+export interface UserTutorialCreateWithoutUserInput {
+  tutorial?: Maybe<TutorialCreateOneWithoutUserTutorialsInput>;
+  upvoted: Boolean;
+  saved: Boolean;
+  currentChapter: Int;
+}
+
+export interface TutorialCreateOneWithoutUserTutorialsInput {
+  create?: Maybe<TutorialCreateWithoutUserTutorialsInput>;
+  connect?: Maybe<TutorialWhereUniqueInput>;
+}
+
+export interface TutorialCreateWithoutUserTutorialsInput {
+  name: String;
+  gatsbyID: String;
+  upvotes: Int;
+  numberOfStudents: Int;
+  numberofChapters: Int;
+}
+
+export interface UserUpdateInput {
+  name?: Maybe<String>;
+  email?: Maybe<String>;
+  contributor?: Maybe<Boolean>;
+  expertise?: Maybe<String>;
+  bio?: Maybe<String>;
+  userTutorials?: Maybe<UserTutorialUpdateManyWithoutUserInput>;
+}
+
+export interface UserTutorialUpdateManyWithoutUserInput {
+  create?: Maybe<
+    UserTutorialCreateWithoutUserInput[] | UserTutorialCreateWithoutUserInput
+  >;
+  delete?: Maybe<UserTutorialWhereUniqueInput[] | UserTutorialWhereUniqueInput>;
+  connect?: Maybe<
+    UserTutorialWhereUniqueInput[] | UserTutorialWhereUniqueInput
+  >;
+  set?: Maybe<UserTutorialWhereUniqueInput[] | UserTutorialWhereUniqueInput>;
+  disconnect?: Maybe<
+    UserTutorialWhereUniqueInput[] | UserTutorialWhereUniqueInput
+  >;
+  update?: Maybe<
+    | UserTutorialUpdateWithWhereUniqueWithoutUserInput[]
+    | UserTutorialUpdateWithWhereUniqueWithoutUserInput
+  >;
+  upsert?: Maybe<
+    | UserTutorialUpsertWithWhereUniqueWithoutUserInput[]
+    | UserTutorialUpsertWithWhereUniqueWithoutUserInput
+  >;
+  deleteMany?: Maybe<
+    UserTutorialScalarWhereInput[] | UserTutorialScalarWhereInput
+  >;
+  updateMany?: Maybe<
+    | UserTutorialUpdateManyWithWhereNestedInput[]
+    | UserTutorialUpdateManyWithWhereNestedInput
+  >;
+}
+
+export interface UserTutorialUpdateWithWhereUniqueWithoutUserInput {
+  where: UserTutorialWhereUniqueInput;
+  data: UserTutorialUpdateWithoutUserDataInput;
+}
+
+export interface UserTutorialUpdateWithoutUserDataInput {
+  tutorial?: Maybe<TutorialUpdateOneWithoutUserTutorialsInput>;
+  upvoted?: Maybe<Boolean>;
+  saved?: Maybe<Boolean>;
+  currentChapter?: Maybe<Int>;
+}
+
+export interface TutorialUpdateOneWithoutUserTutorialsInput {
+  create?: Maybe<TutorialCreateWithoutUserTutorialsInput>;
+  update?: Maybe<TutorialUpdateWithoutUserTutorialsDataInput>;
+  upsert?: Maybe<TutorialUpsertWithoutUserTutorialsInput>;
+  delete?: Maybe<Boolean>;
+  disconnect?: Maybe<Boolean>;
+  connect?: Maybe<TutorialWhereUniqueInput>;
+}
+
+export interface TutorialUpdateWithoutUserTutorialsDataInput {
+  name?: Maybe<String>;
+  gatsbyID?: Maybe<String>;
+  upvotes?: Maybe<Int>;
+  numberOfStudents?: Maybe<Int>;
+  numberofChapters?: Maybe<Int>;
+}
+
+export interface TutorialUpsertWithoutUserTutorialsInput {
+  update: TutorialUpdateWithoutUserTutorialsDataInput;
+  create: TutorialCreateWithoutUserTutorialsInput;
+}
+
+export interface UserTutorialUpsertWithWhereUniqueWithoutUserInput {
+  where: UserTutorialWhereUniqueInput;
+  update: UserTutorialUpdateWithoutUserDataInput;
+  create: UserTutorialCreateWithoutUserInput;
 }
 
 export interface UserUpdateManyMutationInput {
   name?: Maybe<String>;
   email?: Maybe<String>;
-  githubHandle?: Maybe<String>;
-  githubUserId?: Maybe<String>;
-  avatarUrl?: Maybe<String>;
+  contributor?: Maybe<Boolean>;
+  expertise?: Maybe<String>;
   bio?: Maybe<String>;
 }
 
-export interface PostSubscriptionWhereInput {
+export interface UserTutorialCreateInput {
+  user?: Maybe<UserCreateOneWithoutUserTutorialsInput>;
+  tutorial?: Maybe<TutorialCreateOneWithoutUserTutorialsInput>;
+  upvoted: Boolean;
+  saved: Boolean;
+  currentChapter: Int;
+}
+
+export interface UserTutorialUpdateInput {
+  user?: Maybe<UserUpdateOneWithoutUserTutorialsInput>;
+  tutorial?: Maybe<TutorialUpdateOneWithoutUserTutorialsInput>;
+  upvoted?: Maybe<Boolean>;
+  saved?: Maybe<Boolean>;
+  currentChapter?: Maybe<Int>;
+}
+
+export interface UserTutorialUpdateManyMutationInput {
+  upvoted?: Maybe<Boolean>;
+  saved?: Maybe<Boolean>;
+  currentChapter?: Maybe<Int>;
+}
+
+export interface TutorialSubscriptionWhereInput {
   mutation_in?: Maybe<MutationType[] | MutationType>;
   updatedFields_contains?: Maybe<String>;
   updatedFields_contains_every?: Maybe<String[] | String>;
   updatedFields_contains_some?: Maybe<String[] | String>;
-  node?: Maybe<PostWhereInput>;
-  AND?: Maybe<PostSubscriptionWhereInput[] | PostSubscriptionWhereInput>;
-  OR?: Maybe<PostSubscriptionWhereInput[] | PostSubscriptionWhereInput>;
-  NOT?: Maybe<PostSubscriptionWhereInput[] | PostSubscriptionWhereInput>;
+  node?: Maybe<TutorialWhereInput>;
+  AND?: Maybe<
+    TutorialSubscriptionWhereInput[] | TutorialSubscriptionWhereInput
+  >;
+  OR?: Maybe<TutorialSubscriptionWhereInput[] | TutorialSubscriptionWhereInput>;
+  NOT?: Maybe<
+    TutorialSubscriptionWhereInput[] | TutorialSubscriptionWhereInput
+  >;
 }
 
 export interface UserSubscriptionWhereInput {
@@ -572,70 +845,173 @@ export interface UserSubscriptionWhereInput {
   NOT?: Maybe<UserSubscriptionWhereInput[] | UserSubscriptionWhereInput>;
 }
 
+export interface UserTutorialSubscriptionWhereInput {
+  mutation_in?: Maybe<MutationType[] | MutationType>;
+  updatedFields_contains?: Maybe<String>;
+  updatedFields_contains_every?: Maybe<String[] | String>;
+  updatedFields_contains_some?: Maybe<String[] | String>;
+  node?: Maybe<UserTutorialWhereInput>;
+  AND?: Maybe<
+    UserTutorialSubscriptionWhereInput[] | UserTutorialSubscriptionWhereInput
+  >;
+  OR?: Maybe<
+    UserTutorialSubscriptionWhereInput[] | UserTutorialSubscriptionWhereInput
+  >;
+  NOT?: Maybe<
+    UserTutorialSubscriptionWhereInput[] | UserTutorialSubscriptionWhereInput
+  >;
+}
+
 export interface NodeNode {
   id: ID_Output;
 }
 
-export interface Post {
-  id: ID_Output;
-  title: String;
-  content: String;
-  published: Boolean;
-}
-
-export interface PostPromise extends Promise<Post>, Fragmentable {
-  id: () => Promise<ID_Output>;
-  title: () => Promise<String>;
-  content: () => Promise<String>;
-  published: () => Promise<Boolean>;
-  author: <T = UserPromise>() => T;
-}
-
-export interface PostSubscription
-  extends Promise<AsyncIterator<Post>>,
-    Fragmentable {
-  id: () => Promise<AsyncIterator<ID_Output>>;
-  title: () => Promise<AsyncIterator<String>>;
-  content: () => Promise<AsyncIterator<String>>;
-  published: () => Promise<AsyncIterator<Boolean>>;
-  author: <T = UserSubscription>() => T;
-}
-
-export interface PostNullablePromise
-  extends Promise<Post | null>,
-    Fragmentable {
-  id: () => Promise<ID_Output>;
-  title: () => Promise<String>;
-  content: () => Promise<String>;
-  published: () => Promise<Boolean>;
-  author: <T = UserPromise>() => T;
-}
-
-export interface User {
+export interface Tutorial {
   id: ID_Output;
   createdAt: DateTimeOutput;
   updatedAt: DateTimeOutput;
   name: String;
-  email?: String;
-  githubHandle: String;
-  githubUserId: String;
-  avatarUrl?: String;
-  bio: String;
+  gatsbyID: String;
+  upvotes: Int;
+  numberOfStudents: Int;
+  numberofChapters: Int;
 }
 
-export interface UserPromise extends Promise<User>, Fragmentable {
+export interface TutorialPromise extends Promise<Tutorial>, Fragmentable {
   id: () => Promise<ID_Output>;
   createdAt: () => Promise<DateTimeOutput>;
   updatedAt: () => Promise<DateTimeOutput>;
   name: () => Promise<String>;
+  gatsbyID: () => Promise<String>;
+  upvotes: () => Promise<Int>;
+  numberOfStudents: () => Promise<Int>;
+  numberofChapters: () => Promise<Int>;
+  userTutorials: <T = FragmentableArray<UserTutorial>>(args?: {
+    where?: UserTutorialWhereInput;
+    orderBy?: UserTutorialOrderByInput;
+    skip?: Int;
+    after?: String;
+    before?: String;
+    first?: Int;
+    last?: Int;
+  }) => T;
+}
+
+export interface TutorialSubscription
+  extends Promise<AsyncIterator<Tutorial>>,
+    Fragmentable {
+  id: () => Promise<AsyncIterator<ID_Output>>;
+  createdAt: () => Promise<AsyncIterator<DateTimeOutput>>;
+  updatedAt: () => Promise<AsyncIterator<DateTimeOutput>>;
+  name: () => Promise<AsyncIterator<String>>;
+  gatsbyID: () => Promise<AsyncIterator<String>>;
+  upvotes: () => Promise<AsyncIterator<Int>>;
+  numberOfStudents: () => Promise<AsyncIterator<Int>>;
+  numberofChapters: () => Promise<AsyncIterator<Int>>;
+  userTutorials: <T = Promise<AsyncIterator<UserTutorialSubscription>>>(args?: {
+    where?: UserTutorialWhereInput;
+    orderBy?: UserTutorialOrderByInput;
+    skip?: Int;
+    after?: String;
+    before?: String;
+    first?: Int;
+    last?: Int;
+  }) => T;
+}
+
+export interface TutorialNullablePromise
+  extends Promise<Tutorial | null>,
+    Fragmentable {
+  id: () => Promise<ID_Output>;
+  createdAt: () => Promise<DateTimeOutput>;
+  updatedAt: () => Promise<DateTimeOutput>;
+  name: () => Promise<String>;
+  gatsbyID: () => Promise<String>;
+  upvotes: () => Promise<Int>;
+  numberOfStudents: () => Promise<Int>;
+  numberofChapters: () => Promise<Int>;
+  userTutorials: <T = FragmentableArray<UserTutorial>>(args?: {
+    where?: UserTutorialWhereInput;
+    orderBy?: UserTutorialOrderByInput;
+    skip?: Int;
+    after?: String;
+    before?: String;
+    first?: Int;
+    last?: Int;
+  }) => T;
+}
+
+export interface UserTutorial {
+  id: ID_Output;
+  createdAt: DateTimeOutput;
+  updatedAt: DateTimeOutput;
+  upvoted: Boolean;
+  saved: Boolean;
+  currentChapter: Int;
+}
+
+export interface UserTutorialPromise
+  extends Promise<UserTutorial>,
+    Fragmentable {
+  id: () => Promise<ID_Output>;
+  createdAt: () => Promise<DateTimeOutput>;
+  updatedAt: () => Promise<DateTimeOutput>;
+  user: <T = UserPromise>() => T;
+  tutorial: <T = TutorialPromise>() => T;
+  upvoted: () => Promise<Boolean>;
+  saved: () => Promise<Boolean>;
+  currentChapter: () => Promise<Int>;
+}
+
+export interface UserTutorialSubscription
+  extends Promise<AsyncIterator<UserTutorial>>,
+    Fragmentable {
+  id: () => Promise<AsyncIterator<ID_Output>>;
+  createdAt: () => Promise<AsyncIterator<DateTimeOutput>>;
+  updatedAt: () => Promise<AsyncIterator<DateTimeOutput>>;
+  user: <T = UserSubscription>() => T;
+  tutorial: <T = TutorialSubscription>() => T;
+  upvoted: () => Promise<AsyncIterator<Boolean>>;
+  saved: () => Promise<AsyncIterator<Boolean>>;
+  currentChapter: () => Promise<AsyncIterator<Int>>;
+}
+
+export interface UserTutorialNullablePromise
+  extends Promise<UserTutorial | null>,
+    Fragmentable {
+  id: () => Promise<ID_Output>;
+  createdAt: () => Promise<DateTimeOutput>;
+  updatedAt: () => Promise<DateTimeOutput>;
+  user: <T = UserPromise>() => T;
+  tutorial: <T = TutorialPromise>() => T;
+  upvoted: () => Promise<Boolean>;
+  saved: () => Promise<Boolean>;
+  currentChapter: () => Promise<Int>;
+}
+
+export interface User {
+  id: ID_Output;
+  name: String;
+  email: String;
+  createdAt: DateTimeOutput;
+  updatedAt: DateTimeOutput;
+  contributor: Boolean;
+  expertise?: String;
+  bio?: String;
+}
+
+export interface UserPromise extends Promise<User>, Fragmentable {
+  id: () => Promise<ID_Output>;
+  name: () => Promise<String>;
   email: () => Promise<String>;
-  githubHandle: () => Promise<String>;
-  githubUserId: () => Promise<String>;
-  avatarUrl: () => Promise<String>;
+  createdAt: () => Promise<DateTimeOutput>;
+  updatedAt: () => Promise<DateTimeOutput>;
+  contributor: () => Promise<Boolean>;
+  expertise: () => Promise<String>;
   bio: () => Promise<String>;
-  posts: <T = FragmentableArray<Post>>(args?: {
-    where?: PostWhereInput;
-    orderBy?: PostOrderByInput;
+  userTutorials: <T = FragmentableArray<UserTutorial>>(args?: {
+    where?: UserTutorialWhereInput;
+    orderBy?: UserTutorialOrderByInput;
     skip?: Int;
     after?: String;
     before?: String;
@@ -648,17 +1024,16 @@ export interface UserSubscription
   extends Promise<AsyncIterator<User>>,
     Fragmentable {
   id: () => Promise<AsyncIterator<ID_Output>>;
-  createdAt: () => Promise<AsyncIterator<DateTimeOutput>>;
-  updatedAt: () => Promise<AsyncIterator<DateTimeOutput>>;
   name: () => Promise<AsyncIterator<String>>;
   email: () => Promise<AsyncIterator<String>>;
-  githubHandle: () => Promise<AsyncIterator<String>>;
-  githubUserId: () => Promise<AsyncIterator<String>>;
-  avatarUrl: () => Promise<AsyncIterator<String>>;
+  createdAt: () => Promise<AsyncIterator<DateTimeOutput>>;
+  updatedAt: () => Promise<AsyncIterator<DateTimeOutput>>;
+  contributor: () => Promise<AsyncIterator<Boolean>>;
+  expertise: () => Promise<AsyncIterator<String>>;
   bio: () => Promise<AsyncIterator<String>>;
-  posts: <T = Promise<AsyncIterator<PostSubscription>>>(args?: {
-    where?: PostWhereInput;
-    orderBy?: PostOrderByInput;
+  userTutorials: <T = Promise<AsyncIterator<UserTutorialSubscription>>>(args?: {
+    where?: UserTutorialWhereInput;
+    orderBy?: UserTutorialOrderByInput;
     skip?: Int;
     after?: String;
     before?: String;
@@ -671,17 +1046,16 @@ export interface UserNullablePromise
   extends Promise<User | null>,
     Fragmentable {
   id: () => Promise<ID_Output>;
-  createdAt: () => Promise<DateTimeOutput>;
-  updatedAt: () => Promise<DateTimeOutput>;
   name: () => Promise<String>;
   email: () => Promise<String>;
-  githubHandle: () => Promise<String>;
-  githubUserId: () => Promise<String>;
-  avatarUrl: () => Promise<String>;
+  createdAt: () => Promise<DateTimeOutput>;
+  updatedAt: () => Promise<DateTimeOutput>;
+  contributor: () => Promise<Boolean>;
+  expertise: () => Promise<String>;
   bio: () => Promise<String>;
-  posts: <T = FragmentableArray<Post>>(args?: {
-    where?: PostWhereInput;
-    orderBy?: PostOrderByInput;
+  userTutorials: <T = FragmentableArray<UserTutorial>>(args?: {
+    where?: UserTutorialWhereInput;
+    orderBy?: UserTutorialOrderByInput;
     skip?: Int;
     after?: String;
     before?: String;
@@ -690,25 +1064,25 @@ export interface UserNullablePromise
   }) => T;
 }
 
-export interface PostConnection {
+export interface TutorialConnection {
   pageInfo: PageInfo;
-  edges: PostEdge[];
+  edges: TutorialEdge[];
 }
 
-export interface PostConnectionPromise
-  extends Promise<PostConnection>,
+export interface TutorialConnectionPromise
+  extends Promise<TutorialConnection>,
     Fragmentable {
   pageInfo: <T = PageInfoPromise>() => T;
-  edges: <T = FragmentableArray<PostEdge>>() => T;
-  aggregate: <T = AggregatePostPromise>() => T;
+  edges: <T = FragmentableArray<TutorialEdge>>() => T;
+  aggregate: <T = AggregateTutorialPromise>() => T;
 }
 
-export interface PostConnectionSubscription
-  extends Promise<AsyncIterator<PostConnection>>,
+export interface TutorialConnectionSubscription
+  extends Promise<AsyncIterator<TutorialConnection>>,
     Fragmentable {
   pageInfo: <T = PageInfoSubscription>() => T;
-  edges: <T = Promise<AsyncIterator<PostEdgeSubscription>>>() => T;
-  aggregate: <T = AggregatePostSubscription>() => T;
+  edges: <T = Promise<AsyncIterator<TutorialEdgeSubscription>>>() => T;
+  aggregate: <T = AggregateTutorialSubscription>() => T;
 }
 
 export interface PageInfo {
@@ -734,35 +1108,37 @@ export interface PageInfoSubscription
   endCursor: () => Promise<AsyncIterator<String>>;
 }
 
-export interface PostEdge {
-  node: Post;
+export interface TutorialEdge {
+  node: Tutorial;
   cursor: String;
 }
 
-export interface PostEdgePromise extends Promise<PostEdge>, Fragmentable {
-  node: <T = PostPromise>() => T;
+export interface TutorialEdgePromise
+  extends Promise<TutorialEdge>,
+    Fragmentable {
+  node: <T = TutorialPromise>() => T;
   cursor: () => Promise<String>;
 }
 
-export interface PostEdgeSubscription
-  extends Promise<AsyncIterator<PostEdge>>,
+export interface TutorialEdgeSubscription
+  extends Promise<AsyncIterator<TutorialEdge>>,
     Fragmentable {
-  node: <T = PostSubscription>() => T;
+  node: <T = TutorialSubscription>() => T;
   cursor: () => Promise<AsyncIterator<String>>;
 }
 
-export interface AggregatePost {
+export interface AggregateTutorial {
   count: Int;
 }
 
-export interface AggregatePostPromise
-  extends Promise<AggregatePost>,
+export interface AggregateTutorialPromise
+  extends Promise<AggregateTutorial>,
     Fragmentable {
   count: () => Promise<Int>;
 }
 
-export interface AggregatePostSubscription
-  extends Promise<AsyncIterator<AggregatePost>>,
+export interface AggregateTutorialSubscription
+  extends Promise<AsyncIterator<AggregateTutorial>>,
     Fragmentable {
   count: () => Promise<AsyncIterator<Int>>;
 }
@@ -821,6 +1197,62 @@ export interface AggregateUserSubscription
   count: () => Promise<AsyncIterator<Int>>;
 }
 
+export interface UserTutorialConnection {
+  pageInfo: PageInfo;
+  edges: UserTutorialEdge[];
+}
+
+export interface UserTutorialConnectionPromise
+  extends Promise<UserTutorialConnection>,
+    Fragmentable {
+  pageInfo: <T = PageInfoPromise>() => T;
+  edges: <T = FragmentableArray<UserTutorialEdge>>() => T;
+  aggregate: <T = AggregateUserTutorialPromise>() => T;
+}
+
+export interface UserTutorialConnectionSubscription
+  extends Promise<AsyncIterator<UserTutorialConnection>>,
+    Fragmentable {
+  pageInfo: <T = PageInfoSubscription>() => T;
+  edges: <T = Promise<AsyncIterator<UserTutorialEdgeSubscription>>>() => T;
+  aggregate: <T = AggregateUserTutorialSubscription>() => T;
+}
+
+export interface UserTutorialEdge {
+  node: UserTutorial;
+  cursor: String;
+}
+
+export interface UserTutorialEdgePromise
+  extends Promise<UserTutorialEdge>,
+    Fragmentable {
+  node: <T = UserTutorialPromise>() => T;
+  cursor: () => Promise<String>;
+}
+
+export interface UserTutorialEdgeSubscription
+  extends Promise<AsyncIterator<UserTutorialEdge>>,
+    Fragmentable {
+  node: <T = UserTutorialSubscription>() => T;
+  cursor: () => Promise<AsyncIterator<String>>;
+}
+
+export interface AggregateUserTutorial {
+  count: Int;
+}
+
+export interface AggregateUserTutorialPromise
+  extends Promise<AggregateUserTutorial>,
+    Fragmentable {
+  count: () => Promise<Int>;
+}
+
+export interface AggregateUserTutorialSubscription
+  extends Promise<AsyncIterator<AggregateUserTutorial>>,
+    Fragmentable {
+  count: () => Promise<AsyncIterator<Int>>;
+}
+
 export interface BatchPayload {
   count: Long;
 }
@@ -837,54 +1269,66 @@ export interface BatchPayloadSubscription
   count: () => Promise<AsyncIterator<Long>>;
 }
 
-export interface PostSubscriptionPayload {
+export interface TutorialSubscriptionPayload {
   mutation: MutationType;
-  node: Post;
+  node: Tutorial;
   updatedFields: String[];
-  previousValues: PostPreviousValues;
+  previousValues: TutorialPreviousValues;
 }
 
-export interface PostSubscriptionPayloadPromise
-  extends Promise<PostSubscriptionPayload>,
+export interface TutorialSubscriptionPayloadPromise
+  extends Promise<TutorialSubscriptionPayload>,
     Fragmentable {
   mutation: () => Promise<MutationType>;
-  node: <T = PostPromise>() => T;
+  node: <T = TutorialPromise>() => T;
   updatedFields: () => Promise<String[]>;
-  previousValues: <T = PostPreviousValuesPromise>() => T;
+  previousValues: <T = TutorialPreviousValuesPromise>() => T;
 }
 
-export interface PostSubscriptionPayloadSubscription
-  extends Promise<AsyncIterator<PostSubscriptionPayload>>,
+export interface TutorialSubscriptionPayloadSubscription
+  extends Promise<AsyncIterator<TutorialSubscriptionPayload>>,
     Fragmentable {
   mutation: () => Promise<AsyncIterator<MutationType>>;
-  node: <T = PostSubscription>() => T;
+  node: <T = TutorialSubscription>() => T;
   updatedFields: () => Promise<AsyncIterator<String[]>>;
-  previousValues: <T = PostPreviousValuesSubscription>() => T;
+  previousValues: <T = TutorialPreviousValuesSubscription>() => T;
 }
 
-export interface PostPreviousValues {
+export interface TutorialPreviousValues {
   id: ID_Output;
-  title: String;
-  content: String;
-  published: Boolean;
+  createdAt: DateTimeOutput;
+  updatedAt: DateTimeOutput;
+  name: String;
+  gatsbyID: String;
+  upvotes: Int;
+  numberOfStudents: Int;
+  numberofChapters: Int;
 }
 
-export interface PostPreviousValuesPromise
-  extends Promise<PostPreviousValues>,
+export interface TutorialPreviousValuesPromise
+  extends Promise<TutorialPreviousValues>,
     Fragmentable {
   id: () => Promise<ID_Output>;
-  title: () => Promise<String>;
-  content: () => Promise<String>;
-  published: () => Promise<Boolean>;
+  createdAt: () => Promise<DateTimeOutput>;
+  updatedAt: () => Promise<DateTimeOutput>;
+  name: () => Promise<String>;
+  gatsbyID: () => Promise<String>;
+  upvotes: () => Promise<Int>;
+  numberOfStudents: () => Promise<Int>;
+  numberofChapters: () => Promise<Int>;
 }
 
-export interface PostPreviousValuesSubscription
-  extends Promise<AsyncIterator<PostPreviousValues>>,
+export interface TutorialPreviousValuesSubscription
+  extends Promise<AsyncIterator<TutorialPreviousValues>>,
     Fragmentable {
   id: () => Promise<AsyncIterator<ID_Output>>;
-  title: () => Promise<AsyncIterator<String>>;
-  content: () => Promise<AsyncIterator<String>>;
-  published: () => Promise<AsyncIterator<Boolean>>;
+  createdAt: () => Promise<AsyncIterator<DateTimeOutput>>;
+  updatedAt: () => Promise<AsyncIterator<DateTimeOutput>>;
+  name: () => Promise<AsyncIterator<String>>;
+  gatsbyID: () => Promise<AsyncIterator<String>>;
+  upvotes: () => Promise<AsyncIterator<Int>>;
+  numberOfStudents: () => Promise<AsyncIterator<Int>>;
+  numberofChapters: () => Promise<AsyncIterator<Int>>;
 }
 
 export interface UserSubscriptionPayload {
@@ -914,27 +1358,25 @@ export interface UserSubscriptionPayloadSubscription
 
 export interface UserPreviousValues {
   id: ID_Output;
+  name: String;
+  email: String;
   createdAt: DateTimeOutput;
   updatedAt: DateTimeOutput;
-  name: String;
-  email?: String;
-  githubHandle: String;
-  githubUserId: String;
-  avatarUrl?: String;
-  bio: String;
+  contributor: Boolean;
+  expertise?: String;
+  bio?: String;
 }
 
 export interface UserPreviousValuesPromise
   extends Promise<UserPreviousValues>,
     Fragmentable {
   id: () => Promise<ID_Output>;
-  createdAt: () => Promise<DateTimeOutput>;
-  updatedAt: () => Promise<DateTimeOutput>;
   name: () => Promise<String>;
   email: () => Promise<String>;
-  githubHandle: () => Promise<String>;
-  githubUserId: () => Promise<String>;
-  avatarUrl: () => Promise<String>;
+  createdAt: () => Promise<DateTimeOutput>;
+  updatedAt: () => Promise<DateTimeOutput>;
+  contributor: () => Promise<Boolean>;
+  expertise: () => Promise<String>;
   bio: () => Promise<String>;
 }
 
@@ -942,14 +1384,69 @@ export interface UserPreviousValuesSubscription
   extends Promise<AsyncIterator<UserPreviousValues>>,
     Fragmentable {
   id: () => Promise<AsyncIterator<ID_Output>>;
-  createdAt: () => Promise<AsyncIterator<DateTimeOutput>>;
-  updatedAt: () => Promise<AsyncIterator<DateTimeOutput>>;
   name: () => Promise<AsyncIterator<String>>;
   email: () => Promise<AsyncIterator<String>>;
-  githubHandle: () => Promise<AsyncIterator<String>>;
-  githubUserId: () => Promise<AsyncIterator<String>>;
-  avatarUrl: () => Promise<AsyncIterator<String>>;
+  createdAt: () => Promise<AsyncIterator<DateTimeOutput>>;
+  updatedAt: () => Promise<AsyncIterator<DateTimeOutput>>;
+  contributor: () => Promise<AsyncIterator<Boolean>>;
+  expertise: () => Promise<AsyncIterator<String>>;
   bio: () => Promise<AsyncIterator<String>>;
+}
+
+export interface UserTutorialSubscriptionPayload {
+  mutation: MutationType;
+  node: UserTutorial;
+  updatedFields: String[];
+  previousValues: UserTutorialPreviousValues;
+}
+
+export interface UserTutorialSubscriptionPayloadPromise
+  extends Promise<UserTutorialSubscriptionPayload>,
+    Fragmentable {
+  mutation: () => Promise<MutationType>;
+  node: <T = UserTutorialPromise>() => T;
+  updatedFields: () => Promise<String[]>;
+  previousValues: <T = UserTutorialPreviousValuesPromise>() => T;
+}
+
+export interface UserTutorialSubscriptionPayloadSubscription
+  extends Promise<AsyncIterator<UserTutorialSubscriptionPayload>>,
+    Fragmentable {
+  mutation: () => Promise<AsyncIterator<MutationType>>;
+  node: <T = UserTutorialSubscription>() => T;
+  updatedFields: () => Promise<AsyncIterator<String[]>>;
+  previousValues: <T = UserTutorialPreviousValuesSubscription>() => T;
+}
+
+export interface UserTutorialPreviousValues {
+  id: ID_Output;
+  createdAt: DateTimeOutput;
+  updatedAt: DateTimeOutput;
+  upvoted: Boolean;
+  saved: Boolean;
+  currentChapter: Int;
+}
+
+export interface UserTutorialPreviousValuesPromise
+  extends Promise<UserTutorialPreviousValues>,
+    Fragmentable {
+  id: () => Promise<ID_Output>;
+  createdAt: () => Promise<DateTimeOutput>;
+  updatedAt: () => Promise<DateTimeOutput>;
+  upvoted: () => Promise<Boolean>;
+  saved: () => Promise<Boolean>;
+  currentChapter: () => Promise<Int>;
+}
+
+export interface UserTutorialPreviousValuesSubscription
+  extends Promise<AsyncIterator<UserTutorialPreviousValues>>,
+    Fragmentable {
+  id: () => Promise<AsyncIterator<ID_Output>>;
+  createdAt: () => Promise<AsyncIterator<DateTimeOutput>>;
+  updatedAt: () => Promise<AsyncIterator<DateTimeOutput>>;
+  upvoted: () => Promise<AsyncIterator<Boolean>>;
+  saved: () => Promise<AsyncIterator<Boolean>>;
+  currentChapter: () => Promise<AsyncIterator<Int>>;
 }
 
 /*
@@ -957,16 +1454,6 @@ The `ID` scalar type represents a unique identifier, often used to refetch an ob
 */
 export type ID_Input = string | number;
 export type ID_Output = string;
-
-/*
-The `String` scalar type represents textual data, represented as UTF-8 character sequences. The String type is most often used by GraphQL to represent free-form human-readable text.
-*/
-export type String = string;
-
-/*
-The `Boolean` scalar type represents `true` or `false`.
-*/
-export type Boolean = boolean;
 
 /*
 DateTime scalar input type, allowing Date
@@ -979,9 +1466,19 @@ DateTime scalar output type, which is always a string
 export type DateTimeOutput = string;
 
 /*
+The `String` scalar type represents textual data, represented as UTF-8 character sequences. The String type is most often used by GraphQL to represent free-form human-readable text.
+*/
+export type String = string;
+
+/*
 The `Int` scalar type represents non-fractional signed whole numeric values. Int can represent values between -(2^31) and 2^31 - 1. 
 */
 export type Int = number;
+
+/*
+The `Boolean` scalar type represents `true` or `false`.
+*/
+export type Boolean = boolean;
 
 export type Long = string;
 
@@ -995,7 +1492,11 @@ export const models: Model[] = [
     embedded: false
   },
   {
-    name: "Post",
+    name: "UserTutorial",
+    embedded: false
+  },
+  {
+    name: "Tutorial",
     embedded: false
   }
 ];
