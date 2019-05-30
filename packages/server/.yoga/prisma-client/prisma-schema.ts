@@ -85,8 +85,6 @@ type Tutorial {
   updatedAt: DateTime!
   name: String!
   gatsbyID: String!
-  upvotes: Int!
-  numberOfStudents: Int!
   numberofChapters: Int!
   userTutorials(where: UserTutorialWhereInput, orderBy: UserTutorialOrderByInput, skip: Int, after: String, before: String, first: Int, last: Int): [UserTutorial!]
 }
@@ -100,8 +98,6 @@ type TutorialConnection {
 input TutorialCreateInput {
   name: String!
   gatsbyID: String!
-  upvotes: Int!
-  numberOfStudents: Int!
   numberofChapters: Int!
   userTutorials: UserTutorialCreateManyWithoutTutorialInput
 }
@@ -114,8 +110,6 @@ input TutorialCreateOneWithoutUserTutorialsInput {
 input TutorialCreateWithoutUserTutorialsInput {
   name: String!
   gatsbyID: String!
-  upvotes: Int!
-  numberOfStudents: Int!
   numberofChapters: Int!
 }
 
@@ -135,10 +129,6 @@ enum TutorialOrderByInput {
   name_DESC
   gatsbyID_ASC
   gatsbyID_DESC
-  upvotes_ASC
-  upvotes_DESC
-  numberOfStudents_ASC
-  numberOfStudents_DESC
   numberofChapters_ASC
   numberofChapters_DESC
 }
@@ -149,8 +139,6 @@ type TutorialPreviousValues {
   updatedAt: DateTime!
   name: String!
   gatsbyID: String!
-  upvotes: Int!
-  numberOfStudents: Int!
   numberofChapters: Int!
 }
 
@@ -175,8 +163,6 @@ input TutorialSubscriptionWhereInput {
 input TutorialUpdateInput {
   name: String
   gatsbyID: String
-  upvotes: Int
-  numberOfStudents: Int
   numberofChapters: Int
   userTutorials: UserTutorialUpdateManyWithoutTutorialInput
 }
@@ -184,8 +170,6 @@ input TutorialUpdateInput {
 input TutorialUpdateManyMutationInput {
   name: String
   gatsbyID: String
-  upvotes: Int
-  numberOfStudents: Int
   numberofChapters: Int
 }
 
@@ -201,8 +185,6 @@ input TutorialUpdateOneWithoutUserTutorialsInput {
 input TutorialUpdateWithoutUserTutorialsDataInput {
   name: String
   gatsbyID: String
-  upvotes: Int
-  numberOfStudents: Int
   numberofChapters: Int
 }
 
@@ -270,22 +252,6 @@ input TutorialWhereInput {
   gatsbyID_not_starts_with: String
   gatsbyID_ends_with: String
   gatsbyID_not_ends_with: String
-  upvotes: Int
-  upvotes_not: Int
-  upvotes_in: [Int!]
-  upvotes_not_in: [Int!]
-  upvotes_lt: Int
-  upvotes_lte: Int
-  upvotes_gt: Int
-  upvotes_gte: Int
-  numberOfStudents: Int
-  numberOfStudents_not: Int
-  numberOfStudents_in: [Int!]
-  numberOfStudents_not_in: [Int!]
-  numberOfStudents_lt: Int
-  numberOfStudents_lte: Int
-  numberOfStudents_gt: Int
-  numberOfStudents_gte: Int
   numberofChapters: Int
   numberofChapters_not: Int
   numberofChapters_in: [Int!]

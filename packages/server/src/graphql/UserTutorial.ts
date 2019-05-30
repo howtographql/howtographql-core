@@ -56,7 +56,6 @@ export const upvoteTutorial = mutationField("upvoteTutorial", {
   }
 })
 
-
 async function upsertUserTutorial(args: { userTutorialId?: string, updates: UserTutorialCreateInput, userId: string, tutorialId: any }, ctx: Context): Promise<UserTutorialType> {
   const { userTutorialId, updates, userId, tutorialId } = args;
   let upsertedUserTutorial;
@@ -86,7 +85,7 @@ async function upsertUserTutorial(args: { userTutorialId?: string, updates: User
   return upsertedUserTutorial;
 }
 
-async function getUserTutorial(args: { userId: string, tutorialId: any }, ctx: Context): Promise<null | UserTutorialType> {
+export async function getUserTutorial(args: { userId: string, tutorialId: any }, ctx: Context): Promise<null | UserTutorialType> {
   const { userId, tutorialId } = args;
   const existingUserTutorials = await ctx.prisma.userTutorials({
     first: 1,

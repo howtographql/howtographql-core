@@ -73,14 +73,6 @@ export interface NexusGenInputs {
     numberofChapters_lte?: number | null; // Int
     numberofChapters_not?: number | null; // Int
     numberofChapters_not_in?: number[] | null; // [Int!]
-    numberOfStudents?: number | null; // Int
-    numberOfStudents_gt?: number | null; // Int
-    numberOfStudents_gte?: number | null; // Int
-    numberOfStudents_in?: number[] | null; // [Int!]
-    numberOfStudents_lt?: number | null; // Int
-    numberOfStudents_lte?: number | null; // Int
-    numberOfStudents_not?: number | null; // Int
-    numberOfStudents_not_in?: number[] | null; // [Int!]
     OR?: NexusGenInputs['TutorialWhereInput'][] | null; // [TutorialWhereInput!]
     updatedAt?: any | null; // DateTime
     updatedAt_gt?: any | null; // DateTime
@@ -90,14 +82,6 @@ export interface NexusGenInputs {
     updatedAt_lte?: any | null; // DateTime
     updatedAt_not?: any | null; // DateTime
     updatedAt_not_in?: any[] | null; // [DateTime!]
-    upvotes?: number | null; // Int
-    upvotes_gt?: number | null; // Int
-    upvotes_gte?: number | null; // Int
-    upvotes_in?: number[] | null; // [Int!]
-    upvotes_lt?: number | null; // Int
-    upvotes_lte?: number | null; // Int
-    upvotes_not?: number | null; // Int
-    upvotes_not_in?: number[] | null; // [Int!]
     userTutorials_every?: NexusGenInputs['UserTutorialWhereInput'] | null; // UserTutorialWhereInput
     userTutorials_none?: NexusGenInputs['UserTutorialWhereInput'] | null; // UserTutorialWhereInput
     userTutorials_some?: NexusGenInputs['UserTutorialWhereInput'] | null; // UserTutorialWhereInput
@@ -346,6 +330,8 @@ export interface NexusGenFieldTypes {
     upvoteTutorial: NexusGenRootTypes['UserTutorialPayload']; // UserTutorialPayload!
   }
   Query: { // field return type
+    tutorial: NexusGenRootTypes['Tutorial']; // Tutorial!
+    tutorials: NexusGenRootTypes['Tutorial'][]; // [Tutorial!]!
     viewer: NexusGenRootTypes['Viewer'] | null; // Viewer
   }
   Tutorial: { // field return type
@@ -358,6 +344,7 @@ export interface NexusGenFieldTypes {
     updatedAt: any; // DateTime!
     upvotes: number; // Int!
     userTutorials: NexusGenRootTypes['UserTutorial'][] | null; // [UserTutorial!]
+    viewerUserTutorial: NexusGenRootTypes['UserTutorial'] | null; // UserTutorial
   }
   User: { // field return type
     avatarUrl: string | null; // String
@@ -407,6 +394,14 @@ export interface NexusGenArgTypes {
     }
     upvoteTutorial: { // args
       tutorialId: string; // ID!
+    }
+  }
+  Query: {
+    tutorial: { // args
+      id: string; // ID!
+    }
+    tutorials: { // args
+      first: number; // Int!
     }
   }
   Tutorial: {

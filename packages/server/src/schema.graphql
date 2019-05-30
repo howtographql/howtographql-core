@@ -30,6 +30,8 @@ interface PayloadInterface {
 }
 
 type Query {
+  tutorial(id: ID!): Tutorial!
+  tutorials(first: Int!): [Tutorial!]!
   viewer: Viewer
 }
 
@@ -43,6 +45,9 @@ type Tutorial {
   updatedAt: DateTime!
   upvotes: Int!
   userTutorials(after: String, before: String, first: Int, last: Int, orderBy: UserTutorialOrderByInput, skip: Int, where: UserTutorialWhereInput): [UserTutorial!]
+
+  """The UserTutorial for the current user associated with this Tutorial."""
+  viewerUserTutorial: UserTutorial
 }
 
 input TutorialWhereInput {
@@ -106,14 +111,6 @@ input TutorialWhereInput {
   numberofChapters_lte: Int
   numberofChapters_not: Int
   numberofChapters_not_in: [Int!]
-  numberOfStudents: Int
-  numberOfStudents_gt: Int
-  numberOfStudents_gte: Int
-  numberOfStudents_in: [Int!]
-  numberOfStudents_lt: Int
-  numberOfStudents_lte: Int
-  numberOfStudents_not: Int
-  numberOfStudents_not_in: [Int!]
   OR: [TutorialWhereInput!]
   updatedAt: DateTime
   updatedAt_gt: DateTime
@@ -123,14 +120,6 @@ input TutorialWhereInput {
   updatedAt_lte: DateTime
   updatedAt_not: DateTime
   updatedAt_not_in: [DateTime!]
-  upvotes: Int
-  upvotes_gt: Int
-  upvotes_gte: Int
-  upvotes_in: [Int!]
-  upvotes_lt: Int
-  upvotes_lte: Int
-  upvotes_not: Int
-  upvotes_not_in: [Int!]
   userTutorials_every: UserTutorialWhereInput
   userTutorials_none: UserTutorialWhereInput
   userTutorials_some: UserTutorialWhereInput

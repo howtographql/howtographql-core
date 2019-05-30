@@ -34,8 +34,6 @@ type Tutorial {
   updatedAt: DateTime!
   name: String!
   gatsbyID: String!
-  upvotes: Int!
-  numberOfStudents: Int!
   numberofChapters: Int!
   userTutorials: [UserTutorial!]! @relation(name: "TutorialonUserTutorial")
 }
