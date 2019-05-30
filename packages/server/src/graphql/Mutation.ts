@@ -1,4 +1,4 @@
-import { prismaObjectType, interfaceType } from 'yoga'
+import { prismaObjectType } from 'yoga'
 
 
 export const Mutation = prismaObjectType({
@@ -10,15 +10,4 @@ export const Mutation = prismaObjectType({
     // This removes all fields from the underlying Mutation object type
     t.prismaFields([])
   },
-})
-
-export const PayloadInterface = interfaceType({
-  name: "PayloadInterface",
-  description: "The standard interface for all mutation responses",
-  definition: (t) => {
-    t.string("code");
-    t.boolean("success");
-    t.string("message");
-    t.resolveType(() => null);
-  }
 })

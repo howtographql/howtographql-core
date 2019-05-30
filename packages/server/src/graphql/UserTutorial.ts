@@ -1,5 +1,6 @@
 import { prismaObjectType, objectType, mutationField, idArg } from 'yoga'
-import { getUserId } from '../utils';
+// import { getUserId } from '../utils';
+import { PayloadInterface } from './PayloadInterface';
 
 export const UserTutorial = prismaObjectType({
   name: 'UserTutorial',
@@ -13,9 +14,10 @@ export const UserTutorial = prismaObjectType({
 export const UserTutorialPayload = objectType({
   name: "UserTutorialPayload",
   definition: (t) => {
-    t.implements("PayloadInterface");
+    t.implements(PayloadInterface);
     t.field("userTutorial", {
-      type: UserTutorial
+      type: UserTutorial,
+      nullable: true
     });
   }
 })
@@ -29,13 +31,12 @@ export const upvote = mutationField("upvote", {
     })
   },
   resolve: async (parent, args, ctx) => {
-    const currentUserId = getUserId(ctx);
+    // const currentUserId = getUserId(ctx);
     return ({
       code: "200",
       success: true,
-      userTutorial: {
-        id: "123"
-      }
+      message: null,
+      userTutorial: null
     })
   }
 })

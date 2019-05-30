@@ -1,4 +1,4 @@
-import { prismaObjectType, stringArg } from 'yoga'
+import { prismaObjectType } from 'yoga'
 
 
 export const Query = prismaObjectType({

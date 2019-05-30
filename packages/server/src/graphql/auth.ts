@@ -4,9 +4,21 @@ import { getGithubToken, getGithubUser, GithubUser } from '../github';
 import { Context } from "../context";
 import { User } from "../../.yoga/prisma-client";
 import config from "../config";
+import { PayloadInterface } from "./PayloadInterface";
+
+export const AuthenticateUserPayload = objectType({
+    name: "AuthenticateUserPayload",
+    definition: (t) => {
+        t.implements(PayloadInterface);
+        t.field("user", {
+            type: "User"
+        })
+        t.string("token")
+    }
+})
 
 export const authenticate = mutationField("authenticate", {
-    type: "AuthenticateUserPayload",
+    type: AuthenticateUserPayload,
     nullable: true,
     args: {
         githubCode: stringArg({
@@ -25,22 +37,14 @@ export const authenticate = mutationField("authenticate", {
 
         return {
             success: true,
+            message: null,
+            code: null,
             token: jwt.sign({ userId: user.id }, config.jwt.SECRET),
             user
         }
     }
 })
 
-export const AuthenticateUserPayload = objectType({
-    name: "AuthenticateUserPayload",
-    definition: (t) => {
-        t.implements("PayloadInterface");
-        t.field("user", {
-            type: "User"
-        })
-        t.string("token")
-    }
-})
 // Helpers -------------------------------------------------------------------
 
 async function getPrismaUser(ctx: Context, githubUserId: string): Promise<User> {
