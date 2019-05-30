@@ -5,6 +5,8 @@ import { Context } from "../context";
 import { User } from "../../.yoga/prisma-client";
 import config from "../config";
 import { PayloadInterface } from "./PayloadInterface";
+import { AuthorizeResolver } from "nexus/dist/core";
+import { NexusGenRootTypes } from "../../.yoga/nexus";
 
 export const AuthenticateUserPayload = objectType({
     name: "AuthenticateUserPayload",
@@ -62,3 +64,10 @@ async function createPrismaUser(ctx: Context, githubUser: GithubUser): Promise<U
     })
     return user
 }
+
+export const authorizeUser = (): AuthorizeResolver<any, any> => (parent, args, ctx) => {
+    if (ctx.currentUserId) {
+        return true;
+    }
+    return false;
+};

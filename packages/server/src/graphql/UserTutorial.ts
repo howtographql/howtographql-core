@@ -1,6 +1,8 @@
 import { prismaObjectType, objectType, mutationField, idArg } from 'yoga'
-// import { getUserId } from '../utils';
 import { PayloadInterface } from './PayloadInterface';
+import { authorizeUser } from './auth';
+import { Context } from '../context';
+import { UserTutorial as UserTutorialType, UserTutorialCreateInput } from '../../.yoga/prisma-client';
 
 export const UserTutorial = prismaObjectType({
   name: 'UserTutorial',
@@ -13,30 +15,93 @@ export const UserTutorial = prismaObjectType({
 
 export const UserTutorialPayload = objectType({
   name: "UserTutorialPayload",
-  definition: (t) => {
-    t.implements(PayloadInterface);
-    t.field("userTutorial", {
+  definition: (type) => {
+    type.implements(PayloadInterface);
+    type.field("userTutorial", {
       type: UserTutorial,
       nullable: true
     });
   }
 })
 
-export const upvote = mutationField("upvote", {
+export const upvoteTutorial = mutationField("upvoteTutorial", {
   type: UserTutorialPayload,
-  description: "A user can upvote a tutorial.",
+  description: "An authenticated user can upvote a tutorial.",
   args: {
     tutorialId: idArg({
       required: true
     })
   },
-  resolve: async (parent, args, ctx) => {
-    // const currentUserId = getUserId(ctx);
+  authorize: authorizeUser(),
+  resolve: async (_, { tutorialId }, ctx) => {
+    const userId = ctx.currentUserId;
+    const existingUserTutorial = await getUserTutorial({
+      userId,
+      tutorialId
+    }, ctx);
+    let upsertedUserTutorial = await upsertUserTutorial({
+      userId,
+      tutorialId,
+      userTutorialId: existingUserTutorial && existingUserTutorial.id,
+      updates: {
+        upvoted: !existingUserTutorial.upvoted,
+      },
+    }, ctx);
     return ({
       code: "200",
       success: true,
       message: null,
-      userTutorial: null
+      userTutorial: upsertedUserTutorial
     })
   }
 })
+
+
+async function upsertUserTutorial(args: { userTutorialId?: string, updates: UserTutorialCreateInput, userId: string, tutorialId: any }, ctx: Context): Promise<UserTutorialType> {
+  const { userTutorialId, updates, userId, tutorialId } = args;
+  let upsertedUserTutorial;
+  if (userTutorialId) {
+    upsertedUserTutorial = await ctx.prisma.updateUserTutorial({
+      where: {
+        id: userTutorialId
+      },
+      data: updates
+    });
+  }
+  else {
+    upsertedUserTutorial = await ctx.prisma.createUserTutorial({
+      ...updates,
+      user: {
+        connect: {
+          id: userId
+        }
+      },
+      tutorial: {
+        connect: {
+          id: tutorialId
+        }
+      }
+    });
+  }
+  return upsertedUserTutorial;
+}
+
+async function getUserTutorial(args: { userId: string, tutorialId: any }, ctx: Context): Promise<null | UserTutorialType> {
+  const { userId, tutorialId } = args;
+  const existingUserTutorials = await ctx.prisma.userTutorials({
+    first: 1,
+    where: {
+      user: {
+        id: userId
+      },
+      tutorial: {
+        id: tutorialId
+      }
+    }
+  });
+  if (existingUserTutorials.length > 0) {
+    return existingUserTutorials[0];
+  }
+  return null;
+}
+

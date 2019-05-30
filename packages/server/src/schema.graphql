@@ -3,8 +3,8 @@
 
 
 type AuthenticateUserPayload implements PayloadInterface {
-  code: String!
-  message: String!
+  code: String
+  message: String
   success: Boolean!
   token: String!
   user: User!
@@ -18,14 +18,14 @@ type Mutation {
     githubCode: String!
   ): AuthenticateUserPayload
 
-  """A user can upvote a tutorial."""
-  upvote(tutorialId: ID!): UserTutorialPayload!
+  """An authenticated user can upvote a tutorial."""
+  upvoteTutorial(tutorialId: ID!): UserTutorialPayload!
 }
 
 """The standard interface for all mutation responses"""
 interface PayloadInterface {
-  code: String!
-  message: String!
+  code: String
+  message: String
   success: Boolean!
 }
 
@@ -178,10 +178,10 @@ enum UserTutorialOrderByInput {
 }
 
 type UserTutorialPayload implements PayloadInterface {
-  code: String!
-  message: String!
+  code: String
+  message: String
   success: Boolean!
-  userTutorial: UserTutorial!
+  userTutorial: UserTutorial
 }
 
 input UserTutorialWhereInput {

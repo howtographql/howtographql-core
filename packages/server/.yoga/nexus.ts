@@ -297,8 +297,8 @@ export interface NexusGenEnums {
 
 export interface NexusGenRootTypes {
   AuthenticateUserPayload: { // root type
-    code: string; // String!
-    message: string; // String!
+    code?: string | null; // String
+    message?: string | null; // String
     success: boolean; // Boolean!
     token: string; // String!
     user: NexusGenRootTypes['User']; // User!
@@ -309,10 +309,10 @@ export interface NexusGenRootTypes {
   User: prisma.User;
   UserTutorial: prisma.UserTutorial;
   UserTutorialPayload: { // root type
-    code: string; // String!
-    message: string; // String!
+    code?: string | null; // String
+    message?: string | null; // String
     success: boolean; // Boolean!
-    userTutorial: NexusGenRootTypes['UserTutorial']; // UserTutorial!
+    userTutorial?: NexusGenRootTypes['UserTutorial'] | null; // UserTutorial
   }
   Viewer: { // root type
     id: string; // ID!
@@ -335,15 +335,15 @@ export interface NexusGenAllTypes extends NexusGenRootTypes {
 
 export interface NexusGenFieldTypes {
   AuthenticateUserPayload: { // field return type
-    code: string; // String!
-    message: string; // String!
+    code: string | null; // String
+    message: string | null; // String
     success: boolean; // Boolean!
     token: string; // String!
     user: NexusGenRootTypes['User']; // User!
   }
   Mutation: { // field return type
     authenticate: NexusGenRootTypes['AuthenticateUserPayload'] | null; // AuthenticateUserPayload
-    upvote: NexusGenRootTypes['UserTutorialPayload']; // UserTutorialPayload!
+    upvoteTutorial: NexusGenRootTypes['UserTutorialPayload']; // UserTutorialPayload!
   }
   Query: { // field return type
     viewer: NexusGenRootTypes['Viewer'] | null; // Viewer
@@ -384,18 +384,18 @@ export interface NexusGenFieldTypes {
     user: NexusGenRootTypes['User'] | null; // User
   }
   UserTutorialPayload: { // field return type
-    code: string; // String!
-    message: string; // String!
+    code: string | null; // String
+    message: string | null; // String
     success: boolean; // Boolean!
-    userTutorial: NexusGenRootTypes['UserTutorial']; // UserTutorial!
+    userTutorial: NexusGenRootTypes['UserTutorial'] | null; // UserTutorial
   }
   Viewer: { // field return type
     id: string; // ID!
     user: NexusGenRootTypes['User']; // User!
   }
   PayloadInterface: { // field return type
-    code: string; // String!
-    message: string; // String!
+    code: string | null; // String
+    message: string | null; // String
     success: boolean; // Boolean!
   }
 }
@@ -405,7 +405,7 @@ export interface NexusGenArgTypes {
     authenticate: { // args
       githubCode: string; // String!
     }
-    upvote: { // args
+    upvoteTutorial: { // args
       tutorialId: string; // ID!
     }
   }
