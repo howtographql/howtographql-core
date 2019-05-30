@@ -1,13 +1,6 @@
 import { prismaObjectType } from 'yoga'
 
-/*
-type Mutation {
-  deletePost(id: ID!): Post
-  signupUser(name: String!, email: String!): User!
-  createDraft(title: String!, content: String!, authorEmail: String!): Post!
-  publish(id: ID!): Post!
-}
- */
+
 export const Mutation = prismaObjectType({
   name: 'Mutation',
   definition(t) {

@@ -16,75 +16,105 @@ export interface NexusPrismaTypes {
     fields: {
       Query: QueryObject
       User: UserObject
-      Post: PostObject
+      UserTutorial: UserTutorialObject
+      Tutorial: TutorialObject
       UserConnection: UserConnectionObject
       PageInfo: PageInfoObject
       UserEdge: UserEdgeObject
       AggregateUser: AggregateUserObject
-      PostConnection: PostConnectionObject
-      PostEdge: PostEdgeObject
-      AggregatePost: AggregatePostObject
+      UserTutorialConnection: UserTutorialConnectionObject
+      UserTutorialEdge: UserTutorialEdgeObject
+      AggregateUserTutorial: AggregateUserTutorialObject
+      TutorialConnection: TutorialConnectionObject
+      TutorialEdge: TutorialEdgeObject
+      AggregateTutorial: AggregateTutorialObject
       Mutation: MutationObject
       BatchPayload: BatchPayloadObject
       Subscription: SubscriptionObject
       UserSubscriptionPayload: UserSubscriptionPayloadObject
       UserPreviousValues: UserPreviousValuesObject
-      PostSubscriptionPayload: PostSubscriptionPayloadObject
-      PostPreviousValues: PostPreviousValuesObject
+      UserTutorialSubscriptionPayload: UserTutorialSubscriptionPayloadObject
+      UserTutorialPreviousValues: UserTutorialPreviousValuesObject
+      TutorialSubscriptionPayload: TutorialSubscriptionPayloadObject
+      TutorialPreviousValues: TutorialPreviousValuesObject
     }
     fieldsDetails: {
       Query: QueryFieldDetails
       User: UserFieldDetails
-      Post: PostFieldDetails
+      UserTutorial: UserTutorialFieldDetails
+      Tutorial: TutorialFieldDetails
       UserConnection: UserConnectionFieldDetails
       PageInfo: PageInfoFieldDetails
       UserEdge: UserEdgeFieldDetails
       AggregateUser: AggregateUserFieldDetails
-      PostConnection: PostConnectionFieldDetails
-      PostEdge: PostEdgeFieldDetails
-      AggregatePost: AggregatePostFieldDetails
+      UserTutorialConnection: UserTutorialConnectionFieldDetails
+      UserTutorialEdge: UserTutorialEdgeFieldDetails
+      AggregateUserTutorial: AggregateUserTutorialFieldDetails
+      TutorialConnection: TutorialConnectionFieldDetails
+      TutorialEdge: TutorialEdgeFieldDetails
+      AggregateTutorial: AggregateTutorialFieldDetails
       Mutation: MutationFieldDetails
       BatchPayload: BatchPayloadFieldDetails
       Subscription: SubscriptionFieldDetails
       UserSubscriptionPayload: UserSubscriptionPayloadFieldDetails
       UserPreviousValues: UserPreviousValuesFieldDetails
-      PostSubscriptionPayload: PostSubscriptionPayloadFieldDetails
-      PostPreviousValues: PostPreviousValuesFieldDetails
+      UserTutorialSubscriptionPayload: UserTutorialSubscriptionPayloadFieldDetails
+      UserTutorialPreviousValues: UserTutorialPreviousValuesFieldDetails
+      TutorialSubscriptionPayload: TutorialSubscriptionPayloadFieldDetails
+      TutorialPreviousValues: TutorialPreviousValuesFieldDetails
     }
   }
   inputTypes: {
     fields: {
       UserWhereUniqueInput: UserWhereUniqueInputInputObject
-      PostWhereInput: PostWhereInputInputObject
+      UserTutorialWhereInput: UserTutorialWhereInputInputObject
       UserWhereInput: UserWhereInputInputObject
-      PostWhereUniqueInput: PostWhereUniqueInputInputObject
+      TutorialWhereInput: TutorialWhereInputInputObject
+      UserTutorialWhereUniqueInput: UserTutorialWhereUniqueInputInputObject
+      TutorialWhereUniqueInput: TutorialWhereUniqueInputInputObject
       UserCreateInput: UserCreateInputInputObject
-      PostCreateManyWithoutAuthorInput: PostCreateManyWithoutAuthorInputInputObject
-      PostCreateWithoutAuthorInput: PostCreateWithoutAuthorInputInputObject
+      UserTutorialCreateManyWithoutUserInput: UserTutorialCreateManyWithoutUserInputInputObject
+      UserTutorialCreateWithoutUserInput: UserTutorialCreateWithoutUserInputInputObject
+      TutorialCreateOneWithoutUserTutorialsInput: TutorialCreateOneWithoutUserTutorialsInputInputObject
+      TutorialCreateWithoutUserTutorialsInput: TutorialCreateWithoutUserTutorialsInputInputObject
       UserUpdateInput: UserUpdateInputInputObject
-      PostUpdateManyWithoutAuthorInput: PostUpdateManyWithoutAuthorInputInputObject
-      PostUpdateWithWhereUniqueWithoutAuthorInput: PostUpdateWithWhereUniqueWithoutAuthorInputInputObject
-      PostUpdateWithoutAuthorDataInput: PostUpdateWithoutAuthorDataInputInputObject
-      PostUpsertWithWhereUniqueWithoutAuthorInput: PostUpsertWithWhereUniqueWithoutAuthorInputInputObject
-      PostScalarWhereInput: PostScalarWhereInputInputObject
-      PostUpdateManyWithWhereNestedInput: PostUpdateManyWithWhereNestedInputInputObject
-      PostUpdateManyDataInput: PostUpdateManyDataInputInputObject
+      UserTutorialUpdateManyWithoutUserInput: UserTutorialUpdateManyWithoutUserInputInputObject
+      UserTutorialUpdateWithWhereUniqueWithoutUserInput: UserTutorialUpdateWithWhereUniqueWithoutUserInputInputObject
+      UserTutorialUpdateWithoutUserDataInput: UserTutorialUpdateWithoutUserDataInputInputObject
+      TutorialUpdateOneWithoutUserTutorialsInput: TutorialUpdateOneWithoutUserTutorialsInputInputObject
+      TutorialUpdateWithoutUserTutorialsDataInput: TutorialUpdateWithoutUserTutorialsDataInputInputObject
+      TutorialUpsertWithoutUserTutorialsInput: TutorialUpsertWithoutUserTutorialsInputInputObject
+      UserTutorialUpsertWithWhereUniqueWithoutUserInput: UserTutorialUpsertWithWhereUniqueWithoutUserInputInputObject
+      UserTutorialScalarWhereInput: UserTutorialScalarWhereInputInputObject
+      UserTutorialUpdateManyWithWhereNestedInput: UserTutorialUpdateManyWithWhereNestedInputInputObject
+      UserTutorialUpdateManyDataInput: UserTutorialUpdateManyDataInputInputObject
       UserUpdateManyMutationInput: UserUpdateManyMutationInputInputObject
-      PostCreateInput: PostCreateInputInputObject
-      UserCreateOneWithoutPostsInput: UserCreateOneWithoutPostsInputInputObject
-      UserCreateWithoutPostsInput: UserCreateWithoutPostsInputInputObject
-      PostUpdateInput: PostUpdateInputInputObject
-      UserUpdateOneRequiredWithoutPostsInput: UserUpdateOneRequiredWithoutPostsInputInputObject
-      UserUpdateWithoutPostsDataInput: UserUpdateWithoutPostsDataInputInputObject
-      UserUpsertWithoutPostsInput: UserUpsertWithoutPostsInputInputObject
-      PostUpdateManyMutationInput: PostUpdateManyMutationInputInputObject
+      UserTutorialCreateInput: UserTutorialCreateInputInputObject
+      UserCreateOneWithoutUserTutorialsInput: UserCreateOneWithoutUserTutorialsInputInputObject
+      UserCreateWithoutUserTutorialsInput: UserCreateWithoutUserTutorialsInputInputObject
+      UserTutorialUpdateInput: UserTutorialUpdateInputInputObject
+      UserUpdateOneWithoutUserTutorialsInput: UserUpdateOneWithoutUserTutorialsInputInputObject
+      UserUpdateWithoutUserTutorialsDataInput: UserUpdateWithoutUserTutorialsDataInputInputObject
+      UserUpsertWithoutUserTutorialsInput: UserUpsertWithoutUserTutorialsInputInputObject
+      UserTutorialUpdateManyMutationInput: UserTutorialUpdateManyMutationInputInputObject
+      TutorialCreateInput: TutorialCreateInputInputObject
+      UserTutorialCreateManyWithoutTutorialInput: UserTutorialCreateManyWithoutTutorialInputInputObject
+      UserTutorialCreateWithoutTutorialInput: UserTutorialCreateWithoutTutorialInputInputObject
+      TutorialUpdateInput: TutorialUpdateInputInputObject
+      UserTutorialUpdateManyWithoutTutorialInput: UserTutorialUpdateManyWithoutTutorialInputInputObject
+      UserTutorialUpdateWithWhereUniqueWithoutTutorialInput: UserTutorialUpdateWithWhereUniqueWithoutTutorialInputInputObject
+      UserTutorialUpdateWithoutTutorialDataInput: UserTutorialUpdateWithoutTutorialDataInputInputObject
+      UserTutorialUpsertWithWhereUniqueWithoutTutorialInput: UserTutorialUpsertWithWhereUniqueWithoutTutorialInputInputObject
+      TutorialUpdateManyMutationInput: TutorialUpdateManyMutationInputInputObject
       UserSubscriptionWhereInput: UserSubscriptionWhereInputInputObject
-      PostSubscriptionWhereInput: PostSubscriptionWhereInputInputObject
+      UserTutorialSubscriptionWhereInput: UserTutorialSubscriptionWhereInputInputObject
+      TutorialSubscriptionWhereInput: TutorialSubscriptionWhereInputInputObject
     }
   }
   enumTypes: {
-    PostOrderByInput: PostOrderByInputValues,
+    UserTutorialOrderByInput: UserTutorialOrderByInputValues,
     UserOrderByInput: UserOrderByInputValues,
+    TutorialOrderByInput: TutorialOrderByInputValues,
     MutationType: MutationTypeValues,
   }
 }
@@ -96,17 +126,23 @@ type QueryObject =
   | { name: 'user', args?: QueryUserArgs[] | false, alias?: string  } 
   | { name: 'users', args?: QueryUsersArgs[] | false, alias?: string  } 
   | { name: 'usersConnection', args?: QueryUsersConnectionArgs[] | false, alias?: string  } 
-  | { name: 'post', args?: QueryPostArgs[] | false, alias?: string  } 
-  | { name: 'posts', args?: QueryPostsArgs[] | false, alias?: string  } 
-  | { name: 'postsConnection', args?: QueryPostsConnectionArgs[] | false, alias?: string  } 
+  | { name: 'userTutorial', args?: QueryUserTutorialArgs[] | false, alias?: string  } 
+  | { name: 'userTutorials', args?: QueryUserTutorialsArgs[] | false, alias?: string  } 
+  | { name: 'userTutorialsConnection', args?: QueryUserTutorialsConnectionArgs[] | false, alias?: string  } 
+  | { name: 'tutorial', args?: QueryTutorialArgs[] | false, alias?: string  } 
+  | { name: 'tutorials', args?: QueryTutorialsArgs[] | false, alias?: string  } 
+  | { name: 'tutorialsConnection', args?: QueryTutorialsConnectionArgs[] | false, alias?: string  } 
 
 type QueryFields =
   | 'user'
   | 'users'
   | 'usersConnection'
-  | 'post'
-  | 'posts'
-  | 'postsConnection'
+  | 'userTutorial'
+  | 'userTutorials'
+  | 'userTutorialsConnection'
+  | 'tutorial'
+  | 'tutorials'
+  | 'tutorialsConnection'
 
 
 type QueryUserArgs =
@@ -127,9 +163,9 @@ type QueryUsersConnectionArgs =
   | 'before'
   | 'first'
   | 'last'
-type QueryPostArgs =
+type QueryUserTutorialArgs =
   | 'where'
-type QueryPostsArgs =
+type QueryUserTutorialsArgs =
   | 'where'
   | 'orderBy'
   | 'skip'
@@ -137,7 +173,25 @@ type QueryPostsArgs =
   | 'before'
   | 'first'
   | 'last'
-type QueryPostsConnectionArgs =
+type QueryUserTutorialsConnectionArgs =
+  | 'where'
+  | 'orderBy'
+  | 'skip'
+  | 'after'
+  | 'before'
+  | 'first'
+  | 'last'
+type QueryTutorialArgs =
+  | 'where'
+type QueryTutorialsArgs =
+  | 'where'
+  | 'orderBy'
+  | 'skip'
+  | 'after'
+  | 'before'
+  | 'first'
+  | 'last'
+type QueryTutorialsConnectionArgs =
   | 'where'
   | 'orderBy'
   | 'skip'
@@ -187,44 +241,83 @@ export interface QueryFieldDetails {
       info?: GraphQLResolveInfo
     ) => Promise<prisma.UserConnection> | prisma.UserConnection
   }
-  post: {
-    type: 'Post'
-    args: Record<QueryPostArgs, core.NexusArgDef<string>>
+  userTutorial: {
+    type: 'UserTutorial'
+    args: Record<QueryUserTutorialArgs, core.NexusArgDef<string>>
     description: string
     list: undefined
     nullable: true
     resolve: (
       root: core.RootValue<"Query">,
-      args: { where: PostWhereUniqueInput }  ,
+      args: { where: UserTutorialWhereUniqueInput }  ,
       context: core.GetGen<"context">,
       info?: GraphQLResolveInfo
-    ) => Promise<prisma.Post | null> | prisma.Post | null
+    ) => Promise<prisma.UserTutorial | null> | prisma.UserTutorial | null
   }
-  posts: {
-    type: 'Post'
-    args: Record<QueryPostsArgs, core.NexusArgDef<string>>
+  userTutorials: {
+    type: 'UserTutorial'
+    args: Record<QueryUserTutorialsArgs, core.NexusArgDef<string>>
     description: string
     list: true
     nullable: false
     resolve: (
       root: core.RootValue<"Query">,
-      args: { where?: PostWhereInput | null, orderBy?: prisma.PostOrderByInput | null, skip?: number | null, after?: string | null, before?: string | null, first?: number | null, last?: number | null }  ,
+      args: { where?: UserTutorialWhereInput | null, orderBy?: prisma.UserTutorialOrderByInput | null, skip?: number | null, after?: string | null, before?: string | null, first?: number | null, last?: number | null }  ,
       context: core.GetGen<"context">,
       info?: GraphQLResolveInfo
-    ) => Promise<prisma.Post[]> | prisma.Post[]
+    ) => Promise<prisma.UserTutorial[]> | prisma.UserTutorial[]
   }
-  postsConnection: {
-    type: 'PostConnection'
-    args: Record<QueryPostsConnectionArgs, core.NexusArgDef<string>>
+  userTutorialsConnection: {
+    type: 'UserTutorialConnection'
+    args: Record<QueryUserTutorialsConnectionArgs, core.NexusArgDef<string>>
     description: string
     list: undefined
     nullable: false
     resolve: (
       root: core.RootValue<"Query">,
-      args: { where?: PostWhereInput | null, orderBy?: prisma.PostOrderByInput | null, skip?: number | null, after?: string | null, before?: string | null, first?: number | null, last?: number | null }  ,
+      args: { where?: UserTutorialWhereInput | null, orderBy?: prisma.UserTutorialOrderByInput | null, skip?: number | null, after?: string | null, before?: string | null, first?: number | null, last?: number | null }  ,
       context: core.GetGen<"context">,
       info?: GraphQLResolveInfo
-    ) => Promise<prisma.PostConnection> | prisma.PostConnection
+    ) => Promise<prisma.UserTutorialConnection> | prisma.UserTutorialConnection
+  }
+  tutorial: {
+    type: 'Tutorial'
+    args: Record<QueryTutorialArgs, core.NexusArgDef<string>>
+    description: string
+    list: undefined
+    nullable: true
+    resolve: (
+      root: core.RootValue<"Query">,
+      args: { where: TutorialWhereUniqueInput }  ,
+      context: core.GetGen<"context">,
+      info?: GraphQLResolveInfo
+    ) => Promise<prisma.Tutorial | null> | prisma.Tutorial | null
+  }
+  tutorials: {
+    type: 'Tutorial'
+    args: Record<QueryTutorialsArgs, core.NexusArgDef<string>>
+    description: string
+    list: true
+    nullable: false
+    resolve: (
+      root: core.RootValue<"Query">,
+      args: { where?: TutorialWhereInput | null, orderBy?: prisma.TutorialOrderByInput | null, skip?: number | null, after?: string | null, before?: string | null, first?: number | null, last?: number | null }  ,
+      context: core.GetGen<"context">,
+      info?: GraphQLResolveInfo
+    ) => Promise<prisma.Tutorial[]> | prisma.Tutorial[]
+  }
+  tutorialsConnection: {
+    type: 'TutorialConnection'
+    args: Record<QueryTutorialsConnectionArgs, core.NexusArgDef<string>>
+    description: string
+    list: undefined
+    nullable: false
+    resolve: (
+      root: core.RootValue<"Query">,
+      args: { where?: TutorialWhereInput | null, orderBy?: prisma.TutorialOrderByInput | null, skip?: number | null, after?: string | null, before?: string | null, first?: number | null, last?: number | null }  ,
+      context: core.GetGen<"context">,
+      info?: GraphQLResolveInfo
+    ) => Promise<prisma.TutorialConnection> | prisma.TutorialConnection
   }
 }
   
@@ -242,7 +335,9 @@ type UserObject =
   | { name: 'githubUserId', args?: [] | false, alias?: string  } 
   | { name: 'avatarUrl', args?: [] | false, alias?: string  } 
   | { name: 'bio', args?: [] | false, alias?: string  } 
-  | { name: 'posts', args?: UserPostsArgs[] | false, alias?: string  } 
+  | { name: 'contributor', args?: [] | false, alias?: string  } 
+  | { name: 'expertise', args?: [] | false, alias?: string  } 
+  | { name: 'userTutorials', args?: UserUserTutorialsArgs[] | false, alias?: string  } 
 
 type UserFields =
   | 'id'
@@ -254,10 +349,12 @@ type UserFields =
   | 'githubUserId'
   | 'avatarUrl'
   | 'bio'
-  | 'posts'
+  | 'contributor'
+  | 'expertise'
+  | 'userTutorials'
 
 
-type UserPostsArgs =
+type UserUserTutorialsArgs =
   | 'where'
   | 'orderBy'
   | 'skip'
@@ -305,7 +402,7 @@ export interface UserFieldDetails {
     args: {}
     description: string
     list: undefined
-    nullable: false
+    nullable: true
     resolve: undefined
   }
   githubHandle: {
@@ -337,47 +434,69 @@ export interface UserFieldDetails {
     args: {}
     description: string
     list: undefined
-    nullable: false
+    nullable: true
     resolve: undefined
   }
-  posts: {
-    type: 'Post'
-    args: Record<UserPostsArgs, core.NexusArgDef<string>>
+  contributor: {
+    type: 'Boolean'
+    args: {}
+    description: string
+    list: undefined
+    nullable: true
+    resolve: undefined
+  }
+  expertise: {
+    type: 'String'
+    args: {}
+    description: string
+    list: undefined
+    nullable: true
+    resolve: undefined
+  }
+  userTutorials: {
+    type: 'UserTutorial'
+    args: Record<UserUserTutorialsArgs, core.NexusArgDef<string>>
     description: string
     list: true
     nullable: false
     resolve: (
       root: core.RootValue<"User">,
-      args: { where?: PostWhereInput | null, orderBy?: prisma.PostOrderByInput | null, skip?: number | null, after?: string | null, before?: string | null, first?: number | null, last?: number | null }  ,
+      args: { where?: UserTutorialWhereInput | null, orderBy?: prisma.UserTutorialOrderByInput | null, skip?: number | null, after?: string | null, before?: string | null, first?: number | null, last?: number | null }  ,
       context: core.GetGen<"context">,
       info?: GraphQLResolveInfo
-    ) => Promise<prisma.Post[]> | prisma.Post[]
+    ) => Promise<prisma.UserTutorial[]> | prisma.UserTutorial[]
   }
 }
   
 
-// Types for Post
+// Types for UserTutorial
 
-type PostObject =
-  | PostFields
+type UserTutorialObject =
+  | UserTutorialFields
   | { name: 'id', args?: [] | false, alias?: string  } 
-  | { name: 'title', args?: [] | false, alias?: string  } 
-  | { name: 'content', args?: [] | false, alias?: string  } 
-  | { name: 'published', args?: [] | false, alias?: string  } 
-  | { name: 'author', args?: [] | false, alias?: string  } 
+  | { name: 'createdAt', args?: [] | false, alias?: string  } 
+  | { name: 'updatedAt', args?: [] | false, alias?: string  } 
+  | { name: 'user', args?: [] | false, alias?: string  } 
+  | { name: 'tutorial', args?: [] | false, alias?: string  } 
+  | { name: 'upvoted', args?: [] | false, alias?: string  } 
+  | { name: 'saved', args?: [] | false, alias?: string  } 
+  | { name: 'currentChapter', args?: [] | false, alias?: string  } 
 
-type PostFields =
+type UserTutorialFields =
   | 'id'
-  | 'title'
-  | 'content'
-  | 'published'
-  | 'author'
+  | 'createdAt'
+  | 'updatedAt'
+  | 'user'
+  | 'tutorial'
+  | 'upvoted'
+  | 'saved'
+  | 'currentChapter'
 
 
 
   
 
-export interface PostFieldDetails {
+export interface UserTutorialFieldDetails {
   id: {
     type: 'ID'
     args: {}
@@ -386,42 +505,188 @@ export interface PostFieldDetails {
     nullable: false
     resolve: undefined
   }
-  title: {
-    type: 'String'
+  createdAt: {
+    type: 'DateTime'
     args: {}
     description: string
     list: undefined
     nullable: false
     resolve: undefined
   }
-  content: {
-    type: 'String'
+  updatedAt: {
+    type: 'DateTime'
     args: {}
     description: string
     list: undefined
     nullable: false
     resolve: undefined
   }
-  published: {
-    type: 'Boolean'
-    args: {}
-    description: string
-    list: undefined
-    nullable: false
-    resolve: undefined
-  }
-  author: {
+  user: {
     type: 'User'
     args: {}
     description: string
     list: undefined
-    nullable: false
+    nullable: true
     resolve: (
-      root: core.RootValue<"Post">,
+      root: core.RootValue<"UserTutorial">,
       args: {  }  ,
       context: core.GetGen<"context">,
       info?: GraphQLResolveInfo
-    ) => Promise<prisma.User> | prisma.User
+    ) => Promise<prisma.User | null> | prisma.User | null
+  }
+  tutorial: {
+    type: 'Tutorial'
+    args: {}
+    description: string
+    list: undefined
+    nullable: true
+    resolve: (
+      root: core.RootValue<"UserTutorial">,
+      args: {  }  ,
+      context: core.GetGen<"context">,
+      info?: GraphQLResolveInfo
+    ) => Promise<prisma.Tutorial | null> | prisma.Tutorial | null
+  }
+  upvoted: {
+    type: 'Boolean'
+    args: {}
+    description: string
+    list: undefined
+    nullable: true
+    resolve: undefined
+  }
+  saved: {
+    type: 'Boolean'
+    args: {}
+    description: string
+    list: undefined
+    nullable: true
+    resolve: undefined
+  }
+  currentChapter: {
+    type: 'Int'
+    args: {}
+    description: string
+    list: undefined
+    nullable: true
+    resolve: undefined
+  }
+}
+  
+
+// Types for Tutorial
+
+type TutorialObject =
+  | TutorialFields
+  | { name: 'id', args?: [] | false, alias?: string  } 
+  | { name: 'createdAt', args?: [] | false, alias?: string  } 
+  | { name: 'updatedAt', args?: [] | false, alias?: string  } 
+  | { name: 'name', args?: [] | false, alias?: string  } 
+  | { name: 'gatsbyID', args?: [] | false, alias?: string  } 
+  | { name: 'upvotes', args?: [] | false, alias?: string  } 
+  | { name: 'numberOfStudents', args?: [] | false, alias?: string  } 
+  | { name: 'numberofChapters', args?: [] | false, alias?: string  } 
+  | { name: 'userTutorials', args?: TutorialUserTutorialsArgs[] | false, alias?: string  } 
+
+type TutorialFields =
+  | 'id'
+  | 'createdAt'
+  | 'updatedAt'
+  | 'name'
+  | 'gatsbyID'
+  | 'upvotes'
+  | 'numberOfStudents'
+  | 'numberofChapters'
+  | 'userTutorials'
+
+
+type TutorialUserTutorialsArgs =
+  | 'where'
+  | 'orderBy'
+  | 'skip'
+  | 'after'
+  | 'before'
+  | 'first'
+  | 'last'
+  
+
+export interface TutorialFieldDetails {
+  id: {
+    type: 'ID'
+    args: {}
+    description: string
+    list: undefined
+    nullable: false
+    resolve: undefined
+  }
+  createdAt: {
+    type: 'DateTime'
+    args: {}
+    description: string
+    list: undefined
+    nullable: false
+    resolve: undefined
+  }
+  updatedAt: {
+    type: 'DateTime'
+    args: {}
+    description: string
+    list: undefined
+    nullable: false
+    resolve: undefined
+  }
+  name: {
+    type: 'String'
+    args: {}
+    description: string
+    list: undefined
+    nullable: false
+    resolve: undefined
+  }
+  gatsbyID: {
+    type: 'String'
+    args: {}
+    description: string
+    list: undefined
+    nullable: false
+    resolve: undefined
+  }
+  upvotes: {
+    type: 'Int'
+    args: {}
+    description: string
+    list: undefined
+    nullable: false
+    resolve: undefined
+  }
+  numberOfStudents: {
+    type: 'Int'
+    args: {}
+    description: string
+    list: undefined
+    nullable: false
+    resolve: undefined
+  }
+  numberofChapters: {
+    type: 'Int'
+    args: {}
+    description: string
+    list: undefined
+    nullable: false
+    resolve: undefined
+  }
+  userTutorials: {
+    type: 'UserTutorial'
+    args: Record<TutorialUserTutorialsArgs, core.NexusArgDef<string>>
+    description: string
+    list: true
+    nullable: false
+    resolve: (
+      root: core.RootValue<"Tutorial">,
+      args: { where?: UserTutorialWhereInput | null, orderBy?: prisma.UserTutorialOrderByInput | null, skip?: number | null, after?: string | null, before?: string | null, first?: number | null, last?: number | null }  ,
+      context: core.GetGen<"context">,
+      info?: GraphQLResolveInfo
+    ) => Promise<prisma.UserTutorial[]> | prisma.UserTutorial[]
   }
 }
   
@@ -606,15 +871,15 @@ export interface AggregateUserFieldDetails {
 }
   
 
-// Types for PostConnection
+// Types for UserTutorialConnection
 
-type PostConnectionObject =
-  | PostConnectionFields
+type UserTutorialConnectionObject =
+  | UserTutorialConnectionFields
   | { name: 'pageInfo', args?: [] | false, alias?: string  } 
   | { name: 'edges', args?: [] | false, alias?: string  } 
   | { name: 'aggregate', args?: [] | false, alias?: string  } 
 
-type PostConnectionFields =
+type UserTutorialConnectionFields =
   | 'pageInfo'
   | 'edges'
   | 'aggregate'
@@ -623,7 +888,7 @@ type PostConnectionFields =
 
   
 
-export interface PostConnectionFieldDetails {
+export interface UserTutorialConnectionFieldDetails {
   pageInfo: {
     type: 'PageInfo'
     args: {}
@@ -631,49 +896,49 @@ export interface PostConnectionFieldDetails {
     list: undefined
     nullable: false
     resolve: (
-      root: core.RootValue<"PostConnection">,
+      root: core.RootValue<"UserTutorialConnection">,
       args: {  }  ,
       context: core.GetGen<"context">,
       info?: GraphQLResolveInfo
     ) => Promise<prisma.PageInfo> | prisma.PageInfo
   }
   edges: {
-    type: 'PostEdge'
+    type: 'UserTutorialEdge'
     args: {}
     description: string
     list: true
     nullable: false
     resolve: (
-      root: core.RootValue<"PostConnection">,
+      root: core.RootValue<"UserTutorialConnection">,
       args: {  }  ,
       context: core.GetGen<"context">,
       info?: GraphQLResolveInfo
-    ) => Promise<prisma.PostEdge[]> | prisma.PostEdge[]
+    ) => Promise<prisma.UserTutorialEdge[]> | prisma.UserTutorialEdge[]
   }
   aggregate: {
-    type: 'AggregatePost'
+    type: 'AggregateUserTutorial'
     args: {}
     description: string
     list: undefined
     nullable: false
     resolve: (
-      root: core.RootValue<"PostConnection">,
+      root: core.RootValue<"UserTutorialConnection">,
       args: {  }  ,
       context: core.GetGen<"context">,
       info?: GraphQLResolveInfo
-    ) => Promise<prisma.AggregatePost> | prisma.AggregatePost
+    ) => Promise<prisma.AggregateUserTutorial> | prisma.AggregateUserTutorial
   }
 }
   
 
-// Types for PostEdge
+// Types for UserTutorialEdge
 
-type PostEdgeObject =
-  | PostEdgeFields
+type UserTutorialEdgeObject =
+  | UserTutorialEdgeFields
   | { name: 'node', args?: [] | false, alias?: string  } 
   | { name: 'cursor', args?: [] | false, alias?: string  } 
 
-type PostEdgeFields =
+type UserTutorialEdgeFields =
   | 'node'
   | 'cursor'
 
@@ -681,19 +946,19 @@ type PostEdgeFields =
 
   
 
-export interface PostEdgeFieldDetails {
+export interface UserTutorialEdgeFieldDetails {
   node: {
-    type: 'Post'
+    type: 'UserTutorial'
     args: {}
     description: string
     list: undefined
     nullable: false
     resolve: (
-      root: core.RootValue<"PostEdge">,
+      root: core.RootValue<"UserTutorialEdge">,
       args: {  }  ,
       context: core.GetGen<"context">,
       info?: GraphQLResolveInfo
-    ) => Promise<prisma.Post> | prisma.Post
+    ) => Promise<prisma.UserTutorial> | prisma.UserTutorial
   }
   cursor: {
     type: 'String'
@@ -706,20 +971,145 @@ export interface PostEdgeFieldDetails {
 }
   
 
-// Types for AggregatePost
+// Types for AggregateUserTutorial
 
-type AggregatePostObject =
-  | AggregatePostFields
+type AggregateUserTutorialObject =
+  | AggregateUserTutorialFields
   | { name: 'count', args?: [] | false, alias?: string  } 
 
-type AggregatePostFields =
+type AggregateUserTutorialFields =
   | 'count'
 
 
 
   
 
-export interface AggregatePostFieldDetails {
+export interface AggregateUserTutorialFieldDetails {
+  count: {
+    type: 'Int'
+    args: {}
+    description: string
+    list: undefined
+    nullable: false
+    resolve: undefined
+  }
+}
+  
+
+// Types for TutorialConnection
+
+type TutorialConnectionObject =
+  | TutorialConnectionFields
+  | { name: 'pageInfo', args?: [] | false, alias?: string  } 
+  | { name: 'edges', args?: [] | false, alias?: string  } 
+  | { name: 'aggregate', args?: [] | false, alias?: string  } 
+
+type TutorialConnectionFields =
+  | 'pageInfo'
+  | 'edges'
+  | 'aggregate'
+
+
+
+  
+
+export interface TutorialConnectionFieldDetails {
+  pageInfo: {
+    type: 'PageInfo'
+    args: {}
+    description: string
+    list: undefined
+    nullable: false
+    resolve: (
+      root: core.RootValue<"TutorialConnection">,
+      args: {  }  ,
+      context: core.GetGen<"context">,
+      info?: GraphQLResolveInfo
+    ) => Promise<prisma.PageInfo> | prisma.PageInfo
+  }
+  edges: {
+    type: 'TutorialEdge'
+    args: {}
+    description: string
+    list: true
+    nullable: false
+    resolve: (
+      root: core.RootValue<"TutorialConnection">,
+      args: {  }  ,
+      context: core.GetGen<"context">,
+      info?: GraphQLResolveInfo
+    ) => Promise<prisma.TutorialEdge[]> | prisma.TutorialEdge[]
+  }
+  aggregate: {
+    type: 'AggregateTutorial'
+    args: {}
+    description: string
+    list: undefined
+    nullable: false
+    resolve: (
+      root: core.RootValue<"TutorialConnection">,
+      args: {  }  ,
+      context: core.GetGen<"context">,
+      info?: GraphQLResolveInfo
+    ) => Promise<prisma.AggregateTutorial> | prisma.AggregateTutorial
+  }
+}
+  
+
+// Types for TutorialEdge
+
+type TutorialEdgeObject =
+  | TutorialEdgeFields
+  | { name: 'node', args?: [] | false, alias?: string  } 
+  | { name: 'cursor', args?: [] | false, alias?: string  } 
+
+type TutorialEdgeFields =
+  | 'node'
+  | 'cursor'
+
+
+
+  
+
+export interface TutorialEdgeFieldDetails {
+  node: {
+    type: 'Tutorial'
+    args: {}
+    description: string
+    list: undefined
+    nullable: false
+    resolve: (
+      root: core.RootValue<"TutorialEdge">,
+      args: {  }  ,
+      context: core.GetGen<"context">,
+      info?: GraphQLResolveInfo
+    ) => Promise<prisma.Tutorial> | prisma.Tutorial
+  }
+  cursor: {
+    type: 'String'
+    args: {}
+    description: string
+    list: undefined
+    nullable: false
+    resolve: undefined
+  }
+}
+  
+
+// Types for AggregateTutorial
+
+type AggregateTutorialObject =
+  | AggregateTutorialFields
+  | { name: 'count', args?: [] | false, alias?: string  } 
+
+type AggregateTutorialFields =
+  | 'count'
+
+
+
+  
+
+export interface AggregateTutorialFieldDetails {
   count: {
     type: 'Int'
     args: {}
@@ -741,12 +1131,18 @@ type MutationObject =
   | { name: 'upsertUser', args?: MutationUpsertUserArgs[] | false, alias?: string  } 
   | { name: 'deleteUser', args?: MutationDeleteUserArgs[] | false, alias?: string  } 
   | { name: 'deleteManyUsers', args?: MutationDeleteManyUsersArgs[] | false, alias?: string  } 
-  | { name: 'createPost', args?: MutationCreatePostArgs[] | false, alias?: string  } 
-  | { name: 'updatePost', args?: MutationUpdatePostArgs[] | false, alias?: string  } 
-  | { name: 'updateManyPosts', args?: MutationUpdateManyPostsArgs[] | false, alias?: string  } 
-  | { name: 'upsertPost', args?: MutationUpsertPostArgs[] | false, alias?: string  } 
-  | { name: 'deletePost', args?: MutationDeletePostArgs[] | false, alias?: string  } 
-  | { name: 'deleteManyPosts', args?: MutationDeleteManyPostsArgs[] | false, alias?: string  } 
+  | { name: 'createUserTutorial', args?: MutationCreateUserTutorialArgs[] | false, alias?: string  } 
+  | { name: 'updateUserTutorial', args?: MutationUpdateUserTutorialArgs[] | false, alias?: string  } 
+  | { name: 'updateManyUserTutorials', args?: MutationUpdateManyUserTutorialsArgs[] | false, alias?: string  } 
+  | { name: 'upsertUserTutorial', args?: MutationUpsertUserTutorialArgs[] | false, alias?: string  } 
+  | { name: 'deleteUserTutorial', args?: MutationDeleteUserTutorialArgs[] | false, alias?: string  } 
+  | { name: 'deleteManyUserTutorials', args?: MutationDeleteManyUserTutorialsArgs[] | false, alias?: string  } 
+  | { name: 'createTutorial', args?: MutationCreateTutorialArgs[] | false, alias?: string  } 
+  | { name: 'updateTutorial', args?: MutationUpdateTutorialArgs[] | false, alias?: string  } 
+  | { name: 'updateManyTutorials', args?: MutationUpdateManyTutorialsArgs[] | false, alias?: string  } 
+  | { name: 'upsertTutorial', args?: MutationUpsertTutorialArgs[] | false, alias?: string  } 
+  | { name: 'deleteTutorial', args?: MutationDeleteTutorialArgs[] | false, alias?: string  } 
+  | { name: 'deleteManyTutorials', args?: MutationDeleteManyTutorialsArgs[] | false, alias?: string  } 
 
 type MutationFields =
   | 'createUser'
@@ -755,12 +1151,18 @@ type MutationFields =
   | 'upsertUser'
   | 'deleteUser'
   | 'deleteManyUsers'
-  | 'createPost'
-  | 'updatePost'
-  | 'updateManyPosts'
-  | 'upsertPost'
-  | 'deletePost'
-  | 'deleteManyPosts'
+  | 'createUserTutorial'
+  | 'updateUserTutorial'
+  | 'updateManyUserTutorials'
+  | 'upsertUserTutorial'
+  | 'deleteUserTutorial'
+  | 'deleteManyUserTutorials'
+  | 'createTutorial'
+  | 'updateTutorial'
+  | 'updateManyTutorials'
+  | 'upsertTutorial'
+  | 'deleteTutorial'
+  | 'deleteManyTutorials'
 
 
 type MutationCreateUserArgs =
@@ -779,21 +1181,37 @@ type MutationDeleteUserArgs =
   | 'where'
 type MutationDeleteManyUsersArgs =
   | 'where'
-type MutationCreatePostArgs =
+type MutationCreateUserTutorialArgs =
   | 'data'
-type MutationUpdatePostArgs =
-  | 'data'
-  | 'where'
-type MutationUpdateManyPostsArgs =
+type MutationUpdateUserTutorialArgs =
   | 'data'
   | 'where'
-type MutationUpsertPostArgs =
+type MutationUpdateManyUserTutorialsArgs =
+  | 'data'
+  | 'where'
+type MutationUpsertUserTutorialArgs =
   | 'where'
   | 'create'
   | 'update'
-type MutationDeletePostArgs =
+type MutationDeleteUserTutorialArgs =
   | 'where'
-type MutationDeleteManyPostsArgs =
+type MutationDeleteManyUserTutorialsArgs =
+  | 'where'
+type MutationCreateTutorialArgs =
+  | 'data'
+type MutationUpdateTutorialArgs =
+  | 'data'
+  | 'where'
+type MutationUpdateManyTutorialsArgs =
+  | 'data'
+  | 'where'
+type MutationUpsertTutorialArgs =
+  | 'where'
+  | 'create'
+  | 'update'
+type MutationDeleteTutorialArgs =
+  | 'where'
+type MutationDeleteManyTutorialsArgs =
   | 'where'
   
 
@@ -876,80 +1294,158 @@ export interface MutationFieldDetails {
       info?: GraphQLResolveInfo
     ) => Promise<prisma.BatchPayload> | prisma.BatchPayload
   }
-  createPost: {
-    type: 'Post'
-    args: Record<MutationCreatePostArgs, core.NexusArgDef<string>>
+  createUserTutorial: {
+    type: 'UserTutorial'
+    args: Record<MutationCreateUserTutorialArgs, core.NexusArgDef<string>>
     description: string
     list: undefined
     nullable: false
     resolve: (
       root: core.RootValue<"Mutation">,
-      args: { data: PostCreateInput }  ,
+      args: { data: UserTutorialCreateInput }  ,
       context: core.GetGen<"context">,
       info?: GraphQLResolveInfo
-    ) => Promise<prisma.Post> | prisma.Post
+    ) => Promise<prisma.UserTutorial> | prisma.UserTutorial
   }
-  updatePost: {
-    type: 'Post'
-    args: Record<MutationUpdatePostArgs, core.NexusArgDef<string>>
+  updateUserTutorial: {
+    type: 'UserTutorial'
+    args: Record<MutationUpdateUserTutorialArgs, core.NexusArgDef<string>>
     description: string
     list: undefined
     nullable: true
     resolve: (
       root: core.RootValue<"Mutation">,
-      args: { data: PostUpdateInput, where: PostWhereUniqueInput }  ,
+      args: { data: UserTutorialUpdateInput, where: UserTutorialWhereUniqueInput }  ,
       context: core.GetGen<"context">,
       info?: GraphQLResolveInfo
-    ) => Promise<prisma.Post | null> | prisma.Post | null
+    ) => Promise<prisma.UserTutorial | null> | prisma.UserTutorial | null
   }
-  updateManyPosts: {
+  updateManyUserTutorials: {
     type: 'BatchPayload'
-    args: Record<MutationUpdateManyPostsArgs, core.NexusArgDef<string>>
+    args: Record<MutationUpdateManyUserTutorialsArgs, core.NexusArgDef<string>>
     description: string
     list: undefined
     nullable: false
     resolve: (
       root: core.RootValue<"Mutation">,
-      args: { data: PostUpdateManyMutationInput, where?: PostWhereInput | null }  ,
+      args: { data: UserTutorialUpdateManyMutationInput, where?: UserTutorialWhereInput | null }  ,
       context: core.GetGen<"context">,
       info?: GraphQLResolveInfo
     ) => Promise<prisma.BatchPayload> | prisma.BatchPayload
   }
-  upsertPost: {
-    type: 'Post'
-    args: Record<MutationUpsertPostArgs, core.NexusArgDef<string>>
+  upsertUserTutorial: {
+    type: 'UserTutorial'
+    args: Record<MutationUpsertUserTutorialArgs, core.NexusArgDef<string>>
     description: string
     list: undefined
     nullable: false
     resolve: (
       root: core.RootValue<"Mutation">,
-      args: { where: PostWhereUniqueInput, create: PostCreateInput, update: PostUpdateInput }  ,
+      args: { where: UserTutorialWhereUniqueInput, create: UserTutorialCreateInput, update: UserTutorialUpdateInput }  ,
       context: core.GetGen<"context">,
       info?: GraphQLResolveInfo
-    ) => Promise<prisma.Post> | prisma.Post
+    ) => Promise<prisma.UserTutorial> | prisma.UserTutorial
   }
-  deletePost: {
-    type: 'Post'
-    args: Record<MutationDeletePostArgs, core.NexusArgDef<string>>
+  deleteUserTutorial: {
+    type: 'UserTutorial'
+    args: Record<MutationDeleteUserTutorialArgs, core.NexusArgDef<string>>
     description: string
     list: undefined
     nullable: true
     resolve: (
       root: core.RootValue<"Mutation">,
-      args: { where: PostWhereUniqueInput }  ,
+      args: { where: UserTutorialWhereUniqueInput }  ,
       context: core.GetGen<"context">,
       info?: GraphQLResolveInfo
-    ) => Promise<prisma.Post | null> | prisma.Post | null
+    ) => Promise<prisma.UserTutorial | null> | prisma.UserTutorial | null
   }
-  deleteManyPosts: {
+  deleteManyUserTutorials: {
     type: 'BatchPayload'
-    args: Record<MutationDeleteManyPostsArgs, core.NexusArgDef<string>>
+    args: Record<MutationDeleteManyUserTutorialsArgs, core.NexusArgDef<string>>
     description: string
     list: undefined
     nullable: false
     resolve: (
       root: core.RootValue<"Mutation">,
-      args: { where?: PostWhereInput | null }  ,
+      args: { where?: UserTutorialWhereInput | null }  ,
+      context: core.GetGen<"context">,
+      info?: GraphQLResolveInfo
+    ) => Promise<prisma.BatchPayload> | prisma.BatchPayload
+  }
+  createTutorial: {
+    type: 'Tutorial'
+    args: Record<MutationCreateTutorialArgs, core.NexusArgDef<string>>
+    description: string
+    list: undefined
+    nullable: false
+    resolve: (
+      root: core.RootValue<"Mutation">,
+      args: { data: TutorialCreateInput }  ,
+      context: core.GetGen<"context">,
+      info?: GraphQLResolveInfo
+    ) => Promise<prisma.Tutorial> | prisma.Tutorial
+  }
+  updateTutorial: {
+    type: 'Tutorial'
+    args: Record<MutationUpdateTutorialArgs, core.NexusArgDef<string>>
+    description: string
+    list: undefined
+    nullable: true
+    resolve: (
+      root: core.RootValue<"Mutation">,
+      args: { data: TutorialUpdateInput, where: TutorialWhereUniqueInput }  ,
+      context: core.GetGen<"context">,
+      info?: GraphQLResolveInfo
+    ) => Promise<prisma.Tutorial | null> | prisma.Tutorial | null
+  }
+  updateManyTutorials: {
+    type: 'BatchPayload'
+    args: Record<MutationUpdateManyTutorialsArgs, core.NexusArgDef<string>>
+    description: string
+    list: undefined
+    nullable: false
+    resolve: (
+      root: core.RootValue<"Mutation">,
+      args: { data: TutorialUpdateManyMutationInput, where?: TutorialWhereInput | null }  ,
+      context: core.GetGen<"context">,
+      info?: GraphQLResolveInfo
+    ) => Promise<prisma.BatchPayload> | prisma.BatchPayload
+  }
+  upsertTutorial: {
+    type: 'Tutorial'
+    args: Record<MutationUpsertTutorialArgs, core.NexusArgDef<string>>
+    description: string
+    list: undefined
+    nullable: false
+    resolve: (
+      root: core.RootValue<"Mutation">,
+      args: { where: TutorialWhereUniqueInput, create: TutorialCreateInput, update: TutorialUpdateInput }  ,
+      context: core.GetGen<"context">,
+      info?: GraphQLResolveInfo
+    ) => Promise<prisma.Tutorial> | prisma.Tutorial
+  }
+  deleteTutorial: {
+    type: 'Tutorial'
+    args: Record<MutationDeleteTutorialArgs, core.NexusArgDef<string>>
+    description: string
+    list: undefined
+    nullable: true
+    resolve: (
+      root: core.RootValue<"Mutation">,
+      args: { where: TutorialWhereUniqueInput }  ,
+      context: core.GetGen<"context">,
+      info?: GraphQLResolveInfo
+    ) => Promise<prisma.Tutorial | null> | prisma.Tutorial | null
+  }
+  deleteManyTutorials: {
+    type: 'BatchPayload'
+    args: Record<MutationDeleteManyTutorialsArgs, core.NexusArgDef<string>>
+    description: string
+    list: undefined
+    nullable: false
+    resolve: (
+      root: core.RootValue<"Mutation">,
+      args: { where?: TutorialWhereInput | null }  ,
       context: core.GetGen<"context">,
       info?: GraphQLResolveInfo
     ) => Promise<prisma.BatchPayload> | prisma.BatchPayload
@@ -987,16 +1483,20 @@ export interface BatchPayloadFieldDetails {
 type SubscriptionObject =
   | SubscriptionFields
   | { name: 'user', args?: SubscriptionUserArgs[] | false, alias?: string  } 
-  | { name: 'post', args?: SubscriptionPostArgs[] | false, alias?: string  } 
+  | { name: 'userTutorial', args?: SubscriptionUserTutorialArgs[] | false, alias?: string  } 
+  | { name: 'tutorial', args?: SubscriptionTutorialArgs[] | false, alias?: string  } 
 
 type SubscriptionFields =
   | 'user'
-  | 'post'
+  | 'userTutorial'
+  | 'tutorial'
 
 
 type SubscriptionUserArgs =
   | 'where'
-type SubscriptionPostArgs =
+type SubscriptionUserTutorialArgs =
+  | 'where'
+type SubscriptionTutorialArgs =
   | 'where'
   
 
@@ -1014,18 +1514,31 @@ export interface SubscriptionFieldDetails {
       info?: GraphQLResolveInfo
     ) => Promise<prisma.UserSubscriptionPayload | null> | prisma.UserSubscriptionPayload | null
   }
-  post: {
-    type: 'PostSubscriptionPayload'
-    args: Record<SubscriptionPostArgs, core.NexusArgDef<string>>
+  userTutorial: {
+    type: 'UserTutorialSubscriptionPayload'
+    args: Record<SubscriptionUserTutorialArgs, core.NexusArgDef<string>>
     description: string
     list: undefined
     nullable: true
     resolve: (
       root: core.RootValue<"Subscription">,
-      args: { where?: PostSubscriptionWhereInput | null }  ,
+      args: { where?: UserTutorialSubscriptionWhereInput | null }  ,
       context: core.GetGen<"context">,
       info?: GraphQLResolveInfo
-    ) => Promise<prisma.PostSubscriptionPayload | null> | prisma.PostSubscriptionPayload | null
+    ) => Promise<prisma.UserTutorialSubscriptionPayload | null> | prisma.UserTutorialSubscriptionPayload | null
+  }
+  tutorial: {
+    type: 'TutorialSubscriptionPayload'
+    args: Record<SubscriptionTutorialArgs, core.NexusArgDef<string>>
+    description: string
+    list: undefined
+    nullable: true
+    resolve: (
+      root: core.RootValue<"Subscription">,
+      args: { where?: TutorialSubscriptionWhereInput | null }  ,
+      context: core.GetGen<"context">,
+      info?: GraphQLResolveInfo
+    ) => Promise<prisma.TutorialSubscriptionPayload | null> | prisma.TutorialSubscriptionPayload | null
   }
 }
   
@@ -1113,6 +1626,8 @@ type UserPreviousValuesObject =
   | { name: 'githubUserId', args?: [] | false, alias?: string  } 
   | { name: 'avatarUrl', args?: [] | false, alias?: string  } 
   | { name: 'bio', args?: [] | false, alias?: string  } 
+  | { name: 'contributor', args?: [] | false, alias?: string  } 
+  | { name: 'expertise', args?: [] | false, alias?: string  } 
 
 type UserPreviousValuesFields =
   | 'id'
@@ -1124,6 +1639,8 @@ type UserPreviousValuesFields =
   | 'githubUserId'
   | 'avatarUrl'
   | 'bio'
+  | 'contributor'
+  | 'expertise'
 
 
 
@@ -1167,7 +1684,7 @@ export interface UserPreviousValuesFieldDetails {
     args: {}
     description: string
     list: undefined
-    nullable: false
+    nullable: true
     resolve: undefined
   }
   githubHandle: {
@@ -1199,22 +1716,38 @@ export interface UserPreviousValuesFieldDetails {
     args: {}
     description: string
     list: undefined
-    nullable: false
+    nullable: true
+    resolve: undefined
+  }
+  contributor: {
+    type: 'Boolean'
+    args: {}
+    description: string
+    list: undefined
+    nullable: true
+    resolve: undefined
+  }
+  expertise: {
+    type: 'String'
+    args: {}
+    description: string
+    list: undefined
+    nullable: true
     resolve: undefined
   }
 }
   
 
-// Types for PostSubscriptionPayload
+// Types for UserTutorialSubscriptionPayload
 
-type PostSubscriptionPayloadObject =
-  | PostSubscriptionPayloadFields
+type UserTutorialSubscriptionPayloadObject =
+  | UserTutorialSubscriptionPayloadFields
   | { name: 'mutation', args?: [] | false, alias?: string  } 
   | { name: 'node', args?: [] | false, alias?: string  } 
   | { name: 'updatedFields', args?: [] | false, alias?: string  } 
   | { name: 'previousValues', args?: [] | false, alias?: string  } 
 
-type PostSubscriptionPayloadFields =
+type UserTutorialSubscriptionPayloadFields =
   | 'mutation'
   | 'node'
   | 'updatedFields'
@@ -1224,7 +1757,7 @@ type PostSubscriptionPayloadFields =
 
   
 
-export interface PostSubscriptionPayloadFieldDetails {
+export interface UserTutorialSubscriptionPayloadFieldDetails {
   mutation: {
     type: 'MutationType'
     args: {}
@@ -1232,24 +1765,24 @@ export interface PostSubscriptionPayloadFieldDetails {
     list: undefined
     nullable: false
     resolve: (
-      root: core.RootValue<"PostSubscriptionPayload">,
+      root: core.RootValue<"UserTutorialSubscriptionPayload">,
       args: {  }  ,
       context: core.GetGen<"context">,
       info?: GraphQLResolveInfo
     ) => Promise<prisma.MutationType> | prisma.MutationType
   }
   node: {
-    type: 'Post'
+    type: 'UserTutorial'
     args: {}
     description: string
     list: undefined
     nullable: true
     resolve: (
-      root: core.RootValue<"PostSubscriptionPayload">,
+      root: core.RootValue<"UserTutorialSubscriptionPayload">,
       args: {  }  ,
       context: core.GetGen<"context">,
       info?: GraphQLResolveInfo
-    ) => Promise<prisma.Post | null> | prisma.Post | null
+    ) => Promise<prisma.UserTutorial | null> | prisma.UserTutorial | null
   }
   updatedFields: {
     type: 'String'
@@ -1260,41 +1793,45 @@ export interface PostSubscriptionPayloadFieldDetails {
     resolve: undefined
   }
   previousValues: {
-    type: 'PostPreviousValues'
+    type: 'UserTutorialPreviousValues'
     args: {}
     description: string
     list: undefined
     nullable: true
     resolve: (
-      root: core.RootValue<"PostSubscriptionPayload">,
+      root: core.RootValue<"UserTutorialSubscriptionPayload">,
       args: {  }  ,
       context: core.GetGen<"context">,
       info?: GraphQLResolveInfo
-    ) => Promise<prisma.PostPreviousValues | null> | prisma.PostPreviousValues | null
+    ) => Promise<prisma.UserTutorialPreviousValues | null> | prisma.UserTutorialPreviousValues | null
   }
 }
   
 
-// Types for PostPreviousValues
+// Types for UserTutorialPreviousValues
 
-type PostPreviousValuesObject =
-  | PostPreviousValuesFields
+type UserTutorialPreviousValuesObject =
+  | UserTutorialPreviousValuesFields
   | { name: 'id', args?: [] | false, alias?: string  } 
-  | { name: 'title', args?: [] | false, alias?: string  } 
-  | { name: 'content', args?: [] | false, alias?: string  } 
-  | { name: 'published', args?: [] | false, alias?: string  } 
+  | { name: 'createdAt', args?: [] | false, alias?: string  } 
+  | { name: 'updatedAt', args?: [] | false, alias?: string  } 
+  | { name: 'upvoted', args?: [] | false, alias?: string  } 
+  | { name: 'saved', args?: [] | false, alias?: string  } 
+  | { name: 'currentChapter', args?: [] | false, alias?: string  } 
 
-type PostPreviousValuesFields =
+type UserTutorialPreviousValuesFields =
   | 'id'
-  | 'title'
-  | 'content'
-  | 'published'
+  | 'createdAt'
+  | 'updatedAt'
+  | 'upvoted'
+  | 'saved'
+  | 'currentChapter'
 
 
 
   
 
-export interface PostPreviousValuesFieldDetails {
+export interface UserTutorialPreviousValuesFieldDetails {
   id: {
     type: 'ID'
     args: {}
@@ -1303,24 +1840,205 @@ export interface PostPreviousValuesFieldDetails {
     nullable: false
     resolve: undefined
   }
-  title: {
-    type: 'String'
+  createdAt: {
+    type: 'DateTime'
     args: {}
     description: string
     list: undefined
     nullable: false
     resolve: undefined
   }
-  content: {
-    type: 'String'
+  updatedAt: {
+    type: 'DateTime'
     args: {}
     description: string
     list: undefined
     nullable: false
     resolve: undefined
   }
-  published: {
+  upvoted: {
     type: 'Boolean'
+    args: {}
+    description: string
+    list: undefined
+    nullable: true
+    resolve: undefined
+  }
+  saved: {
+    type: 'Boolean'
+    args: {}
+    description: string
+    list: undefined
+    nullable: true
+    resolve: undefined
+  }
+  currentChapter: {
+    type: 'Int'
+    args: {}
+    description: string
+    list: undefined
+    nullable: true
+    resolve: undefined
+  }
+}
+  
+
+// Types for TutorialSubscriptionPayload
+
+type TutorialSubscriptionPayloadObject =
+  | TutorialSubscriptionPayloadFields
+  | { name: 'mutation', args?: [] | false, alias?: string  } 
+  | { name: 'node', args?: [] | false, alias?: string  } 
+  | { name: 'updatedFields', args?: [] | false, alias?: string  } 
+  | { name: 'previousValues', args?: [] | false, alias?: string  } 
+
+type TutorialSubscriptionPayloadFields =
+  | 'mutation'
+  | 'node'
+  | 'updatedFields'
+  | 'previousValues'
+
+
+
+  
+
+export interface TutorialSubscriptionPayloadFieldDetails {
+  mutation: {
+    type: 'MutationType'
+    args: {}
+    description: string
+    list: undefined
+    nullable: false
+    resolve: (
+      root: core.RootValue<"TutorialSubscriptionPayload">,
+      args: {  }  ,
+      context: core.GetGen<"context">,
+      info?: GraphQLResolveInfo
+    ) => Promise<prisma.MutationType> | prisma.MutationType
+  }
+  node: {
+    type: 'Tutorial'
+    args: {}
+    description: string
+    list: undefined
+    nullable: true
+    resolve: (
+      root: core.RootValue<"TutorialSubscriptionPayload">,
+      args: {  }  ,
+      context: core.GetGen<"context">,
+      info?: GraphQLResolveInfo
+    ) => Promise<prisma.Tutorial | null> | prisma.Tutorial | null
+  }
+  updatedFields: {
+    type: 'String'
+    args: {}
+    description: string
+    list: true
+    nullable: false
+    resolve: undefined
+  }
+  previousValues: {
+    type: 'TutorialPreviousValues'
+    args: {}
+    description: string
+    list: undefined
+    nullable: true
+    resolve: (
+      root: core.RootValue<"TutorialSubscriptionPayload">,
+      args: {  }  ,
+      context: core.GetGen<"context">,
+      info?: GraphQLResolveInfo
+    ) => Promise<prisma.TutorialPreviousValues | null> | prisma.TutorialPreviousValues | null
+  }
+}
+  
+
+// Types for TutorialPreviousValues
+
+type TutorialPreviousValuesObject =
+  | TutorialPreviousValuesFields
+  | { name: 'id', args?: [] | false, alias?: string  } 
+  | { name: 'createdAt', args?: [] | false, alias?: string  } 
+  | { name: 'updatedAt', args?: [] | false, alias?: string  } 
+  | { name: 'name', args?: [] | false, alias?: string  } 
+  | { name: 'gatsbyID', args?: [] | false, alias?: string  } 
+  | { name: 'upvotes', args?: [] | false, alias?: string  } 
+  | { name: 'numberOfStudents', args?: [] | false, alias?: string  } 
+  | { name: 'numberofChapters', args?: [] | false, alias?: string  } 
+
+type TutorialPreviousValuesFields =
+  | 'id'
+  | 'createdAt'
+  | 'updatedAt'
+  | 'name'
+  | 'gatsbyID'
+  | 'upvotes'
+  | 'numberOfStudents'
+  | 'numberofChapters'
+
+
+
+  
+
+export interface TutorialPreviousValuesFieldDetails {
+  id: {
+    type: 'ID'
+    args: {}
+    description: string
+    list: undefined
+    nullable: false
+    resolve: undefined
+  }
+  createdAt: {
+    type: 'DateTime'
+    args: {}
+    description: string
+    list: undefined
+    nullable: false
+    resolve: undefined
+  }
+  updatedAt: {
+    type: 'DateTime'
+    args: {}
+    description: string
+    list: undefined
+    nullable: false
+    resolve: undefined
+  }
+  name: {
+    type: 'String'
+    args: {}
+    description: string
+    list: undefined
+    nullable: false
+    resolve: undefined
+  }
+  gatsbyID: {
+    type: 'String'
+    args: {}
+    description: string
+    list: undefined
+    nullable: false
+    resolve: undefined
+  }
+  upvotes: {
+    type: 'Int'
+    args: {}
+    description: string
+    list: undefined
+    nullable: false
+    resolve: undefined
+  }
+  numberOfStudents: {
+    type: 'Int'
+    args: {}
+    description: string
+    list: undefined
+    nullable: false
+    resolve: undefined
+  }
+  numberofChapters: {
+    type: 'Int'
     args: {}
     description: string
     list: undefined
@@ -1336,6 +2054,7 @@ export interface UserWhereUniqueInput {
   email?: string | null
   githubHandle?: string | null
   githubUserId?: string | null
+  expertise?: string | null
 }
 export type UserWhereUniqueInputInputObject =
   | Extract<keyof UserWhereUniqueInput, string>
@@ -1343,8 +2062,9 @@ export type UserWhereUniqueInputInputObject =
   | { name: 'email', alias?: string  } 
   | { name: 'githubHandle', alias?: string  } 
   | { name: 'githubUserId', alias?: string  } 
+  | { name: 'expertise', alias?: string  } 
   
-export interface PostWhereInput {
+export interface UserTutorialWhereInput {
   id?: string | null
   id_not?: string | null
   id_in?: string[]
@@ -1359,43 +2079,42 @@ export interface PostWhereInput {
   id_not_starts_with?: string | null
   id_ends_with?: string | null
   id_not_ends_with?: string | null
-  title?: string | null
-  title_not?: string | null
-  title_in?: string[]
-  title_not_in?: string[]
-  title_lt?: string | null
-  title_lte?: string | null
-  title_gt?: string | null
-  title_gte?: string | null
-  title_contains?: string | null
-  title_not_contains?: string | null
-  title_starts_with?: string | null
-  title_not_starts_with?: string | null
-  title_ends_with?: string | null
-  title_not_ends_with?: string | null
-  content?: string | null
-  content_not?: string | null
-  content_in?: string[]
-  content_not_in?: string[]
-  content_lt?: string | null
-  content_lte?: string | null
-  content_gt?: string | null
-  content_gte?: string | null
-  content_contains?: string | null
-  content_not_contains?: string | null
-  content_starts_with?: string | null
-  content_not_starts_with?: string | null
-  content_ends_with?: string | null
-  content_not_ends_with?: string | null
-  published?: boolean | null
-  published_not?: boolean | null
-  author?: UserWhereInput | null
-  AND?: PostWhereInput[]
-  OR?: PostWhereInput[]
-  NOT?: PostWhereInput[]
+  createdAt?: string | null
+  createdAt_not?: string | null
+  createdAt_in?: string[]
+  createdAt_not_in?: string[]
+  createdAt_lt?: string | null
+  createdAt_lte?: string | null
+  createdAt_gt?: string | null
+  createdAt_gte?: string | null
+  updatedAt?: string | null
+  updatedAt_not?: string | null
+  updatedAt_in?: string[]
+  updatedAt_not_in?: string[]
+  updatedAt_lt?: string | null
+  updatedAt_lte?: string | null
+  updatedAt_gt?: string | null
+  updatedAt_gte?: string | null
+  user?: UserWhereInput | null
+  tutorial?: TutorialWhereInput | null
+  upvoted?: boolean | null
+  upvoted_not?: boolean | null
+  saved?: boolean | null
+  saved_not?: boolean | null
+  currentChapter?: number | null
+  currentChapter_not?: number | null
+  currentChapter_in?: number[]
+  currentChapter_not_in?: number[]
+  currentChapter_lt?: number | null
+  currentChapter_lte?: number | null
+  currentChapter_gt?: number | null
+  currentChapter_gte?: number | null
+  AND?: UserTutorialWhereInput[]
+  OR?: UserTutorialWhereInput[]
+  NOT?: UserTutorialWhereInput[]
 }
-export type PostWhereInputInputObject =
-  | Extract<keyof PostWhereInput, string>
+export type UserTutorialWhereInputInputObject =
+  | Extract<keyof UserTutorialWhereInput, string>
   | { name: 'id', alias?: string  } 
   | { name: 'id_not', alias?: string  } 
   | { name: 'id_in', alias?: string  } 
@@ -1410,37 +2129,36 @@ export type PostWhereInputInputObject =
   | { name: 'id_not_starts_with', alias?: string  } 
   | { name: 'id_ends_with', alias?: string  } 
   | { name: 'id_not_ends_with', alias?: string  } 
-  | { name: 'title', alias?: string  } 
-  | { name: 'title_not', alias?: string  } 
-  | { name: 'title_in', alias?: string  } 
-  | { name: 'title_not_in', alias?: string  } 
-  | { name: 'title_lt', alias?: string  } 
-  | { name: 'title_lte', alias?: string  } 
-  | { name: 'title_gt', alias?: string  } 
-  | { name: 'title_gte', alias?: string  } 
-  | { name: 'title_contains', alias?: string  } 
-  | { name: 'title_not_contains', alias?: string  } 
-  | { name: 'title_starts_with', alias?: string  } 
-  | { name: 'title_not_starts_with', alias?: string  } 
-  | { name: 'title_ends_with', alias?: string  } 
-  | { name: 'title_not_ends_with', alias?: string  } 
-  | { name: 'content', alias?: string  } 
-  | { name: 'content_not', alias?: string  } 
-  | { name: 'content_in', alias?: string  } 
-  | { name: 'content_not_in', alias?: string  } 
-  | { name: 'content_lt', alias?: string  } 
-  | { name: 'content_lte', alias?: string  } 
-  | { name: 'content_gt', alias?: string  } 
-  | { name: 'content_gte', alias?: string  } 
-  | { name: 'content_contains', alias?: string  } 
-  | { name: 'content_not_contains', alias?: string  } 
-  | { name: 'content_starts_with', alias?: string  } 
-  | { name: 'content_not_starts_with', alias?: string  } 
-  | { name: 'content_ends_with', alias?: string  } 
-  | { name: 'content_not_ends_with', alias?: string  } 
-  | { name: 'published', alias?: string  } 
-  | { name: 'published_not', alias?: string  } 
-  | { name: 'author', alias?: string  } 
+  | { name: 'createdAt', alias?: string  } 
+  | { name: 'createdAt_not', alias?: string  } 
+  | { name: 'createdAt_in', alias?: string  } 
+  | { name: 'createdAt_not_in', alias?: string  } 
+  | { name: 'createdAt_lt', alias?: string  } 
+  | { name: 'createdAt_lte', alias?: string  } 
+  | { name: 'createdAt_gt', alias?: string  } 
+  | { name: 'createdAt_gte', alias?: string  } 
+  | { name: 'updatedAt', alias?: string  } 
+  | { name: 'updatedAt_not', alias?: string  } 
+  | { name: 'updatedAt_in', alias?: string  } 
+  | { name: 'updatedAt_not_in', alias?: string  } 
+  | { name: 'updatedAt_lt', alias?: string  } 
+  | { name: 'updatedAt_lte', alias?: string  } 
+  | { name: 'updatedAt_gt', alias?: string  } 
+  | { name: 'updatedAt_gte', alias?: string  } 
+  | { name: 'user', alias?: string  } 
+  | { name: 'tutorial', alias?: string  } 
+  | { name: 'upvoted', alias?: string  } 
+  | { name: 'upvoted_not', alias?: string  } 
+  | { name: 'saved', alias?: string  } 
+  | { name: 'saved_not', alias?: string  } 
+  | { name: 'currentChapter', alias?: string  } 
+  | { name: 'currentChapter_not', alias?: string  } 
+  | { name: 'currentChapter_in', alias?: string  } 
+  | { name: 'currentChapter_not_in', alias?: string  } 
+  | { name: 'currentChapter_lt', alias?: string  } 
+  | { name: 'currentChapter_lte', alias?: string  } 
+  | { name: 'currentChapter_gt', alias?: string  } 
+  | { name: 'currentChapter_gte', alias?: string  } 
   | { name: 'AND', alias?: string  } 
   | { name: 'OR', alias?: string  } 
   | { name: 'NOT', alias?: string  } 
@@ -1560,9 +2278,25 @@ export interface UserWhereInput {
   bio_not_starts_with?: string | null
   bio_ends_with?: string | null
   bio_not_ends_with?: string | null
-  posts_every?: PostWhereInput | null
-  posts_some?: PostWhereInput | null
-  posts_none?: PostWhereInput | null
+  contributor?: boolean | null
+  contributor_not?: boolean | null
+  expertise?: string | null
+  expertise_not?: string | null
+  expertise_in?: string[]
+  expertise_not_in?: string[]
+  expertise_lt?: string | null
+  expertise_lte?: string | null
+  expertise_gt?: string | null
+  expertise_gte?: string | null
+  expertise_contains?: string | null
+  expertise_not_contains?: string | null
+  expertise_starts_with?: string | null
+  expertise_not_starts_with?: string | null
+  expertise_ends_with?: string | null
+  expertise_not_ends_with?: string | null
+  userTutorials_every?: UserTutorialWhereInput | null
+  userTutorials_some?: UserTutorialWhereInput | null
+  userTutorials_none?: UserTutorialWhereInput | null
   AND?: UserWhereInput[]
   OR?: UserWhereInput[]
   NOT?: UserWhereInput[]
@@ -1683,133 +2417,30 @@ export type UserWhereInputInputObject =
   | { name: 'bio_not_starts_with', alias?: string  } 
   | { name: 'bio_ends_with', alias?: string  } 
   | { name: 'bio_not_ends_with', alias?: string  } 
-  | { name: 'posts_every', alias?: string  } 
-  | { name: 'posts_some', alias?: string  } 
-  | { name: 'posts_none', alias?: string  } 
+  | { name: 'contributor', alias?: string  } 
+  | { name: 'contributor_not', alias?: string  } 
+  | { name: 'expertise', alias?: string  } 
+  | { name: 'expertise_not', alias?: string  } 
+  | { name: 'expertise_in', alias?: string  } 
+  | { name: 'expertise_not_in', alias?: string  } 
+  | { name: 'expertise_lt', alias?: string  } 
+  | { name: 'expertise_lte', alias?: string  } 
+  | { name: 'expertise_gt', alias?: string  } 
+  | { name: 'expertise_gte', alias?: string  } 
+  | { name: 'expertise_contains', alias?: string  } 
+  | { name: 'expertise_not_contains', alias?: string  } 
+  | { name: 'expertise_starts_with', alias?: string  } 
+  | { name: 'expertise_not_starts_with', alias?: string  } 
+  | { name: 'expertise_ends_with', alias?: string  } 
+  | { name: 'expertise_not_ends_with', alias?: string  } 
+  | { name: 'userTutorials_every', alias?: string  } 
+  | { name: 'userTutorials_some', alias?: string  } 
+  | { name: 'userTutorials_none', alias?: string  } 
   | { name: 'AND', alias?: string  } 
   | { name: 'OR', alias?: string  } 
   | { name: 'NOT', alias?: string  } 
   
-export interface PostWhereUniqueInput {
-  id?: string | null
-}
-export type PostWhereUniqueInputInputObject =
-  | Extract<keyof PostWhereUniqueInput, string>
-  | { name: 'id', alias?: string  } 
-  
-export interface UserCreateInput {
-  name?: string
-  email?: string
-  githubHandle?: string
-  githubUserId?: string
-  avatarUrl?: string | null
-  bio?: string
-  posts?: PostCreateManyWithoutAuthorInput | null
-}
-export type UserCreateInputInputObject =
-  | Extract<keyof UserCreateInput, string>
-  | { name: 'name', alias?: string  } 
-  | { name: 'email', alias?: string  } 
-  | { name: 'githubHandle', alias?: string  } 
-  | { name: 'githubUserId', alias?: string  } 
-  | { name: 'avatarUrl', alias?: string  } 
-  | { name: 'bio', alias?: string  } 
-  | { name: 'posts', alias?: string  } 
-  
-export interface PostCreateManyWithoutAuthorInput {
-  create?: PostCreateWithoutAuthorInput[]
-  connect?: PostWhereUniqueInput[]
-}
-export type PostCreateManyWithoutAuthorInputInputObject =
-  | Extract<keyof PostCreateManyWithoutAuthorInput, string>
-  | { name: 'create', alias?: string  } 
-  | { name: 'connect', alias?: string  } 
-  
-export interface PostCreateWithoutAuthorInput {
-  title?: string
-  content?: string
-  published?: boolean | null
-}
-export type PostCreateWithoutAuthorInputInputObject =
-  | Extract<keyof PostCreateWithoutAuthorInput, string>
-  | { name: 'title', alias?: string  } 
-  | { name: 'content', alias?: string  } 
-  | { name: 'published', alias?: string  } 
-  
-export interface UserUpdateInput {
-  name?: string | null
-  email?: string | null
-  githubHandle?: string | null
-  githubUserId?: string | null
-  avatarUrl?: string | null
-  bio?: string | null
-  posts?: PostUpdateManyWithoutAuthorInput | null
-}
-export type UserUpdateInputInputObject =
-  | Extract<keyof UserUpdateInput, string>
-  | { name: 'name', alias?: string  } 
-  | { name: 'email', alias?: string  } 
-  | { name: 'githubHandle', alias?: string  } 
-  | { name: 'githubUserId', alias?: string  } 
-  | { name: 'avatarUrl', alias?: string  } 
-  | { name: 'bio', alias?: string  } 
-  | { name: 'posts', alias?: string  } 
-  
-export interface PostUpdateManyWithoutAuthorInput {
-  create?: PostCreateWithoutAuthorInput[]
-  delete?: PostWhereUniqueInput[]
-  connect?: PostWhereUniqueInput[]
-  set?: PostWhereUniqueInput[]
-  disconnect?: PostWhereUniqueInput[]
-  update?: PostUpdateWithWhereUniqueWithoutAuthorInput[]
-  upsert?: PostUpsertWithWhereUniqueWithoutAuthorInput[]
-  deleteMany?: PostScalarWhereInput[]
-  updateMany?: PostUpdateManyWithWhereNestedInput[]
-}
-export type PostUpdateManyWithoutAuthorInputInputObject =
-  | Extract<keyof PostUpdateManyWithoutAuthorInput, string>
-  | { name: 'create', alias?: string  } 
-  | { name: 'delete', alias?: string  } 
-  | { name: 'connect', alias?: string  } 
-  | { name: 'set', alias?: string  } 
-  | { name: 'disconnect', alias?: string  } 
-  | { name: 'update', alias?: string  } 
-  | { name: 'upsert', alias?: string  } 
-  | { name: 'deleteMany', alias?: string  } 
-  | { name: 'updateMany', alias?: string  } 
-  
-export interface PostUpdateWithWhereUniqueWithoutAuthorInput {
-  where?: PostWhereUniqueInput
-  data?: PostUpdateWithoutAuthorDataInput
-}
-export type PostUpdateWithWhereUniqueWithoutAuthorInputInputObject =
-  | Extract<keyof PostUpdateWithWhereUniqueWithoutAuthorInput, string>
-  | { name: 'where', alias?: string  } 
-  | { name: 'data', alias?: string  } 
-  
-export interface PostUpdateWithoutAuthorDataInput {
-  title?: string | null
-  content?: string | null
-  published?: boolean | null
-}
-export type PostUpdateWithoutAuthorDataInputInputObject =
-  | Extract<keyof PostUpdateWithoutAuthorDataInput, string>
-  | { name: 'title', alias?: string  } 
-  | { name: 'content', alias?: string  } 
-  | { name: 'published', alias?: string  } 
-  
-export interface PostUpsertWithWhereUniqueWithoutAuthorInput {
-  where?: PostWhereUniqueInput
-  update?: PostUpdateWithoutAuthorDataInput
-  create?: PostCreateWithoutAuthorInput
-}
-export type PostUpsertWithWhereUniqueWithoutAuthorInputInputObject =
-  | Extract<keyof PostUpsertWithWhereUniqueWithoutAuthorInput, string>
-  | { name: 'where', alias?: string  } 
-  | { name: 'update', alias?: string  } 
-  | { name: 'create', alias?: string  } 
-  
-export interface PostScalarWhereInput {
+export interface TutorialWhereInput {
   id?: string | null
   id_not?: string | null
   id_in?: string[]
@@ -1824,42 +2455,83 @@ export interface PostScalarWhereInput {
   id_not_starts_with?: string | null
   id_ends_with?: string | null
   id_not_ends_with?: string | null
-  title?: string | null
-  title_not?: string | null
-  title_in?: string[]
-  title_not_in?: string[]
-  title_lt?: string | null
-  title_lte?: string | null
-  title_gt?: string | null
-  title_gte?: string | null
-  title_contains?: string | null
-  title_not_contains?: string | null
-  title_starts_with?: string | null
-  title_not_starts_with?: string | null
-  title_ends_with?: string | null
-  title_not_ends_with?: string | null
-  content?: string | null
-  content_not?: string | null
-  content_in?: string[]
-  content_not_in?: string[]
-  content_lt?: string | null
-  content_lte?: string | null
-  content_gt?: string | null
-  content_gte?: string | null
-  content_contains?: string | null
-  content_not_contains?: string | null
-  content_starts_with?: string | null
-  content_not_starts_with?: string | null
-  content_ends_with?: string | null
-  content_not_ends_with?: string | null
-  published?: boolean | null
-  published_not?: boolean | null
-  AND?: PostScalarWhereInput[]
-  OR?: PostScalarWhereInput[]
-  NOT?: PostScalarWhereInput[]
+  createdAt?: string | null
+  createdAt_not?: string | null
+  createdAt_in?: string[]
+  createdAt_not_in?: string[]
+  createdAt_lt?: string | null
+  createdAt_lte?: string | null
+  createdAt_gt?: string | null
+  createdAt_gte?: string | null
+  updatedAt?: string | null
+  updatedAt_not?: string | null
+  updatedAt_in?: string[]
+  updatedAt_not_in?: string[]
+  updatedAt_lt?: string | null
+  updatedAt_lte?: string | null
+  updatedAt_gt?: string | null
+  updatedAt_gte?: string | null
+  name?: string | null
+  name_not?: string | null
+  name_in?: string[]
+  name_not_in?: string[]
+  name_lt?: string | null
+  name_lte?: string | null
+  name_gt?: string | null
+  name_gte?: string | null
+  name_contains?: string | null
+  name_not_contains?: string | null
+  name_starts_with?: string | null
+  name_not_starts_with?: string | null
+  name_ends_with?: string | null
+  name_not_ends_with?: string | null
+  gatsbyID?: string | null
+  gatsbyID_not?: string | null
+  gatsbyID_in?: string[]
+  gatsbyID_not_in?: string[]
+  gatsbyID_lt?: string | null
+  gatsbyID_lte?: string | null
+  gatsbyID_gt?: string | null
+  gatsbyID_gte?: string | null
+  gatsbyID_contains?: string | null
+  gatsbyID_not_contains?: string | null
+  gatsbyID_starts_with?: string | null
+  gatsbyID_not_starts_with?: string | null
+  gatsbyID_ends_with?: string | null
+  gatsbyID_not_ends_with?: string | null
+  upvotes?: number | null
+  upvotes_not?: number | null
+  upvotes_in?: number[]
+  upvotes_not_in?: number[]
+  upvotes_lt?: number | null
+  upvotes_lte?: number | null
+  upvotes_gt?: number | null
+  upvotes_gte?: number | null
+  numberOfStudents?: number | null
+  numberOfStudents_not?: number | null
+  numberOfStudents_in?: number[]
+  numberOfStudents_not_in?: number[]
+  numberOfStudents_lt?: number | null
+  numberOfStudents_lte?: number | null
+  numberOfStudents_gt?: number | null
+  numberOfStudents_gte?: number | null
+  numberofChapters?: number | null
+  numberofChapters_not?: number | null
+  numberofChapters_in?: number[]
+  numberofChapters_not_in?: number[]
+  numberofChapters_lt?: number | null
+  numberofChapters_lte?: number | null
+  numberofChapters_gt?: number | null
+  numberofChapters_gte?: number | null
+  userTutorials_every?: UserTutorialWhereInput | null
+  userTutorials_some?: UserTutorialWhereInput | null
+  userTutorials_none?: UserTutorialWhereInput | null
+  AND?: TutorialWhereInput[]
+  OR?: TutorialWhereInput[]
+  NOT?: TutorialWhereInput[]
 }
-export type PostScalarWhereInputInputObject =
-  | Extract<keyof PostScalarWhereInput, string>
+export type TutorialWhereInputInputObject =
+  | Extract<keyof TutorialWhereInput, string>
   | { name: 'id', alias?: string  } 
   | { name: 'id_not', alias?: string  } 
   | { name: 'id_in', alias?: string  } 
@@ -1874,59 +2546,398 @@ export type PostScalarWhereInputInputObject =
   | { name: 'id_not_starts_with', alias?: string  } 
   | { name: 'id_ends_with', alias?: string  } 
   | { name: 'id_not_ends_with', alias?: string  } 
-  | { name: 'title', alias?: string  } 
-  | { name: 'title_not', alias?: string  } 
-  | { name: 'title_in', alias?: string  } 
-  | { name: 'title_not_in', alias?: string  } 
-  | { name: 'title_lt', alias?: string  } 
-  | { name: 'title_lte', alias?: string  } 
-  | { name: 'title_gt', alias?: string  } 
-  | { name: 'title_gte', alias?: string  } 
-  | { name: 'title_contains', alias?: string  } 
-  | { name: 'title_not_contains', alias?: string  } 
-  | { name: 'title_starts_with', alias?: string  } 
-  | { name: 'title_not_starts_with', alias?: string  } 
-  | { name: 'title_ends_with', alias?: string  } 
-  | { name: 'title_not_ends_with', alias?: string  } 
-  | { name: 'content', alias?: string  } 
-  | { name: 'content_not', alias?: string  } 
-  | { name: 'content_in', alias?: string  } 
-  | { name: 'content_not_in', alias?: string  } 
-  | { name: 'content_lt', alias?: string  } 
-  | { name: 'content_lte', alias?: string  } 
-  | { name: 'content_gt', alias?: string  } 
-  | { name: 'content_gte', alias?: string  } 
-  | { name: 'content_contains', alias?: string  } 
-  | { name: 'content_not_contains', alias?: string  } 
-  | { name: 'content_starts_with', alias?: string  } 
-  | { name: 'content_not_starts_with', alias?: string  } 
-  | { name: 'content_ends_with', alias?: string  } 
-  | { name: 'content_not_ends_with', alias?: string  } 
-  | { name: 'published', alias?: string  } 
-  | { name: 'published_not', alias?: string  } 
+  | { name: 'createdAt', alias?: string  } 
+  | { name: 'createdAt_not', alias?: string  } 
+  | { name: 'createdAt_in', alias?: string  } 
+  | { name: 'createdAt_not_in', alias?: string  } 
+  | { name: 'createdAt_lt', alias?: string  } 
+  | { name: 'createdAt_lte', alias?: string  } 
+  | { name: 'createdAt_gt', alias?: string  } 
+  | { name: 'createdAt_gte', alias?: string  } 
+  | { name: 'updatedAt', alias?: string  } 
+  | { name: 'updatedAt_not', alias?: string  } 
+  | { name: 'updatedAt_in', alias?: string  } 
+  | { name: 'updatedAt_not_in', alias?: string  } 
+  | { name: 'updatedAt_lt', alias?: string  } 
+  | { name: 'updatedAt_lte', alias?: string  } 
+  | { name: 'updatedAt_gt', alias?: string  } 
+  | { name: 'updatedAt_gte', alias?: string  } 
+  | { name: 'name', alias?: string  } 
+  | { name: 'name_not', alias?: string  } 
+  | { name: 'name_in', alias?: string  } 
+  | { name: 'name_not_in', alias?: string  } 
+  | { name: 'name_lt', alias?: string  } 
+  | { name: 'name_lte', alias?: string  } 
+  | { name: 'name_gt', alias?: string  } 
+  | { name: 'name_gte', alias?: string  } 
+  | { name: 'name_contains', alias?: string  } 
+  | { name: 'name_not_contains', alias?: string  } 
+  | { name: 'name_starts_with', alias?: string  } 
+  | { name: 'name_not_starts_with', alias?: string  } 
+  | { name: 'name_ends_with', alias?: string  } 
+  | { name: 'name_not_ends_with', alias?: string  } 
+  | { name: 'gatsbyID', alias?: string  } 
+  | { name: 'gatsbyID_not', alias?: string  } 
+  | { name: 'gatsbyID_in', alias?: string  } 
+  | { name: 'gatsbyID_not_in', alias?: string  } 
+  | { name: 'gatsbyID_lt', alias?: string  } 
+  | { name: 'gatsbyID_lte', alias?: string  } 
+  | { name: 'gatsbyID_gt', alias?: string  } 
+  | { name: 'gatsbyID_gte', alias?: string  } 
+  | { name: 'gatsbyID_contains', alias?: string  } 
+  | { name: 'gatsbyID_not_contains', alias?: string  } 
+  | { name: 'gatsbyID_starts_with', alias?: string  } 
+  | { name: 'gatsbyID_not_starts_with', alias?: string  } 
+  | { name: 'gatsbyID_ends_with', alias?: string  } 
+  | { name: 'gatsbyID_not_ends_with', alias?: string  } 
+  | { name: 'upvotes', alias?: string  } 
+  | { name: 'upvotes_not', alias?: string  } 
+  | { name: 'upvotes_in', alias?: string  } 
+  | { name: 'upvotes_not_in', alias?: string  } 
+  | { name: 'upvotes_lt', alias?: string  } 
+  | { name: 'upvotes_lte', alias?: string  } 
+  | { name: 'upvotes_gt', alias?: string  } 
+  | { name: 'upvotes_gte', alias?: string  } 
+  | { name: 'numberOfStudents', alias?: string  } 
+  | { name: 'numberOfStudents_not', alias?: string  } 
+  | { name: 'numberOfStudents_in', alias?: string  } 
+  | { name: 'numberOfStudents_not_in', alias?: string  } 
+  | { name: 'numberOfStudents_lt', alias?: string  } 
+  | { name: 'numberOfStudents_lte', alias?: string  } 
+  | { name: 'numberOfStudents_gt', alias?: string  } 
+  | { name: 'numberOfStudents_gte', alias?: string  } 
+  | { name: 'numberofChapters', alias?: string  } 
+  | { name: 'numberofChapters_not', alias?: string  } 
+  | { name: 'numberofChapters_in', alias?: string  } 
+  | { name: 'numberofChapters_not_in', alias?: string  } 
+  | { name: 'numberofChapters_lt', alias?: string  } 
+  | { name: 'numberofChapters_lte', alias?: string  } 
+  | { name: 'numberofChapters_gt', alias?: string  } 
+  | { name: 'numberofChapters_gte', alias?: string  } 
+  | { name: 'userTutorials_every', alias?: string  } 
+  | { name: 'userTutorials_some', alias?: string  } 
+  | { name: 'userTutorials_none', alias?: string  } 
   | { name: 'AND', alias?: string  } 
   | { name: 'OR', alias?: string  } 
   | { name: 'NOT', alias?: string  } 
   
-export interface PostUpdateManyWithWhereNestedInput {
-  where?: PostScalarWhereInput
-  data?: PostUpdateManyDataInput
+export interface UserTutorialWhereUniqueInput {
+  id?: string | null
 }
-export type PostUpdateManyWithWhereNestedInputInputObject =
-  | Extract<keyof PostUpdateManyWithWhereNestedInput, string>
+export type UserTutorialWhereUniqueInputInputObject =
+  | Extract<keyof UserTutorialWhereUniqueInput, string>
+  | { name: 'id', alias?: string  } 
+  
+export interface TutorialWhereUniqueInput {
+  id?: string | null
+}
+export type TutorialWhereUniqueInputInputObject =
+  | Extract<keyof TutorialWhereUniqueInput, string>
+  | { name: 'id', alias?: string  } 
+  
+export interface UserCreateInput {
+  name?: string
+  email?: string | null
+  githubHandle?: string
+  githubUserId?: string
+  avatarUrl?: string | null
+  bio?: string | null
+  contributor?: boolean | null
+  expertise?: string | null
+  userTutorials?: UserTutorialCreateManyWithoutUserInput | null
+}
+export type UserCreateInputInputObject =
+  | Extract<keyof UserCreateInput, string>
+  | { name: 'name', alias?: string  } 
+  | { name: 'email', alias?: string  } 
+  | { name: 'githubHandle', alias?: string  } 
+  | { name: 'githubUserId', alias?: string  } 
+  | { name: 'avatarUrl', alias?: string  } 
+  | { name: 'bio', alias?: string  } 
+  | { name: 'contributor', alias?: string  } 
+  | { name: 'expertise', alias?: string  } 
+  | { name: 'userTutorials', alias?: string  } 
+  
+export interface UserTutorialCreateManyWithoutUserInput {
+  create?: UserTutorialCreateWithoutUserInput[]
+  connect?: UserTutorialWhereUniqueInput[]
+}
+export type UserTutorialCreateManyWithoutUserInputInputObject =
+  | Extract<keyof UserTutorialCreateManyWithoutUserInput, string>
+  | { name: 'create', alias?: string  } 
+  | { name: 'connect', alias?: string  } 
+  
+export interface UserTutorialCreateWithoutUserInput {
+  tutorial?: TutorialCreateOneWithoutUserTutorialsInput | null
+  upvoted?: boolean | null
+  saved?: boolean | null
+  currentChapter?: number | null
+}
+export type UserTutorialCreateWithoutUserInputInputObject =
+  | Extract<keyof UserTutorialCreateWithoutUserInput, string>
+  | { name: 'tutorial', alias?: string  } 
+  | { name: 'upvoted', alias?: string  } 
+  | { name: 'saved', alias?: string  } 
+  | { name: 'currentChapter', alias?: string  } 
+  
+export interface TutorialCreateOneWithoutUserTutorialsInput {
+  create?: TutorialCreateWithoutUserTutorialsInput | null
+  connect?: TutorialWhereUniqueInput | null
+}
+export type TutorialCreateOneWithoutUserTutorialsInputInputObject =
+  | Extract<keyof TutorialCreateOneWithoutUserTutorialsInput, string>
+  | { name: 'create', alias?: string  } 
+  | { name: 'connect', alias?: string  } 
+  
+export interface TutorialCreateWithoutUserTutorialsInput {
+  name?: string
+  gatsbyID?: string
+  upvotes?: number
+  numberOfStudents?: number
+  numberofChapters?: number
+}
+export type TutorialCreateWithoutUserTutorialsInputInputObject =
+  | Extract<keyof TutorialCreateWithoutUserTutorialsInput, string>
+  | { name: 'name', alias?: string  } 
+  | { name: 'gatsbyID', alias?: string  } 
+  | { name: 'upvotes', alias?: string  } 
+  | { name: 'numberOfStudents', alias?: string  } 
+  | { name: 'numberofChapters', alias?: string  } 
+  
+export interface UserUpdateInput {
+  name?: string | null
+  email?: string | null
+  githubHandle?: string | null
+  githubUserId?: string | null
+  avatarUrl?: string | null
+  bio?: string | null
+  contributor?: boolean | null
+  expertise?: string | null
+  userTutorials?: UserTutorialUpdateManyWithoutUserInput | null
+}
+export type UserUpdateInputInputObject =
+  | Extract<keyof UserUpdateInput, string>
+  | { name: 'name', alias?: string  } 
+  | { name: 'email', alias?: string  } 
+  | { name: 'githubHandle', alias?: string  } 
+  | { name: 'githubUserId', alias?: string  } 
+  | { name: 'avatarUrl', alias?: string  } 
+  | { name: 'bio', alias?: string  } 
+  | { name: 'contributor', alias?: string  } 
+  | { name: 'expertise', alias?: string  } 
+  | { name: 'userTutorials', alias?: string  } 
+  
+export interface UserTutorialUpdateManyWithoutUserInput {
+  create?: UserTutorialCreateWithoutUserInput[]
+  delete?: UserTutorialWhereUniqueInput[]
+  connect?: UserTutorialWhereUniqueInput[]
+  set?: UserTutorialWhereUniqueInput[]
+  disconnect?: UserTutorialWhereUniqueInput[]
+  update?: UserTutorialUpdateWithWhereUniqueWithoutUserInput[]
+  upsert?: UserTutorialUpsertWithWhereUniqueWithoutUserInput[]
+  deleteMany?: UserTutorialScalarWhereInput[]
+  updateMany?: UserTutorialUpdateManyWithWhereNestedInput[]
+}
+export type UserTutorialUpdateManyWithoutUserInputInputObject =
+  | Extract<keyof UserTutorialUpdateManyWithoutUserInput, string>
+  | { name: 'create', alias?: string  } 
+  | { name: 'delete', alias?: string  } 
+  | { name: 'connect', alias?: string  } 
+  | { name: 'set', alias?: string  } 
+  | { name: 'disconnect', alias?: string  } 
+  | { name: 'update', alias?: string  } 
+  | { name: 'upsert', alias?: string  } 
+  | { name: 'deleteMany', alias?: string  } 
+  | { name: 'updateMany', alias?: string  } 
+  
+export interface UserTutorialUpdateWithWhereUniqueWithoutUserInput {
+  where?: UserTutorialWhereUniqueInput
+  data?: UserTutorialUpdateWithoutUserDataInput
+}
+export type UserTutorialUpdateWithWhereUniqueWithoutUserInputInputObject =
+  | Extract<keyof UserTutorialUpdateWithWhereUniqueWithoutUserInput, string>
   | { name: 'where', alias?: string  } 
   | { name: 'data', alias?: string  } 
   
-export interface PostUpdateManyDataInput {
-  title?: string | null
-  content?: string | null
-  published?: boolean | null
+export interface UserTutorialUpdateWithoutUserDataInput {
+  tutorial?: TutorialUpdateOneWithoutUserTutorialsInput | null
+  upvoted?: boolean | null
+  saved?: boolean | null
+  currentChapter?: number | null
 }
-export type PostUpdateManyDataInputInputObject =
-  | Extract<keyof PostUpdateManyDataInput, string>
-  | { name: 'title', alias?: string  } 
-  | { name: 'content', alias?: string  } 
-  | { name: 'published', alias?: string  } 
+export type UserTutorialUpdateWithoutUserDataInputInputObject =
+  | Extract<keyof UserTutorialUpdateWithoutUserDataInput, string>
+  | { name: 'tutorial', alias?: string  } 
+  | { name: 'upvoted', alias?: string  } 
+  | { name: 'saved', alias?: string  } 
+  | { name: 'currentChapter', alias?: string  } 
+  
+export interface TutorialUpdateOneWithoutUserTutorialsInput {
+  create?: TutorialCreateWithoutUserTutorialsInput | null
+  update?: TutorialUpdateWithoutUserTutorialsDataInput | null
+  upsert?: TutorialUpsertWithoutUserTutorialsInput | null
+  delete?: boolean | null
+  disconnect?: boolean | null
+  connect?: TutorialWhereUniqueInput | null
+}
+export type TutorialUpdateOneWithoutUserTutorialsInputInputObject =
+  | Extract<keyof TutorialUpdateOneWithoutUserTutorialsInput, string>
+  | { name: 'create', alias?: string  } 
+  | { name: 'update', alias?: string  } 
+  | { name: 'upsert', alias?: string  } 
+  | { name: 'delete', alias?: string  } 
+  | { name: 'disconnect', alias?: string  } 
+  | { name: 'connect', alias?: string  } 
+  
+export interface TutorialUpdateWithoutUserTutorialsDataInput {
+  name?: string | null
+  gatsbyID?: string | null
+  upvotes?: number | null
+  numberOfStudents?: number | null
+  numberofChapters?: number | null
+}
+export type TutorialUpdateWithoutUserTutorialsDataInputInputObject =
+  | Extract<keyof TutorialUpdateWithoutUserTutorialsDataInput, string>
+  | { name: 'name', alias?: string  } 
+  | { name: 'gatsbyID', alias?: string  } 
+  | { name: 'upvotes', alias?: string  } 
+  | { name: 'numberOfStudents', alias?: string  } 
+  | { name: 'numberofChapters', alias?: string  } 
+  
+export interface TutorialUpsertWithoutUserTutorialsInput {
+  update?: TutorialUpdateWithoutUserTutorialsDataInput
+  create?: TutorialCreateWithoutUserTutorialsInput
+}
+export type TutorialUpsertWithoutUserTutorialsInputInputObject =
+  | Extract<keyof TutorialUpsertWithoutUserTutorialsInput, string>
+  | { name: 'update', alias?: string  } 
+  | { name: 'create', alias?: string  } 
+  
+export interface UserTutorialUpsertWithWhereUniqueWithoutUserInput {
+  where?: UserTutorialWhereUniqueInput
+  update?: UserTutorialUpdateWithoutUserDataInput
+  create?: UserTutorialCreateWithoutUserInput
+}
+export type UserTutorialUpsertWithWhereUniqueWithoutUserInputInputObject =
+  | Extract<keyof UserTutorialUpsertWithWhereUniqueWithoutUserInput, string>
+  | { name: 'where', alias?: string  } 
+  | { name: 'update', alias?: string  } 
+  | { name: 'create', alias?: string  } 
+  
+export interface UserTutorialScalarWhereInput {
+  id?: string | null
+  id_not?: string | null
+  id_in?: string[]
+  id_not_in?: string[]
+  id_lt?: string | null
+  id_lte?: string | null
+  id_gt?: string | null
+  id_gte?: string | null
+  id_contains?: string | null
+  id_not_contains?: string | null
+  id_starts_with?: string | null
+  id_not_starts_with?: string | null
+  id_ends_with?: string | null
+  id_not_ends_with?: string | null
+  createdAt?: string | null
+  createdAt_not?: string | null
+  createdAt_in?: string[]
+  createdAt_not_in?: string[]
+  createdAt_lt?: string | null
+  createdAt_lte?: string | null
+  createdAt_gt?: string | null
+  createdAt_gte?: string | null
+  updatedAt?: string | null
+  updatedAt_not?: string | null
+  updatedAt_in?: string[]
+  updatedAt_not_in?: string[]
+  updatedAt_lt?: string | null
+  updatedAt_lte?: string | null
+  updatedAt_gt?: string | null
+  updatedAt_gte?: string | null
+  upvoted?: boolean | null
+  upvoted_not?: boolean | null
+  saved?: boolean | null
+  saved_not?: boolean | null
+  currentChapter?: number | null
+  currentChapter_not?: number | null
+  currentChapter_in?: number[]
+  currentChapter_not_in?: number[]
+  currentChapter_lt?: number | null
+  currentChapter_lte?: number | null
+  currentChapter_gt?: number | null
+  currentChapter_gte?: number | null
+  AND?: UserTutorialScalarWhereInput[]
+  OR?: UserTutorialScalarWhereInput[]
+  NOT?: UserTutorialScalarWhereInput[]
+}
+export type UserTutorialScalarWhereInputInputObject =
+  | Extract<keyof UserTutorialScalarWhereInput, string>
+  | { name: 'id', alias?: string  } 
+  | { name: 'id_not', alias?: string  } 
+  | { name: 'id_in', alias?: string  } 
+  | { name: 'id_not_in', alias?: string  } 
+  | { name: 'id_lt', alias?: string  } 
+  | { name: 'id_lte', alias?: string  } 
+  | { name: 'id_gt', alias?: string  } 
+  | { name: 'id_gte', alias?: string  } 
+  | { name: 'id_contains', alias?: string  } 
+  | { name: 'id_not_contains', alias?: string  } 
+  | { name: 'id_starts_with', alias?: string  } 
+  | { name: 'id_not_starts_with', alias?: string  } 
+  | { name: 'id_ends_with', alias?: string  } 
+  | { name: 'id_not_ends_with', alias?: string  } 
+  | { name: 'createdAt', alias?: string  } 
+  | { name: 'createdAt_not', alias?: string  } 
+  | { name: 'createdAt_in', alias?: string  } 
+  | { name: 'createdAt_not_in', alias?: string  } 
+  | { name: 'createdAt_lt', alias?: string  } 
+  | { name: 'createdAt_lte', alias?: string  } 
+  | { name: 'createdAt_gt', alias?: string  } 
+  | { name: 'createdAt_gte', alias?: string  } 
+  | { name: 'updatedAt', alias?: string  } 
+  | { name: 'updatedAt_not', alias?: string  } 
+  | { name: 'updatedAt_in', alias?: string  } 
+  | { name: 'updatedAt_not_in', alias?: string  } 
+  | { name: 'updatedAt_lt', alias?: string  } 
+  | { name: 'updatedAt_lte', alias?: string  } 
+  | { name: 'updatedAt_gt', alias?: string  } 
+  | { name: 'updatedAt_gte', alias?: string  } 
+  | { name: 'upvoted', alias?: string  } 
+  | { name: 'upvoted_not', alias?: string  } 
+  | { name: 'saved', alias?: string  } 
+  | { name: 'saved_not', alias?: string  } 
+  | { name: 'currentChapter', alias?: string  } 
+  | { name: 'currentChapter_not', alias?: string  } 
+  | { name: 'currentChapter_in', alias?: string  } 
+  | { name: 'currentChapter_not_in', alias?: string  } 
+  | { name: 'currentChapter_lt', alias?: string  } 
+  | { name: 'currentChapter_lte', alias?: string  } 
+  | { name: 'currentChapter_gt', alias?: string  } 
+  | { name: 'currentChapter_gte', alias?: string  } 
+  | { name: 'AND', alias?: string  } 
+  | { name: 'OR', alias?: string  } 
+  | { name: 'NOT', alias?: string  } 
+  
+export interface UserTutorialUpdateManyWithWhereNestedInput {
+  where?: UserTutorialScalarWhereInput
+  data?: UserTutorialUpdateManyDataInput
+}
+export type UserTutorialUpdateManyWithWhereNestedInputInputObject =
+  | Extract<keyof UserTutorialUpdateManyWithWhereNestedInput, string>
+  | { name: 'where', alias?: string  } 
+  | { name: 'data', alias?: string  } 
+  
+export interface UserTutorialUpdateManyDataInput {
+  upvoted?: boolean | null
+  saved?: boolean | null
+  currentChapter?: number | null
+}
+export type UserTutorialUpdateManyDataInputInputObject =
+  | Extract<keyof UserTutorialUpdateManyDataInput, string>
+  | { name: 'upvoted', alias?: string  } 
+  | { name: 'saved', alias?: string  } 
+  | { name: 'currentChapter', alias?: string  } 
   
 export interface UserUpdateManyMutationInput {
   name?: string | null
@@ -1935,6 +2946,8 @@ export interface UserUpdateManyMutationInput {
   githubUserId?: string | null
   avatarUrl?: string | null
   bio?: string | null
+  contributor?: boolean | null
+  expertise?: string | null
 }
 export type UserUpdateManyMutationInputInputObject =
   | Extract<keyof UserUpdateManyMutationInput, string>
@@ -1944,108 +2957,253 @@ export type UserUpdateManyMutationInputInputObject =
   | { name: 'githubUserId', alias?: string  } 
   | { name: 'avatarUrl', alias?: string  } 
   | { name: 'bio', alias?: string  } 
+  | { name: 'contributor', alias?: string  } 
+  | { name: 'expertise', alias?: string  } 
   
-export interface PostCreateInput {
-  title?: string
-  content?: string
-  published?: boolean | null
-  author?: UserCreateOneWithoutPostsInput
+export interface UserTutorialCreateInput {
+  user?: UserCreateOneWithoutUserTutorialsInput | null
+  tutorial?: TutorialCreateOneWithoutUserTutorialsInput | null
+  upvoted?: boolean | null
+  saved?: boolean | null
+  currentChapter?: number | null
 }
-export type PostCreateInputInputObject =
-  | Extract<keyof PostCreateInput, string>
-  | { name: 'title', alias?: string  } 
-  | { name: 'content', alias?: string  } 
-  | { name: 'published', alias?: string  } 
-  | { name: 'author', alias?: string  } 
+export type UserTutorialCreateInputInputObject =
+  | Extract<keyof UserTutorialCreateInput, string>
+  | { name: 'user', alias?: string  } 
+  | { name: 'tutorial', alias?: string  } 
+  | { name: 'upvoted', alias?: string  } 
+  | { name: 'saved', alias?: string  } 
+  | { name: 'currentChapter', alias?: string  } 
   
-export interface UserCreateOneWithoutPostsInput {
-  create?: UserCreateWithoutPostsInput | null
+export interface UserCreateOneWithoutUserTutorialsInput {
+  create?: UserCreateWithoutUserTutorialsInput | null
   connect?: UserWhereUniqueInput | null
 }
-export type UserCreateOneWithoutPostsInputInputObject =
-  | Extract<keyof UserCreateOneWithoutPostsInput, string>
+export type UserCreateOneWithoutUserTutorialsInputInputObject =
+  | Extract<keyof UserCreateOneWithoutUserTutorialsInput, string>
   | { name: 'create', alias?: string  } 
   | { name: 'connect', alias?: string  } 
   
-export interface UserCreateWithoutPostsInput {
+export interface UserCreateWithoutUserTutorialsInput {
   name?: string
-  email?: string
+  email?: string | null
   githubHandle?: string
   githubUserId?: string
   avatarUrl?: string | null
-  bio?: string
+  bio?: string | null
+  contributor?: boolean | null
+  expertise?: string | null
 }
-export type UserCreateWithoutPostsInputInputObject =
-  | Extract<keyof UserCreateWithoutPostsInput, string>
+export type UserCreateWithoutUserTutorialsInputInputObject =
+  | Extract<keyof UserCreateWithoutUserTutorialsInput, string>
   | { name: 'name', alias?: string  } 
   | { name: 'email', alias?: string  } 
   | { name: 'githubHandle', alias?: string  } 
   | { name: 'githubUserId', alias?: string  } 
   | { name: 'avatarUrl', alias?: string  } 
   | { name: 'bio', alias?: string  } 
+  | { name: 'contributor', alias?: string  } 
+  | { name: 'expertise', alias?: string  } 
   
-export interface PostUpdateInput {
-  title?: string | null
-  content?: string | null
-  published?: boolean | null
-  author?: UserUpdateOneRequiredWithoutPostsInput | null
+export interface UserTutorialUpdateInput {
+  user?: UserUpdateOneWithoutUserTutorialsInput | null
+  tutorial?: TutorialUpdateOneWithoutUserTutorialsInput | null
+  upvoted?: boolean | null
+  saved?: boolean | null
+  currentChapter?: number | null
 }
-export type PostUpdateInputInputObject =
-  | Extract<keyof PostUpdateInput, string>
-  | { name: 'title', alias?: string  } 
-  | { name: 'content', alias?: string  } 
-  | { name: 'published', alias?: string  } 
-  | { name: 'author', alias?: string  } 
+export type UserTutorialUpdateInputInputObject =
+  | Extract<keyof UserTutorialUpdateInput, string>
+  | { name: 'user', alias?: string  } 
+  | { name: 'tutorial', alias?: string  } 
+  | { name: 'upvoted', alias?: string  } 
+  | { name: 'saved', alias?: string  } 
+  | { name: 'currentChapter', alias?: string  } 
   
-export interface UserUpdateOneRequiredWithoutPostsInput {
-  create?: UserCreateWithoutPostsInput | null
-  update?: UserUpdateWithoutPostsDataInput | null
-  upsert?: UserUpsertWithoutPostsInput | null
+export interface UserUpdateOneWithoutUserTutorialsInput {
+  create?: UserCreateWithoutUserTutorialsInput | null
+  update?: UserUpdateWithoutUserTutorialsDataInput | null
+  upsert?: UserUpsertWithoutUserTutorialsInput | null
+  delete?: boolean | null
+  disconnect?: boolean | null
   connect?: UserWhereUniqueInput | null
 }
-export type UserUpdateOneRequiredWithoutPostsInputInputObject =
-  | Extract<keyof UserUpdateOneRequiredWithoutPostsInput, string>
+export type UserUpdateOneWithoutUserTutorialsInputInputObject =
+  | Extract<keyof UserUpdateOneWithoutUserTutorialsInput, string>
   | { name: 'create', alias?: string  } 
   | { name: 'update', alias?: string  } 
   | { name: 'upsert', alias?: string  } 
+  | { name: 'delete', alias?: string  } 
+  | { name: 'disconnect', alias?: string  } 
   | { name: 'connect', alias?: string  } 
   
-export interface UserUpdateWithoutPostsDataInput {
+export interface UserUpdateWithoutUserTutorialsDataInput {
   name?: string | null
   email?: string | null
   githubHandle?: string | null
   githubUserId?: string | null
   avatarUrl?: string | null
   bio?: string | null
+  contributor?: boolean | null
+  expertise?: string | null
 }
-export type UserUpdateWithoutPostsDataInputInputObject =
-  | Extract<keyof UserUpdateWithoutPostsDataInput, string>
+export type UserUpdateWithoutUserTutorialsDataInputInputObject =
+  | Extract<keyof UserUpdateWithoutUserTutorialsDataInput, string>
   | { name: 'name', alias?: string  } 
   | { name: 'email', alias?: string  } 
   | { name: 'githubHandle', alias?: string  } 
   | { name: 'githubUserId', alias?: string  } 
   | { name: 'avatarUrl', alias?: string  } 
   | { name: 'bio', alias?: string  } 
+  | { name: 'contributor', alias?: string  } 
+  | { name: 'expertise', alias?: string  } 
   
-export interface UserUpsertWithoutPostsInput {
-  update?: UserUpdateWithoutPostsDataInput
-  create?: UserCreateWithoutPostsInput
+export interface UserUpsertWithoutUserTutorialsInput {
+  update?: UserUpdateWithoutUserTutorialsDataInput
+  create?: UserCreateWithoutUserTutorialsInput
 }
-export type UserUpsertWithoutPostsInputInputObject =
-  | Extract<keyof UserUpsertWithoutPostsInput, string>
+export type UserUpsertWithoutUserTutorialsInputInputObject =
+  | Extract<keyof UserUpsertWithoutUserTutorialsInput, string>
   | { name: 'update', alias?: string  } 
   | { name: 'create', alias?: string  } 
   
-export interface PostUpdateManyMutationInput {
-  title?: string | null
-  content?: string | null
-  published?: boolean | null
+export interface UserTutorialUpdateManyMutationInput {
+  upvoted?: boolean | null
+  saved?: boolean | null
+  currentChapter?: number | null
 }
-export type PostUpdateManyMutationInputInputObject =
-  | Extract<keyof PostUpdateManyMutationInput, string>
-  | { name: 'title', alias?: string  } 
-  | { name: 'content', alias?: string  } 
-  | { name: 'published', alias?: string  } 
+export type UserTutorialUpdateManyMutationInputInputObject =
+  | Extract<keyof UserTutorialUpdateManyMutationInput, string>
+  | { name: 'upvoted', alias?: string  } 
+  | { name: 'saved', alias?: string  } 
+  | { name: 'currentChapter', alias?: string  } 
+  
+export interface TutorialCreateInput {
+  name?: string
+  gatsbyID?: string
+  upvotes?: number
+  numberOfStudents?: number
+  numberofChapters?: number
+  userTutorials?: UserTutorialCreateManyWithoutTutorialInput | null
+}
+export type TutorialCreateInputInputObject =
+  | Extract<keyof TutorialCreateInput, string>
+  | { name: 'name', alias?: string  } 
+  | { name: 'gatsbyID', alias?: string  } 
+  | { name: 'upvotes', alias?: string  } 
+  | { name: 'numberOfStudents', alias?: string  } 
+  | { name: 'numberofChapters', alias?: string  } 
+  | { name: 'userTutorials', alias?: string  } 
+  
+export interface UserTutorialCreateManyWithoutTutorialInput {
+  create?: UserTutorialCreateWithoutTutorialInput[]
+  connect?: UserTutorialWhereUniqueInput[]
+}
+export type UserTutorialCreateManyWithoutTutorialInputInputObject =
+  | Extract<keyof UserTutorialCreateManyWithoutTutorialInput, string>
+  | { name: 'create', alias?: string  } 
+  | { name: 'connect', alias?: string  } 
+  
+export interface UserTutorialCreateWithoutTutorialInput {
+  user?: UserCreateOneWithoutUserTutorialsInput | null
+  upvoted?: boolean | null
+  saved?: boolean | null
+  currentChapter?: number | null
+}
+export type UserTutorialCreateWithoutTutorialInputInputObject =
+  | Extract<keyof UserTutorialCreateWithoutTutorialInput, string>
+  | { name: 'user', alias?: string  } 
+  | { name: 'upvoted', alias?: string  } 
+  | { name: 'saved', alias?: string  } 
+  | { name: 'currentChapter', alias?: string  } 
+  
+export interface TutorialUpdateInput {
+  name?: string | null
+  gatsbyID?: string | null
+  upvotes?: number | null
+  numberOfStudents?: number | null
+  numberofChapters?: number | null
+  userTutorials?: UserTutorialUpdateManyWithoutTutorialInput | null
+}
+export type TutorialUpdateInputInputObject =
+  | Extract<keyof TutorialUpdateInput, string>
+  | { name: 'name', alias?: string  } 
+  | { name: 'gatsbyID', alias?: string  } 
+  | { name: 'upvotes', alias?: string  } 
+  | { name: 'numberOfStudents', alias?: string  } 
+  | { name: 'numberofChapters', alias?: string  } 
+  | { name: 'userTutorials', alias?: string  } 
+  
+export interface UserTutorialUpdateManyWithoutTutorialInput {
+  create?: UserTutorialCreateWithoutTutorialInput[]
+  delete?: UserTutorialWhereUniqueInput[]
+  connect?: UserTutorialWhereUniqueInput[]
+  set?: UserTutorialWhereUniqueInput[]
+  disconnect?: UserTutorialWhereUniqueInput[]
+  update?: UserTutorialUpdateWithWhereUniqueWithoutTutorialInput[]
+  upsert?: UserTutorialUpsertWithWhereUniqueWithoutTutorialInput[]
+  deleteMany?: UserTutorialScalarWhereInput[]
+  updateMany?: UserTutorialUpdateManyWithWhereNestedInput[]
+}
+export type UserTutorialUpdateManyWithoutTutorialInputInputObject =
+  | Extract<keyof UserTutorialUpdateManyWithoutTutorialInput, string>
+  | { name: 'create', alias?: string  } 
+  | { name: 'delete', alias?: string  } 
+  | { name: 'connect', alias?: string  } 
+  | { name: 'set', alias?: string  } 
+  | { name: 'disconnect', alias?: string  } 
+  | { name: 'update', alias?: string  } 
+  | { name: 'upsert', alias?: string  } 
+  | { name: 'deleteMany', alias?: string  } 
+  | { name: 'updateMany', alias?: string  } 
+  
+export interface UserTutorialUpdateWithWhereUniqueWithoutTutorialInput {
+  where?: UserTutorialWhereUniqueInput
+  data?: UserTutorialUpdateWithoutTutorialDataInput
+}
+export type UserTutorialUpdateWithWhereUniqueWithoutTutorialInputInputObject =
+  | Extract<keyof UserTutorialUpdateWithWhereUniqueWithoutTutorialInput, string>
+  | { name: 'where', alias?: string  } 
+  | { name: 'data', alias?: string  } 
+  
+export interface UserTutorialUpdateWithoutTutorialDataInput {
+  user?: UserUpdateOneWithoutUserTutorialsInput | null
+  upvoted?: boolean | null
+  saved?: boolean | null
+  currentChapter?: number | null
+}
+export type UserTutorialUpdateWithoutTutorialDataInputInputObject =
+  | Extract<keyof UserTutorialUpdateWithoutTutorialDataInput, string>
+  | { name: 'user', alias?: string  } 
+  | { name: 'upvoted', alias?: string  } 
+  | { name: 'saved', alias?: string  } 
+  | { name: 'currentChapter', alias?: string  } 
+  
+export interface UserTutorialUpsertWithWhereUniqueWithoutTutorialInput {
+  where?: UserTutorialWhereUniqueInput
+  update?: UserTutorialUpdateWithoutTutorialDataInput
+  create?: UserTutorialCreateWithoutTutorialInput
+}
+export type UserTutorialUpsertWithWhereUniqueWithoutTutorialInputInputObject =
+  | Extract<keyof UserTutorialUpsertWithWhereUniqueWithoutTutorialInput, string>
+  | { name: 'where', alias?: string  } 
+  | { name: 'update', alias?: string  } 
+  | { name: 'create', alias?: string  } 
+  
+export interface TutorialUpdateManyMutationInput {
+  name?: string | null
+  gatsbyID?: string | null
+  upvotes?: number | null
+  numberOfStudents?: number | null
+  numberofChapters?: number | null
+}
+export type TutorialUpdateManyMutationInputInputObject =
+  | Extract<keyof TutorialUpdateManyMutationInput, string>
+  | { name: 'name', alias?: string  } 
+  | { name: 'gatsbyID', alias?: string  } 
+  | { name: 'upvotes', alias?: string  } 
+  | { name: 'numberOfStudents', alias?: string  } 
+  | { name: 'numberofChapters', alias?: string  } 
   
 export interface UserSubscriptionWhereInput {
   mutation_in?: prisma.MutationType[]
@@ -2068,18 +3226,39 @@ export type UserSubscriptionWhereInputInputObject =
   | { name: 'OR', alias?: string  } 
   | { name: 'NOT', alias?: string  } 
   
-export interface PostSubscriptionWhereInput {
+export interface UserTutorialSubscriptionWhereInput {
   mutation_in?: prisma.MutationType[]
   updatedFields_contains?: string | null
   updatedFields_contains_every?: string[]
   updatedFields_contains_some?: string[]
-  node?: PostWhereInput | null
-  AND?: PostSubscriptionWhereInput[]
-  OR?: PostSubscriptionWhereInput[]
-  NOT?: PostSubscriptionWhereInput[]
+  node?: UserTutorialWhereInput | null
+  AND?: UserTutorialSubscriptionWhereInput[]
+  OR?: UserTutorialSubscriptionWhereInput[]
+  NOT?: UserTutorialSubscriptionWhereInput[]
 }
-export type PostSubscriptionWhereInputInputObject =
-  | Extract<keyof PostSubscriptionWhereInput, string>
+export type UserTutorialSubscriptionWhereInputInputObject =
+  | Extract<keyof UserTutorialSubscriptionWhereInput, string>
+  | { name: 'mutation_in', alias?: string  } 
+  | { name: 'updatedFields_contains', alias?: string  } 
+  | { name: 'updatedFields_contains_every', alias?: string  } 
+  | { name: 'updatedFields_contains_some', alias?: string  } 
+  | { name: 'node', alias?: string  } 
+  | { name: 'AND', alias?: string  } 
+  | { name: 'OR', alias?: string  } 
+  | { name: 'NOT', alias?: string  } 
+  
+export interface TutorialSubscriptionWhereInput {
+  mutation_in?: prisma.MutationType[]
+  updatedFields_contains?: string | null
+  updatedFields_contains_every?: string[]
+  updatedFields_contains_some?: string[]
+  node?: TutorialWhereInput | null
+  AND?: TutorialSubscriptionWhereInput[]
+  OR?: TutorialSubscriptionWhereInput[]
+  NOT?: TutorialSubscriptionWhereInput[]
+}
+export type TutorialSubscriptionWhereInputInputObject =
+  | Extract<keyof TutorialSubscriptionWhereInput, string>
   | { name: 'mutation_in', alias?: string  } 
   | { name: 'updatedFields_contains', alias?: string  } 
   | { name: 'updatedFields_contains_every', alias?: string  } 
@@ -2090,19 +3269,19 @@ export type PostSubscriptionWhereInputInputObject =
   | { name: 'NOT', alias?: string  } 
   
 
-export type PostOrderByInputValues =
+export type UserTutorialOrderByInputValues =
   | 'id_ASC'
   | 'id_DESC'
-  | 'title_ASC'
-  | 'title_DESC'
-  | 'content_ASC'
-  | 'content_DESC'
-  | 'published_ASC'
-  | 'published_DESC'
   | 'createdAt_ASC'
   | 'createdAt_DESC'
   | 'updatedAt_ASC'
   | 'updatedAt_DESC'
+  | 'upvoted_ASC'
+  | 'upvoted_DESC'
+  | 'saved_ASC'
+  | 'saved_DESC'
+  | 'currentChapter_ASC'
+  | 'currentChapter_DESC'
   
 export type UserOrderByInputValues =
   | 'id_ASC'
@@ -2123,6 +3302,28 @@ export type UserOrderByInputValues =
   | 'avatarUrl_DESC'
   | 'bio_ASC'
   | 'bio_DESC'
+  | 'contributor_ASC'
+  | 'contributor_DESC'
+  | 'expertise_ASC'
+  | 'expertise_DESC'
+  
+export type TutorialOrderByInputValues =
+  | 'id_ASC'
+  | 'id_DESC'
+  | 'createdAt_ASC'
+  | 'createdAt_DESC'
+  | 'updatedAt_ASC'
+  | 'updatedAt_DESC'
+  | 'name_ASC'
+  | 'name_DESC'
+  | 'gatsbyID_ASC'
+  | 'gatsbyID_DESC'
+  | 'upvotes_ASC'
+  | 'upvotes_DESC'
+  | 'numberOfStudents_ASC'
+  | 'numberOfStudents_DESC'
+  | 'numberofChapters_ASC'
+  | 'numberofChapters_DESC'
   
 export type MutationTypeValues =
   | 'CREATED'

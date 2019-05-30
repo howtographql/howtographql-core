@@ -1,11 +1,6 @@
-import { prismaObjectType, stringArg } from 'yoga'
+import { prismaObjectType } from 'yoga'
 
-/*
-type Query {
-  feed: [Post!]!
-  filterPosts(searchString: String!): [Post!]!
-}
-*/
+
 export const Query = prismaObjectType({
   name: 'Query',
   definition(t) {
@@ -14,31 +9,5 @@ export const Query = prismaObjectType({
 
     // This removes all fields from the underlying Query object type
     t.prismaFields([])
-
-    t.list.field('feed', {
-      type: 'Post',
-      resolve: (parent, args, ctx) => {
-        return ctx.prisma.posts({
-          where: { published: true },
-        })
-      },
-    })
-
-    t.list.field('filterPosts', {
-      type: 'Post',
-      args: {
-        searchString: stringArg(),
-      },
-      resolve: (parent, { searchString }, ctx) => {
-        return ctx.prisma.posts({
-          where: {
-            OR: [
-              { title_contains: searchString },
-              { content_contains: searchString },
-            ],
-          },
-        })
-      },
-    })
   },
 })

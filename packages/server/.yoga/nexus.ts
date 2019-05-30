@@ -12,23 +12,30 @@ declare global {
 }
 
 export interface NexusGenInputs {
-  PostWhereInput: { // input type
-    AND?: NexusGenInputs['PostWhereInput'][] | null; // [PostWhereInput!]
-    author?: NexusGenInputs['UserWhereInput'] | null; // UserWhereInput
-    content?: string | null; // String
-    content_contains?: string | null; // String
-    content_ends_with?: string | null; // String
-    content_gt?: string | null; // String
-    content_gte?: string | null; // String
-    content_in?: string[] | null; // [String!]
-    content_lt?: string | null; // String
-    content_lte?: string | null; // String
-    content_not?: string | null; // String
-    content_not_contains?: string | null; // String
-    content_not_ends_with?: string | null; // String
-    content_not_in?: string[] | null; // [String!]
-    content_not_starts_with?: string | null; // String
-    content_starts_with?: string | null; // String
+  TutorialWhereInput: { // input type
+    AND?: NexusGenInputs['TutorialWhereInput'][] | null; // [TutorialWhereInput!]
+    createdAt?: any | null; // DateTime
+    createdAt_gt?: any | null; // DateTime
+    createdAt_gte?: any | null; // DateTime
+    createdAt_in?: any[] | null; // [DateTime!]
+    createdAt_lt?: any | null; // DateTime
+    createdAt_lte?: any | null; // DateTime
+    createdAt_not?: any | null; // DateTime
+    createdAt_not_in?: any[] | null; // [DateTime!]
+    gatsbyID?: string | null; // String
+    gatsbyID_contains?: string | null; // String
+    gatsbyID_ends_with?: string | null; // String
+    gatsbyID_gt?: string | null; // String
+    gatsbyID_gte?: string | null; // String
+    gatsbyID_in?: string[] | null; // [String!]
+    gatsbyID_lt?: string | null; // String
+    gatsbyID_lte?: string | null; // String
+    gatsbyID_not?: string | null; // String
+    gatsbyID_not_contains?: string | null; // String
+    gatsbyID_not_ends_with?: string | null; // String
+    gatsbyID_not_in?: string[] | null; // [String!]
+    gatsbyID_not_starts_with?: string | null; // String
+    gatsbyID_starts_with?: string | null; // String
     id?: string | null; // ID
     id_contains?: string | null; // ID
     id_ends_with?: string | null; // ID
@@ -43,24 +50,106 @@ export interface NexusGenInputs {
     id_not_in?: string[] | null; // [ID!]
     id_not_starts_with?: string | null; // ID
     id_starts_with?: string | null; // ID
-    NOT?: NexusGenInputs['PostWhereInput'][] | null; // [PostWhereInput!]
-    OR?: NexusGenInputs['PostWhereInput'][] | null; // [PostWhereInput!]
-    published?: boolean | null; // Boolean
-    published_not?: boolean | null; // Boolean
-    title?: string | null; // String
-    title_contains?: string | null; // String
-    title_ends_with?: string | null; // String
-    title_gt?: string | null; // String
-    title_gte?: string | null; // String
-    title_in?: string[] | null; // [String!]
-    title_lt?: string | null; // String
-    title_lte?: string | null; // String
-    title_not?: string | null; // String
-    title_not_contains?: string | null; // String
-    title_not_ends_with?: string | null; // String
-    title_not_in?: string[] | null; // [String!]
-    title_not_starts_with?: string | null; // String
-    title_starts_with?: string | null; // String
+    name?: string | null; // String
+    name_contains?: string | null; // String
+    name_ends_with?: string | null; // String
+    name_gt?: string | null; // String
+    name_gte?: string | null; // String
+    name_in?: string[] | null; // [String!]
+    name_lt?: string | null; // String
+    name_lte?: string | null; // String
+    name_not?: string | null; // String
+    name_not_contains?: string | null; // String
+    name_not_ends_with?: string | null; // String
+    name_not_in?: string[] | null; // [String!]
+    name_not_starts_with?: string | null; // String
+    name_starts_with?: string | null; // String
+    NOT?: NexusGenInputs['TutorialWhereInput'][] | null; // [TutorialWhereInput!]
+    numberofChapters?: number | null; // Int
+    numberofChapters_gt?: number | null; // Int
+    numberofChapters_gte?: number | null; // Int
+    numberofChapters_in?: number[] | null; // [Int!]
+    numberofChapters_lt?: number | null; // Int
+    numberofChapters_lte?: number | null; // Int
+    numberofChapters_not?: number | null; // Int
+    numberofChapters_not_in?: number[] | null; // [Int!]
+    numberOfStudents?: number | null; // Int
+    numberOfStudents_gt?: number | null; // Int
+    numberOfStudents_gte?: number | null; // Int
+    numberOfStudents_in?: number[] | null; // [Int!]
+    numberOfStudents_lt?: number | null; // Int
+    numberOfStudents_lte?: number | null; // Int
+    numberOfStudents_not?: number | null; // Int
+    numberOfStudents_not_in?: number[] | null; // [Int!]
+    OR?: NexusGenInputs['TutorialWhereInput'][] | null; // [TutorialWhereInput!]
+    updatedAt?: any | null; // DateTime
+    updatedAt_gt?: any | null; // DateTime
+    updatedAt_gte?: any | null; // DateTime
+    updatedAt_in?: any[] | null; // [DateTime!]
+    updatedAt_lt?: any | null; // DateTime
+    updatedAt_lte?: any | null; // DateTime
+    updatedAt_not?: any | null; // DateTime
+    updatedAt_not_in?: any[] | null; // [DateTime!]
+    upvotes?: number | null; // Int
+    upvotes_gt?: number | null; // Int
+    upvotes_gte?: number | null; // Int
+    upvotes_in?: number[] | null; // [Int!]
+    upvotes_lt?: number | null; // Int
+    upvotes_lte?: number | null; // Int
+    upvotes_not?: number | null; // Int
+    upvotes_not_in?: number[] | null; // [Int!]
+    userTutorials_every?: NexusGenInputs['UserTutorialWhereInput'] | null; // UserTutorialWhereInput
+    userTutorials_none?: NexusGenInputs['UserTutorialWhereInput'] | null; // UserTutorialWhereInput
+    userTutorials_some?: NexusGenInputs['UserTutorialWhereInput'] | null; // UserTutorialWhereInput
+  }
+  UserTutorialWhereInput: { // input type
+    AND?: NexusGenInputs['UserTutorialWhereInput'][] | null; // [UserTutorialWhereInput!]
+    createdAt?: any | null; // DateTime
+    createdAt_gt?: any | null; // DateTime
+    createdAt_gte?: any | null; // DateTime
+    createdAt_in?: any[] | null; // [DateTime!]
+    createdAt_lt?: any | null; // DateTime
+    createdAt_lte?: any | null; // DateTime
+    createdAt_not?: any | null; // DateTime
+    createdAt_not_in?: any[] | null; // [DateTime!]
+    currentChapter?: number | null; // Int
+    currentChapter_gt?: number | null; // Int
+    currentChapter_gte?: number | null; // Int
+    currentChapter_in?: number[] | null; // [Int!]
+    currentChapter_lt?: number | null; // Int
+    currentChapter_lte?: number | null; // Int
+    currentChapter_not?: number | null; // Int
+    currentChapter_not_in?: number[] | null; // [Int!]
+    id?: string | null; // ID
+    id_contains?: string | null; // ID
+    id_ends_with?: string | null; // ID
+    id_gt?: string | null; // ID
+    id_gte?: string | null; // ID
+    id_in?: string[] | null; // [ID!]
+    id_lt?: string | null; // ID
+    id_lte?: string | null; // ID
+    id_not?: string | null; // ID
+    id_not_contains?: string | null; // ID
+    id_not_ends_with?: string | null; // ID
+    id_not_in?: string[] | null; // [ID!]
+    id_not_starts_with?: string | null; // ID
+    id_starts_with?: string | null; // ID
+    NOT?: NexusGenInputs['UserTutorialWhereInput'][] | null; // [UserTutorialWhereInput!]
+    OR?: NexusGenInputs['UserTutorialWhereInput'][] | null; // [UserTutorialWhereInput!]
+    saved?: boolean | null; // Boolean
+    saved_not?: boolean | null; // Boolean
+    tutorial?: NexusGenInputs['TutorialWhereInput'] | null; // TutorialWhereInput
+    updatedAt?: any | null; // DateTime
+    updatedAt_gt?: any | null; // DateTime
+    updatedAt_gte?: any | null; // DateTime
+    updatedAt_in?: any[] | null; // [DateTime!]
+    updatedAt_lt?: any | null; // DateTime
+    updatedAt_lte?: any | null; // DateTime
+    updatedAt_not?: any | null; // DateTime
+    updatedAt_not_in?: any[] | null; // [DateTime!]
+    upvoted?: boolean | null; // Boolean
+    upvoted_not?: boolean | null; // Boolean
+    user?: NexusGenInputs['UserWhereInput'] | null; // UserWhereInput
   }
   UserWhereInput: { // input type
     AND?: NexusGenInputs['UserWhereInput'][] | null; // [UserWhereInput!]
@@ -92,6 +181,8 @@ export interface NexusGenInputs {
     bio_not_in?: string[] | null; // [String!]
     bio_not_starts_with?: string | null; // String
     bio_starts_with?: string | null; // String
+    contributor?: boolean | null; // Boolean
+    contributor_not?: boolean | null; // Boolean
     createdAt?: any | null; // DateTime
     createdAt_gt?: any | null; // DateTime
     createdAt_gte?: any | null; // DateTime
@@ -114,6 +205,20 @@ export interface NexusGenInputs {
     email_not_in?: string[] | null; // [String!]
     email_not_starts_with?: string | null; // String
     email_starts_with?: string | null; // String
+    expertise?: string | null; // String
+    expertise_contains?: string | null; // String
+    expertise_ends_with?: string | null; // String
+    expertise_gt?: string | null; // String
+    expertise_gte?: string | null; // String
+    expertise_in?: string[] | null; // [String!]
+    expertise_lt?: string | null; // String
+    expertise_lte?: string | null; // String
+    expertise_not?: string | null; // String
+    expertise_not_contains?: string | null; // String
+    expertise_not_ends_with?: string | null; // String
+    expertise_not_in?: string[] | null; // [String!]
+    expertise_not_starts_with?: string | null; // String
+    expertise_starts_with?: string | null; // String
     githubHandle?: string | null; // String
     githubHandle_contains?: string | null; // String
     githubHandle_ends_with?: string | null; // String
@@ -172,9 +277,6 @@ export interface NexusGenInputs {
     name_starts_with?: string | null; // String
     NOT?: NexusGenInputs['UserWhereInput'][] | null; // [UserWhereInput!]
     OR?: NexusGenInputs['UserWhereInput'][] | null; // [UserWhereInput!]
-    posts_every?: NexusGenInputs['PostWhereInput'] | null; // PostWhereInput
-    posts_none?: NexusGenInputs['PostWhereInput'] | null; // PostWhereInput
-    posts_some?: NexusGenInputs['PostWhereInput'] | null; // PostWhereInput
     updatedAt?: any | null; // DateTime
     updatedAt_gt?: any | null; // DateTime
     updatedAt_gte?: any | null; // DateTime
@@ -183,25 +285,39 @@ export interface NexusGenInputs {
     updatedAt_lte?: any | null; // DateTime
     updatedAt_not?: any | null; // DateTime
     updatedAt_not_in?: any[] | null; // [DateTime!]
+    userTutorials_every?: NexusGenInputs['UserTutorialWhereInput'] | null; // UserTutorialWhereInput
+    userTutorials_none?: NexusGenInputs['UserTutorialWhereInput'] | null; // UserTutorialWhereInput
+    userTutorials_some?: NexusGenInputs['UserTutorialWhereInput'] | null; // UserTutorialWhereInput
   }
 }
 
 export interface NexusGenEnums {
-  PostOrderByInput: "content_ASC" | "content_DESC" | "createdAt_ASC" | "createdAt_DESC" | "id_ASC" | "id_DESC" | "published_ASC" | "published_DESC" | "title_ASC" | "title_DESC" | "updatedAt_ASC" | "updatedAt_DESC"
+  UserTutorialOrderByInput: "createdAt_ASC" | "createdAt_DESC" | "currentChapter_ASC" | "currentChapter_DESC" | "id_ASC" | "id_DESC" | "saved_ASC" | "saved_DESC" | "updatedAt_ASC" | "updatedAt_DESC" | "upvoted_ASC" | "upvoted_DESC"
 }
 
 export interface NexusGenRootTypes {
   AuthenticateUserPayload: { // root type
+    code: string; // String!
+    message: string; // String!
+    success: boolean; // Boolean!
     token: string; // String!
     user: NexusGenRootTypes['User']; // User!
   }
   Mutation: {};
-  Post: prisma.Post;
   Query: {};
+  Tutorial: prisma.Tutorial;
   User: prisma.User;
+  UserTutorial: prisma.UserTutorial;
+  UserTutorialPayload: { // root type
+    code: string; // String!
+    message: string; // String!
+    success: boolean; // Boolean!
+    userTutorial: NexusGenRootTypes['UserTutorial']; // UserTutorial!
+  }
   Viewer: { // root type
     id: string; // ID!
   }
+  PayloadInterface: NexusGenRootTypes['AuthenticateUserPayload'] | NexusGenRootTypes['UserTutorialPayload'];
   String: string;
   Int: number;
   Float: number;
@@ -211,46 +327,76 @@ export interface NexusGenRootTypes {
 }
 
 export interface NexusGenAllTypes extends NexusGenRootTypes {
-  PostWhereInput: NexusGenInputs['PostWhereInput'];
+  TutorialWhereInput: NexusGenInputs['TutorialWhereInput'];
+  UserTutorialWhereInput: NexusGenInputs['UserTutorialWhereInput'];
   UserWhereInput: NexusGenInputs['UserWhereInput'];
-  PostOrderByInput: NexusGenEnums['PostOrderByInput'];
+  UserTutorialOrderByInput: NexusGenEnums['UserTutorialOrderByInput'];
 }
 
 export interface NexusGenFieldTypes {
   AuthenticateUserPayload: { // field return type
+    code: string; // String!
+    message: string; // String!
+    success: boolean; // Boolean!
     token: string; // String!
     user: NexusGenRootTypes['User']; // User!
   }
   Mutation: { // field return type
     authenticate: NexusGenRootTypes['AuthenticateUserPayload'] | null; // AuthenticateUserPayload
-  }
-  Post: { // field return type
-    author: NexusGenRootTypes['User']; // User!
-    content: string; // String!
-    id: string; // ID!
-    published: boolean; // Boolean!
-    title: string; // String!
+    upvote: NexusGenRootTypes['UserTutorialPayload']; // UserTutorialPayload!
   }
   Query: { // field return type
-    feed: NexusGenRootTypes['Post'][]; // [Post!]!
-    filterPosts: NexusGenRootTypes['Post'][]; // [Post!]!
     viewer: NexusGenRootTypes['Viewer'] | null; // Viewer
+  }
+  Tutorial: { // field return type
+    createdAt: any; // DateTime!
+    gatsbyID: string; // String!
+    id: string; // ID!
+    name: string; // String!
+    numberofChapters: number; // Int!
+    numberOfStudents: number; // Int!
+    updatedAt: any; // DateTime!
+    upvotes: number; // Int!
+    userTutorials: NexusGenRootTypes['UserTutorial'][] | null; // [UserTutorial!]
   }
   User: { // field return type
     avatarUrl: string | null; // String
-    bio: string; // String!
+    bio: string | null; // String
+    contributor: boolean | null; // Boolean
     createdAt: any; // DateTime!
-    email: string; // String!
+    email: string | null; // String
+    expertise: string | null; // String
     githubHandle: string; // String!
     githubUserId: string; // String!
     id: string; // ID!
     name: string; // String!
-    posts: NexusGenRootTypes['Post'][] | null; // [Post!]
     updatedAt: any; // DateTime!
+    userTutorials: NexusGenRootTypes['UserTutorial'][] | null; // [UserTutorial!]
+  }
+  UserTutorial: { // field return type
+    createdAt: any; // DateTime!
+    currentChapter: number | null; // Int
+    id: string; // ID!
+    saved: boolean | null; // Boolean
+    tutorial: NexusGenRootTypes['Tutorial'] | null; // Tutorial
+    updatedAt: any; // DateTime!
+    upvoted: boolean | null; // Boolean
+    user: NexusGenRootTypes['User'] | null; // User
+  }
+  UserTutorialPayload: { // field return type
+    code: string; // String!
+    message: string; // String!
+    success: boolean; // Boolean!
+    userTutorial: NexusGenRootTypes['UserTutorial']; // UserTutorial!
   }
   Viewer: { // field return type
     id: string; // ID!
     user: NexusGenRootTypes['User']; // User!
+  }
+  PayloadInterface: { // field return type
+    code: string; // String!
+    message: string; // String!
+    success: boolean; // Boolean!
   }
 }
 
@@ -259,37 +405,47 @@ export interface NexusGenArgTypes {
     authenticate: { // args
       githubCode: string; // String!
     }
-  }
-  Query: {
-    filterPosts: { // args
-      searchString: string; // String!
+    upvote: { // args
+      tutorialId: string; // ID!
     }
   }
-  User: {
-    posts: { // args
+  Tutorial: {
+    userTutorials: { // args
       after?: string | null; // String
       before?: string | null; // String
       first?: number | null; // Int
       last?: number | null; // Int
-      orderBy?: NexusGenEnums['PostOrderByInput'] | null; // PostOrderByInput
+      orderBy?: NexusGenEnums['UserTutorialOrderByInput'] | null; // UserTutorialOrderByInput
       skip?: number | null; // Int
-      where?: NexusGenInputs['PostWhereInput'] | null; // PostWhereInput
+      where?: NexusGenInputs['UserTutorialWhereInput'] | null; // UserTutorialWhereInput
+    }
+  }
+  User: {
+    userTutorials: { // args
+      after?: string | null; // String
+      before?: string | null; // String
+      first?: number | null; // Int
+      last?: number | null; // Int
+      orderBy?: NexusGenEnums['UserTutorialOrderByInput'] | null; // UserTutorialOrderByInput
+      skip?: number | null; // Int
+      where?: NexusGenInputs['UserTutorialWhereInput'] | null; // UserTutorialWhereInput
     }
   }
 }
 
 export interface NexusGenAbstractResolveReturnTypes {
+  PayloadInterface: "AuthenticateUserPayload" | "UserTutorialPayload"
 }
 
 export interface NexusGenInheritedFields {}
 
-export type NexusGenObjectNames = "AuthenticateUserPayload" | "Mutation" | "Post" | "Query" | "User" | "Viewer";
+export type NexusGenObjectNames = "AuthenticateUserPayload" | "Mutation" | "Query" | "Tutorial" | "User" | "UserTutorial" | "UserTutorialPayload" | "Viewer";
 
-export type NexusGenInputNames = "PostWhereInput" | "UserWhereInput";
+export type NexusGenInputNames = "TutorialWhereInput" | "UserTutorialWhereInput" | "UserWhereInput";
 
-export type NexusGenEnumNames = "PostOrderByInput";
+export type NexusGenEnumNames = "UserTutorialOrderByInput";
 
-export type NexusGenInterfaceNames = never;
+export type NexusGenInterfaceNames = "PayloadInterface";
 
 export type NexusGenScalarNames = "Boolean" | "DateTime" | "Float" | "ID" | "Int" | "String";
 

@@ -2,7 +2,10 @@
 ### Do not make changes to this file directly
 
 
-type AuthenticateUserPayload {
+type AuthenticateUserPayload implements PayloadInterface {
+  code: String!
+  message: String!
+  success: Boolean!
   token: String!
   user: User!
 }
@@ -14,48 +17,58 @@ type Mutation {
     """GitHub OAuth Token from the client."""
     githubCode: String!
   ): AuthenticateUserPayload
+
+  """A user can upvote a tutorial."""
+  upvote(tutorialId: ID!): UserTutorialPayload!
 }
 
-type Post {
-  author: User!
-  content: String!
+"""The standard interface for all mutation responses"""
+interface PayloadInterface {
+  code: String!
+  message: String!
+  success: Boolean!
+}
+
+type Query {
+  viewer: Viewer
+}
+
+type Tutorial {
+  createdAt: DateTime!
+  gatsbyID: String!
   id: ID!
-  published: Boolean!
-  title: String!
+  name: String!
+  numberofChapters: Int!
+  numberOfStudents: Int!
+  updatedAt: DateTime!
+  upvotes: Int!
+  userTutorials(after: String, before: String, first: Int, last: Int, orderBy: UserTutorialOrderByInput, skip: Int, where: UserTutorialWhereInput): [UserTutorial!]
 }
 
-enum PostOrderByInput {
-  content_ASC
-  content_DESC
-  createdAt_ASC
-  createdAt_DESC
-  id_ASC
-  id_DESC
-  published_ASC
-  published_DESC
-  title_ASC
-  title_DESC
-  updatedAt_ASC
-  updatedAt_DESC
-}
-
-input PostWhereInput {
-  AND: [PostWhereInput!]
-  author: UserWhereInput
-  content: String
-  content_contains: String
-  content_ends_with: String
-  content_gt: String
-  content_gte: String
-  content_in: [String!]
-  content_lt: String
-  content_lte: String
-  content_not: String
-  content_not_contains: String
-  content_not_ends_with: String
-  content_not_in: [String!]
-  content_not_starts_with: String
-  content_starts_with: String
+input TutorialWhereInput {
+  AND: [TutorialWhereInput!]
+  createdAt: DateTime
+  createdAt_gt: DateTime
+  createdAt_gte: DateTime
+  createdAt_in: [DateTime!]
+  createdAt_lt: DateTime
+  createdAt_lte: DateTime
+  createdAt_not: DateTime
+  createdAt_not_in: [DateTime!]
+  gatsbyID: String
+  gatsbyID_contains: String
+  gatsbyID_ends_with: String
+  gatsbyID_gt: String
+  gatsbyID_gte: String
+  gatsbyID_in: [String!]
+  gatsbyID_lt: String
+  gatsbyID_lte: String
+  gatsbyID_not: String
+  gatsbyID_not_contains: String
+  gatsbyID_not_ends_with: String
+  gatsbyID_not_in: [String!]
+  gatsbyID_not_starts_with: String
+  gatsbyID_starts_with: String
   id: ID
   id_contains: ID
   id_ends_with: ID
@@ -70,43 +83,155 @@ input PostWhereInput {
   id_not_in: [ID!]
   id_not_starts_with: ID
   id_starts_with: ID
-  NOT: [PostWhereInput!]
-  OR: [PostWhereInput!]
-  published: Boolean
-  published_not: Boolean
-  title: String
-  title_contains: String
-  title_ends_with: String
-  title_gt: String
-  title_gte: String
-  title_in: [String!]
-  title_lt: String
-  title_lte: String
-  title_not: String
-  title_not_contains: String
-  title_not_ends_with: String
-  title_not_in: [String!]
-  title_not_starts_with: String
-  title_starts_with: String
-}
-
-type Query {
-  feed: [Post!]!
-  filterPosts(searchString: String!): [Post!]!
-  viewer: Viewer
+  name: String
+  name_contains: String
+  name_ends_with: String
+  name_gt: String
+  name_gte: String
+  name_in: [String!]
+  name_lt: String
+  name_lte: String
+  name_not: String
+  name_not_contains: String
+  name_not_ends_with: String
+  name_not_in: [String!]
+  name_not_starts_with: String
+  name_starts_with: String
+  NOT: [TutorialWhereInput!]
+  numberofChapters: Int
+  numberofChapters_gt: Int
+  numberofChapters_gte: Int
+  numberofChapters_in: [Int!]
+  numberofChapters_lt: Int
+  numberofChapters_lte: Int
+  numberofChapters_not: Int
+  numberofChapters_not_in: [Int!]
+  numberOfStudents: Int
+  numberOfStudents_gt: Int
+  numberOfStudents_gte: Int
+  numberOfStudents_in: [Int!]
+  numberOfStudents_lt: Int
+  numberOfStudents_lte: Int
+  numberOfStudents_not: Int
+  numberOfStudents_not_in: [Int!]
+  OR: [TutorialWhereInput!]
+  updatedAt: DateTime
+  updatedAt_gt: DateTime
+  updatedAt_gte: DateTime
+  updatedAt_in: [DateTime!]
+  updatedAt_lt: DateTime
+  updatedAt_lte: DateTime
+  updatedAt_not: DateTime
+  updatedAt_not_in: [DateTime!]
+  upvotes: Int
+  upvotes_gt: Int
+  upvotes_gte: Int
+  upvotes_in: [Int!]
+  upvotes_lt: Int
+  upvotes_lte: Int
+  upvotes_not: Int
+  upvotes_not_in: [Int!]
+  userTutorials_every: UserTutorialWhereInput
+  userTutorials_none: UserTutorialWhereInput
+  userTutorials_some: UserTutorialWhereInput
 }
 
 type User {
   avatarUrl: String
-  bio: String!
+  bio: String
+  contributor: Boolean
   createdAt: DateTime!
-  email: String!
+  email: String
+  expertise: String
   githubHandle: String!
   githubUserId: String!
   id: ID!
   name: String!
-  posts(after: String, before: String, first: Int, last: Int, orderBy: PostOrderByInput, skip: Int, where: PostWhereInput): [Post!]
   updatedAt: DateTime!
+  userTutorials(after: String, before: String, first: Int, last: Int, orderBy: UserTutorialOrderByInput, skip: Int, where: UserTutorialWhereInput): [UserTutorial!]
+}
+
+type UserTutorial {
+  createdAt: DateTime!
+  currentChapter: Int
+  id: ID!
+  saved: Boolean
+  tutorial: Tutorial
+  updatedAt: DateTime!
+  upvoted: Boolean
+  user: User
+}
+
+enum UserTutorialOrderByInput {
+  createdAt_ASC
+  createdAt_DESC
+  currentChapter_ASC
+  currentChapter_DESC
+  id_ASC
+  id_DESC
+  saved_ASC
+  saved_DESC
+  updatedAt_ASC
+  updatedAt_DESC
+  upvoted_ASC
+  upvoted_DESC
+}
+
+type UserTutorialPayload implements PayloadInterface {
+  code: String!
+  message: String!
+  success: Boolean!
+  userTutorial: UserTutorial!
+}
+
+input UserTutorialWhereInput {
+  AND: [UserTutorialWhereInput!]
+  createdAt: DateTime
+  createdAt_gt: DateTime
+  createdAt_gte: DateTime
+  createdAt_in: [DateTime!]
+  createdAt_lt: DateTime
+  createdAt_lte: DateTime
+  createdAt_not: DateTime
+  createdAt_not_in: [DateTime!]
+  currentChapter: Int
+  currentChapter_gt: Int
+  currentChapter_gte: Int
+  currentChapter_in: [Int!]
+  currentChapter_lt: Int
+  currentChapter_lte: Int
+  currentChapter_not: Int
+  currentChapter_not_in: [Int!]
+  id: ID
+  id_contains: ID
+  id_ends_with: ID
+  id_gt: ID
+  id_gte: ID
+  id_in: [ID!]
+  id_lt: ID
+  id_lte: ID
+  id_not: ID
+  id_not_contains: ID
+  id_not_ends_with: ID
+  id_not_in: [ID!]
+  id_not_starts_with: ID
+  id_starts_with: ID
+  NOT: [UserTutorialWhereInput!]
+  OR: [UserTutorialWhereInput!]
+  saved: Boolean
+  saved_not: Boolean
+  tutorial: TutorialWhereInput
+  updatedAt: DateTime
+  updatedAt_gt: DateTime
+  updatedAt_gte: DateTime
+  updatedAt_in: [DateTime!]
+  updatedAt_lt: DateTime
+  updatedAt_lte: DateTime
+  updatedAt_not: DateTime
+  updatedAt_not_in: [DateTime!]
+  upvoted: Boolean
+  upvoted_not: Boolean
+  user: UserWhereInput
 }
 
 input UserWhereInput {
@@ -139,6 +264,8 @@ input UserWhereInput {
   bio_not_in: [String!]
   bio_not_starts_with: String
   bio_starts_with: String
+  contributor: Boolean
+  contributor_not: Boolean
   createdAt: DateTime
   createdAt_gt: DateTime
   createdAt_gte: DateTime
@@ -161,6 +288,20 @@ input UserWhereInput {
   email_not_in: [String!]
   email_not_starts_with: String
   email_starts_with: String
+  expertise: String
+  expertise_contains: String
+  expertise_ends_with: String
+  expertise_gt: String
+  expertise_gte: String
+  expertise_in: [String!]
+  expertise_lt: String
+  expertise_lte: String
+  expertise_not: String
+  expertise_not_contains: String
+  expertise_not_ends_with: String
+  expertise_not_in: [String!]
+  expertise_not_starts_with: String
+  expertise_starts_with: String
   githubHandle: String
   githubHandle_contains: String
   githubHandle_ends_with: String
@@ -219,9 +360,6 @@ input UserWhereInput {
   name_starts_with: String
   NOT: [UserWhereInput!]
   OR: [UserWhereInput!]
-  posts_every: PostWhereInput
-  posts_none: PostWhereInput
-  posts_some: PostWhereInput
   updatedAt: DateTime
   updatedAt_gt: DateTime
   updatedAt_gte: DateTime
@@ -230,6 +368,9 @@ input UserWhereInput {
   updatedAt_lte: DateTime
   updatedAt_not: DateTime
   updatedAt_not_in: [DateTime!]
+  userTutorials_every: UserTutorialWhereInput
+  userTutorials_none: UserTutorialWhereInput
+  userTutorials_some: UserTutorialWhereInput
 }
 
 type Viewer {

@@ -9,15 +9,33 @@ type User {
   githubHandle: String! @unique
   githubUserId: String! @unique
   avatarUrl: String
-  bio: String!
+  bio: String
 
-  posts: [Post!]!
+  contributor: Boolean
+  expertise: String @unique
+
+  userTutorials: [UserTutorial!]! @relation(name: "UseronUserTutorial")
 }
 
-type Post {
+type UserTutorial {
   id: ID! @unique
-  title: String!
-  content: String!
-  published: Boolean! @default(value: "false")
-  author: User!
+  createdAt: DateTime!
+  updatedAt: DateTime!
+  user: User @relation(name: "UseronUserTutorial")
+  tutorial: Tutorial @relation(name: "TutorialonUserTutorial")
+  upvoted: Boolean @default(value: false)
+  saved: Boolean @default(value: false)
+  currentChapter: Int @default(value: 0)
+}
+
+type Tutorial {
+  id: ID! @unique
+  createdAt: DateTime!
+  updatedAt: DateTime!
+  name: String!
+  gatsbyID: String!
+  upvotes: Int!
+  numberOfStudents: Int!
+  numberofChapters: Int!
+  userTutorials: [UserTutorial!]! @relation(name: "TutorialonUserTutorial")
 }
