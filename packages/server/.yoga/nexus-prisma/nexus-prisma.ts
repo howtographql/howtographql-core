@@ -583,8 +583,6 @@ type TutorialObject =
   | { name: 'updatedAt', args?: [] | false, alias?: string  } 
   | { name: 'name', args?: [] | false, alias?: string  } 
   | { name: 'gatsbyID', args?: [] | false, alias?: string  } 
-  | { name: 'upvotes', args?: [] | false, alias?: string  } 
-  | { name: 'numberOfStudents', args?: [] | false, alias?: string  } 
   | { name: 'numberofChapters', args?: [] | false, alias?: string  } 
   | { name: 'userTutorials', args?: TutorialUserTutorialsArgs[] | false, alias?: string  } 
 
@@ -594,8 +592,6 @@ type TutorialFields =
   | 'updatedAt'
   | 'name'
   | 'gatsbyID'
-  | 'upvotes'
-  | 'numberOfStudents'
   | 'numberofChapters'
   | 'userTutorials'
 
@@ -645,22 +641,6 @@ export interface TutorialFieldDetails {
   }
   gatsbyID: {
     type: 'String'
-    args: {}
-    description: string
-    list: undefined
-    nullable: false
-    resolve: undefined
-  }
-  upvotes: {
-    type: 'Int'
-    args: {}
-    description: string
-    list: undefined
-    nullable: false
-    resolve: undefined
-  }
-  numberOfStudents: {
-    type: 'Int'
     args: {}
     description: string
     list: undefined
@@ -1962,8 +1942,6 @@ type TutorialPreviousValuesObject =
   | { name: 'updatedAt', args?: [] | false, alias?: string  } 
   | { name: 'name', args?: [] | false, alias?: string  } 
   | { name: 'gatsbyID', args?: [] | false, alias?: string  } 
-  | { name: 'upvotes', args?: [] | false, alias?: string  } 
-  | { name: 'numberOfStudents', args?: [] | false, alias?: string  } 
   | { name: 'numberofChapters', args?: [] | false, alias?: string  } 
 
 type TutorialPreviousValuesFields =
@@ -1972,8 +1950,6 @@ type TutorialPreviousValuesFields =
   | 'updatedAt'
   | 'name'
   | 'gatsbyID'
-  | 'upvotes'
-  | 'numberOfStudents'
   | 'numberofChapters'
 
 
@@ -2015,22 +1991,6 @@ export interface TutorialPreviousValuesFieldDetails {
   }
   gatsbyID: {
     type: 'String'
-    args: {}
-    description: string
-    list: undefined
-    nullable: false
-    resolve: undefined
-  }
-  upvotes: {
-    type: 'Int'
-    args: {}
-    description: string
-    list: undefined
-    nullable: false
-    resolve: undefined
-  }
-  numberOfStudents: {
-    type: 'Int'
     args: {}
     description: string
     list: undefined
@@ -2499,22 +2459,6 @@ export interface TutorialWhereInput {
   gatsbyID_not_starts_with?: string | null
   gatsbyID_ends_with?: string | null
   gatsbyID_not_ends_with?: string | null
-  upvotes?: number | null
-  upvotes_not?: number | null
-  upvotes_in?: number[]
-  upvotes_not_in?: number[]
-  upvotes_lt?: number | null
-  upvotes_lte?: number | null
-  upvotes_gt?: number | null
-  upvotes_gte?: number | null
-  numberOfStudents?: number | null
-  numberOfStudents_not?: number | null
-  numberOfStudents_in?: number[]
-  numberOfStudents_not_in?: number[]
-  numberOfStudents_lt?: number | null
-  numberOfStudents_lte?: number | null
-  numberOfStudents_gt?: number | null
-  numberOfStudents_gte?: number | null
   numberofChapters?: number | null
   numberofChapters_not?: number | null
   numberofChapters_in?: number[]
@@ -2590,22 +2534,6 @@ export type TutorialWhereInputInputObject =
   | { name: 'gatsbyID_not_starts_with', alias?: string  } 
   | { name: 'gatsbyID_ends_with', alias?: string  } 
   | { name: 'gatsbyID_not_ends_with', alias?: string  } 
-  | { name: 'upvotes', alias?: string  } 
-  | { name: 'upvotes_not', alias?: string  } 
-  | { name: 'upvotes_in', alias?: string  } 
-  | { name: 'upvotes_not_in', alias?: string  } 
-  | { name: 'upvotes_lt', alias?: string  } 
-  | { name: 'upvotes_lte', alias?: string  } 
-  | { name: 'upvotes_gt', alias?: string  } 
-  | { name: 'upvotes_gte', alias?: string  } 
-  | { name: 'numberOfStudents', alias?: string  } 
-  | { name: 'numberOfStudents_not', alias?: string  } 
-  | { name: 'numberOfStudents_in', alias?: string  } 
-  | { name: 'numberOfStudents_not_in', alias?: string  } 
-  | { name: 'numberOfStudents_lt', alias?: string  } 
-  | { name: 'numberOfStudents_lte', alias?: string  } 
-  | { name: 'numberOfStudents_gt', alias?: string  } 
-  | { name: 'numberOfStudents_gte', alias?: string  } 
   | { name: 'numberofChapters', alias?: string  } 
   | { name: 'numberofChapters_not', alias?: string  } 
   | { name: 'numberofChapters_in', alias?: string  } 
@@ -2692,16 +2620,12 @@ export type TutorialCreateOneWithoutUserTutorialsInputInputObject =
 export interface TutorialCreateWithoutUserTutorialsInput {
   name?: string
   gatsbyID?: string
-  upvotes?: number
-  numberOfStudents?: number
   numberofChapters?: number
 }
 export type TutorialCreateWithoutUserTutorialsInputInputObject =
   | Extract<keyof TutorialCreateWithoutUserTutorialsInput, string>
   | { name: 'name', alias?: string  } 
   | { name: 'gatsbyID', alias?: string  } 
-  | { name: 'upvotes', alias?: string  } 
-  | { name: 'numberOfStudents', alias?: string  } 
   | { name: 'numberofChapters', alias?: string  } 
   
 export interface UserUpdateInput {
@@ -2792,16 +2716,12 @@ export type TutorialUpdateOneWithoutUserTutorialsInputInputObject =
 export interface TutorialUpdateWithoutUserTutorialsDataInput {
   name?: string | null
   gatsbyID?: string | null
-  upvotes?: number | null
-  numberOfStudents?: number | null
   numberofChapters?: number | null
 }
 export type TutorialUpdateWithoutUserTutorialsDataInputInputObject =
   | Extract<keyof TutorialUpdateWithoutUserTutorialsDataInput, string>
   | { name: 'name', alias?: string  } 
   | { name: 'gatsbyID', alias?: string  } 
-  | { name: 'upvotes', alias?: string  } 
-  | { name: 'numberOfStudents', alias?: string  } 
   | { name: 'numberofChapters', alias?: string  } 
   
 export interface TutorialUpsertWithoutUserTutorialsInput {
@@ -3081,8 +3001,6 @@ export type UserTutorialUpdateManyMutationInputInputObject =
 export interface TutorialCreateInput {
   name?: string
   gatsbyID?: string
-  upvotes?: number
-  numberOfStudents?: number
   numberofChapters?: number
   userTutorials?: UserTutorialCreateManyWithoutTutorialInput | null
 }
@@ -3090,8 +3008,6 @@ export type TutorialCreateInputInputObject =
   | Extract<keyof TutorialCreateInput, string>
   | { name: 'name', alias?: string  } 
   | { name: 'gatsbyID', alias?: string  } 
-  | { name: 'upvotes', alias?: string  } 
-  | { name: 'numberOfStudents', alias?: string  } 
   | { name: 'numberofChapters', alias?: string  } 
   | { name: 'userTutorials', alias?: string  } 
   
@@ -3120,8 +3036,6 @@ export type UserTutorialCreateWithoutTutorialInputInputObject =
 export interface TutorialUpdateInput {
   name?: string | null
   gatsbyID?: string | null
-  upvotes?: number | null
-  numberOfStudents?: number | null
   numberofChapters?: number | null
   userTutorials?: UserTutorialUpdateManyWithoutTutorialInput | null
 }
@@ -3129,8 +3043,6 @@ export type TutorialUpdateInputInputObject =
   | Extract<keyof TutorialUpdateInput, string>
   | { name: 'name', alias?: string  } 
   | { name: 'gatsbyID', alias?: string  } 
-  | { name: 'upvotes', alias?: string  } 
-  | { name: 'numberOfStudents', alias?: string  } 
   | { name: 'numberofChapters', alias?: string  } 
   | { name: 'userTutorials', alias?: string  } 
   
@@ -3193,16 +3105,12 @@ export type UserTutorialUpsertWithWhereUniqueWithoutTutorialInputInputObject =
 export interface TutorialUpdateManyMutationInput {
   name?: string | null
   gatsbyID?: string | null
-  upvotes?: number | null
-  numberOfStudents?: number | null
   numberofChapters?: number | null
 }
 export type TutorialUpdateManyMutationInputInputObject =
   | Extract<keyof TutorialUpdateManyMutationInput, string>
   | { name: 'name', alias?: string  } 
   | { name: 'gatsbyID', alias?: string  } 
-  | { name: 'upvotes', alias?: string  } 
-  | { name: 'numberOfStudents', alias?: string  } 
   | { name: 'numberofChapters', alias?: string  } 
   
 export interface UserSubscriptionWhereInput {
@@ -3318,10 +3226,6 @@ export type TutorialOrderByInputValues =
   | 'name_DESC'
   | 'gatsbyID_ASC'
   | 'gatsbyID_DESC'
-  | 'upvotes_ASC'
-  | 'upvotes_DESC'
-  | 'numberOfStudents_ASC'
-  | 'numberOfStudents_DESC'
   | 'numberofChapters_ASC'
   | 'numberofChapters_DESC'
   
