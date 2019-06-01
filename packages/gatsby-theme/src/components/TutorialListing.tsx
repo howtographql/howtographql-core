@@ -95,6 +95,44 @@ const TutorialListing: React.FunctionComponent<TutorialListingProps> = ({
                     );
                   }}
                 </Mutation>
+                <Mutation
+                  mutation={gql`
+                    mutation SaveTutorial($id: ID!) {
+                      saveTutorial(tutorialId: $id) {
+                        code
+                        success
+                        userTutorial {
+                          id
+                          saved
+                        }
+                      }
+                    }
+                  `}
+                  variables={{
+                    id: tutorialId,
+                  }}
+                >
+                  {save => {
+                    return (
+                      <button
+                        onClick={async () => {
+                          const mutationRes = await handleMutationResponse(
+                            save(),
+                          );
+                          if (mutationRes.error) {
+                            if (mutationRes.error === ApiErrors.AUTHORIZATION) {
+                              loginUser();
+                            } else {
+                              console.log(mutationRes.error);
+                            }
+                          }
+                        }}
+                      >
+                        Save
+                      </button>
+                    );
+                  }}
+                </Mutation>
               </Box>
               <Box width={11 / 12}>
                 <Link to={getTutorialOverviewSlug(tutorial.fileAbsolutePath)}>

@@ -18,6 +18,9 @@ type Mutation {
     githubCode: String!
   ): AuthenticateUserPayload
 
+  """An authenticated user can save a tutorial."""
+  saveTutorial(tutorialId: ID!): UserTutorialPayload!
+
   """An authenticated user can upvote a tutorial."""
   upvoteTutorial(tutorialId: ID!): UserTutorialPayload!
 }
