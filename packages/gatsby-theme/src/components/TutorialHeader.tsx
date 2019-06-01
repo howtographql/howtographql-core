@@ -1,5 +1,5 @@
 import React from 'react';
-import { Box, Image, Heading, Text } from '../shared/base';
+import { Box, Image, Heading, Text } from './shared/base';
 
 interface TutorialHeaderProps {
   title: string | null;
@@ -16,7 +16,7 @@ const TutorialHeader: React.FunctionComponent<TutorialHeaderProps> = ({
     <Box p={2}>
       <Image
         width={[0.25, 0.25, 0.25]}
-        src="https://cdn-images-1.medium.com/max/1200/1*yTMBzO8zfEhKr4Lky6pjZQ.png"
+        src="https://i.ibb.co/TcKwmwR/Icons.png"
       />
       <Heading> {title} </Heading>
       <Text>{description} </Text>

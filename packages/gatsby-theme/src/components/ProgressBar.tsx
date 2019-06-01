@@ -1,6 +1,6 @@
 import * as React from 'react';
-import { styled } from '../../styles';
-import { Text } from '../shared/base';
+import { styled } from '../styles';
+import { Text } from './shared/base';
 
 interface ProgressBarProps extends FillerProps, ContainerProps {}
 
@@ -21,7 +21,7 @@ const ProgressBar: React.FunctionComponent<ProgressBarProps> = ({
 };
 
 interface ContainerProps {
-  width: number;
+  width?: number;
 }
 
 const Container = styled.div<ContainerProps>`
