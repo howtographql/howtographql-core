@@ -1,25 +1,27 @@
 import * as React from 'react';
 import Layout from '../components/layout';
-import { Text, Image, Flex } from '../components/shared/base';
+import { Heading, Text, Image, Flex } from '../components/shared/base';
 import { logoutUser } from '../utils/auth';
 import { navigate } from 'gatsby';
-import WithCurrentUser from '../utils/auth/WithCurrentUser';
+import { Query } from 'react-apollo';
+import gql from 'graphql-tag';
+import { optionalChaining } from '../utils/helpers';
 import { CenteredLoader } from '../components/Loader';
 
 const Profile = () => {
   return (
-    <WithCurrentUser>
-      {({ user, loading }) => {
+    <Query query={PROFILE_QUERY}>
+      {({ data, loading }) => {
         if (loading) {
           return <CenteredLoader />;
         }
-        if (user) {
-          return <ProfilePage user={user} />;
+        if (optionalChaining(() => data!.viewer!.user)) {
+          return <ProfilePage user={data.viewer.user} />;
         }
         navigate('/signup/');
         return null;
       }}
-    </WithCurrentUser>
+    </Query>
   );
 };
 
@@ -32,9 +34,22 @@ type User = {
   avatarUrl: string;
   name: string;
   githubHandle: string;
+  bio: string;
+  upvoted: [Tutorials];
+  saved: [Tutorials];
+};
+
+type Tutorials = {
+  tutorial: Tutorial;
+};
+
+type Tutorial = {
+  id: 'string';
+  name: 'string';
 };
 
 const ProfilePage: React.FunctionComponent<ProfileProps> = ({ user }) => {
+  console.log(user);
   return (
     <Layout>
       <Flex flexDirection="column">
@@ -52,7 +67,49 @@ const ProfilePage: React.FunctionComponent<ProfileProps> = ({ user }) => {
         viverra nibh nec, ultrices risus. */
       </Text>
       <button onClick={() => logoutUser()}> Log out </button>
+      <Heading> Upvoted Tutorials </Heading>
+      <ul>
+        {user.upvoted.map(a => (
+          <li key={a.tutorial.id}>
+            <span>{a.tutorial.name}</span>
+          </li>
+        ))}
+      </ul>
+      <Heading> Saved Tutorials </Heading>
+      <ul>
+        {user.saved.map(a => (
+          <li key={a.tutorial.id}>
+            <span>{a.tutorial.name}</span>
+          </li>
+        ))}
+      </ul>
     </Layout>
   );
 };
 export default Profile;
+
+const PROFILE_QUERY = gql`
+  query profileQuery {
+    viewer {
+      user {
+        id
+        name
+        githubHandle
+        avatarUrl
+        bio
+        upvoted: userTutorials(where: { upvoted: true }) {
+          tutorial {
+            id
+            name
+          }
+        }
+        saved: userTutorials(where: { saved: true }) {
+          tutorial {
+            id
+            name
+          }
+        }
+      }
+    }
+  }
+`;

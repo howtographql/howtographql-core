@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { Heading, Text, Card, Flex, Box } from './shared/base';
+import { Heading, Text, Card, Flex, Box, Button } from './shared/base';
 import { getTutorialOverviewSlug } from '../utils/getTutorialSlug';
 import Upvote from './Upvote';
 import { Link } from 'gatsby';
@@ -114,7 +114,7 @@ const TutorialListing: React.FunctionComponent<TutorialListingProps> = ({
                 >
                   {save => {
                     return (
-                      <button
+                      <Button
                         onClick={async () => {
                           const mutationRes = await handleMutationResponse(
                             save(),
@@ -129,7 +129,7 @@ const TutorialListing: React.FunctionComponent<TutorialListingProps> = ({
                         }}
                       >
                         Save
-                      </button>
+                      </Button>
                     );
                   }}
                 </Mutation>
