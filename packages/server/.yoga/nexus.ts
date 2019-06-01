@@ -327,6 +327,7 @@ export interface NexusGenFieldTypes {
   }
   Mutation: { // field return type
     authenticate: NexusGenRootTypes['AuthenticateUserPayload'] | null; // AuthenticateUserPayload
+    saveTutorial: NexusGenRootTypes['UserTutorialPayload']; // UserTutorialPayload!
     upvoteTutorial: NexusGenRootTypes['UserTutorialPayload']; // UserTutorialPayload!
   }
   Query: { // field return type
@@ -391,6 +392,9 @@ export interface NexusGenArgTypes {
   Mutation: {
     authenticate: { // args
       githubCode: string; // String!
+    }
+    saveTutorial: { // args
+      tutorialId: string; // ID!
     }
     upvoteTutorial: { // args
       tutorialId: string; // ID!

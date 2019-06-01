@@ -65,6 +65,44 @@ export const upvoteTutorial = mutationField('upvoteTutorial', {
   },
 })
 
+export const saveTutorial = mutationField('saveTutorial', {
+  type: UserTutorialPayload,
+  description: 'An authenticated user can save a tutorial.',
+  args: {
+    tutorialId: idArg({
+      required: true,
+    }),
+  },
+  authorize: authorizeUser(),
+  resolve: async (_, { tutorialId }, ctx) => {
+    const userId = ctx.currentUserId
+    const existingUserTutorial = await getUserTutorial(
+      {
+        userId,
+        tutorialId,
+      },
+      ctx,
+    )
+    let upsertedUserTutorial = await upsertUserTutorial(
+      {
+        userId,
+        tutorialId,
+        userTutorialId: existingUserTutorial && existingUserTutorial.id,
+        updates: {
+          saved: existingUserTutorial ? !existingUserTutorial.saved : true,
+        },
+      },
+      ctx,
+    )
+    return {
+      code: '200',
+      success: true,
+      message: null,
+      userTutorial: upsertedUserTutorial,
+    }
+  },
+})
+
 async function upsertUserTutorial(
   args: {
     userTutorialId?: string
