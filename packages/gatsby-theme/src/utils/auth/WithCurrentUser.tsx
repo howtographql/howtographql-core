@@ -16,7 +16,7 @@ const WithCurrentUser: React.FunctionComponent<WithCurrentUserProps> = ({
   children,
 }) => {
   return (
-    <Query<CurrentUserQuery> query={CURRENT_USER} >
+    <Query<CurrentUserQuery> query={CURRENT_USER}>
       {({ data, loading }) => {
         if (loading) {
           return children({ loading });
@@ -27,7 +27,7 @@ const WithCurrentUser: React.FunctionComponent<WithCurrentUserProps> = ({
         return children({ user: false });
       }}
     </Query>
-  )
+  );
 };
 
 export const CURRENT_USER = gql`
@@ -37,11 +37,11 @@ export const CURRENT_USER = gql`
       user {
         id
         name
-      avatarUrl
-      githubHandle
+        avatarUrl
+        githubHandle
+      }
     }
   }
-}
 `;
 
 export default WithCurrentUser;
