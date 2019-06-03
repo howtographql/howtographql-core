@@ -10,24 +10,25 @@ import {
   Box,
 } from '../components/shared/base';
 import { TutorialButton } from '../components/buttons';
+import { graphql } from 'gatsby';
 import { getTutorialOverviewSlug } from '../utils/getTutorialSlug';
 import ProgressBar from '../components/ProgressBar';
 
-const courses = data => {
+const courses = ({ data }) => {
   const courseSectionData = [
     {
       heading: `Frontend`,
       body: `Implement a web frontend for a Hacker News app that talks to a GraphQL
             API. We provide a hosted GraphQL API for you so that you can test your
             app in a real world environment.`,
-      data: data.data.frontend.edges,
+      data: data.frontend.edges,
     },
     {
       heading: `Backend`,
       body: `Implement a GraphQL API that's backed by a database. The tutorial
       teach schema design and implement features like authentication,
       filtering, pagination and a lot more`,
-      data: data.data.backend.edges,
+      data: data.backend.edges,
     },
   ];
   return (
