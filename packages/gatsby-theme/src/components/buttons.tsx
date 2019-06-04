@@ -99,8 +99,8 @@ const customButtonTypes: CustomButtonType = {
     bg: 'white',
   },
   voteActive: {
-    icon: 'https://i.ibb.co/b3FGXbD/Vote.png',
-    bg: 'blue',
+    icon: 'https://i.ibb.co/m41h9fC/Vote-filled.png',
+    bg: 'white',
   },
   bookmark: {
     icon:
