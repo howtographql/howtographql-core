@@ -1,11 +1,13 @@
 import * as React from 'react';
-import { Heading, Text, Card, Flex, Box } from './shared/base';
+import { Heading, Text, Card, Flex, Box, Button } from './shared/base';
 import { getTutorialOverviewSlug } from '../utils/getTutorialSlug';
 import Upvote from './Upvote';
 import { Link } from 'gatsby';
 import { Query, Mutation } from 'react-apollo';
 import gql from 'graphql-tag';
 import { optionalChaining } from '../utils/helpers';
+import { loginUser } from '../utils/auth';
+import { handleMutationResponse, ApiErrors } from '../utils/errorHandling';
 
 type TutorialListingProps = {
   tutorial: Tutorial;
@@ -25,7 +27,7 @@ type FrontMatter = {
 const TutorialListing: React.FunctionComponent<TutorialListingProps> = ({
   tutorial,
 }) => {
-  const tutorialId = "cjwb6f2hy7e4f0b14bxh1mar2";
+  const tutorialId = 'cjwb6f2hy7e4f0b14bxh1mar2';
   return (
     <Query
       query={gql`
@@ -67,17 +69,68 @@ const TutorialListing: React.FunctionComponent<TutorialListingProps> = ({
                     }
                   `}
                   variables={{
-                    id: tutorialId
+                    id: tutorialId,
                   }}
                 >
-                  {(upvote) => {
+                  {upvote => {
                     return (
                       <Upvote
-                        onClick={() => upvote()}
-                        active={optionalChaining(() => data.tutorial.viewerUserTutorial.upvoted)}
+                        onClick={async () => {
+                          const mutationRes = await handleMutationResponse(
+                            upvote(),
+                          );
+                          if (mutationRes.error) {
+                            if (mutationRes.error === ApiErrors.AUTHORIZATION) {
+                              loginUser();
+                            } else {
+                              console.log(mutationRes.error);
+                            }
+                          }
+                        }}
+                        active={optionalChaining(
+                          () => data.tutorial.viewerUserTutorial.upvoted,
+                        )}
                         count={optionalChaining(() => data.tutorial.upvotes)}
                       />
-                    )
+                    );
+                  }}
+                </Mutation>
+                <Mutation
+                  mutation={gql`
+                    mutation SaveTutorial($id: ID!) {
+                      saveTutorial(tutorialId: $id) {
+                        code
+                        success
+                        userTutorial {
+                          id
+                          saved
+                        }
+                      }
+                    }
+                  `}
+                  variables={{
+                    id: tutorialId,
+                  }}
+                >
+                  {save => {
+                    return (
+                      <Button
+                        onClick={async () => {
+                          const mutationRes = await handleMutationResponse(
+                            save(),
+                          );
+                          if (mutationRes.error) {
+                            if (mutationRes.error === ApiErrors.AUTHORIZATION) {
+                              loginUser();
+                            } else {
+                              console.log(mutationRes.error);
+                            }
+                          }
+                        }}
+                      >
+                        Save
+                      </Button>
+                    );
                   }}
                 </Mutation>
               </Box>
@@ -89,7 +142,7 @@ const TutorialListing: React.FunctionComponent<TutorialListingProps> = ({
               </Box>
             </Flex>
           </Card>
-        )
+        );
       }}
     </Query>
   );
