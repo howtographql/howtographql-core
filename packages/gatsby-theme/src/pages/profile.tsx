@@ -69,19 +69,25 @@ const ProfilePage: React.FunctionComponent<ProfileProps> = ({ user }) => {
       <button onClick={() => logoutUser()}> Log out </button>
       <Heading> Upvoted Tutorials </Heading>
       <ul>
-        {user.upvoted.map(a => (
-          <li key={a.tutorial.id}>
-            <span>{a.tutorial.name}</span>
-          </li>
-        ))}
+        {user.upvoted.map(
+          a =>
+            a.tutorial && (
+              <li key={a.tutorial.id}>
+                <span>{a.tutorial.name}</span>
+              </li>
+            ),
+        )}
       </ul>
       <Heading> Saved Tutorials </Heading>
       <ul>
-        {user.saved.map(a => (
-          <li key={a.tutorial.id}>
-            <span>{a.tutorial.name}</span>
-          </li>
-        ))}
+        {user.saved.map(
+          a =>
+            a.tutorial && (
+              <li key={a.tutorial.id}>
+                <span>{a.tutorial.name}</span>
+              </li>
+            ),
+        )}
       </ul>
     </Layout>
   );
