@@ -86,6 +86,8 @@ type Tutorial {
   name: String!
   gatsbyID: String!
   numberofChapters: Int!
+  numberofStudents: Int!
+  upvotes: Int!
   userTutorials(where: UserTutorialWhereInput, orderBy: UserTutorialOrderByInput, skip: Int, after: String, before: String, first: Int, last: Int): [UserTutorial!]
 }
 
@@ -99,6 +101,8 @@ input TutorialCreateInput {
   name: String!
   gatsbyID: String!
   numberofChapters: Int!
+  numberofStudents: Int
+  upvotes: Int
   userTutorials: UserTutorialCreateManyWithoutTutorialInput
 }
 
@@ -111,6 +115,8 @@ input TutorialCreateWithoutUserTutorialsInput {
   name: String!
   gatsbyID: String!
   numberofChapters: Int!
+  numberofStudents: Int
+  upvotes: Int
 }
 
 type TutorialEdge {
@@ -131,6 +137,10 @@ enum TutorialOrderByInput {
   gatsbyID_DESC
   numberofChapters_ASC
   numberofChapters_DESC
+  numberofStudents_ASC
+  numberofStudents_DESC
+  upvotes_ASC
+  upvotes_DESC
 }
 
 type TutorialPreviousValues {
@@ -140,6 +150,8 @@ type TutorialPreviousValues {
   name: String!
   gatsbyID: String!
   numberofChapters: Int!
+  numberofStudents: Int!
+  upvotes: Int!
 }
 
 type TutorialSubscriptionPayload {
@@ -164,6 +176,8 @@ input TutorialUpdateInput {
   name: String
   gatsbyID: String
   numberofChapters: Int
+  numberofStudents: Int
+  upvotes: Int
   userTutorials: UserTutorialUpdateManyWithoutTutorialInput
 }
 
@@ -171,6 +185,8 @@ input TutorialUpdateManyMutationInput {
   name: String
   gatsbyID: String
   numberofChapters: Int
+  numberofStudents: Int
+  upvotes: Int
 }
 
 input TutorialUpdateOneWithoutUserTutorialsInput {
@@ -186,6 +202,8 @@ input TutorialUpdateWithoutUserTutorialsDataInput {
   name: String
   gatsbyID: String
   numberofChapters: Int
+  numberofStudents: Int
+  upvotes: Int
 }
 
 input TutorialUpsertWithoutUserTutorialsInput {
@@ -260,6 +278,22 @@ input TutorialWhereInput {
   numberofChapters_lte: Int
   numberofChapters_gt: Int
   numberofChapters_gte: Int
+  numberofStudents: Int
+  numberofStudents_not: Int
+  numberofStudents_in: [Int!]
+  numberofStudents_not_in: [Int!]
+  numberofStudents_lt: Int
+  numberofStudents_lte: Int
+  numberofStudents_gt: Int
+  numberofStudents_gte: Int
+  upvotes: Int
+  upvotes_not: Int
+  upvotes_in: [Int!]
+  upvotes_not_in: [Int!]
+  upvotes_lt: Int
+  upvotes_lte: Int
+  upvotes_gt: Int
+  upvotes_gte: Int
   userTutorials_every: UserTutorialWhereInput
   userTutorials_some: UserTutorialWhereInput
   userTutorials_none: UserTutorialWhereInput

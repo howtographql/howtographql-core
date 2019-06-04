@@ -211,7 +211,11 @@ export type TutorialOrderByInput =
   | "gatsbyID_ASC"
   | "gatsbyID_DESC"
   | "numberofChapters_ASC"
-  | "numberofChapters_DESC";
+  | "numberofChapters_DESC"
+  | "numberofStudents_ASC"
+  | "numberofStudents_DESC"
+  | "upvotes_ASC"
+  | "upvotes_DESC";
 
 export type UserOrderByInput =
   | "id_ASC"
@@ -499,6 +503,22 @@ export interface TutorialWhereInput {
   numberofChapters_lte?: Maybe<Int>;
   numberofChapters_gt?: Maybe<Int>;
   numberofChapters_gte?: Maybe<Int>;
+  numberofStudents?: Maybe<Int>;
+  numberofStudents_not?: Maybe<Int>;
+  numberofStudents_in?: Maybe<Int[] | Int>;
+  numberofStudents_not_in?: Maybe<Int[] | Int>;
+  numberofStudents_lt?: Maybe<Int>;
+  numberofStudents_lte?: Maybe<Int>;
+  numberofStudents_gt?: Maybe<Int>;
+  numberofStudents_gte?: Maybe<Int>;
+  upvotes?: Maybe<Int>;
+  upvotes_not?: Maybe<Int>;
+  upvotes_in?: Maybe<Int[] | Int>;
+  upvotes_not_in?: Maybe<Int[] | Int>;
+  upvotes_lt?: Maybe<Int>;
+  upvotes_lte?: Maybe<Int>;
+  upvotes_gt?: Maybe<Int>;
+  upvotes_gte?: Maybe<Int>;
   userTutorials_every?: Maybe<UserTutorialWhereInput>;
   userTutorials_some?: Maybe<UserTutorialWhereInput>;
   userTutorials_none?: Maybe<UserTutorialWhereInput>;
@@ -523,6 +543,8 @@ export interface TutorialCreateInput {
   name: String;
   gatsbyID: String;
   numberofChapters: Int;
+  numberofStudents?: Maybe<Int>;
+  upvotes?: Maybe<Int>;
   userTutorials?: Maybe<UserTutorialCreateManyWithoutTutorialInput>;
 }
 
@@ -563,6 +585,8 @@ export interface TutorialUpdateInput {
   name?: Maybe<String>;
   gatsbyID?: Maybe<String>;
   numberofChapters?: Maybe<Int>;
+  numberofStudents?: Maybe<Int>;
+  upvotes?: Maybe<Int>;
   userTutorials?: Maybe<UserTutorialUpdateManyWithoutTutorialInput>;
 }
 
@@ -702,6 +726,8 @@ export interface TutorialUpdateManyMutationInput {
   name?: Maybe<String>;
   gatsbyID?: Maybe<String>;
   numberofChapters?: Maybe<Int>;
+  numberofStudents?: Maybe<Int>;
+  upvotes?: Maybe<Int>;
 }
 
 export interface UserCreateInput {
@@ -741,6 +767,8 @@ export interface TutorialCreateWithoutUserTutorialsInput {
   name: String;
   gatsbyID: String;
   numberofChapters: Int;
+  numberofStudents?: Maybe<Int>;
+  upvotes?: Maybe<Int>;
 }
 
 export interface UserUpdateInput {
@@ -809,6 +837,8 @@ export interface TutorialUpdateWithoutUserTutorialsDataInput {
   name?: Maybe<String>;
   gatsbyID?: Maybe<String>;
   numberofChapters?: Maybe<Int>;
+  numberofStudents?: Maybe<Int>;
+  upvotes?: Maybe<Int>;
 }
 
 export interface TutorialUpsertWithoutUserTutorialsInput {
@@ -909,6 +939,8 @@ export interface Tutorial {
   name: String;
   gatsbyID: String;
   numberofChapters: Int;
+  numberofStudents: Int;
+  upvotes: Int;
 }
 
 export interface TutorialPromise extends Promise<Tutorial>, Fragmentable {
@@ -918,6 +950,8 @@ export interface TutorialPromise extends Promise<Tutorial>, Fragmentable {
   name: () => Promise<String>;
   gatsbyID: () => Promise<String>;
   numberofChapters: () => Promise<Int>;
+  numberofStudents: () => Promise<Int>;
+  upvotes: () => Promise<Int>;
   userTutorials: <T = FragmentableArray<UserTutorial>>(args?: {
     where?: UserTutorialWhereInput;
     orderBy?: UserTutorialOrderByInput;
@@ -938,6 +972,8 @@ export interface TutorialSubscription
   name: () => Promise<AsyncIterator<String>>;
   gatsbyID: () => Promise<AsyncIterator<String>>;
   numberofChapters: () => Promise<AsyncIterator<Int>>;
+  numberofStudents: () => Promise<AsyncIterator<Int>>;
+  upvotes: () => Promise<AsyncIterator<Int>>;
   userTutorials: <T = Promise<AsyncIterator<UserTutorialSubscription>>>(args?: {
     where?: UserTutorialWhereInput;
     orderBy?: UserTutorialOrderByInput;
@@ -958,6 +994,8 @@ export interface TutorialNullablePromise
   name: () => Promise<String>;
   gatsbyID: () => Promise<String>;
   numberofChapters: () => Promise<Int>;
+  numberofStudents: () => Promise<Int>;
+  upvotes: () => Promise<Int>;
   userTutorials: <T = FragmentableArray<UserTutorial>>(args?: {
     where?: UserTutorialWhereInput;
     orderBy?: UserTutorialOrderByInput;
@@ -1341,6 +1379,8 @@ export interface TutorialPreviousValues {
   name: String;
   gatsbyID: String;
   numberofChapters: Int;
+  numberofStudents: Int;
+  upvotes: Int;
 }
 
 export interface TutorialPreviousValuesPromise
@@ -1352,6 +1392,8 @@ export interface TutorialPreviousValuesPromise
   name: () => Promise<String>;
   gatsbyID: () => Promise<String>;
   numberofChapters: () => Promise<Int>;
+  numberofStudents: () => Promise<Int>;
+  upvotes: () => Promise<Int>;
 }
 
 export interface TutorialPreviousValuesSubscription
@@ -1363,6 +1405,8 @@ export interface TutorialPreviousValuesSubscription
   name: () => Promise<AsyncIterator<String>>;
   gatsbyID: () => Promise<AsyncIterator<String>>;
   numberofChapters: () => Promise<AsyncIterator<Int>>;
+  numberofStudents: () => Promise<AsyncIterator<Int>>;
+  upvotes: () => Promise<AsyncIterator<Int>>;
 }
 
 export interface UserSubscriptionPayload {

@@ -584,6 +584,8 @@ type TutorialObject =
   | { name: 'name', args?: [] | false, alias?: string  } 
   | { name: 'gatsbyID', args?: [] | false, alias?: string  } 
   | { name: 'numberofChapters', args?: [] | false, alias?: string  } 
+  | { name: 'numberofStudents', args?: [] | false, alias?: string  } 
+  | { name: 'upvotes', args?: [] | false, alias?: string  } 
   | { name: 'userTutorials', args?: TutorialUserTutorialsArgs[] | false, alias?: string  } 
 
 type TutorialFields =
@@ -593,6 +595,8 @@ type TutorialFields =
   | 'name'
   | 'gatsbyID'
   | 'numberofChapters'
+  | 'numberofStudents'
+  | 'upvotes'
   | 'userTutorials'
 
 
@@ -648,6 +652,22 @@ export interface TutorialFieldDetails {
     resolve: undefined
   }
   numberofChapters: {
+    type: 'Int'
+    args: {}
+    description: string
+    list: undefined
+    nullable: false
+    resolve: undefined
+  }
+  numberofStudents: {
+    type: 'Int'
+    args: {}
+    description: string
+    list: undefined
+    nullable: false
+    resolve: undefined
+  }
+  upvotes: {
     type: 'Int'
     args: {}
     description: string
@@ -1943,6 +1963,8 @@ type TutorialPreviousValuesObject =
   | { name: 'name', args?: [] | false, alias?: string  } 
   | { name: 'gatsbyID', args?: [] | false, alias?: string  } 
   | { name: 'numberofChapters', args?: [] | false, alias?: string  } 
+  | { name: 'numberofStudents', args?: [] | false, alias?: string  } 
+  | { name: 'upvotes', args?: [] | false, alias?: string  } 
 
 type TutorialPreviousValuesFields =
   | 'id'
@@ -1951,6 +1973,8 @@ type TutorialPreviousValuesFields =
   | 'name'
   | 'gatsbyID'
   | 'numberofChapters'
+  | 'numberofStudents'
+  | 'upvotes'
 
 
 
@@ -1998,6 +2022,22 @@ export interface TutorialPreviousValuesFieldDetails {
     resolve: undefined
   }
   numberofChapters: {
+    type: 'Int'
+    args: {}
+    description: string
+    list: undefined
+    nullable: false
+    resolve: undefined
+  }
+  numberofStudents: {
+    type: 'Int'
+    args: {}
+    description: string
+    list: undefined
+    nullable: false
+    resolve: undefined
+  }
+  upvotes: {
     type: 'Int'
     args: {}
     description: string
@@ -2467,6 +2507,22 @@ export interface TutorialWhereInput {
   numberofChapters_lte?: number | null
   numberofChapters_gt?: number | null
   numberofChapters_gte?: number | null
+  numberofStudents?: number | null
+  numberofStudents_not?: number | null
+  numberofStudents_in?: number[]
+  numberofStudents_not_in?: number[]
+  numberofStudents_lt?: number | null
+  numberofStudents_lte?: number | null
+  numberofStudents_gt?: number | null
+  numberofStudents_gte?: number | null
+  upvotes?: number | null
+  upvotes_not?: number | null
+  upvotes_in?: number[]
+  upvotes_not_in?: number[]
+  upvotes_lt?: number | null
+  upvotes_lte?: number | null
+  upvotes_gt?: number | null
+  upvotes_gte?: number | null
   userTutorials_every?: UserTutorialWhereInput | null
   userTutorials_some?: UserTutorialWhereInput | null
   userTutorials_none?: UserTutorialWhereInput | null
@@ -2542,6 +2598,22 @@ export type TutorialWhereInputInputObject =
   | { name: 'numberofChapters_lte', alias?: string  } 
   | { name: 'numberofChapters_gt', alias?: string  } 
   | { name: 'numberofChapters_gte', alias?: string  } 
+  | { name: 'numberofStudents', alias?: string  } 
+  | { name: 'numberofStudents_not', alias?: string  } 
+  | { name: 'numberofStudents_in', alias?: string  } 
+  | { name: 'numberofStudents_not_in', alias?: string  } 
+  | { name: 'numberofStudents_lt', alias?: string  } 
+  | { name: 'numberofStudents_lte', alias?: string  } 
+  | { name: 'numberofStudents_gt', alias?: string  } 
+  | { name: 'numberofStudents_gte', alias?: string  } 
+  | { name: 'upvotes', alias?: string  } 
+  | { name: 'upvotes_not', alias?: string  } 
+  | { name: 'upvotes_in', alias?: string  } 
+  | { name: 'upvotes_not_in', alias?: string  } 
+  | { name: 'upvotes_lt', alias?: string  } 
+  | { name: 'upvotes_lte', alias?: string  } 
+  | { name: 'upvotes_gt', alias?: string  } 
+  | { name: 'upvotes_gte', alias?: string  } 
   | { name: 'userTutorials_every', alias?: string  } 
   | { name: 'userTutorials_some', alias?: string  } 
   | { name: 'userTutorials_none', alias?: string  } 
@@ -2621,12 +2693,16 @@ export interface TutorialCreateWithoutUserTutorialsInput {
   name?: string
   gatsbyID?: string
   numberofChapters?: number
+  numberofStudents?: number | null
+  upvotes?: number | null
 }
 export type TutorialCreateWithoutUserTutorialsInputInputObject =
   | Extract<keyof TutorialCreateWithoutUserTutorialsInput, string>
   | { name: 'name', alias?: string  } 
   | { name: 'gatsbyID', alias?: string  } 
   | { name: 'numberofChapters', alias?: string  } 
+  | { name: 'numberofStudents', alias?: string  } 
+  | { name: 'upvotes', alias?: string  } 
   
 export interface UserUpdateInput {
   name?: string | null
@@ -2717,12 +2793,16 @@ export interface TutorialUpdateWithoutUserTutorialsDataInput {
   name?: string | null
   gatsbyID?: string | null
   numberofChapters?: number | null
+  numberofStudents?: number | null
+  upvotes?: number | null
 }
 export type TutorialUpdateWithoutUserTutorialsDataInputInputObject =
   | Extract<keyof TutorialUpdateWithoutUserTutorialsDataInput, string>
   | { name: 'name', alias?: string  } 
   | { name: 'gatsbyID', alias?: string  } 
   | { name: 'numberofChapters', alias?: string  } 
+  | { name: 'numberofStudents', alias?: string  } 
+  | { name: 'upvotes', alias?: string  } 
   
 export interface TutorialUpsertWithoutUserTutorialsInput {
   update?: TutorialUpdateWithoutUserTutorialsDataInput
@@ -3002,6 +3082,8 @@ export interface TutorialCreateInput {
   name?: string
   gatsbyID?: string
   numberofChapters?: number
+  numberofStudents?: number | null
+  upvotes?: number | null
   userTutorials?: UserTutorialCreateManyWithoutTutorialInput | null
 }
 export type TutorialCreateInputInputObject =
@@ -3009,6 +3091,8 @@ export type TutorialCreateInputInputObject =
   | { name: 'name', alias?: string  } 
   | { name: 'gatsbyID', alias?: string  } 
   | { name: 'numberofChapters', alias?: string  } 
+  | { name: 'numberofStudents', alias?: string  } 
+  | { name: 'upvotes', alias?: string  } 
   | { name: 'userTutorials', alias?: string  } 
   
 export interface UserTutorialCreateManyWithoutTutorialInput {
@@ -3037,6 +3121,8 @@ export interface TutorialUpdateInput {
   name?: string | null
   gatsbyID?: string | null
   numberofChapters?: number | null
+  numberofStudents?: number | null
+  upvotes?: number | null
   userTutorials?: UserTutorialUpdateManyWithoutTutorialInput | null
 }
 export type TutorialUpdateInputInputObject =
@@ -3044,6 +3130,8 @@ export type TutorialUpdateInputInputObject =
   | { name: 'name', alias?: string  } 
   | { name: 'gatsbyID', alias?: string  } 
   | { name: 'numberofChapters', alias?: string  } 
+  | { name: 'numberofStudents', alias?: string  } 
+  | { name: 'upvotes', alias?: string  } 
   | { name: 'userTutorials', alias?: string  } 
   
 export interface UserTutorialUpdateManyWithoutTutorialInput {
@@ -3106,12 +3194,16 @@ export interface TutorialUpdateManyMutationInput {
   name?: string | null
   gatsbyID?: string | null
   numberofChapters?: number | null
+  numberofStudents?: number | null
+  upvotes?: number | null
 }
 export type TutorialUpdateManyMutationInputInputObject =
   | Extract<keyof TutorialUpdateManyMutationInput, string>
   | { name: 'name', alias?: string  } 
   | { name: 'gatsbyID', alias?: string  } 
   | { name: 'numberofChapters', alias?: string  } 
+  | { name: 'numberofStudents', alias?: string  } 
+  | { name: 'upvotes', alias?: string  } 
   
 export interface UserSubscriptionWhereInput {
   mutation_in?: prisma.MutationType[]
@@ -3228,6 +3320,10 @@ export type TutorialOrderByInputValues =
   | 'gatsbyID_DESC'
   | 'numberofChapters_ASC'
   | 'numberofChapters_DESC'
+  | 'numberofStudents_ASC'
+  | 'numberofStudents_DESC'
+  | 'upvotes_ASC'
+  | 'upvotes_DESC'
   
 export type MutationTypeValues =
   | 'CREATED'

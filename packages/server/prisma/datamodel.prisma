@@ -35,5 +35,7 @@ type Tutorial {
   name: String!
   gatsbyID: String!
   numberofChapters: Int!
+  numberofStudents: Int! @default(value: 0)
+  upvotes: Int! @default(value: 0)
   userTutorials: [UserTutorial!]! @relation(name: "TutorialonUserTutorial")
 }
