@@ -33,7 +33,7 @@ type Tutorial {
   createdAt: DateTime!
   updatedAt: DateTime!
   name: String!
-  gatsbyID: String!
+  gatsbyID: String! @unique
   numberofChapters: Int!
   numberofStudents: Int! @default(value: 0)
   upvotes: Int! @default(value: 0)

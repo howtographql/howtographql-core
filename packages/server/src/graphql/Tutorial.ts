@@ -86,7 +86,7 @@ export const tutorials = queryField('tutorials', {
   },
 })
 
-export const createTutorial = mutationField('createTutorial', {
+export const upsertTutorial = mutationField('createTutorial', {
   type: Tutorial,
   description: 'Create tutorials from the MDX files',
   args: {
@@ -101,6 +101,26 @@ export const createTutorial = mutationField('createTutorial', {
     }),
   },
   resolve: async (_, { gatsbyID, name, numberofChapters }, ctx) => {
-    return await ctx.prisma.createTutorial({ gatsbyID, name, numberofChapters })
+    const existingTutorial = await ctx.prisma.tutorials({
+      where: {
+        gatsbyID: gatsbyID,
+      },
+    })
+    let upsertedTutorial
+    if (existingTutorial.length) {
+      upsertedTutorial = await ctx.prisma.updateTutorial({
+        where: {
+          gatsbyID: gatsbyID,
+        },
+        data: { gatsbyID, name, numberofChapters },
+      })
+    } else {
+      upsertedTutorial = await ctx.prisma.createTutorial({
+        gatsbyID,
+        name,
+        numberofChapters,
+      })
+    }
+    return upsertedTutorial
   },
 })

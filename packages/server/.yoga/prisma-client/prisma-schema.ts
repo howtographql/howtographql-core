@@ -304,6 +304,7 @@ input TutorialWhereInput {
 
 input TutorialWhereUniqueInput {
   id: ID
+  gatsbyID: String
 }
 
 type User {

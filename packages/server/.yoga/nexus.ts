@@ -73,6 +73,14 @@ export interface NexusGenInputs {
     numberofChapters_lte?: number | null; // Int
     numberofChapters_not?: number | null; // Int
     numberofChapters_not_in?: number[] | null; // [Int!]
+    numberofStudents?: number | null; // Int
+    numberofStudents_gt?: number | null; // Int
+    numberofStudents_gte?: number | null; // Int
+    numberofStudents_in?: number[] | null; // [Int!]
+    numberofStudents_lt?: number | null; // Int
+    numberofStudents_lte?: number | null; // Int
+    numberofStudents_not?: number | null; // Int
+    numberofStudents_not_in?: number[] | null; // [Int!]
     OR?: NexusGenInputs['TutorialWhereInput'][] | null; // [TutorialWhereInput!]
     updatedAt?: any | null; // DateTime
     updatedAt_gt?: any | null; // DateTime
@@ -82,6 +90,14 @@ export interface NexusGenInputs {
     updatedAt_lte?: any | null; // DateTime
     updatedAt_not?: any | null; // DateTime
     updatedAt_not_in?: any[] | null; // [DateTime!]
+    upvotes?: number | null; // Int
+    upvotes_gt?: number | null; // Int
+    upvotes_gte?: number | null; // Int
+    upvotes_in?: number[] | null; // [Int!]
+    upvotes_lt?: number | null; // Int
+    upvotes_lte?: number | null; // Int
+    upvotes_not?: number | null; // Int
+    upvotes_not_in?: number[] | null; // [Int!]
     userTutorials_every?: NexusGenInputs['UserTutorialWhereInput'] | null; // UserTutorialWhereInput
     userTutorials_none?: NexusGenInputs['UserTutorialWhereInput'] | null; // UserTutorialWhereInput
     userTutorials_some?: NexusGenInputs['UserTutorialWhereInput'] | null; // UserTutorialWhereInput
@@ -327,8 +343,8 @@ export interface NexusGenFieldTypes {
   }
   Mutation: { // field return type
     authenticate: NexusGenRootTypes['AuthenticateUserPayload'] | null; // AuthenticateUserPayload
-    saveTutorial: NexusGenRootTypes['UserTutorialPayload']; // UserTutorialPayload!
     createTutorial: NexusGenRootTypes['Tutorial']; // Tutorial!
+    saveTutorial: NexusGenRootTypes['UserTutorialPayload']; // UserTutorialPayload!
     upvoteTutorial: NexusGenRootTypes['UserTutorialPayload']; // UserTutorialPayload!
   }
   Query: { // field return type
@@ -342,6 +358,7 @@ export interface NexusGenFieldTypes {
     id: string; // ID!
     name: string; // String!
     numberofChapters: number; // Int!
+    numberofStudents: number; // Int!
     numberOfStudents: number; // Int!
     updatedAt: any; // DateTime!
     upvotes: number; // Int!
@@ -394,12 +411,13 @@ export interface NexusGenArgTypes {
     authenticate: { // args
       githubCode: string; // String!
     }
-    saveTutorial: { // args
-      tutorialId: string; // ID!
     createTutorial: { // args
       gatsbyID: string; // ID!
       name: string; // String!
       numberofChapters: number; // Int!
+    }
+    saveTutorial: { // args
+      tutorialId: string; // ID!
     }
     upvoteTutorial: { // args
       tutorialId: string; // ID!

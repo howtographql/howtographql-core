@@ -7,7 +7,7 @@ export default {
   uniqueFieldsByModel: {
     User: ['id', 'email', 'githubHandle', 'githubUserId', 'expertise'],
     UserTutorial: ['id'],
-    Tutorial: ['id']
+    Tutorial: ['id', 'gatsbyID']
   },
   embeddedTypes: [],
   clientPath: '.yoga/prisma-client',
@@ -5153,6 +5153,16 @@ export default {
             "type": {
               "kind": "SCALAR",
               "name": "ID",
+              "ofType": null
+            },
+            "defaultValue": null
+          },
+          {
+            "name": "gatsbyID",
+            "description": null,
+            "type": {
+              "kind": "SCALAR",
+              "name": "String",
               "ofType": null
             },
             "defaultValue": null

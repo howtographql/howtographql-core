@@ -2630,10 +2630,12 @@ export type UserTutorialWhereUniqueInputInputObject =
   
 export interface TutorialWhereUniqueInput {
   id?: string | null
+  gatsbyID?: string | null
 }
 export type TutorialWhereUniqueInputInputObject =
   | Extract<keyof TutorialWhereUniqueInput, string>
   | { name: 'id', alias?: string  } 
+  | { name: 'gatsbyID', alias?: string  } 
   
 export interface UserCreateInput {
   name?: string
