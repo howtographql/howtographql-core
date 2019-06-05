@@ -36,7 +36,7 @@ type User = {
   githubHandle: string;
   bio: string;
   upvoted: [Tutorials];
-  saved: [Tutorials];
+  bookmarked: [Tutorials];
 };
 
 type Tutorials = {
@@ -78,9 +78,9 @@ const ProfilePage: React.FunctionComponent<ProfileProps> = ({ user }) => {
             ),
         )}
       </ul>
-      <Heading> Saved Tutorials </Heading>
+      <Heading> Bookmarked Tutorials </Heading>
       <ul>
-        {user.saved.map(
+        {user.bookmarked.map(
           a =>
             a.tutorial && (
               <li key={a.tutorial.id}>
@@ -109,7 +109,7 @@ const PROFILE_QUERY = gql`
             name
           }
         }
-        saved: userTutorials(where: { saved: true }) {
+        bookmarked: userTutorials(where: { bookmarked: true }) {
           tutorial {
             id
             name

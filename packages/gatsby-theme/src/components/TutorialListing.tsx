@@ -39,7 +39,7 @@ const TutorialListing: React.FunctionComponent<TutorialListingProps> = ({
             viewerUserTutorial {
               id
               upvoted
-              saved
+              bookmarked
             }
           }
         }
@@ -97,13 +97,13 @@ const TutorialListing: React.FunctionComponent<TutorialListingProps> = ({
                 </Mutation>
                 <Mutation
                   mutation={gql`
-                    mutation SaveTutorial($id: ID!) {
-                      saveTutorial(tutorialId: $id) {
+                    mutation BookmarkTutorial($id: ID!) {
+                      bookmarkTutorial(tutorialId: $id) {
                         code
                         success
                         userTutorial {
                           id
-                          saved
+                          bookmarked
                         }
                       }
                     }
@@ -112,12 +112,12 @@ const TutorialListing: React.FunctionComponent<TutorialListingProps> = ({
                     id: tutorialId,
                   }}
                 >
-                  {save => {
+                  {bookmark => {
                     return (
                       <Button
                         onClick={async () => {
                           const mutationRes = await handleMutationResponse(
-                            save(),
+                            bookmark(),
                           );
                           if (mutationRes.error) {
                             if (mutationRes.error === ApiErrors.AUTHORIZATION) {
@@ -128,7 +128,7 @@ const TutorialListing: React.FunctionComponent<TutorialListingProps> = ({
                           }
                         }}
                       >
-                        Save
+                        Bookmark
                       </Button>
                     );
                   }}

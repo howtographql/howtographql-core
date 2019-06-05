@@ -104,6 +104,8 @@ export interface NexusGenInputs {
   }
   UserTutorialWhereInput: { // input type
     AND?: NexusGenInputs['UserTutorialWhereInput'][] | null; // [UserTutorialWhereInput!]
+    bookmarked?: boolean | null; // Boolean
+    bookmarked_not?: boolean | null; // Boolean
     createdAt?: any | null; // DateTime
     createdAt_gt?: any | null; // DateTime
     createdAt_gte?: any | null; // DateTime
@@ -136,8 +138,6 @@ export interface NexusGenInputs {
     id_starts_with?: string | null; // ID
     NOT?: NexusGenInputs['UserTutorialWhereInput'][] | null; // [UserTutorialWhereInput!]
     OR?: NexusGenInputs['UserTutorialWhereInput'][] | null; // [UserTutorialWhereInput!]
-    saved?: boolean | null; // Boolean
-    saved_not?: boolean | null; // Boolean
     tutorial?: NexusGenInputs['TutorialWhereInput'] | null; // TutorialWhereInput
     updatedAt?: any | null; // DateTime
     updatedAt_gt?: any | null; // DateTime
@@ -292,7 +292,7 @@ export interface NexusGenInputs {
 }
 
 export interface NexusGenEnums {
-  UserTutorialOrderByInput: "createdAt_ASC" | "createdAt_DESC" | "currentChapter_ASC" | "currentChapter_DESC" | "id_ASC" | "id_DESC" | "saved_ASC" | "saved_DESC" | "updatedAt_ASC" | "updatedAt_DESC" | "upvoted_ASC" | "upvoted_DESC"
+  UserTutorialOrderByInput: "bookmarked_ASC" | "bookmarked_DESC" | "createdAt_ASC" | "createdAt_DESC" | "currentChapter_ASC" | "currentChapter_DESC" | "id_ASC" | "id_DESC" | "updatedAt_ASC" | "updatedAt_DESC" | "upvoted_ASC" | "upvoted_DESC"
 }
 
 export interface NexusGenRootTypes {
@@ -343,8 +343,8 @@ export interface NexusGenFieldTypes {
   }
   Mutation: { // field return type
     authenticate: NexusGenRootTypes['AuthenticateUserPayload'] | null; // AuthenticateUserPayload
+    bookmarkTutorial: NexusGenRootTypes['UserTutorialPayload']; // UserTutorialPayload!
     createTutorial: NexusGenRootTypes['Tutorial']; // Tutorial!
-    saveTutorial: NexusGenRootTypes['UserTutorialPayload']; // UserTutorialPayload!
     upvoteTutorial: NexusGenRootTypes['UserTutorialPayload']; // UserTutorialPayload!
   }
   Query: { // field return type
@@ -380,10 +380,10 @@ export interface NexusGenFieldTypes {
     userTutorials: NexusGenRootTypes['UserTutorial'][] | null; // [UserTutorial!]
   }
   UserTutorial: { // field return type
+    bookmarked: boolean | null; // Boolean
     createdAt: any; // DateTime!
     currentChapter: number | null; // Int
     id: string; // ID!
-    saved: boolean | null; // Boolean
     tutorial: NexusGenRootTypes['Tutorial'] | null; // Tutorial
     updatedAt: any; // DateTime!
     upvoted: boolean | null; // Boolean
@@ -411,13 +411,13 @@ export interface NexusGenArgTypes {
     authenticate: { // args
       githubCode: string; // String!
     }
+    bookmarkTutorial: { // args
+      tutorialId: string; // ID!
+    }
     createTutorial: { // args
       gatsbyID: string; // ID!
       name: string; // String!
       numberofChapters: number; // Int!
-    }
-    saveTutorial: { // args
-      tutorialId: string; // ID!
     }
     upvoteTutorial: { // args
       tutorialId: string; // ID!

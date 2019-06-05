@@ -1430,7 +1430,7 @@ export default {
             "defaultValue": null
           },
           {
-            "name": "saved",
+            "name": "bookmarked",
             "description": null,
             "type": {
               "kind": "SCALAR",
@@ -1440,7 +1440,7 @@ export default {
             "defaultValue": null
           },
           {
-            "name": "saved_not",
+            "name": "bookmarked_not",
             "description": null,
             "type": {
               "kind": "SCALAR",
@@ -4269,13 +4269,13 @@ export default {
             "deprecationReason": null
           },
           {
-            "name": "saved_ASC",
+            "name": "bookmarked_ASC",
             "description": null,
             "isDeprecated": false,
             "deprecationReason": null
           },
           {
-            "name": "saved_DESC",
+            "name": "bookmarked_DESC",
             "description": null,
             "isDeprecated": false,
             "deprecationReason": null
@@ -4385,7 +4385,7 @@ export default {
             "deprecationReason": null
           },
           {
-            "name": "saved",
+            "name": "bookmarked",
             "description": null,
             "args": [],
             "type": {
@@ -6315,7 +6315,7 @@ export default {
             "defaultValue": null
           },
           {
-            "name": "saved",
+            "name": "bookmarked",
             "description": null,
             "type": {
               "kind": "SCALAR",
@@ -6783,7 +6783,7 @@ export default {
             "defaultValue": null
           },
           {
-            "name": "saved",
+            "name": "bookmarked",
             "description": null,
             "type": {
               "kind": "SCALAR",
@@ -7406,7 +7406,7 @@ export default {
             "defaultValue": null
           },
           {
-            "name": "saved",
+            "name": "bookmarked",
             "description": null,
             "type": {
               "kind": "SCALAR",
@@ -7416,7 +7416,7 @@ export default {
             "defaultValue": null
           },
           {
-            "name": "saved_not",
+            "name": "bookmarked_not",
             "description": null,
             "type": {
               "kind": "SCALAR",
@@ -7636,7 +7636,7 @@ export default {
             "defaultValue": null
           },
           {
-            "name": "saved",
+            "name": "bookmarked",
             "description": null,
             "type": {
               "kind": "SCALAR",
@@ -7825,7 +7825,7 @@ export default {
             "defaultValue": null
           },
           {
-            "name": "saved",
+            "name": "bookmarked",
             "description": null,
             "type": {
               "kind": "SCALAR",
@@ -8020,7 +8020,7 @@ export default {
             "defaultValue": null
           },
           {
-            "name": "saved",
+            "name": "bookmarked",
             "description": null,
             "type": {
               "kind": "SCALAR",
@@ -8262,7 +8262,7 @@ export default {
             "defaultValue": null
           },
           {
-            "name": "saved",
+            "name": "bookmarked",
             "description": null,
             "type": {
               "kind": "SCALAR",
@@ -8443,7 +8443,7 @@ export default {
             "defaultValue": null
           },
           {
-            "name": "saved",
+            "name": "bookmarked",
             "description": null,
             "type": {
               "kind": "SCALAR",
@@ -8777,7 +8777,7 @@ export default {
             "defaultValue": null
           },
           {
-            "name": "saved",
+            "name": "bookmarked",
             "description": null,
             "type": {
               "kind": "SCALAR",
@@ -9677,7 +9677,7 @@ export default {
             "deprecationReason": null
           },
           {
-            "name": "saved",
+            "name": "bookmarked",
             "description": null,
             "args": [],
             "type": {

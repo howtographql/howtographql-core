@@ -65,9 +65,9 @@ export const upvoteTutorial = mutationField('upvoteTutorial', {
   },
 })
 
-export const saveTutorial = mutationField('saveTutorial', {
+export const bookmarkTutorial = mutationField('bookmarkTutorial', {
   type: UserTutorialPayload,
-  description: 'An authenticated user can save a tutorial.',
+  description: 'An authenticated user can bookmark a tutorial.',
   args: {
     tutorialId: idArg({
       required: true,
@@ -89,7 +89,9 @@ export const saveTutorial = mutationField('saveTutorial', {
         tutorialId,
         userTutorialId: existingUserTutorial && existingUserTutorial.id,
         updates: {
-          saved: existingUserTutorial ? !existingUserTutorial.saved : true,
+          bookmarked: existingUserTutorial
+            ? !existingUserTutorial.bookmarked
+            : true,
         },
       },
       ctx,

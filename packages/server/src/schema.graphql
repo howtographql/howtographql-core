@@ -18,11 +18,11 @@ type Mutation {
     githubCode: String!
   ): AuthenticateUserPayload
 
+  """An authenticated user can bookmark a tutorial."""
+  bookmarkTutorial(tutorialId: ID!): UserTutorialPayload!
+
   """Create tutorials from the MDX files"""
   createTutorial(gatsbyID: ID!, name: String!, numberofChapters: Int!): Tutorial!
-
-  """An authenticated user can save a tutorial."""
-  saveTutorial(tutorialId: ID!): UserTutorialPayload!
 
   """An authenticated user can upvote a tutorial."""
   upvoteTutorial(tutorialId: ID!): UserTutorialPayload!
@@ -164,10 +164,10 @@ type User {
 }
 
 type UserTutorial {
+  bookmarked: Boolean
   createdAt: DateTime!
   currentChapter: Int
   id: ID!
-  saved: Boolean
   tutorial: Tutorial
   updatedAt: DateTime!
   upvoted: Boolean
@@ -175,14 +175,14 @@ type UserTutorial {
 }
 
 enum UserTutorialOrderByInput {
+  bookmarked_ASC
+  bookmarked_DESC
   createdAt_ASC
   createdAt_DESC
   currentChapter_ASC
   currentChapter_DESC
   id_ASC
   id_DESC
-  saved_ASC
-  saved_DESC
   updatedAt_ASC
   updatedAt_DESC
   upvoted_ASC
@@ -198,6 +198,8 @@ type UserTutorialPayload implements PayloadInterface {
 
 input UserTutorialWhereInput {
   AND: [UserTutorialWhereInput!]
+  bookmarked: Boolean
+  bookmarked_not: Boolean
   createdAt: DateTime
   createdAt_gt: DateTime
   createdAt_gte: DateTime
@@ -230,8 +232,6 @@ input UserTutorialWhereInput {
   id_starts_with: ID
   NOT: [UserTutorialWhereInput!]
   OR: [UserTutorialWhereInput!]
-  saved: Boolean
-  saved_not: Boolean
   tutorial: TutorialWhereInput
   updatedAt: DateTime
   updatedAt_gt: DateTime
