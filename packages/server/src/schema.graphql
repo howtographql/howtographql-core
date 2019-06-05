@@ -22,7 +22,7 @@ type Mutation {
   bookmarkTutorial(tutorialId: ID!): UserTutorialPayload!
 
   """Create tutorials from the MDX files"""
-  createTutorial(gatsbyID: ID!, name: String!, numberofChapters: Int!): Tutorial!
+  upsertTutorial(gatsbyID: ID!, name: String!, numberofChapters: Int!): Tutorial!
 
   """An authenticated user can upvote a tutorial."""
   upvoteTutorial(tutorialId: ID!): UserTutorialPayload!

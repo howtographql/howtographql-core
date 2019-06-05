@@ -86,7 +86,7 @@ export const tutorials = queryField('tutorials', {
   },
 })
 
-export const upsertTutorial = mutationField('createTutorial', {
+export const upsertTutorial = mutationField('upsertTutorial', {
   type: Tutorial,
   description: 'Create tutorials from the MDX files',
   args: {
