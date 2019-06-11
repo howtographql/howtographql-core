@@ -7,14 +7,32 @@ const {
 const { createApolloFetch } = require('apollo-fetch');
 
 const createPrismaNodes = async variables => {
-  const uri = 'https://api.graph.cool/simple/v1/HowtoGraphQL2';
+  const uri =
+    'https://howtographql-prod_howtographql-internal.prisma.sh/howtographql/dev';
   const apolloFetch = createApolloFetch({ uri });
   const query = `
-  mutation createTutorial($gatsbyID: String!, $name: String!, $numberofChapters: Int!) {
-    createTutorial(gatsbyID: $gatsbyID, name: $name, numberofChapters: $numberofChapters, numberOfStudents: 9, upvotes:10){
-      id
+    mutation upsertTutorial(
+      $gatsbyID: String!
+      $name: String!
+      $numberofChapters: Int!
+    ) {
+      upsertTutorial(
+        where: { gatsbyID: $gatsbyID }
+        create: {
+          gatsbyID: $gatsbyID
+          name: $name
+          numberofChapters: $numberofChapters
+        }
+        update: {
+          gatsbyID: $gatsbyID
+          name: $name
+          numberofChapters: $numberofChapters
+        }
+      ) {
+        id
+      }
     }
-  }`;
+  `;
   return apolloFetch({ query, variables })
     .then(response => {
       console.log(response);
@@ -60,16 +78,17 @@ exports.createPages = async ({ graphql, actions }) => {
     if (node.frontmatter.tutorialTitle) {
       //counts the number of chapters in each tutorial by counting how many files
       //there are that contain the overviewpage slug. Subtract one for the overview page.
-      const numberofChapters = data.allMdx.edges.filter(chapterNode => {
-        return chapterNode.node.fileAbsolutePath.includes(
-          `${overviewPageSlug}/`,
-        );
-      });
+      const numberofChapters =
+        data.allMdx.edges.filter(chapterNode => {
+          return chapterNode.node.fileAbsolutePath.includes(
+            `${overviewPageSlug}/`,
+          );
+        }).length - 1;
 
       const variables = {
         gatsbyID: node.frontmatter.id,
         name: node.frontmatter.tutorialTitle,
-        numberofChapters: numberofChapters.length - 1,
+        numberofChapters: numberofChapters,
       };
       createPrismaNodes(variables);
 
