@@ -46,6 +46,7 @@
     "@types/react-copy-to-clipboard": "^4.2.6",
     "apollo-cache-inmemory": "^1.5.1",
     "apollo-client": "^2.5.1",
+    "apollo-fetch": "^0.7.0",
     "apollo-link-context": "^1.0.17",
     "apollo-link-http": "^1.5.14",
     "babel-plugin-styled-components": "^1.10.0",

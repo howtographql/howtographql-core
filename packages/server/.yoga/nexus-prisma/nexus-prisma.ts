@@ -479,7 +479,7 @@ type UserTutorialObject =
   | { name: 'user', args?: [] | false, alias?: string  } 
   | { name: 'tutorial', args?: [] | false, alias?: string  } 
   | { name: 'upvoted', args?: [] | false, alias?: string  } 
-  | { name: 'saved', args?: [] | false, alias?: string  } 
+  | { name: 'bookmarked', args?: [] | false, alias?: string  } 
   | { name: 'currentChapter', args?: [] | false, alias?: string  } 
 
 type UserTutorialFields =
@@ -489,7 +489,7 @@ type UserTutorialFields =
   | 'user'
   | 'tutorial'
   | 'upvoted'
-  | 'saved'
+  | 'bookmarked'
   | 'currentChapter'
 
 
@@ -555,7 +555,7 @@ export interface UserTutorialFieldDetails {
     nullable: true
     resolve: undefined
   }
-  saved: {
+  bookmarked: {
     type: 'Boolean'
     args: {}
     description: string
@@ -584,6 +584,8 @@ type TutorialObject =
   | { name: 'name', args?: [] | false, alias?: string  } 
   | { name: 'gatsbyID', args?: [] | false, alias?: string  } 
   | { name: 'numberofChapters', args?: [] | false, alias?: string  } 
+  | { name: 'numberofStudents', args?: [] | false, alias?: string  } 
+  | { name: 'upvotes', args?: [] | false, alias?: string  } 
   | { name: 'userTutorials', args?: TutorialUserTutorialsArgs[] | false, alias?: string  } 
 
 type TutorialFields =
@@ -593,6 +595,8 @@ type TutorialFields =
   | 'name'
   | 'gatsbyID'
   | 'numberofChapters'
+  | 'numberofStudents'
+  | 'upvotes'
   | 'userTutorials'
 
 
@@ -648,6 +652,22 @@ export interface TutorialFieldDetails {
     resolve: undefined
   }
   numberofChapters: {
+    type: 'Int'
+    args: {}
+    description: string
+    list: undefined
+    nullable: false
+    resolve: undefined
+  }
+  numberofStudents: {
+    type: 'Int'
+    args: {}
+    description: string
+    list: undefined
+    nullable: false
+    resolve: undefined
+  }
+  upvotes: {
     type: 'Int'
     args: {}
     description: string
@@ -1796,7 +1816,7 @@ type UserTutorialPreviousValuesObject =
   | { name: 'createdAt', args?: [] | false, alias?: string  } 
   | { name: 'updatedAt', args?: [] | false, alias?: string  } 
   | { name: 'upvoted', args?: [] | false, alias?: string  } 
-  | { name: 'saved', args?: [] | false, alias?: string  } 
+  | { name: 'bookmarked', args?: [] | false, alias?: string  } 
   | { name: 'currentChapter', args?: [] | false, alias?: string  } 
 
 type UserTutorialPreviousValuesFields =
@@ -1804,7 +1824,7 @@ type UserTutorialPreviousValuesFields =
   | 'createdAt'
   | 'updatedAt'
   | 'upvoted'
-  | 'saved'
+  | 'bookmarked'
   | 'currentChapter'
 
 
@@ -1844,7 +1864,7 @@ export interface UserTutorialPreviousValuesFieldDetails {
     nullable: true
     resolve: undefined
   }
-  saved: {
+  bookmarked: {
     type: 'Boolean'
     args: {}
     description: string
@@ -1943,6 +1963,8 @@ type TutorialPreviousValuesObject =
   | { name: 'name', args?: [] | false, alias?: string  } 
   | { name: 'gatsbyID', args?: [] | false, alias?: string  } 
   | { name: 'numberofChapters', args?: [] | false, alias?: string  } 
+  | { name: 'numberofStudents', args?: [] | false, alias?: string  } 
+  | { name: 'upvotes', args?: [] | false, alias?: string  } 
 
 type TutorialPreviousValuesFields =
   | 'id'
@@ -1951,6 +1973,8 @@ type TutorialPreviousValuesFields =
   | 'name'
   | 'gatsbyID'
   | 'numberofChapters'
+  | 'numberofStudents'
+  | 'upvotes'
 
 
 
@@ -1998,6 +2022,22 @@ export interface TutorialPreviousValuesFieldDetails {
     resolve: undefined
   }
   numberofChapters: {
+    type: 'Int'
+    args: {}
+    description: string
+    list: undefined
+    nullable: false
+    resolve: undefined
+  }
+  numberofStudents: {
+    type: 'Int'
+    args: {}
+    description: string
+    list: undefined
+    nullable: false
+    resolve: undefined
+  }
+  upvotes: {
     type: 'Int'
     args: {}
     description: string
@@ -2059,8 +2099,8 @@ export interface UserTutorialWhereInput {
   tutorial?: TutorialWhereInput | null
   upvoted?: boolean | null
   upvoted_not?: boolean | null
-  saved?: boolean | null
-  saved_not?: boolean | null
+  bookmarked?: boolean | null
+  bookmarked_not?: boolean | null
   currentChapter?: number | null
   currentChapter_not?: number | null
   currentChapter_in?: number[]
@@ -2109,8 +2149,8 @@ export type UserTutorialWhereInputInputObject =
   | { name: 'tutorial', alias?: string  } 
   | { name: 'upvoted', alias?: string  } 
   | { name: 'upvoted_not', alias?: string  } 
-  | { name: 'saved', alias?: string  } 
-  | { name: 'saved_not', alias?: string  } 
+  | { name: 'bookmarked', alias?: string  } 
+  | { name: 'bookmarked_not', alias?: string  } 
   | { name: 'currentChapter', alias?: string  } 
   | { name: 'currentChapter_not', alias?: string  } 
   | { name: 'currentChapter_in', alias?: string  } 
@@ -2467,6 +2507,22 @@ export interface TutorialWhereInput {
   numberofChapters_lte?: number | null
   numberofChapters_gt?: number | null
   numberofChapters_gte?: number | null
+  numberofStudents?: number | null
+  numberofStudents_not?: number | null
+  numberofStudents_in?: number[]
+  numberofStudents_not_in?: number[]
+  numberofStudents_lt?: number | null
+  numberofStudents_lte?: number | null
+  numberofStudents_gt?: number | null
+  numberofStudents_gte?: number | null
+  upvotes?: number | null
+  upvotes_not?: number | null
+  upvotes_in?: number[]
+  upvotes_not_in?: number[]
+  upvotes_lt?: number | null
+  upvotes_lte?: number | null
+  upvotes_gt?: number | null
+  upvotes_gte?: number | null
   userTutorials_every?: UserTutorialWhereInput | null
   userTutorials_some?: UserTutorialWhereInput | null
   userTutorials_none?: UserTutorialWhereInput | null
@@ -2542,6 +2598,22 @@ export type TutorialWhereInputInputObject =
   | { name: 'numberofChapters_lte', alias?: string  } 
   | { name: 'numberofChapters_gt', alias?: string  } 
   | { name: 'numberofChapters_gte', alias?: string  } 
+  | { name: 'numberofStudents', alias?: string  } 
+  | { name: 'numberofStudents_not', alias?: string  } 
+  | { name: 'numberofStudents_in', alias?: string  } 
+  | { name: 'numberofStudents_not_in', alias?: string  } 
+  | { name: 'numberofStudents_lt', alias?: string  } 
+  | { name: 'numberofStudents_lte', alias?: string  } 
+  | { name: 'numberofStudents_gt', alias?: string  } 
+  | { name: 'numberofStudents_gte', alias?: string  } 
+  | { name: 'upvotes', alias?: string  } 
+  | { name: 'upvotes_not', alias?: string  } 
+  | { name: 'upvotes_in', alias?: string  } 
+  | { name: 'upvotes_not_in', alias?: string  } 
+  | { name: 'upvotes_lt', alias?: string  } 
+  | { name: 'upvotes_lte', alias?: string  } 
+  | { name: 'upvotes_gt', alias?: string  } 
+  | { name: 'upvotes_gte', alias?: string  } 
   | { name: 'userTutorials_every', alias?: string  } 
   | { name: 'userTutorials_some', alias?: string  } 
   | { name: 'userTutorials_none', alias?: string  } 
@@ -2558,10 +2630,12 @@ export type UserTutorialWhereUniqueInputInputObject =
   
 export interface TutorialWhereUniqueInput {
   id?: string | null
+  gatsbyID?: string | null
 }
 export type TutorialWhereUniqueInputInputObject =
   | Extract<keyof TutorialWhereUniqueInput, string>
   | { name: 'id', alias?: string  } 
+  | { name: 'gatsbyID', alias?: string  } 
   
 export interface UserCreateInput {
   name?: string
@@ -2598,14 +2672,14 @@ export type UserTutorialCreateManyWithoutUserInputInputObject =
 export interface UserTutorialCreateWithoutUserInput {
   tutorial?: TutorialCreateOneWithoutUserTutorialsInput | null
   upvoted?: boolean | null
-  saved?: boolean | null
+  bookmarked?: boolean | null
   currentChapter?: number | null
 }
 export type UserTutorialCreateWithoutUserInputInputObject =
   | Extract<keyof UserTutorialCreateWithoutUserInput, string>
   | { name: 'tutorial', alias?: string  } 
   | { name: 'upvoted', alias?: string  } 
-  | { name: 'saved', alias?: string  } 
+  | { name: 'bookmarked', alias?: string  } 
   | { name: 'currentChapter', alias?: string  } 
   
 export interface TutorialCreateOneWithoutUserTutorialsInput {
@@ -2621,12 +2695,16 @@ export interface TutorialCreateWithoutUserTutorialsInput {
   name?: string
   gatsbyID?: string
   numberofChapters?: number
+  numberofStudents?: number | null
+  upvotes?: number | null
 }
 export type TutorialCreateWithoutUserTutorialsInputInputObject =
   | Extract<keyof TutorialCreateWithoutUserTutorialsInput, string>
   | { name: 'name', alias?: string  } 
   | { name: 'gatsbyID', alias?: string  } 
   | { name: 'numberofChapters', alias?: string  } 
+  | { name: 'numberofStudents', alias?: string  } 
+  | { name: 'upvotes', alias?: string  } 
   
 export interface UserUpdateInput {
   name?: string | null
@@ -2686,14 +2764,14 @@ export type UserTutorialUpdateWithWhereUniqueWithoutUserInputInputObject =
 export interface UserTutorialUpdateWithoutUserDataInput {
   tutorial?: TutorialUpdateOneWithoutUserTutorialsInput | null
   upvoted?: boolean | null
-  saved?: boolean | null
+  bookmarked?: boolean | null
   currentChapter?: number | null
 }
 export type UserTutorialUpdateWithoutUserDataInputInputObject =
   | Extract<keyof UserTutorialUpdateWithoutUserDataInput, string>
   | { name: 'tutorial', alias?: string  } 
   | { name: 'upvoted', alias?: string  } 
-  | { name: 'saved', alias?: string  } 
+  | { name: 'bookmarked', alias?: string  } 
   | { name: 'currentChapter', alias?: string  } 
   
 export interface TutorialUpdateOneWithoutUserTutorialsInput {
@@ -2717,12 +2795,16 @@ export interface TutorialUpdateWithoutUserTutorialsDataInput {
   name?: string | null
   gatsbyID?: string | null
   numberofChapters?: number | null
+  numberofStudents?: number | null
+  upvotes?: number | null
 }
 export type TutorialUpdateWithoutUserTutorialsDataInputInputObject =
   | Extract<keyof TutorialUpdateWithoutUserTutorialsDataInput, string>
   | { name: 'name', alias?: string  } 
   | { name: 'gatsbyID', alias?: string  } 
   | { name: 'numberofChapters', alias?: string  } 
+  | { name: 'numberofStudents', alias?: string  } 
+  | { name: 'upvotes', alias?: string  } 
   
 export interface TutorialUpsertWithoutUserTutorialsInput {
   update?: TutorialUpdateWithoutUserTutorialsDataInput
@@ -2777,8 +2859,8 @@ export interface UserTutorialScalarWhereInput {
   updatedAt_gte?: string | null
   upvoted?: boolean | null
   upvoted_not?: boolean | null
-  saved?: boolean | null
-  saved_not?: boolean | null
+  bookmarked?: boolean | null
+  bookmarked_not?: boolean | null
   currentChapter?: number | null
   currentChapter_not?: number | null
   currentChapter_in?: number[]
@@ -2825,8 +2907,8 @@ export type UserTutorialScalarWhereInputInputObject =
   | { name: 'updatedAt_gte', alias?: string  } 
   | { name: 'upvoted', alias?: string  } 
   | { name: 'upvoted_not', alias?: string  } 
-  | { name: 'saved', alias?: string  } 
-  | { name: 'saved_not', alias?: string  } 
+  | { name: 'bookmarked', alias?: string  } 
+  | { name: 'bookmarked_not', alias?: string  } 
   | { name: 'currentChapter', alias?: string  } 
   | { name: 'currentChapter_not', alias?: string  } 
   | { name: 'currentChapter_in', alias?: string  } 
@@ -2850,13 +2932,13 @@ export type UserTutorialUpdateManyWithWhereNestedInputInputObject =
   
 export interface UserTutorialUpdateManyDataInput {
   upvoted?: boolean | null
-  saved?: boolean | null
+  bookmarked?: boolean | null
   currentChapter?: number | null
 }
 export type UserTutorialUpdateManyDataInputInputObject =
   | Extract<keyof UserTutorialUpdateManyDataInput, string>
   | { name: 'upvoted', alias?: string  } 
-  | { name: 'saved', alias?: string  } 
+  | { name: 'bookmarked', alias?: string  } 
   | { name: 'currentChapter', alias?: string  } 
   
 export interface UserUpdateManyMutationInput {
@@ -2884,7 +2966,7 @@ export interface UserTutorialCreateInput {
   user?: UserCreateOneWithoutUserTutorialsInput | null
   tutorial?: TutorialCreateOneWithoutUserTutorialsInput | null
   upvoted?: boolean | null
-  saved?: boolean | null
+  bookmarked?: boolean | null
   currentChapter?: number | null
 }
 export type UserTutorialCreateInputInputObject =
@@ -2892,7 +2974,7 @@ export type UserTutorialCreateInputInputObject =
   | { name: 'user', alias?: string  } 
   | { name: 'tutorial', alias?: string  } 
   | { name: 'upvoted', alias?: string  } 
-  | { name: 'saved', alias?: string  } 
+  | { name: 'bookmarked', alias?: string  } 
   | { name: 'currentChapter', alias?: string  } 
   
 export interface UserCreateOneWithoutUserTutorialsInput {
@@ -2929,7 +3011,7 @@ export interface UserTutorialUpdateInput {
   user?: UserUpdateOneWithoutUserTutorialsInput | null
   tutorial?: TutorialUpdateOneWithoutUserTutorialsInput | null
   upvoted?: boolean | null
-  saved?: boolean | null
+  bookmarked?: boolean | null
   currentChapter?: number | null
 }
 export type UserTutorialUpdateInputInputObject =
@@ -2937,7 +3019,7 @@ export type UserTutorialUpdateInputInputObject =
   | { name: 'user', alias?: string  } 
   | { name: 'tutorial', alias?: string  } 
   | { name: 'upvoted', alias?: string  } 
-  | { name: 'saved', alias?: string  } 
+  | { name: 'bookmarked', alias?: string  } 
   | { name: 'currentChapter', alias?: string  } 
   
 export interface UserUpdateOneWithoutUserTutorialsInput {
@@ -2989,19 +3071,21 @@ export type UserUpsertWithoutUserTutorialsInputInputObject =
   
 export interface UserTutorialUpdateManyMutationInput {
   upvoted?: boolean | null
-  saved?: boolean | null
+  bookmarked?: boolean | null
   currentChapter?: number | null
 }
 export type UserTutorialUpdateManyMutationInputInputObject =
   | Extract<keyof UserTutorialUpdateManyMutationInput, string>
   | { name: 'upvoted', alias?: string  } 
-  | { name: 'saved', alias?: string  } 
+  | { name: 'bookmarked', alias?: string  } 
   | { name: 'currentChapter', alias?: string  } 
   
 export interface TutorialCreateInput {
   name?: string
   gatsbyID?: string
   numberofChapters?: number
+  numberofStudents?: number | null
+  upvotes?: number | null
   userTutorials?: UserTutorialCreateManyWithoutTutorialInput | null
 }
 export type TutorialCreateInputInputObject =
@@ -3009,6 +3093,8 @@ export type TutorialCreateInputInputObject =
   | { name: 'name', alias?: string  } 
   | { name: 'gatsbyID', alias?: string  } 
   | { name: 'numberofChapters', alias?: string  } 
+  | { name: 'numberofStudents', alias?: string  } 
+  | { name: 'upvotes', alias?: string  } 
   | { name: 'userTutorials', alias?: string  } 
   
 export interface UserTutorialCreateManyWithoutTutorialInput {
@@ -3023,20 +3109,22 @@ export type UserTutorialCreateManyWithoutTutorialInputInputObject =
 export interface UserTutorialCreateWithoutTutorialInput {
   user?: UserCreateOneWithoutUserTutorialsInput | null
   upvoted?: boolean | null
-  saved?: boolean | null
+  bookmarked?: boolean | null
   currentChapter?: number | null
 }
 export type UserTutorialCreateWithoutTutorialInputInputObject =
   | Extract<keyof UserTutorialCreateWithoutTutorialInput, string>
   | { name: 'user', alias?: string  } 
   | { name: 'upvoted', alias?: string  } 
-  | { name: 'saved', alias?: string  } 
+  | { name: 'bookmarked', alias?: string  } 
   | { name: 'currentChapter', alias?: string  } 
   
 export interface TutorialUpdateInput {
   name?: string | null
   gatsbyID?: string | null
   numberofChapters?: number | null
+  numberofStudents?: number | null
+  upvotes?: number | null
   userTutorials?: UserTutorialUpdateManyWithoutTutorialInput | null
 }
 export type TutorialUpdateInputInputObject =
@@ -3044,6 +3132,8 @@ export type TutorialUpdateInputInputObject =
   | { name: 'name', alias?: string  } 
   | { name: 'gatsbyID', alias?: string  } 
   | { name: 'numberofChapters', alias?: string  } 
+  | { name: 'numberofStudents', alias?: string  } 
+  | { name: 'upvotes', alias?: string  } 
   | { name: 'userTutorials', alias?: string  } 
   
 export interface UserTutorialUpdateManyWithoutTutorialInput {
@@ -3081,14 +3171,14 @@ export type UserTutorialUpdateWithWhereUniqueWithoutTutorialInputInputObject =
 export interface UserTutorialUpdateWithoutTutorialDataInput {
   user?: UserUpdateOneWithoutUserTutorialsInput | null
   upvoted?: boolean | null
-  saved?: boolean | null
+  bookmarked?: boolean | null
   currentChapter?: number | null
 }
 export type UserTutorialUpdateWithoutTutorialDataInputInputObject =
   | Extract<keyof UserTutorialUpdateWithoutTutorialDataInput, string>
   | { name: 'user', alias?: string  } 
   | { name: 'upvoted', alias?: string  } 
-  | { name: 'saved', alias?: string  } 
+  | { name: 'bookmarked', alias?: string  } 
   | { name: 'currentChapter', alias?: string  } 
   
 export interface UserTutorialUpsertWithWhereUniqueWithoutTutorialInput {
@@ -3106,12 +3196,16 @@ export interface TutorialUpdateManyMutationInput {
   name?: string | null
   gatsbyID?: string | null
   numberofChapters?: number | null
+  numberofStudents?: number | null
+  upvotes?: number | null
 }
 export type TutorialUpdateManyMutationInputInputObject =
   | Extract<keyof TutorialUpdateManyMutationInput, string>
   | { name: 'name', alias?: string  } 
   | { name: 'gatsbyID', alias?: string  } 
   | { name: 'numberofChapters', alias?: string  } 
+  | { name: 'numberofStudents', alias?: string  } 
+  | { name: 'upvotes', alias?: string  } 
   
 export interface UserSubscriptionWhereInput {
   mutation_in?: prisma.MutationType[]
@@ -3186,8 +3280,8 @@ export type UserTutorialOrderByInputValues =
   | 'updatedAt_DESC'
   | 'upvoted_ASC'
   | 'upvoted_DESC'
-  | 'saved_ASC'
-  | 'saved_DESC'
+  | 'bookmarked_ASC'
+  | 'bookmarked_DESC'
   | 'currentChapter_ASC'
   | 'currentChapter_DESC'
   
@@ -3228,6 +3322,10 @@ export type TutorialOrderByInputValues =
   | 'gatsbyID_DESC'
   | 'numberofChapters_ASC'
   | 'numberofChapters_DESC'
+  | 'numberofStudents_ASC'
+  | 'numberofStudents_DESC'
+  | 'upvotes_ASC'
+  | 'upvotes_DESC'
   
 export type MutationTypeValues =
   | 'CREATED'

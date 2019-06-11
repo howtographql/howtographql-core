@@ -7,7 +7,7 @@ export default {
   uniqueFieldsByModel: {
     User: ['id', 'email', 'githubHandle', 'githubUserId', 'expertise'],
     UserTutorial: ['id'],
-    Tutorial: ['id']
+    Tutorial: ['id', 'gatsbyID']
   },
   embeddedTypes: [],
   clientPath: '.yoga/prisma-client',
@@ -1430,7 +1430,7 @@ export default {
             "defaultValue": null
           },
           {
-            "name": "saved",
+            "name": "bookmarked",
             "description": null,
             "type": {
               "kind": "SCALAR",
@@ -1440,7 +1440,7 @@ export default {
             "defaultValue": null
           },
           {
-            "name": "saved_not",
+            "name": "bookmarked_not",
             "description": null,
             "type": {
               "kind": "SCALAR",
@@ -3922,6 +3922,198 @@ export default {
             "defaultValue": null
           },
           {
+            "name": "numberofStudents",
+            "description": null,
+            "type": {
+              "kind": "SCALAR",
+              "name": "Int",
+              "ofType": null
+            },
+            "defaultValue": null
+          },
+          {
+            "name": "numberofStudents_not",
+            "description": null,
+            "type": {
+              "kind": "SCALAR",
+              "name": "Int",
+              "ofType": null
+            },
+            "defaultValue": null
+          },
+          {
+            "name": "numberofStudents_in",
+            "description": null,
+            "type": {
+              "kind": "LIST",
+              "name": null,
+              "ofType": {
+                "kind": "NON_NULL",
+                "name": null,
+                "ofType": {
+                  "kind": "SCALAR",
+                  "name": "Int",
+                  "ofType": null
+                }
+              }
+            },
+            "defaultValue": null
+          },
+          {
+            "name": "numberofStudents_not_in",
+            "description": null,
+            "type": {
+              "kind": "LIST",
+              "name": null,
+              "ofType": {
+                "kind": "NON_NULL",
+                "name": null,
+                "ofType": {
+                  "kind": "SCALAR",
+                  "name": "Int",
+                  "ofType": null
+                }
+              }
+            },
+            "defaultValue": null
+          },
+          {
+            "name": "numberofStudents_lt",
+            "description": null,
+            "type": {
+              "kind": "SCALAR",
+              "name": "Int",
+              "ofType": null
+            },
+            "defaultValue": null
+          },
+          {
+            "name": "numberofStudents_lte",
+            "description": null,
+            "type": {
+              "kind": "SCALAR",
+              "name": "Int",
+              "ofType": null
+            },
+            "defaultValue": null
+          },
+          {
+            "name": "numberofStudents_gt",
+            "description": null,
+            "type": {
+              "kind": "SCALAR",
+              "name": "Int",
+              "ofType": null
+            },
+            "defaultValue": null
+          },
+          {
+            "name": "numberofStudents_gte",
+            "description": null,
+            "type": {
+              "kind": "SCALAR",
+              "name": "Int",
+              "ofType": null
+            },
+            "defaultValue": null
+          },
+          {
+            "name": "upvotes",
+            "description": null,
+            "type": {
+              "kind": "SCALAR",
+              "name": "Int",
+              "ofType": null
+            },
+            "defaultValue": null
+          },
+          {
+            "name": "upvotes_not",
+            "description": null,
+            "type": {
+              "kind": "SCALAR",
+              "name": "Int",
+              "ofType": null
+            },
+            "defaultValue": null
+          },
+          {
+            "name": "upvotes_in",
+            "description": null,
+            "type": {
+              "kind": "LIST",
+              "name": null,
+              "ofType": {
+                "kind": "NON_NULL",
+                "name": null,
+                "ofType": {
+                  "kind": "SCALAR",
+                  "name": "Int",
+                  "ofType": null
+                }
+              }
+            },
+            "defaultValue": null
+          },
+          {
+            "name": "upvotes_not_in",
+            "description": null,
+            "type": {
+              "kind": "LIST",
+              "name": null,
+              "ofType": {
+                "kind": "NON_NULL",
+                "name": null,
+                "ofType": {
+                  "kind": "SCALAR",
+                  "name": "Int",
+                  "ofType": null
+                }
+              }
+            },
+            "defaultValue": null
+          },
+          {
+            "name": "upvotes_lt",
+            "description": null,
+            "type": {
+              "kind": "SCALAR",
+              "name": "Int",
+              "ofType": null
+            },
+            "defaultValue": null
+          },
+          {
+            "name": "upvotes_lte",
+            "description": null,
+            "type": {
+              "kind": "SCALAR",
+              "name": "Int",
+              "ofType": null
+            },
+            "defaultValue": null
+          },
+          {
+            "name": "upvotes_gt",
+            "description": null,
+            "type": {
+              "kind": "SCALAR",
+              "name": "Int",
+              "ofType": null
+            },
+            "defaultValue": null
+          },
+          {
+            "name": "upvotes_gte",
+            "description": null,
+            "type": {
+              "kind": "SCALAR",
+              "name": "Int",
+              "ofType": null
+            },
+            "defaultValue": null
+          },
+          {
             "name": "userTutorials_every",
             "description": null,
             "type": {
@@ -4077,13 +4269,13 @@ export default {
             "deprecationReason": null
           },
           {
-            "name": "saved_ASC",
+            "name": "bookmarked_ASC",
             "description": null,
             "isDeprecated": false,
             "deprecationReason": null
           },
           {
-            "name": "saved_DESC",
+            "name": "bookmarked_DESC",
             "description": null,
             "isDeprecated": false,
             "deprecationReason": null
@@ -4193,7 +4385,7 @@ export default {
             "deprecationReason": null
           },
           {
-            "name": "saved",
+            "name": "bookmarked",
             "description": null,
             "args": [],
             "type": {
@@ -4309,6 +4501,38 @@ export default {
           },
           {
             "name": "numberofChapters",
+            "description": null,
+            "args": [],
+            "type": {
+              "kind": "NON_NULL",
+              "name": null,
+              "ofType": {
+                "kind": "SCALAR",
+                "name": "Int",
+                "ofType": null
+              }
+            },
+            "isDeprecated": false,
+            "deprecationReason": null
+          },
+          {
+            "name": "numberofStudents",
+            "description": null,
+            "args": [],
+            "type": {
+              "kind": "NON_NULL",
+              "name": null,
+              "ofType": {
+                "kind": "SCALAR",
+                "name": "Int",
+                "ofType": null
+              }
+            },
+            "isDeprecated": false,
+            "deprecationReason": null
+          },
+          {
+            "name": "upvotes",
             "description": null,
             "args": [],
             "type": {
@@ -4932,6 +5156,16 @@ export default {
               "ofType": null
             },
             "defaultValue": null
+          },
+          {
+            "name": "gatsbyID",
+            "description": null,
+            "type": {
+              "kind": "SCALAR",
+              "name": "String",
+              "ofType": null
+            },
+            "defaultValue": null
           }
         ],
         "interfaces": null,
@@ -5014,6 +5248,30 @@ export default {
           },
           {
             "name": "numberofChapters_DESC",
+            "description": null,
+            "isDeprecated": false,
+            "deprecationReason": null
+          },
+          {
+            "name": "numberofStudents_ASC",
+            "description": null,
+            "isDeprecated": false,
+            "deprecationReason": null
+          },
+          {
+            "name": "numberofStudents_DESC",
+            "description": null,
+            "isDeprecated": false,
+            "deprecationReason": null
+          },
+          {
+            "name": "upvotes_ASC",
+            "description": null,
+            "isDeprecated": false,
+            "deprecationReason": null
+          },
+          {
+            "name": "upvotes_DESC",
             "description": null,
             "isDeprecated": false,
             "deprecationReason": null
@@ -6057,7 +6315,7 @@ export default {
             "defaultValue": null
           },
           {
-            "name": "saved",
+            "name": "bookmarked",
             "description": null,
             "type": {
               "kind": "SCALAR",
@@ -6157,6 +6415,26 @@ export default {
                 "name": "Int",
                 "ofType": null
               }
+            },
+            "defaultValue": null
+          },
+          {
+            "name": "numberofStudents",
+            "description": null,
+            "type": {
+              "kind": "SCALAR",
+              "name": "Int",
+              "ofType": null
+            },
+            "defaultValue": null
+          },
+          {
+            "name": "upvotes",
+            "description": null,
+            "type": {
+              "kind": "SCALAR",
+              "name": "Int",
+              "ofType": null
             },
             "defaultValue": null
           }
@@ -6505,7 +6783,7 @@ export default {
             "defaultValue": null
           },
           {
-            "name": "saved",
+            "name": "bookmarked",
             "description": null,
             "type": {
               "kind": "SCALAR",
@@ -6628,6 +6906,26 @@ export default {
           },
           {
             "name": "numberofChapters",
+            "description": null,
+            "type": {
+              "kind": "SCALAR",
+              "name": "Int",
+              "ofType": null
+            },
+            "defaultValue": null
+          },
+          {
+            "name": "numberofStudents",
+            "description": null,
+            "type": {
+              "kind": "SCALAR",
+              "name": "Int",
+              "ofType": null
+            },
+            "defaultValue": null
+          },
+          {
+            "name": "upvotes",
             "description": null,
             "type": {
               "kind": "SCALAR",
@@ -7108,7 +7406,7 @@ export default {
             "defaultValue": null
           },
           {
-            "name": "saved",
+            "name": "bookmarked",
             "description": null,
             "type": {
               "kind": "SCALAR",
@@ -7118,7 +7416,7 @@ export default {
             "defaultValue": null
           },
           {
-            "name": "saved_not",
+            "name": "bookmarked_not",
             "description": null,
             "type": {
               "kind": "SCALAR",
@@ -7338,7 +7636,7 @@ export default {
             "defaultValue": null
           },
           {
-            "name": "saved",
+            "name": "bookmarked",
             "description": null,
             "type": {
               "kind": "SCALAR",
@@ -7527,7 +7825,7 @@ export default {
             "defaultValue": null
           },
           {
-            "name": "saved",
+            "name": "bookmarked",
             "description": null,
             "type": {
               "kind": "SCALAR",
@@ -7722,7 +8020,7 @@ export default {
             "defaultValue": null
           },
           {
-            "name": "saved",
+            "name": "bookmarked",
             "description": null,
             "type": {
               "kind": "SCALAR",
@@ -7964,7 +8262,7 @@ export default {
             "defaultValue": null
           },
           {
-            "name": "saved",
+            "name": "bookmarked",
             "description": null,
             "type": {
               "kind": "SCALAR",
@@ -8033,6 +8331,26 @@ export default {
                 "name": "Int",
                 "ofType": null
               }
+            },
+            "defaultValue": null
+          },
+          {
+            "name": "numberofStudents",
+            "description": null,
+            "type": {
+              "kind": "SCALAR",
+              "name": "Int",
+              "ofType": null
+            },
+            "defaultValue": null
+          },
+          {
+            "name": "upvotes",
+            "description": null,
+            "type": {
+              "kind": "SCALAR",
+              "name": "Int",
+              "ofType": null
             },
             "defaultValue": null
           },
@@ -8125,7 +8443,7 @@ export default {
             "defaultValue": null
           },
           {
-            "name": "saved",
+            "name": "bookmarked",
             "description": null,
             "type": {
               "kind": "SCALAR",
@@ -8177,6 +8495,26 @@ export default {
           },
           {
             "name": "numberofChapters",
+            "description": null,
+            "type": {
+              "kind": "SCALAR",
+              "name": "Int",
+              "ofType": null
+            },
+            "defaultValue": null
+          },
+          {
+            "name": "numberofStudents",
+            "description": null,
+            "type": {
+              "kind": "SCALAR",
+              "name": "Int",
+              "ofType": null
+            },
+            "defaultValue": null
+          },
+          {
+            "name": "upvotes",
             "description": null,
             "type": {
               "kind": "SCALAR",
@@ -8439,7 +8777,7 @@ export default {
             "defaultValue": null
           },
           {
-            "name": "saved",
+            "name": "bookmarked",
             "description": null,
             "type": {
               "kind": "SCALAR",
@@ -8544,6 +8882,26 @@ export default {
           },
           {
             "name": "numberofChapters",
+            "description": null,
+            "type": {
+              "kind": "SCALAR",
+              "name": "Int",
+              "ofType": null
+            },
+            "defaultValue": null
+          },
+          {
+            "name": "numberofStudents",
+            "description": null,
+            "type": {
+              "kind": "SCALAR",
+              "name": "Int",
+              "ofType": null
+            },
+            "defaultValue": null
+          },
+          {
+            "name": "upvotes",
             "description": null,
             "type": {
               "kind": "SCALAR",
@@ -9319,7 +9677,7 @@ export default {
             "deprecationReason": null
           },
           {
-            "name": "saved",
+            "name": "bookmarked",
             "description": null,
             "args": [],
             "type": {
@@ -9645,6 +10003,38 @@ export default {
           },
           {
             "name": "numberofChapters",
+            "description": null,
+            "args": [],
+            "type": {
+              "kind": "NON_NULL",
+              "name": null,
+              "ofType": {
+                "kind": "SCALAR",
+                "name": "Int",
+                "ofType": null
+              }
+            },
+            "isDeprecated": false,
+            "deprecationReason": null
+          },
+          {
+            "name": "numberofStudents",
+            "description": null,
+            "args": [],
+            "type": {
+              "kind": "NON_NULL",
+              "name": null,
+              "ofType": {
+                "kind": "SCALAR",
+                "name": "Int",
+                "ofType": null
+              }
+            },
+            "isDeprecated": false,
+            "deprecationReason": null
+          },
+          {
+            "name": "upvotes",
             "description": null,
             "args": [],
             "type": {

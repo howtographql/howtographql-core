@@ -24,7 +24,7 @@ type UserTutorial {
   user: User @relation(name: "UseronUserTutorial")
   tutorial: Tutorial @relation(name: "TutorialonUserTutorial")
   upvoted: Boolean @default(value: false)
-  saved: Boolean @default(value: false)
+  bookmarked: Boolean @default(value: false)
   currentChapter: Int @default(value: 0)
 }
 
@@ -33,7 +33,9 @@ type Tutorial {
   createdAt: DateTime!
   updatedAt: DateTime!
   name: String!
-  gatsbyID: String!
+  gatsbyID: String! @unique
   numberofChapters: Int!
+  numberofStudents: Int! @default(value: 0)
+  upvotes: Int! @default(value: 0)
   userTutorials: [UserTutorial!]! @relation(name: "TutorialonUserTutorial")
 }

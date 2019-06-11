@@ -36,7 +36,7 @@ type User = {
   githubHandle: string;
   bio: string;
   upvoted: [Tutorials];
-  saved: [Tutorials];
+  bookmarked: [Tutorials];
 };
 
 type Tutorials = {
@@ -69,19 +69,25 @@ const ProfilePage: React.FunctionComponent<ProfileProps> = ({ user }) => {
       <button onClick={() => logoutUser()}> Log out </button>
       <Heading> Upvoted Tutorials </Heading>
       <ul>
-        {user.upvoted.map(a => (
-          <li key={a.tutorial.id}>
-            <span>{a.tutorial.name}</span>
-          </li>
-        ))}
+        {user.upvoted.map(
+          a =>
+            a.tutorial && (
+              <li key={a.tutorial.id}>
+                <span>{a.tutorial.name}</span>
+              </li>
+            ),
+        )}
       </ul>
-      <Heading> Saved Tutorials </Heading>
+      <Heading> Bookmarked Tutorials </Heading>
       <ul>
-        {user.saved.map(a => (
-          <li key={a.tutorial.id}>
-            <span>{a.tutorial.name}</span>
-          </li>
-        ))}
+        {user.bookmarked.map(
+          a =>
+            a.tutorial && (
+              <li key={a.tutorial.id}>
+                <span>{a.tutorial.name}</span>
+              </li>
+            ),
+        )}
       </ul>
     </Layout>
   );
@@ -103,7 +109,7 @@ const PROFILE_QUERY = gql`
             name
           }
         }
-        saved: userTutorials(where: { saved: true }) {
+        bookmarked: userTutorials(where: { bookmarked: true }) {
           tutorial {
             id
             name
