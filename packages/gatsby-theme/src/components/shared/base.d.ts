@@ -8,9 +8,9 @@
 // Definitions: https://github.com/DefinitelyTyped/DefinitelyTyped
 // TypeScript Version: 2.9
 
-import * as React from "react";
-import * as StyledComponents from "styled-components";
-import * as StyledSystem from "styled-system";
+import * as React from 'react';
+import * as StyledComponents from 'styled-components';
+import * as StyledSystem from 'styled-system';
 
 export {};
 

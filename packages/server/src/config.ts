@@ -1,12 +1,12 @@
 export type Config = {
   github: {
-    CLIENT_ID: string
-    CLIENT_SECRET: string
-  }
+    CLIENT_ID: string;
+    CLIENT_SECRET: string;
+  };
   jwt: {
-    SECRET: string
-  }
-}
+    SECRET: string;
+  };
+};
 // https://github.com/login/oauth/authorize?client_id=2f9502dd9f0f44ca2e3b&redirect_uri=http://localhost:8000
 const config: Config = {
   github: {
@@ -18,6 +18,6 @@ const config: Config = {
   jwt: {
     SECRET: process.env.GQL_JWT_SECRET || 'helloworld',
   },
-}
+};
 
-export default config
+export default config;

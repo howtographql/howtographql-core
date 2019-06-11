@@ -1,10 +1,10 @@
-import { prisma, Prisma } from '../.yoga/prisma-client'
-import { yogaContext } from 'yoga'
+import { prisma, Prisma } from '../.yoga/prisma-client';
+import { yogaContext } from 'yoga';
 import { getUserId } from './utils';
 
 export interface Context {
-  prisma: Prisma
-  req: any
+  prisma: Prisma;
+  req: any;
   currentUserId?: string;
 }
 
@@ -12,7 +12,7 @@ export default yogaContext(({ req }) => {
   const context = {
     req,
     prisma,
-    currentUserId: null
+    currentUserId: null,
   } as Context;
   try {
     context.currentUserId = getUserId(context);
@@ -20,4 +20,4 @@ export default yogaContext(({ req }) => {
     // no user
   }
   return context;
-})
+});

@@ -1,4 +1,4 @@
-import { ThemeInterface } from "./ThemeInterface";
+import { ThemeInterface } from './ThemeInterface';
 
 // Guide
 // [C] means `Component`
@@ -18,8 +18,8 @@ export interface Shadows {
 }
 
 const shadows: Shadows = {
-  small: "0px 2px 4px rgba(38, 38, 38, 0.15)",
-  large: "0px 4px 8px rgba(38, 38, 38, 0.15);"
+  small: '0px 2px 4px rgba(38, 38, 38, 0.15)',
+  large: '0px 4px 8px rgba(38, 38, 38, 0.15);',
 };
 
 export interface ZIndex {
@@ -37,7 +37,7 @@ const zIndex: ZIndex = {
   drawer: 1200,
   modal: 1300,
   snackbar: 1400,
-  tooltip: 1500
+  tooltip: 1500,
 };
 
 export interface Colors {
@@ -56,32 +56,32 @@ export interface Colors {
 
 export const darkColors: Colors = {
   //// Colors
-  primary: "#e00082",
-  primaryDark1: "#a4036f",
-  primaryLight1: "#EB7BBC",
-  secondary: "#172a3a",
-  secondaryDark1: "rgb(0, 0, 0)",
-  secondaryLight1: "rgba(23, 42, 58, .5)",
-  info: "#2a7ed2",
-  infoLight1: "#C2DCF2",
-  infoDark1: "#2a7ed2",
-  lightGray: "rgb(244, 244, 244)",
-  white: "#fff"
+  primary: '#e00082',
+  primaryDark1: '#a4036f',
+  primaryLight1: '#EB7BBC',
+  secondary: '#172a3a',
+  secondaryDark1: 'rgb(0, 0, 0)',
+  secondaryLight1: 'rgba(23, 42, 58, .5)',
+  info: '#2a7ed2',
+  infoLight1: '#C2DCF2',
+  infoDark1: '#2a7ed2',
+  lightGray: 'rgb(244, 244, 244)',
+  white: '#fff',
 };
 
 export const lightColors: Colors = {
   //// Colors
-  primary: "#e00082",
-  primaryDark1: "#082333",
-  primaryLight1: "#EB7BBC",
-  secondary: "#082333",
-  secondaryDark1: "#082333",
-  secondaryLight1: "#082333",
-  info: "#0F7AD8",
-  infoLight1: "#459BF2",
-  infoDark1: "#2a7ed2",
-  lightGray: "#f9f9f9",
-  white: "#fff"
+  primary: '#e00082',
+  primaryDark1: '#082333',
+  primaryLight1: '#EB7BBC',
+  secondary: '#082333',
+  secondaryDark1: '#082333',
+  secondaryLight1: '#082333',
+  info: '#0F7AD8',
+  infoLight1: '#459BF2',
+  infoDark1: '#2a7ed2',
+  lightGray: '#f9f9f9',
+  white: '#fff',
 };
 
 export interface Sizes {
@@ -105,7 +105,7 @@ export interface Sizes {
 
 export const sizes: Sizes = {
   ///// Sizes
-  breakpoints: ["40em", "52em", "64em"],
+  breakpoints: ['40em', '52em', '64em'],
   // Radius
   radii: [4, 6, 8],
   // [C] Container
@@ -124,20 +124,20 @@ export const sizes: Sizes = {
     32,
     64,
     128,
-    256
+    256,
   ],
 
   // Font
   fontSizes: [12, 14, 16, 20, 28, 32, 48, 64],
   fontWeights: [300, 400, 600, 700],
   fontStackMono:
-    "SFMono-Regular, 'Roboto Mono', Consolas, 'Liberation Mono', Menlo, Courier, monospace"
+    "SFMono-Regular, 'Roboto Mono', Consolas, 'Liberation Mono', Menlo, Courier, monospace",
 };
 
 export const theme: ThemeInterface = {
-  mode: "dark",
+  mode: 'dark',
   colors: darkColors,
   shadows,
   ...sizes,
-  ...zIndex
+  ...zIndex,
 };

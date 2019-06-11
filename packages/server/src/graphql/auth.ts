@@ -1,22 +1,22 @@
-import { mutationField, stringArg, objectType } from 'yoga'
-import * as jwt from 'jsonwebtoken'
-import { getGithubToken, getGithubUser, GithubUser } from '../github'
-import { Context } from '../context'
-import { User } from '../../.yoga/prisma-client'
-import config from '../config'
-import { PayloadInterface } from './PayloadInterface'
-import { AuthorizeResolver } from 'nexus/dist/core'
+import { mutationField, stringArg, objectType } from 'yoga';
+import * as jwt from 'jsonwebtoken';
+import { getGithubToken, getGithubUser, GithubUser } from '../github';
+import { Context } from '../context';
+import { User } from '../../.yoga/prisma-client';
+import config from '../config';
+import { PayloadInterface } from './PayloadInterface';
+import { AuthorizeResolver } from 'nexus/dist/core';
 
 export const AuthenticateUserPayload = objectType({
   name: 'AuthenticateUserPayload',
   definition: t => {
-    t.implements(PayloadInterface)
+    t.implements(PayloadInterface);
     t.field('user', {
       type: 'User',
-    })
-    t.string('token')
+    });
+    t.string('token');
   },
-})
+});
 
 export const authenticate = mutationField('authenticate', {
   type: AuthenticateUserPayload,
@@ -28,12 +28,12 @@ export const authenticate = mutationField('authenticate', {
     }),
   },
   resolve: async (_, { githubCode }, ctx) => {
-    const githubToken = await getGithubToken(githubCode)
-    const githubUser = await getGithubUser(githubToken)
-    let user = await getPrismaUser(ctx, githubUser.id.toString())
+    const githubToken = await getGithubToken(githubCode);
+    const githubUser = await getGithubUser(githubToken);
+    let user = await getPrismaUser(ctx, githubUser.id.toString());
 
     if (!user) {
-      user = await createPrismaUser(ctx, githubUser)
+      user = await createPrismaUser(ctx, githubUser);
     }
 
     return {
@@ -42,9 +42,9 @@ export const authenticate = mutationField('authenticate', {
       code: null,
       token: jwt.sign({ userId: user.id }, config.jwt.SECRET),
       user,
-    }
+    };
   },
-})
+});
 
 // Helpers -------------------------------------------------------------------
 
@@ -52,7 +52,7 @@ async function getPrismaUser(
   ctx: Context,
   githubUserId: string,
 ): Promise<User> {
-  return await ctx.prisma.user({ githubUserId })
+  return await ctx.prisma.user({ githubUserId });
 }
 
 async function createPrismaUser(
@@ -66,8 +66,8 @@ async function createPrismaUser(
     githubHandle: githubUser.login,
     bio: githubUser.bio,
     avatarUrl: githubUser.avatar_url,
-  })
-  return user
+  });
+  return user;
 }
 
 export const authorizeUser = (): AuthorizeResolver<any, any> => (
@@ -76,7 +76,7 @@ export const authorizeUser = (): AuthorizeResolver<any, any> => (
   ctx,
 ) => {
   if (ctx.currentUserId) {
-    return true
+    return true;
   }
-  return false
-}
+  return false;
+};

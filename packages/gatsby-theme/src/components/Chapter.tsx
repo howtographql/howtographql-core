@@ -17,11 +17,9 @@ type Tutorial = {
 type FrontMatter = {
   pageTitle: string | null;
   description: string | null;
-}
+};
 
-const Chapter: React.FunctionComponent<ChapterProps> = ({
- num, tutorial
-}) => {
+const Chapter: React.FunctionComponent<ChapterProps> = ({ num, tutorial }) => {
   return (
     <Card width={[1]} p={4} my={4} borderRadius={8} boxShadow="small">
       <Flex alignItems="center">
@@ -31,7 +29,6 @@ const Chapter: React.FunctionComponent<ChapterProps> = ({
             <Heading as="h2">{tutorial.frontmatter.pageTitle}</Heading>
           </Link>
           <Text>{tutorial.frontmatter.description}</Text>
-
         </div>
       </Flex>
     </Card>
