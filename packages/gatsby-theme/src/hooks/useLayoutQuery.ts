@@ -1,6 +1,6 @@
-import { graphql, useStaticQuery } from "gatsby";
+import { graphql, useStaticQuery } from 'gatsby';
 
-import { LayoutInformationQuery } from "src/graphqlTypes";
+import { LayoutInformationQuery } from 'src/graphqlTypes';
 
 export const useLayoutQuery = () => {
   const { site }: LayoutInformationQuery = useStaticQuery(graphql`

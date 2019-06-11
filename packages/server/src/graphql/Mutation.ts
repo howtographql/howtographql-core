@@ -1,5 +1,4 @@
-import { prismaObjectType } from 'yoga'
-
+import { prismaObjectType } from 'yoga';
 
 export const Mutation = prismaObjectType({
   name: 'Mutation',
@@ -8,6 +7,6 @@ export const Mutation = prismaObjectType({
     // use `t.primaFields(['fieldName', ...])` to hide, customize, or select specific fields
 
     // This removes all fields from the underlying Mutation object type
-    t.prismaFields([])
+    t.prismaFields([]);
   },
-})
+});

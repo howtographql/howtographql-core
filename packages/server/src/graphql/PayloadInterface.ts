@@ -1,4 +1,4 @@
-import { interfaceType } from 'yoga'
+import { interfaceType } from 'yoga';
 
 export const PayloadInterface = interfaceType({
   name: 'PayloadInterface',
@@ -6,11 +6,11 @@ export const PayloadInterface = interfaceType({
   definition: t => {
     t.string('code', {
       nullable: true,
-    })
-    t.boolean('success')
+    });
+    t.boolean('success');
     t.string('message', {
       nullable: true,
-    })
-    t.resolveType(() => null)
+    });
+    t.resolveType(() => null);
   },
-})
+});

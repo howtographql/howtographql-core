@@ -19,10 +19,13 @@ const TutorialLayout: React.FunctionComponent<TutorialLayoutProps> = ({
     return null;
   }
   const { pageTitle } = data!.mdx!.frontmatter!;
-  const tutorialTitle = optionalChaining(() => data!.tutorialTitle!.frontmatter!.tutorialTitle!);
-  const chapters = optionalChaining(() => data!.pageTitles!.edges!.map(
-    a => a.node!.frontmatter!.pageTitle!,
-  )) || [];
+  const tutorialTitle = optionalChaining(
+    () => data!.tutorialTitle!.frontmatter!.tutorialTitle!,
+  );
+  const chapters =
+    optionalChaining(() =>
+      data!.pageTitles!.edges!.map(a => a.node!.frontmatter!.pageTitle!),
+    ) || [];
   const { location } = props;
 
   return (

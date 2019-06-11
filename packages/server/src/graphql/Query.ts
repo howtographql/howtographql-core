@@ -1,5 +1,4 @@
-import { prismaObjectType } from 'yoga'
-
+import { prismaObjectType } from 'yoga';
 
 export const Query = prismaObjectType({
   name: 'Query',
@@ -8,6 +7,6 @@ export const Query = prismaObjectType({
     // use `t.primaFields(['fieldName', ...])` to hide, customize, or select specific fields
 
     // This removes all fields from the underlying Query object type
-    t.prismaFields([])
+    t.prismaFields([]);
   },
-})
+});

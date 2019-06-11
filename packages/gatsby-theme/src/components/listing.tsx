@@ -1,8 +1,8 @@
-import { Link } from "gatsby";
-import * as React from "react";
-import { styled } from "../styles";
-import { useAllTutorialQuery } from "../hooks/useAllTutorialQuery";
-import { getTutorialSlug } from "../utils/getTutorialSlug";
+import { Link } from 'gatsby';
+import * as React from 'react';
+import { styled } from '../styles';
+import { useAllTutorialQuery } from '../hooks/useAllTutorialQuery';
+import { getTutorialSlug } from '../utils/getTutorialSlug';
 
 const Post = styled.article`
   box-shadow: 0 0.3rem 1rem rgba(25, 17, 34, 0.05);

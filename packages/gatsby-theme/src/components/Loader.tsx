@@ -169,10 +169,10 @@ export const CenteredLoader: React.SFC<{ height?: string }> = ({ height }) => {
   return (
     <div
       style={{
-        minHeight: `${height ? height : "100%"}`,
-        display: "flex",
-        alignItems: "center",
-        justifyContent: "center"
+        minHeight: `${height ? height : '100%'}`,
+        display: 'flex',
+        alignItems: 'center',
+        justifyContent: 'center',
       }}
     >
       <Loader />
