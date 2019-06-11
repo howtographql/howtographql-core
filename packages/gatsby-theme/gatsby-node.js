@@ -6,42 +6,6 @@ const {
 
 const { createApolloFetch } = require('apollo-fetch');
 
-const createPrismaNodes = async variables => {
-  const uri =
-    'https://howtographql-prod_howtographql-internal.prisma.sh/howtographql/dev';
-  const apolloFetch = createApolloFetch({ uri });
-  const query = `
-    mutation upsertTutorial(
-      $gatsbyID: String!
-      $name: String!
-      $numberofChapters: Int!
-    ) {
-      upsertTutorial(
-        where: { gatsbyID: $gatsbyID }
-        create: {
-          gatsbyID: $gatsbyID
-          name: $name
-          numberofChapters: $numberofChapters
-        }
-        update: {
-          gatsbyID: $gatsbyID
-          name: $name
-          numberofChapters: $numberofChapters
-        }
-      ) {
-        id
-      }
-    }
-  `;
-  return apolloFetch({ query, variables })
-    .then(response => {
-      console.log(response);
-    })
-    .catch(error => {
-      console.log(error);
-    });
-};
-
 exports.createPages = async ({ graphql, actions }) => {
   const { createPage } = actions;
   const TutorialLayout = require.resolve(
@@ -110,6 +74,42 @@ exports.createPages = async ({ graphql, actions }) => {
       },
     });
   });
+};
+
+const createPrismaNodes = async variables => {
+  const uri =
+    'https://howtographql-prod_howtographql-internal.prisma.sh/howtographql/dev';
+  const apolloFetch = createApolloFetch({ uri });
+  const query = `
+    mutation upsertTutorial(
+      $gatsbyID: String!
+      $name: String!
+      $numberofChapters: Int!
+    ) {
+      upsertTutorial(
+        where: { gatsbyID: $gatsbyID }
+        create: {
+          gatsbyID: $gatsbyID
+          name: $name
+          numberofChapters: $numberofChapters
+        }
+        update: {
+          gatsbyID: $gatsbyID
+          name: $name
+          numberofChapters: $numberofChapters
+        }
+      ) {
+        id
+      }
+    }
+  `;
+  return apolloFetch({ query, variables })
+    .then(response => {
+      console.log(response);
+    })
+    .catch(error => {
+      console.log(error);
+    });
 };
 
 //   overviewpages = overviewpages
