@@ -60,12 +60,10 @@ exports.createPages = async ({ graphql, actions }) => {
     if (node.frontmatter.tutorialTitle) {
       //counts the number of chapters in each tutorial by counting how many files
       //there are that contain the overviewpage slug. Subtract one for the overview page.
-      console.log(data.allMdx.edges.length);
-
       const numberofChapters = data.allMdx.edges.filter(chapterNode => {
-        // console.log(chapterNode.node.fileAbsolutePath);
-        // console.log(overviewPageSlug);
-        return chapterNode.node.fileAbsolutePath.includes(overviewPageSlug);
+        return chapterNode.node.fileAbsolutePath.includes(
+          `${overviewPageSlug}/`,
+        );
       });
 
       const variables = {
@@ -73,8 +71,8 @@ exports.createPages = async ({ graphql, actions }) => {
         name: node.frontmatter.tutorialTitle,
         numberofChapters: numberofChapters.length - 1,
       };
-
       createPrismaNodes(variables);
+
       return createPage({
         path: overviewPageSlug,
         component: overviewTemplate,
