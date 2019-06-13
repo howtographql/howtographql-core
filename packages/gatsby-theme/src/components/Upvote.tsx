@@ -4,7 +4,7 @@ import { VoteButton } from './buttons';
 
 type UpvoteDataProps = {
   onClick: () => any;
-  count: number;
+  upvotes: number;
   active: boolean;
 };
 
@@ -13,12 +13,12 @@ type UpvoteDataProps = {
 const Upvote: React.FunctionComponent<UpvoteDataProps> = ({
   onClick: event,
   active,
-  count = '...',
+  upvotes,
 }) => {
   return (
     <Flex flexDirection="column" alignItems="center" justifyContent="center">
       <VoteButton active={active} onClick={event} />
-      <Heading>{count}</Heading>
+      <Heading>{upvotes}</Heading>
     </Flex>
   );
 };
