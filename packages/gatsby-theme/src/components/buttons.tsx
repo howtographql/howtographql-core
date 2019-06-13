@@ -2,9 +2,27 @@ import React from 'react';
 import { ButtonProps } from './shared/base';
 import { Flex, Image, Button } from './shared/base';
 
-export const VoteButton: React.FunctionComponent<ButtonProps> = props => (
-  <CustomButton {...props} type="vote" />
-);
+export const VoteButton: React.FunctionComponent<
+  ButtonProps & {
+    active?: Boolean;
+  }
+> = props =>
+  props.active ? (
+    <CustomButton {...props} type="voteActive" />
+  ) : (
+    <CustomButton {...props} type="vote" />
+  );
+
+export const BookmarkButton: React.FunctionComponent<
+  ButtonProps & {
+    active?: Boolean;
+  }
+> = props =>
+  props.active ? (
+    <CustomButton {...props} type="bookmarkActive" />
+  ) : (
+    <CustomButton {...props} type="bookmark" />
+  );
 
 export const GithubButton: React.FunctionComponent<ButtonProps> = props => (
   <CustomButton {...props} type="github" />
@@ -20,7 +38,15 @@ export const SpectrumButton: React.FunctionComponent<ButtonProps> = props => (
 
 export const CustomButton: React.FunctionComponent<
   ButtonProps & {
-    type?: 'github' | 'tutorial' | 'spectrum' | 'vote' | 'default';
+    type?:
+      | 'github'
+      | 'tutorial'
+      | 'spectrum'
+      | 'vote'
+      | 'voteActive'
+      | 'bookmark'
+      | 'bookmarkActive'
+      | 'default';
   }
 > = ({ type = 'default', children, ...buttonProps }) => {
   const { icon, bg } = customButtonTypes[type];
@@ -49,6 +75,9 @@ interface CustomButtonType {
   github: ButtonType;
   spectrum: ButtonType;
   vote: ButtonType;
+  voteActive: ButtonType;
+  bookmark: ButtonType;
+  bookmarkActive: ButtonType;
   default: ButtonType;
 }
 
@@ -68,6 +97,20 @@ const customButtonTypes: CustomButtonType = {
   vote: {
     icon: 'https://i.ibb.co/b3FGXbD/Vote.png',
     bg: 'white',
+  },
+  voteActive: {
+    icon: 'https://i.ibb.co/b3FGXbD/Vote.png',
+    bg: 'blue',
+  },
+  bookmark: {
+    icon:
+      'http://endlessicons.com/wp-content/uploads/2014/03/bookmark-icon-1-614x460.png',
+    bg: 'white',
+  },
+  bookmarkActive: {
+    icon:
+      'http://endlessicons.com/wp-content/uploads/2014/03/bookmark-icon-1-614x460.png',
+    bg: 'blue',
   },
   default: {
     icon: '',

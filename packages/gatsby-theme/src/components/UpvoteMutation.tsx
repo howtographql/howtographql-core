@@ -1,10 +1,10 @@
 import * as React from 'react';
 import gql from 'graphql-tag';
 import { Mutation } from 'react-apollo';
-import { optionalChaining } from '../utils/helpers';
 import { loginUser } from '../utils/auth';
 import { handleMutationResponse, ApiErrors } from '../utils/errorHandling';
-import Upvote from './Upvote';
+import { VoteButton } from './buttons';
+import { Heading, Flex } from './shared/base';
 
 const UpvoteMutation = ({ tutorial }) => (
   <Mutation
@@ -29,26 +29,29 @@ const UpvoteMutation = ({ tutorial }) => (
     }}
   >
     {upvote => {
+      let active = tutorial.viewerUserTutorial.upvoted;
+      let upvotes = tutorial.upvotes;
       return (
-        <Upvote
-          onClick={async () => {
-            const mutationRes = await handleMutationResponse(upvote());
-            if (mutationRes.error) {
-              if (mutationRes.error === ApiErrors.AUTHORIZATION) {
-                loginUser();
-              } else {
-                console.log(tutorial.id);
-                console.log(tutorial);
-
-                console.log(mutationRes.error);
+        <Flex
+          flexDirection="column"
+          alignItems="center"
+          justifyContent="center"
+        >
+          <VoteButton
+            onClick={async () => {
+              const mutationRes = await handleMutationResponse(upvote());
+              if (mutationRes.error) {
+                if (mutationRes.error === ApiErrors.AUTHORIZATION) {
+                  loginUser();
+                } else {
+                  console.log(mutationRes.error);
+                }
               }
-            }
-          }}
-          active={
-            optionalChaining(() => tutorial.viewerUserTutorial.upvoted) || false
-          }
-          upvotes={optionalChaining(() => tutorial.upvotes)}
-        />
+            }}
+            active={active}
+          />
+          <Heading>{upvotes}</Heading>
+        </Flex>
       );
     }}
   </Mutation>

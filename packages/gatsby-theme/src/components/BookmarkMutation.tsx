@@ -2,9 +2,8 @@ import * as React from 'react';
 import gql from 'graphql-tag';
 import { Mutation } from 'react-apollo';
 import { loginUser } from '../utils/auth';
-
+import { BookmarkButton } from './buttons';
 import { handleMutationResponse, ApiErrors } from '../utils/errorHandling';
-import { Button } from './shared/base';
 
 const BookmarkMutation = ({ tutorial }) => (
   <Mutation
@@ -25,8 +24,10 @@ const BookmarkMutation = ({ tutorial }) => (
     }}
   >
     {bookmark => {
+      let bookmarked = tutorial.viewerUserTutorial.bookmarked;
       return (
-        <Button
+        <BookmarkButton
+          active={bookmarked}
           onClick={async () => {
             const mutationRes = await handleMutationResponse(bookmark());
             if (mutationRes.error) {
@@ -37,9 +38,7 @@ const BookmarkMutation = ({ tutorial }) => (
               }
             }
           }}
-        >
-          Bookmark
-        </Button>
+        />
       );
     }}
   </Mutation>
