@@ -8,7 +8,7 @@ import { TutorialMdxQuery } from '../../graphqlTypes';
 import { HideOnTablet, ShowOnTablet } from '../../utils/responsive';
 import { Flex, Box } from '../shared/base';
 import { optionalChaining } from '../../utils/helpers';
-import { Button } from '../shared/base';
+import ChapterMutation from '../ChapterMutation';
 
 type TutorialLayoutProps = { data: TutorialMdxQuery } & RouterProps;
 
@@ -20,6 +20,10 @@ const TutorialLayout: React.FunctionComponent<TutorialLayoutProps> = ({
     return null;
   }
   const { pageTitle } = data!.mdx!.frontmatter!;
+  const gatsbyID = optionalChaining(
+    () => data!.tutorialTitle!.frontmatter!.id!,
+  );
+
   const tutorialTitle = optionalChaining(
     () => data!.tutorialTitle!.frontmatter!.tutorialTitle!,
   );
@@ -28,8 +32,7 @@ const TutorialLayout: React.FunctionComponent<TutorialLayoutProps> = ({
       data!.pageTitles!.edges!.map(a => a.node!.frontmatter!.pageTitle!),
     ) || [];
   const { location } = props;
-
-  const currentChapterNumber = chapters.indexOf(pageTitle) + 1;
+  const currentChapter = chapters.indexOf(pageTitle) + 1;
 
   return (
     <Layout location={location}>
@@ -57,10 +60,7 @@ const TutorialLayout: React.FunctionComponent<TutorialLayoutProps> = ({
       <ShowOnTablet>
         <MDXRenderer>{data!.mdx!.code!.body}</MDXRenderer>
       </ShowOnTablet>
-      <Button onClick={() => console.log(currentChapterNumber)}>
-        {' '}
-        Next Chapter
-      </Button>
+      <ChapterMutation gatsbyID={gatsbyID} currentChapter={currentChapter} />
     </Layout>
   );
 };
@@ -100,6 +100,7 @@ export const pageQuery = graphql`
       fileAbsolutePath: { regex: $folderRegex }
     ) {
       frontmatter {
+        id
         tutorialTitle
       }
     }

@@ -49,7 +49,6 @@ type Tutorial = {
 };
 
 const ProfilePage: React.FunctionComponent<ProfileProps> = ({ user }) => {
-  console.log(user);
   return (
     <Layout>
       <Flex flexDirection="column">
@@ -89,6 +88,17 @@ const ProfilePage: React.FunctionComponent<ProfileProps> = ({ user }) => {
             ),
         )}
       </ul>
+      <Heading> In Progress Tutorials </Heading>
+      <ul>
+        {user.progress.map(
+          a =>
+            a.tutorial && (
+              <li key={a.tutorial.id}>
+                <span>{a.tutorial.name}</span>
+              </li>
+            ),
+        )}
+      </ul>
     </Layout>
   );
 };
@@ -110,6 +120,12 @@ const PROFILE_QUERY = gql`
           }
         }
         bookmarked: userTutorials(where: { bookmarked: true }) {
+          tutorial {
+            id
+            name
+          }
+        }
+        progress: userTutorials(where: { currentChapter_not: 0 }) {
           tutorial {
             id
             name
