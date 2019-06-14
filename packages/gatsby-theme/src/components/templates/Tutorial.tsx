@@ -8,6 +8,7 @@ import { TutorialMdxQuery } from '../../graphqlTypes';
 import { HideOnTablet, ShowOnTablet } from '../../utils/responsive';
 import { Flex, Box } from '../shared/base';
 import { optionalChaining } from '../../utils/helpers';
+import { Button } from '../shared/base';
 
 type TutorialLayoutProps = { data: TutorialMdxQuery } & RouterProps;
 
@@ -27,6 +28,8 @@ const TutorialLayout: React.FunctionComponent<TutorialLayoutProps> = ({
       data!.pageTitles!.edges!.map(a => a.node!.frontmatter!.pageTitle!),
     ) || [];
   const { location } = props;
+
+  const currentChapterNumber = chapters.indexOf(pageTitle) + 1;
 
   return (
     <Layout location={location}>
@@ -54,6 +57,10 @@ const TutorialLayout: React.FunctionComponent<TutorialLayoutProps> = ({
       <ShowOnTablet>
         <MDXRenderer>{data!.mdx!.code!.body}</MDXRenderer>
       </ShowOnTablet>
+      <Button onClick={() => console.log(currentChapterNumber)}>
+        {' '}
+        Next Chapter
+      </Button>
     </Layout>
   );
 };
