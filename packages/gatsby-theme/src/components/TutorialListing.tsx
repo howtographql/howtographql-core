@@ -6,6 +6,7 @@ import { Query } from 'react-apollo';
 import gql from 'graphql-tag';
 import UpvoteMutation from './UpvoteMutation';
 import BookmarkMutation from './BookmarkMutation';
+import Percentage from './Percentage';
 
 type TutorialListingProps = {
   tutorial: Tutorial;
@@ -27,6 +28,7 @@ const TutorialListing: React.FunctionComponent<TutorialListingProps> = ({
   tutorial,
 }) => {
   const gatsbyID = tutorial.frontmatter.id;
+  let tutorialPath = getTutorialOverviewSlug(tutorial.fileAbsolutePath);
   return (
     <Query
       query={gql`
@@ -35,11 +37,13 @@ const TutorialListing: React.FunctionComponent<TutorialListingProps> = ({
             id
             name
             upvotes
+            numberofChapters
             numberOfStudents
             viewerUserTutorial {
               id
               upvoted
               bookmarked
+              currentChapter
             }
           }
         }
@@ -52,15 +56,16 @@ const TutorialListing: React.FunctionComponent<TutorialListingProps> = ({
             <Flex alignItems="center" justifyContent="center">
               <Box width={1 / 12}>
                 {data.getTutorialbyGatsbyID && (
-                  <UpvoteMutation tutorial={data.getTutorialbyGatsbyID} />
-                )}
-                {data.getTutorialbyGatsbyID && (
-                  <BookmarkMutation tutorial={data.getTutorialbyGatsbyID} />
+                  <div>
+                    <UpvoteMutation tutorial={data.getTutorialbyGatsbyID} />
+                    <BookmarkMutation tutorial={data.getTutorialbyGatsbyID} />
+                    <Percentage tutorial={data.getTutorialbyGatsbyID} />
+                  </div>
                 )}
               </Box>
 
               <Box width={11 / 12}>
-                <Link to={getTutorialOverviewSlug(tutorial.fileAbsolutePath)}>
+                <Link to={tutorialPath}>
                   <Heading>{tutorial.frontmatter.tutorialTitle}</Heading>
                 </Link>
                 <Text>{tutorial.frontmatter.description}</Text>
