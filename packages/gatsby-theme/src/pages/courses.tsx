@@ -3,7 +3,7 @@ import Layout from '../components/shared/layout';
 import CourseSection from '../components/courses/CourseSection';
 import { Content } from '../components/shared/styledHelpers';
 import { Heading, Text } from '../components/shared/base';
-import { FullStackCourseQuery } from '../utils/queries/markdown';
+import { graphql } from 'gatsby';
 
 const courses = ({ data }) => {
   const courseSectionData = [
@@ -42,5 +42,44 @@ const courses = ({ data }) => {
     </Layout>
   );
 };
+
+export const query = graphql`
+  query FullStackCourseQuery {
+    frontend: allMdx(
+      filter: {
+        frontmatter: { tutorialTitle: { ne: null } }
+        fileAbsolutePath: { regex: "/courses/frontend/" }
+      }
+    ) {
+      edges {
+        node {
+          id
+          fileAbsolutePath
+          frontmatter {
+            tutorialTitle
+            description
+          }
+        }
+      }
+    }
+    backend: allMdx(
+      filter: {
+        frontmatter: { tutorialTitle: { ne: null } }
+        fileAbsolutePath: { regex: "/courses/backend/" }
+      }
+    ) {
+      edges {
+        node {
+          id
+          fileAbsolutePath
+          frontmatter {
+            tutorialTitle
+            description
+          }
+        }
+      }
+    }
+  }
+`;
 
 export default courses;

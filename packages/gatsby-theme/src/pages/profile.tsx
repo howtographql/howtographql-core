@@ -4,7 +4,7 @@ import { Heading, Text, Image, Flex } from '../components/shared/base';
 import { logoutUser } from '../utils/auth';
 import { navigate } from 'gatsby';
 import { Query } from 'react-apollo';
-import { PROFILE_QUERY } from '../utils/queries/profile';
+import { PROFILE_QUERY } from '../utils/queries';
 import { optionalChaining } from '../utils/helpers';
 import { CenteredLoader } from '../components/shared/Loader';
 

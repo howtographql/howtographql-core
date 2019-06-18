@@ -3,9 +3,9 @@ import Layout from '../components/shared/layout';
 import { Content } from '../components/shared/styledHelpers';
 import TutorialListing from '../components/community/TutorialListing';
 import { Heading } from '../components/shared/base';
-import { CommunityTutorialQuery } from '../utils/queries/markdown';
+import { graphql } from 'gatsby';
 
-const Community = ({ data }) => {
+const community = ({ data }) => {
   const tutorials = data.tutorials.edges;
   return (
     <Layout>
@@ -23,4 +23,27 @@ const Community = ({ data }) => {
   );
 };
 
-export default Community;
+export const query = graphql`
+  query CommunityTutorialQuery {
+    tutorials: allMdx(
+      filter: {
+        frontmatter: { tutorialTitle: { ne: null } }
+        fileAbsolutePath: { regex: "/community/" }
+      }
+    ) {
+      edges {
+        node {
+          id
+          fileAbsolutePath
+          frontmatter {
+            id
+            tutorialTitle
+            description
+          }
+        }
+      }
+    }
+  }
+`;
+
+export default community;

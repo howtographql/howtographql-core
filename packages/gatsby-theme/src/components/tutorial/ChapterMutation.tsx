@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { upsertCurrentChapter } from '../../utils/queries/tutorial';
+import { upsertCurrentChapter } from '../../utils/queries';
 import { Mutation } from 'react-apollo';
 import { loginUser } from '../../utils/auth';
 import { handleMutationResponse, ApiErrors } from '../../utils/errorHandling';

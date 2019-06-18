@@ -2,7 +2,7 @@ import * as React from 'react';
 import { Mutation } from 'react-apollo';
 import { loginUser } from '../../utils/auth';
 import { BookmarkButton } from '../shared/buttons';
-import { BookmarkTutorial } from '../../utils/queries/tutorial';
+import { BookmarkTutorial } from '../../utils/queries';
 import { handleMutationResponse, ApiErrors } from '../../utils/errorHandling';
 
 const BookmarkMutation = ({ tutorial }) => (
