@@ -1,5 +1,5 @@
 import * as React from 'react';
-import gql from 'graphql-tag';
+import { upsertCurrentChapter } from '../utils/queries/tutorial';
 import { Mutation } from 'react-apollo';
 import { loginUser } from '../utils/auth';
 import { handleMutationResponse, ApiErrors } from '../utils/errorHandling';
@@ -15,18 +15,7 @@ const ChapterMutation: React.FunctionComponent<ChapterMutationProps> = ({
   currentChapter,
 }) => (
   <Mutation
-    mutation={gql`
-      mutation upsertCurrentChapter($gatsbyID: String!, $chapter: Int!) {
-        upsertCurrentChapter(gatsbyID: $gatsbyID, chapter: $chapter) {
-          code
-          success
-          userTutorial {
-            id
-            currentChapter
-          }
-        }
-      }
-    `}
+    mutation={upsertCurrentChapter}
     variables={{
       gatsbyID: gatsbyID,
       chapter: currentChapter,

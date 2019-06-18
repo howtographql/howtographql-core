@@ -1,12 +1,12 @@
 import * as React from 'react';
 import Layout from '../components/layout';
 import { Content } from '../components/shared/styledHelpers';
-import { graphql } from 'gatsby';
 import TutorialListing from '../components/TutorialListing';
 import { Heading } from '../components/shared/base';
+import { CommunityTutorialQuery } from '../utils/queries/markdown';
 
-const Community = data => {
-  const tutorials = data.data.tutorials.edges;
+const Community = ({ data }) => {
+  const tutorials = data.tutorials.edges;
   return (
     <Layout>
       <Content>
@@ -22,28 +22,5 @@ const Community = data => {
     </Layout>
   );
 };
-
-export const query = graphql`
-  query CommunityTutorialQuery {
-    tutorials: allMdx(
-      filter: {
-        frontmatter: { tutorialTitle: { ne: null } }
-        fileAbsolutePath: { regex: "/community/" }
-      }
-    ) {
-      edges {
-        node {
-          id
-          fileAbsolutePath
-          frontmatter {
-            id
-            tutorialTitle
-            description
-          }
-        }
-      }
-    }
-  }
-`;
 
 export default Community;
