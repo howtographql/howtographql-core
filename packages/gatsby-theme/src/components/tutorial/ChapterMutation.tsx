@@ -1,9 +1,9 @@
 import * as React from 'react';
-import { upsertCurrentChapter } from '../utils/queries/tutorial';
+import { upsertCurrentChapter } from '../../utils/queries/tutorial';
 import { Mutation } from 'react-apollo';
-import { loginUser } from '../utils/auth';
-import { handleMutationResponse, ApiErrors } from '../utils/errorHandling';
-import { Button } from './shared/base';
+import { loginUser } from '../../utils/auth';
+import { handleMutationResponse, ApiErrors } from '../../utils/errorHandling';
+import { Button } from '../shared/base';
 
 type ChapterMutationProps = {
   gatsbyID: any;

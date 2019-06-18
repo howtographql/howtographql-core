@@ -1,14 +1,14 @@
 import * as React from 'react';
 import { RouterProps } from '@reach/router';
-import Layout from '../layout';
+import Layout from '../shared/layout';
 import { MDXRenderer } from 'gatsby-mdx';
 import { graphql } from 'gatsby';
-import { Sidebar, TabletSidebar } from '../TutorialSidebar';
+import { Sidebar, TabletSidebar } from '../tutorial/TutorialSidebar';
 import { TutorialMdxQuery } from '../../graphqlTypes';
 import { HideOnTablet, ShowOnTablet } from '../../utils/responsive';
 import { Flex, Box } from '../shared/base';
 import { optionalChaining } from '../../utils/helpers';
-import ChapterMutation from '../ChapterMutation';
+import ChapterMutation from '../tutorial/ChapterMutation';
 
 type TutorialLayoutProps = { data: TutorialMdxQuery } & RouterProps;
 

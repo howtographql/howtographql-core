@@ -1,7 +1,7 @@
 import * as React from 'react';
-import Layout from '../components/layout';
+import Layout from '../components/shared/layout';
 import { Content } from '../components/shared/styledHelpers';
-import TutorialListing from '../components/TutorialListing';
+import TutorialListing from '../components/community/TutorialListing';
 import { Heading } from '../components/shared/base';
 import { CommunityTutorialQuery } from '../utils/queries/markdown';
 

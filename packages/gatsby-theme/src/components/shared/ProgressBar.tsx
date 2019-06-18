@@ -1,6 +1,6 @@
 import * as React from 'react';
-import { styled } from '../styles';
-import { Text } from './shared/base';
+import { styled } from '../../styles';
+import { Text } from './base';
 
 interface ProgressBarProps extends FillerProps, ContainerProps {}
 

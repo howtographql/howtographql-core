@@ -1,12 +1,17 @@
 import * as React from 'react';
-import { Heading, Text, Card, Flex, Box } from './shared/base';
-import { getTutorialOverviewSlug } from '../utils/getTutorialSlug';
+import { Heading, Text, Card, Flex, Box } from '../shared/base';
+import { getTutorialOverviewSlug } from '../../utils/getTutorialSlug';
 import { Link } from 'gatsby';
 import { Query } from 'react-apollo';
 import UpvoteMutation from './UpvoteMutation';
 import BookmarkMutation from './BookmarkMutation';
+<<<<<<< HEAD
 import Percentage from './Percentage';
 import { getTutorialbyGatsbyID } from '../utils/queries/tutorial';
+=======
+import Percentage from '../shared/Percentage';
+import { GatsbyTutorialQuery } from '../../utils/queries/tutorial';
+>>>>>>> update imports on files
 
 type TutorialListingProps = {
   tutorial: Tutorial;

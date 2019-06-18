@@ -1,12 +1,12 @@
 import * as React from 'react';
-import Layout from '../components/layout';
+import Layout from '../components/shared/layout';
 import { Heading, Text, Image, Flex } from '../components/shared/base';
 import { logoutUser } from '../utils/auth';
 import { navigate } from 'gatsby';
 import { Query } from 'react-apollo';
 import { PROFILE_QUERY } from '../utils/queries/profile';
 import { optionalChaining } from '../utils/helpers';
-import { CenteredLoader } from '../components/Loader';
+import { CenteredLoader } from '../components/shared/Loader';
 
 const Profile = () => {
   return (

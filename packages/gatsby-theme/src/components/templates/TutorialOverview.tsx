@@ -1,12 +1,12 @@
 import React from 'react';
-import Layout from '../layout';
-import Chapter from '../Chapter';
+import Layout from '../shared/layout';
+import Chapter from '../tutorial/Chapter';
 import { TutorialOverviewQuery } from 'src/graphqlTypes';
-import AuthorList from '../AuthorList';
-import TutorialHeader from '../TutorialHeader';
+import AuthorList from '../tutorial/AuthorList';
+import TutorialHeader from '../tutorial/TutorialHeader';
 import { Heading, Flex, Box } from '../shared/base';
-import ProgressBar from '../ProgressBar';
-import { GithubButton, SpectrumButton, TutorialButton } from '../buttons';
+import ProgressBar from '../shared/ProgressBar';
+import { GithubButton, SpectrumButton, TutorialButton } from '../shared/buttons';
 import { Content } from '../shared/styledHelpers';
 import { authors } from '../../utils/sampleData';
 import { graphql } from 'gatsby';
