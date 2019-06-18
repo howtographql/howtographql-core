@@ -74,7 +74,7 @@ export const tutorial = queryField('tutorial', {
   },
 })
 
-export const gatsbyTutorialQuery = queryField('gatsbyTutorialQuery', {
+export const getTutorialbyGatsbyID = queryField('getTutorialbyGatsbyID', {
   type: 'Tutorial',
   args: {
     gatsbyID: stringArg({

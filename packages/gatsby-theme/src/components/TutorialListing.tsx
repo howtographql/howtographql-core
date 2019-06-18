@@ -30,8 +30,8 @@ const TutorialListing: React.FunctionComponent<TutorialListingProps> = ({
   return (
     <Query
       query={gql`
-        query gatsbyTutorialQuery($gatsbyID: String!) {
-          gatsbyTutorialQuery(gatsbyID: $gatsbyID) {
+        query getTutorialbyGatsbyID($gatsbyID: String!) {
+          getTutorialbyGatsbyID(gatsbyID: $gatsbyID) {
             id
             name
             upvotes
@@ -51,11 +51,11 @@ const TutorialListing: React.FunctionComponent<TutorialListingProps> = ({
           <Card width={[1]} p={4} my={4} borderRadius={8} boxShadow="small">
             <Flex alignItems="center" justifyContent="center">
               <Box width={1 / 12}>
-                {data.gatsbyTutorialQuery && (
-                  <UpvoteMutation tutorial={data.gatsbyTutorialQuery} />
+                {data.getTutorialbyGatsbyID && (
+                  <UpvoteMutation tutorial={data.getTutorialbyGatsbyID} />
                 )}
-                {data.gatsbyTutorialQuery && (
-                  <BookmarkMutation tutorial={data.gatsbyTutorialQuery} />
+                {data.getTutorialbyGatsbyID && (
+                  <BookmarkMutation tutorial={data.getTutorialbyGatsbyID} />
                 )}
               </Box>
 

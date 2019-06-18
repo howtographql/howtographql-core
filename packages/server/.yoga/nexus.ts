@@ -348,7 +348,7 @@ export interface NexusGenFieldTypes {
     upvoteTutorial: NexusGenRootTypes['UserTutorialPayload']; // UserTutorialPayload!
   }
   Query: { // field return type
-    gatsbyTutorialQuery: NexusGenRootTypes['Tutorial']; // Tutorial!
+    getTutorialbyGatsbyID: NexusGenRootTypes['Tutorial']; // Tutorial!
     tutorial: NexusGenRootTypes['Tutorial']; // Tutorial!
     tutorials: NexusGenRootTypes['Tutorial'][] | null; // [Tutorial!]
     viewer: NexusGenRootTypes['Viewer'] | null; // Viewer
@@ -425,7 +425,7 @@ export interface NexusGenArgTypes {
     }
   }
   Query: {
-    gatsbyTutorialQuery: { // args
+    getTutorialbyGatsbyID: { // args
       gatsbyID: string; // String!
     }
     tutorial: { // args

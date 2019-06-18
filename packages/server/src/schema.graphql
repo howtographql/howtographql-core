@@ -36,7 +36,7 @@ interface PayloadInterface {
 }
 
 type Query {
-  gatsbyTutorialQuery(gatsbyID: String!): Tutorial!
+  getTutorialbyGatsbyID(gatsbyID: String!): Tutorial!
   tutorial(id: ID!): Tutorial!
   tutorials(first: Int!): [Tutorial!]
   viewer: Viewer
