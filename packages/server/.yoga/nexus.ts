@@ -348,6 +348,7 @@ export interface NexusGenFieldTypes {
     upvoteTutorial: NexusGenRootTypes['UserTutorialPayload']; // UserTutorialPayload!
   }
   Query: { // field return type
+    getTutorialbyGatsbyID: NexusGenRootTypes['Tutorial']; // Tutorial!
     tutorial: NexusGenRootTypes['Tutorial']; // Tutorial!
     tutorials: NexusGenRootTypes['Tutorial'][] | null; // [Tutorial!]
     viewer: NexusGenRootTypes['Viewer'] | null; // Viewer
@@ -363,7 +364,7 @@ export interface NexusGenFieldTypes {
     updatedAt: any; // DateTime!
     upvotes: number; // Int!
     userTutorials: NexusGenRootTypes['UserTutorial'][] | null; // [UserTutorial!]
-    viewerUserTutorial: NexusGenRootTypes['UserTutorial']; // UserTutorial!
+    viewerUserTutorial: NexusGenRootTypes['UserTutorial'] | null; // UserTutorial
   }
   User: { // field return type
     avatarUrl: string | null; // String
@@ -415,7 +416,7 @@ export interface NexusGenArgTypes {
       tutorialId: string; // ID!
     }
     upsertTutorial: { // args
-      gatsbyID: string; // ID!
+      gatsbyID: string; // String!
       name: string; // String!
       numberofChapters: number; // Int!
     }
@@ -424,6 +425,9 @@ export interface NexusGenArgTypes {
     }
   }
   Query: {
+    getTutorialbyGatsbyID: { // args
+      gatsbyID: string; // String!
+    }
     tutorial: { // args
       id: string; // ID!
     }

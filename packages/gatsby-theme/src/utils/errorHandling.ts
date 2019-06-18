@@ -15,7 +15,7 @@ export async function handleMutationResponse(
       };
     }
     return {
-      error: ApiErrors.INVALID,
+      err: ApiErrors.INVALID,
     };
   }
 }

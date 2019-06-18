@@ -36,6 +36,7 @@ export const query = graphql`
           id
           fileAbsolutePath
           frontmatter {
+            id
             tutorialTitle
             description
           }

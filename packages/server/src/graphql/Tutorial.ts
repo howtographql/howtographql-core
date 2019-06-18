@@ -5,15 +5,15 @@ import {
   idArg,
   intArg,
   stringArg,
-} from 'yoga';
-import { getUserTutorial } from './UserTutorial';
+} from 'yoga'
+import { getUserTutorial } from './UserTutorial'
 
 export const Tutorial = prismaObjectType({
   name: 'Tutorial',
   definition(t) {
     // If you wish you customize/hide fields, call `t.prismaFields(['id', ...])`  with the desired field names
     // If you wish to add custom fields on top of prisma's ones, use t.field/string/int...
-    t.prismaFields(['*']);
+    t.prismaFields(['*'])
     t.int('numberOfStudents', {
       resolve: async (parent, args, ctx) => {
         return (await ctx.prisma
@@ -25,9 +25,9 @@ export const Tutorial = prismaObjectType({
               currentChapter_gt: 0,
             },
           })
-          .aggregate()).count;
+          .aggregate()).count
       },
-    });
+    })
     t.int('upvotes', {
       resolve: async (parent, args, ctx) => {
         return (await ctx.prisma
@@ -39,11 +39,12 @@ export const Tutorial = prismaObjectType({
               upvoted: true,
             },
           })
-          .aggregate()).count;
+          .aggregate()).count
       },
-    });
+    })
     t.field('viewerUserTutorial', {
       type: 'UserTutorial',
+      nullable: true,
       description:
         'The UserTutorial for the current user associated with this Tutorial.',
       resolve: async (parent, args, ctx) => {
@@ -53,11 +54,11 @@ export const Tutorial = prismaObjectType({
             userId: ctx.currentUserId,
           },
           ctx,
-        );
+        )
       },
-    });
+    })
   },
-});
+})
 
 export const tutorial = queryField('tutorial', {
   type: 'Tutorial',
@@ -69,9 +70,24 @@ export const tutorial = queryField('tutorial', {
   resolve: (_, args, ctx) => {
     return ctx.prisma.tutorial({
       id: args.id,
-    });
+    })
   },
-});
+})
+
+export const getTutorialbyGatsbyID = queryField('getTutorialbyGatsbyID', {
+  type: 'Tutorial',
+  args: {
+    gatsbyID: stringArg({
+      required: true,
+    }),
+  },
+  resolve: (_, args, ctx) => {
+    return ctx.prisma.tutorial({
+      gatsbyID: args.gatsbyID,
+    })
+  },
+})
+
 export const tutorials = queryField('tutorials', {
   type: 'Tutorial',
   nullable: true,
@@ -82,15 +98,15 @@ export const tutorials = queryField('tutorials', {
   resolve: (_, args, ctx) => {
     return ctx.prisma.tutorials({
       first: args.first,
-    });
+    })
   },
-});
+})
 
 export const upsertTutorial = mutationField('upsertTutorial', {
   type: Tutorial,
   description: 'Create tutorials from the MDX files',
   args: {
-    gatsbyID: idArg({
+    gatsbyID: stringArg({
       required: true,
     }),
     name: stringArg({
@@ -105,22 +121,22 @@ export const upsertTutorial = mutationField('upsertTutorial', {
       where: {
         gatsbyID: gatsbyID,
       },
-    });
-    let upsertedTutorial;
+    })
+    let upsertedTutorial
     if (existingTutorial.length) {
       upsertedTutorial = await ctx.prisma.updateTutorial({
         where: {
           gatsbyID: gatsbyID,
         },
         data: { gatsbyID, name, numberofChapters },
-      });
+      })
     } else {
       upsertedTutorial = await ctx.prisma.createTutorial({
         gatsbyID,
         name,
         numberofChapters,
-      });
+      })
     }
-    return upsertedTutorial;
+    return upsertedTutorial
   },
-});
+})

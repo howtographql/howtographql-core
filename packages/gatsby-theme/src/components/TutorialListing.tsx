@@ -1,13 +1,11 @@
 import * as React from 'react';
-import { Heading, Text, Card, Flex, Box, Button } from './shared/base';
+import { Heading, Text, Card, Flex, Box } from './shared/base';
 import { getTutorialOverviewSlug } from '../utils/getTutorialSlug';
-import Upvote from './Upvote';
 import { Link } from 'gatsby';
-import { Query, Mutation } from 'react-apollo';
+import { Query } from 'react-apollo';
 import gql from 'graphql-tag';
-import { optionalChaining } from '../utils/helpers';
-import { loginUser } from '../utils/auth';
-import { handleMutationResponse, ApiErrors } from '../utils/errorHandling';
+import UpvoteMutation from './UpvoteMutation';
+import BookmarkMutation from './BookmarkMutation';
 
 type TutorialListingProps = {
   tutorial: Tutorial;
@@ -20,6 +18,7 @@ type Tutorial = {
 };
 
 type FrontMatter = {
+  id: string;
   tutorialTitle: string;
   description: string;
 };
@@ -27,13 +26,14 @@ type FrontMatter = {
 const TutorialListing: React.FunctionComponent<TutorialListingProps> = ({
   tutorial,
 }) => {
-  const tutorialId = 'cjwi9iv2klfsb0b14sqc9wpuj';
+  const gatsbyID = tutorial.frontmatter.id;
   return (
     <Query
       query={gql`
-        query TutorialListing($id: ID!) {
-          tutorial(id: $id) {
+        query getTutorialbyGatsbyID($gatsbyID: String!) {
+          getTutorialbyGatsbyID(gatsbyID: $gatsbyID) {
             id
+            name
             upvotes
             numberOfStudents
             viewerUserTutorial {
@@ -44,96 +44,21 @@ const TutorialListing: React.FunctionComponent<TutorialListingProps> = ({
           }
         }
       `}
-      variables={{ id: tutorialId }}
+      variables={{ gatsbyID: gatsbyID }}
     >
       {({ data }) => {
         return (
           <Card width={[1]} p={4} my={4} borderRadius={8} boxShadow="small">
             <Flex alignItems="center" justifyContent="center">
               <Box width={1 / 12}>
-                <Mutation
-                  mutation={gql`
-                    mutation UpvoteTutorial($id: ID!) {
-                      upvoteTutorial(tutorialId: $id) {
-                        code
-                        success
-                        userTutorial {
-                          id
-                          upvoted
-                          tutorial {
-                            id
-                            upvotes
-                          }
-                        }
-                      }
-                    }
-                  `}
-                  variables={{
-                    id: tutorialId,
-                  }}
-                >
-                  {upvote => {
-                    return (
-                      <Upvote
-                        onClick={async () => {
-                          const mutationRes = await handleMutationResponse(
-                            upvote(),
-                          );
-                          if (mutationRes.error) {
-                            if (mutationRes.error === ApiErrors.AUTHORIZATION) {
-                              loginUser();
-                            } else {
-                              console.log(mutationRes.error);
-                            }
-                          }
-                        }}
-                        active={optionalChaining(
-                          () => data.tutorial.viewerUserTutorial.upvoted,
-                        )}
-                        count={optionalChaining(() => data.tutorial.upvotes)}
-                      />
-                    );
-                  }}
-                </Mutation>
-                <Mutation
-                  mutation={gql`
-                    mutation BookmarkTutorial($id: ID!) {
-                      bookmarkTutorial(tutorialId: $id) {
-                        code
-                        success
-                        userTutorial {
-                          id
-                          bookmarked
-                        }
-                      }
-                    }
-                  `}
-                  variables={{
-                    id: tutorialId,
-                  }}
-                >
-                  {bookmark => {
-                    return (
-                      <Button
-                        onClick={async () => {
-                          const mutationRes = await handleMutationResponse(
-                            bookmark(),
-                          );
-                          if (mutationRes.error) {
-                            if (mutationRes.error === ApiErrors.AUTHORIZATION) {
-                              loginUser();
-                            } else {
-                              console.log(mutationRes.error);
-                            }
-                          }
-                        }}
-                      >
-                        Bookmark
-                      </Button>
-                    );
-                  }}
-                </Mutation>
+                {data.getTutorialbyGatsbyID && (
+                  <UpvoteMutation tutorial={data.getTutorialbyGatsbyID} />
+                )}
+                {data.getTutorialbyGatsbyID && (
+                  <BookmarkMutation tutorial={data.getTutorialbyGatsbyID} />
+                )}
               </Box>
+
               <Box width={11 / 12}>
                 <Link to={getTutorialOverviewSlug(tutorial.fileAbsolutePath)}>
                   <Heading>{tutorial.frontmatter.tutorialTitle}</Heading>
