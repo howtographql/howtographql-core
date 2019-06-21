@@ -19,6 +19,7 @@ type Node = {
 };
 
 type Frontmatter = {
+  id: string;
   tutorialTitle: string;
   description: string;
 };
@@ -39,6 +40,7 @@ const CourseSection: React.FunctionComponent<CourseSectionProps> = ({
           {data.map(tutorial => (
             <Box width={[1, 0.8, 0.4]} key={tutorial.node.id}>
               <CourseCard
+                gatsbyID={tutorial.node.frontmatter.id}
                 tutorialTitle={tutorial.node.frontmatter.tutorialTitle}
                 fileAbsolutePath={tutorial.node.fileAbsolutePath}
               />

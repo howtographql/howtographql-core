@@ -1,18 +1,24 @@
 import * as React from 'react';
 import { Card, Flex, Image } from '../shared/base';
+import { Query } from 'react-apollo';
 import ProgressBar from '../shared/ProgressBar';
 import { TutorialButton } from '../shared/buttons';
+import { getTutorialbyGatsbyID } from '../../utils/queries';
 import { getTutorialOverviewSlug } from '../../utils/getTutorialSlug';
+import { optionalChaining, percent } from '../../utils/helpers';
 
 type CourseCardProps = {
   tutorialTitle: string;
   fileAbsolutePath: string;
+  gatsbyID: string;
 };
 
 const CourseCard: React.FunctionComponent<CourseCardProps> = ({
+  gatsbyID,
   tutorialTitle,
   fileAbsolutePath,
 }) => {
+  let path = getTutorialOverviewSlug(fileAbsolutePath);
   return (
     <Card m={[1, 1, 1]} p={[2, 2, 2]}>
       <Flex flexDirection="column" alignItems="center" justifyContent="center">
@@ -21,10 +27,38 @@ const CourseCard: React.FunctionComponent<CourseCardProps> = ({
           src="https://i.ibb.co/TcKwmwR/Icons.png"
         />
         <h3>{tutorialTitle}</h3>
-        <ProgressBar percentage={Math.floor(Math.random() * 100)} width={80} />
-        <a href={getTutorialOverviewSlug(fileAbsolutePath)}>
-          <TutorialButton>Start Tutorial</TutorialButton>
-        </a>
+        <Query query={getTutorialbyGatsbyID} variables={{ gatsbyID: gatsbyID }}>
+          {({ data }) => {
+            let buttonText = 'Continue Tutorial';
+            if (
+              optionalChaining(
+                () =>
+                  data.getTutorialbyGatsbyID.viewerUserTutorial.currentChapter,
+              )
+            ) {
+              let percentage = percent(
+                data.getTutorialbyGatsbyID.numberofChapters,
+                data.getTutorialbyGatsbyID.viewerUserTutorial.currentChapter,
+              );
+              if (percentage === 100) {
+                buttonText = 'Take Again';
+              }
+              return (
+                <div>
+                  <ProgressBar percentage={percentage} />
+                  <a href={path}>
+                    <TutorialButton>{buttonText}</TutorialButton>
+                  </a>
+                </div>
+              );
+            } else
+              return (
+                <a href={path}>
+                  <TutorialButton>Start Tutorial</TutorialButton>
+                </a>
+              );
+          }}
+        </Query>
       </Flex>
     </Card>
   );

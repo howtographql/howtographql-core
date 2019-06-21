@@ -5,7 +5,7 @@ import { Link } from 'gatsby';
 import { Query } from 'react-apollo';
 import UpvoteMutation from './UpvoteMutation';
 import BookmarkMutation from './BookmarkMutation';
-import Percentage from '../shared/Percentage';
+import ProgressBanner from './ProgressBanner';
 import { getTutorialbyGatsbyID } from '../../utils/queries';
 
 type TutorialListingProps = {
@@ -47,7 +47,7 @@ const TutorialListing: React.FunctionComponent<TutorialListingProps> = ({
                   <div>
                     <UpvoteMutation tutorial={data.getTutorialbyGatsbyID} />
                     <BookmarkMutation tutorial={data.getTutorialbyGatsbyID} />
-                    <Percentage tutorial={data.getTutorialbyGatsbyID} />
+                    <ProgressBanner tutorial={data.getTutorialbyGatsbyID} />
                   </div>
                 )}
               </Box>
