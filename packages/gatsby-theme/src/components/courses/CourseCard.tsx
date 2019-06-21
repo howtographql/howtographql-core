@@ -29,34 +29,31 @@ const CourseCard: React.FunctionComponent<CourseCardProps> = ({
         <h3>{tutorialTitle}</h3>
         <Query query={getTutorialbyGatsbyID} variables={{ gatsbyID: gatsbyID }}>
           {({ data }) => {
-            let buttonText = 'Continue Tutorial';
+            let buttonText = 'Start Tutorial';
+            let percentage = 0;
             if (
               optionalChaining(
                 () =>
                   data.getTutorialbyGatsbyID.viewerUserTutorial.currentChapter,
               )
             ) {
-              let percentage = percent(
+              percentage = percent(
                 data.getTutorialbyGatsbyID.numberofChapters,
                 data.getTutorialbyGatsbyID.viewerUserTutorial.currentChapter,
               );
+              buttonText = 'Continue Tutorial';
               if (percentage === 100) {
                 buttonText = 'Take Again';
               }
-              return (
-                <div>
-                  <ProgressBar percentage={percentage} />
-                  <a href={path}>
-                    <TutorialButton>{buttonText}</TutorialButton>
-                  </a>
-                </div>
-              );
-            } else
-              return (
+            }
+            return (
+              <div>
+                {!!percentage && <ProgressBar percentage={percentage} />}
                 <a href={path}>
-                  <TutorialButton>Start Tutorial</TutorialButton>
+                  <TutorialButton>{buttonText}</TutorialButton>
                 </a>
-              );
+              </div>
+            );
           }}
         </Query>
       </Flex>
