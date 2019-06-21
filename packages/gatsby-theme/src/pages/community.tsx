@@ -1,12 +1,12 @@
 import * as React from 'react';
-import Layout from '../components/layout';
+import Layout from '../components/shared/layout';
 import { Content } from '../components/shared/styledHelpers';
-import { graphql } from 'gatsby';
-import TutorialListing from '../components/TutorialListing';
+import TutorialListing from '../components/community/TutorialListing';
 import { Heading } from '../components/shared/base';
+import { graphql } from 'gatsby';
 
-const Community = data => {
-  const tutorials = data.data.tutorials.edges;
+const community = ({ data }) => {
+  const tutorials = data.tutorials.edges;
   return (
     <Layout>
       <Content>
@@ -46,4 +46,4 @@ export const query = graphql`
   }
 `;
 
-export default Community;
+export default community;

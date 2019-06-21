@@ -1,18 +1,9 @@
 import * as React from 'react';
-import Layout from '../components/layout';
+import Layout from '../components/shared/layout';
+import CourseSection from '../components/courses/CourseSection';
 import { Content } from '../components/shared/styledHelpers';
-import {
-  Heading,
-  Text,
-  Card,
-  Flex,
-  Image,
-  Box,
-} from '../components/shared/base';
-import { TutorialButton } from '../components/buttons';
+import { Heading, Text } from '../components/shared/base';
 import { graphql } from 'gatsby';
-import { getTutorialOverviewSlug } from '../utils/getTutorialSlug';
-import ProgressBar from '../components/ProgressBar';
 
 const courses = ({ data }) => {
   const courseSectionData = [
@@ -49,80 +40,6 @@ const courses = ({ data }) => {
         ))}
       </Content>
     </Layout>
-  );
-};
-
-type CourseSectionProps = {
-  heading: string;
-  body: string;
-  data: [QueryData];
-};
-
-type QueryData = {
-  node: Node;
-};
-
-type Node = {
-  id: string;
-  fileAbsolutePath: string;
-  frontmatter: Frontmatter;
-};
-
-type Frontmatter = {
-  tutorialTitle: string;
-  description: string;
-};
-
-const CourseSection: React.FunctionComponent<CourseSectionProps> = ({
-  heading,
-  body,
-  data,
-}) => {
-  return (
-    <Flex m={[1, 1, 1]}>
-      <Box width={[0.2, 0.2, 0.2]}>
-        <Heading> {heading} </Heading>
-        <Text>{body}</Text>
-      </Box>
-      <Box width={[0.8, 0.8, 0.8]}>
-        <Flex alignItems="top" justifyContent="center" flexWrap="wrap">
-          {data.map(tutorial => (
-            <Box width={[1, 0.8, 0.4]} key={tutorial.node.id}>
-              <CourseCard
-                tutorialTitle={tutorial.node.frontmatter.tutorialTitle}
-                fileAbsolutePath={tutorial.node.fileAbsolutePath}
-              />
-            </Box>
-          ))}
-        </Flex>
-      </Box>
-    </Flex>
-  );
-};
-
-type CourseCardProps = {
-  tutorialTitle: string;
-  fileAbsolutePath: string;
-};
-
-const CourseCard: React.FunctionComponent<CourseCardProps> = ({
-  tutorialTitle,
-  fileAbsolutePath,
-}) => {
-  return (
-    <Card m={[1, 1, 1]} p={[2, 2, 2]}>
-      <Flex flexDirection="column" alignItems="center" justifyContent="center">
-        <Image
-          width={[0.5, 0.5, 0.5]}
-          src="https://i.ibb.co/TcKwmwR/Icons.png"
-        />
-        <h3>{tutorialTitle}</h3>
-        <ProgressBar percentage={Math.floor(Math.random() * 100)} width={80} />
-        <a href={getTutorialOverviewSlug(fileAbsolutePath)}>
-          <TutorialButton>Start Tutorial</TutorialButton>
-        </a>
-      </Flex>
-    </Card>
   );
 };
 

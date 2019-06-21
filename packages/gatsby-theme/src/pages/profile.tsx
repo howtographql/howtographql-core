@@ -1,12 +1,12 @@
 import * as React from 'react';
-import Layout from '../components/layout';
+import Layout from '../components/shared/layout';
 import { Heading, Text, Image, Flex } from '../components/shared/base';
 import { logoutUser } from '../utils/auth';
 import { navigate } from 'gatsby';
 import { Query } from 'react-apollo';
-import gql from 'graphql-tag';
+import { PROFILE_QUERY } from '../utils/queries';
 import { optionalChaining } from '../utils/helpers';
-import { CenteredLoader } from '../components/Loader';
+import { CenteredLoader } from '../components/shared/Loader';
 
 const Profile = () => {
   return (
@@ -103,35 +103,3 @@ const ProfilePage: React.FunctionComponent<ProfileProps> = ({ user }) => {
   );
 };
 export default Profile;
-
-const PROFILE_QUERY = gql`
-  query profileQuery {
-    viewer {
-      user {
-        id
-        name
-        githubHandle
-        avatarUrl
-        bio
-        upvoted: userTutorials(where: { upvoted: true }) {
-          tutorial {
-            id
-            name
-          }
-        }
-        bookmarked: userTutorials(where: { bookmarked: true }) {
-          tutorial {
-            id
-            name
-          }
-        }
-        progress: userTutorials(where: { currentChapter_not: 0 }) {
-          tutorial {
-            id
-            name
-          }
-        }
-      }
-    }
-  }
-`;

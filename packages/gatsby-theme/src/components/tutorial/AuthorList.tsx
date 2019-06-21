@@ -1,5 +1,5 @@
 import React from 'react';
-import { Image, Text, Flex, Box } from './shared/base';
+import { Image, Text, Flex, Box } from '../shared/base';
 
 type Author = {
   name: string;

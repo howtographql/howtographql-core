@@ -1,8 +1,8 @@
 import React from 'react';
-import { Card, Image, Heading, Flex } from './shared/base';
-import { authors } from '../utils/sampleData';
+import { Card, Image, Heading, Flex } from '../shared/base';
+import { authors } from '../../utils/sampleData';
 import AuthorList from './AuthorList';
-import { SpectrumButton } from './buttons';
+import { SpectrumButton } from '../shared/buttons';
 
 type SidebarProps = {
   tutorialTitle: string;

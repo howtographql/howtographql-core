@@ -1,6 +1,6 @@
 import React from 'react';
-import { ButtonProps } from './shared/base';
-import { Flex, Image, Button } from './shared/base';
+import { ButtonProps } from './base';
+import { Flex, Image, Button } from './base';
 
 export const VoteButton: React.FunctionComponent<
   ButtonProps & {

@@ -1,12 +1,12 @@
 import * as React from 'react';
-import { Heading, Text, Card, Flex, Box } from './shared/base';
-import { getTutorialOverviewSlug } from '../utils/getTutorialSlug';
+import { Heading, Text, Card, Flex, Box } from '../shared/base';
+import { getTutorialOverviewSlug } from '../../utils/getTutorialSlug';
 import { Link } from 'gatsby';
 import { Query } from 'react-apollo';
-import gql from 'graphql-tag';
 import UpvoteMutation from './UpvoteMutation';
 import BookmarkMutation from './BookmarkMutation';
-import Percentage from './Percentage';
+import Percentage from '../shared/Percentage';
+import { getTutorialbyGatsbyID } from '../../utils/queries';
 
 type TutorialListingProps = {
   tutorial: Tutorial;
@@ -30,26 +30,7 @@ const TutorialListing: React.FunctionComponent<TutorialListingProps> = ({
   const gatsbyID = tutorial.frontmatter.id;
   let tutorialPath = getTutorialOverviewSlug(tutorial.fileAbsolutePath);
   return (
-    <Query
-      query={gql`
-        query getTutorialbyGatsbyID($gatsbyID: String!) {
-          getTutorialbyGatsbyID(gatsbyID: $gatsbyID) {
-            id
-            name
-            upvotes
-            numberofChapters
-            numberOfStudents
-            viewerUserTutorial {
-              id
-              upvoted
-              bookmarked
-              currentChapter
-            }
-          }
-        }
-      `}
-      variables={{ gatsbyID: gatsbyID }}
-    >
+    <Query query={getTutorialbyGatsbyID} variables={{ gatsbyID: gatsbyID }}>
       {({ data }) => {
         return (
           <Card width={[1]} p={4} my={4} borderRadius={8} boxShadow="small">

@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { Text } from './shared/base';
+import { Text } from './base';
 
 const Percentage = ({ tutorial }) => {
   let progress = tutorial.viewerUserTutorial.currentChapter;
