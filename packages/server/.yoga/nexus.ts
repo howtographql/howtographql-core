@@ -344,6 +344,7 @@ export interface NexusGenFieldTypes {
   Mutation: { // field return type
     authenticate: NexusGenRootTypes['AuthenticateUserPayload'] | null; // AuthenticateUserPayload
     bookmarkTutorial: NexusGenRootTypes['UserTutorialPayload']; // UserTutorialPayload!
+    upsertCurrentChapter: NexusGenRootTypes['UserTutorialPayload']; // UserTutorialPayload!
     upsertTutorial: NexusGenRootTypes['Tutorial']; // Tutorial!
     upvoteTutorial: NexusGenRootTypes['UserTutorialPayload']; // UserTutorialPayload!
   }
@@ -414,6 +415,10 @@ export interface NexusGenArgTypes {
     }
     bookmarkTutorial: { // args
       tutorialId: string; // ID!
+    }
+    upsertCurrentChapter: { // args
+      chapter: number; // Int!
+      gatsbyID: string; // String!
     }
     upsertTutorial: { // args
       gatsbyID: string; // String!

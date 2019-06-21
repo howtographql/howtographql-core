@@ -21,6 +21,9 @@ type Mutation {
   """An authenticated user can bookmark a tutorial."""
   bookmarkTutorial(tutorialId: ID!): UserTutorialPayload!
 
+  """An authenticated user can update their current chapter in a tutorial."""
+  upsertCurrentChapter(chapter: Int!, gatsbyID: String!): UserTutorialPayload!
+
   """Create tutorials from the MDX files"""
   upsertTutorial(gatsbyID: String!, name: String!, numberofChapters: Int!): Tutorial!
 
