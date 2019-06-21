@@ -3,6 +3,8 @@ import { Mutation } from 'react-apollo';
 import { loginUser } from '../../utils/auth';
 import { BookmarkButton } from '../shared/buttons';
 import { BookmarkTutorial } from '../../utils/queries';
+import { optionalChaining } from '../../utils/helpers';
+
 import { handleMutationResponse, ApiErrors } from '../../utils/errorHandling';
 
 const BookmarkMutation = ({ tutorial }) => (
@@ -13,7 +15,9 @@ const BookmarkMutation = ({ tutorial }) => (
     }}
   >
     {bookmark => {
-      let bookmarked = tutorial.viewerUserTutorial.bookmarked;
+      let bookmarked = optionalChaining(
+        () => tutorial.viewerUserTutorial.bookmarked,
+      );
       return (
         <BookmarkButton
           active={bookmarked}
