@@ -1,5 +1,5 @@
 import React from 'react';
-import { Box, Image, Heading, Text } from './shared/base';
+import { Box, Image, Heading, Text } from '../shared/base';
 
 interface TutorialHeaderProps {
   title: string | null;

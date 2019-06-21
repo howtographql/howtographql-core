@@ -1,11 +1,12 @@
 import * as React from 'react';
-import { Heading, Text, Card, Flex, Box } from './shared/base';
-import { getTutorialOverviewSlug } from '../utils/getTutorialSlug';
+import { Heading, Text, Card, Flex, Box } from '../shared/base';
+import { getTutorialOverviewSlug } from '../../utils/getTutorialSlug';
 import { Link } from 'gatsby';
 import { Query } from 'react-apollo';
-import gql from 'graphql-tag';
 import UpvoteMutation from './UpvoteMutation';
 import BookmarkMutation from './BookmarkMutation';
+import Percentage from '../shared/Percentage';
+import { getTutorialbyGatsbyID } from '../../utils/queries';
 
 type TutorialListingProps = {
   tutorial: Tutorial;
@@ -27,25 +28,9 @@ const TutorialListing: React.FunctionComponent<TutorialListingProps> = ({
   tutorial,
 }) => {
   const gatsbyID = tutorial.frontmatter.id;
+  let tutorialPath = getTutorialOverviewSlug(tutorial.fileAbsolutePath);
   return (
-    <Query
-      query={gql`
-        query gatsbyTutorialQuery($gatsbyID: String!) {
-          gatsbyTutorialQuery(gatsbyID: $gatsbyID) {
-            id
-            name
-            upvotes
-            numberOfStudents
-            viewerUserTutorial {
-              id
-              upvoted
-              bookmarked
-            }
-          }
-        }
-      `}
-      variables={{ gatsbyID: gatsbyID }}
-    >
+    <Query query={getTutorialbyGatsbyID} variables={{ gatsbyID: gatsbyID }}>
       {({ data }) => {
         return (
           <Card
@@ -58,16 +43,17 @@ const TutorialListing: React.FunctionComponent<TutorialListingProps> = ({
           >
             <Flex alignItems="center" justifyContent="center">
               <Box width={1 / 12}>
-                {data.gatsbyTutorialQuery && (
-                  <UpvoteMutation tutorial={data.gatsbyTutorialQuery} />
-                )}
-                {data.gatsbyTutorialQuery && (
-                  <BookmarkMutation tutorial={data.gatsbyTutorialQuery} />
+                {data.getTutorialbyGatsbyID && (
+                  <div>
+                    <UpvoteMutation tutorial={data.getTutorialbyGatsbyID} />
+                    <BookmarkMutation tutorial={data.getTutorialbyGatsbyID} />
+                    <Percentage tutorial={data.getTutorialbyGatsbyID} />
+                  </div>
                 )}
               </Box>
 
               <Box width={11 / 12}>
-                <Link to={getTutorialOverviewSlug(tutorial.fileAbsolutePath)}>
+                <Link to={tutorialPath}>
                   <Heading>{tutorial.frontmatter.tutorialTitle}</Heading>
                 </Link>
                 <Text>{tutorial.frontmatter.description}</Text>

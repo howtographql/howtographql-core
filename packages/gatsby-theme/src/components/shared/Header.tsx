@@ -1,5 +1,5 @@
 import React from 'react';
-import Account from '../Account';
+import Account from '../profile/Account';
 
 // Vectors
 import Logo from './Logo';

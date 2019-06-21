@@ -1,10 +1,10 @@
 import React from 'react';
-import { Text, Image, Flex } from './shared/base';
+import { Text, Image, Flex } from '../shared/base';
 import { Link } from 'gatsby';
-import { GithubButton } from './buttons';
-import { loginUser } from '../utils/auth';
-import WithCurrentUser from '../utils/auth/WithCurrentUser';
-import { CenteredLoader } from '../components/Loader';
+import { GithubButton } from '../shared/buttons';
+import { loginUser } from '../../utils/auth';
+import WithCurrentUser from '../../utils/auth/WithCurrentUser';
+import { CenteredLoader } from '../shared/Loader';
 
 const Account = () => {
   return (

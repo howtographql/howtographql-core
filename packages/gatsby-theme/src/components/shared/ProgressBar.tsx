@@ -1,6 +1,6 @@
 import * as React from 'react';
-import { styled } from '../styles';
-import { Text } from './shared/base';
+import { styled } from '../../styles';
+import { Text } from './base';
 
 interface ProgressBarProps extends FillerProps, ContainerProps {}
 
@@ -41,7 +41,7 @@ interface FillerProps {
   percentage: number;
 }
 
-const Filler = styled('div')<FillerProps>`
+const Filler = styled.div<FillerProps>`
   background: ${props => props.theme.colors.primary};
   height: 100%;
   border-radius: inherit;

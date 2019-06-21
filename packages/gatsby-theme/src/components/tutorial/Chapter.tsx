@@ -1,7 +1,7 @@
 import React from 'react';
-import { getTutorialSlug } from '../utils/getTutorialSlug';
+import { getTutorialSlug } from '../../utils/getTutorialSlug';
 import { Link } from 'gatsby';
-import { Heading, Text, Flex, Card } from './shared/base';
+import { Heading, Text, Flex, Card } from '../shared/base';
 
 type ChapterProps = {
   num: string | number;

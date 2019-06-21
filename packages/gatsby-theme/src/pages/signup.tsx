@@ -1,9 +1,9 @@
 import * as React from 'react';
-import Layout from '../components/layout';
+import Layout from '../components/shared/layout';
 import { navigate } from 'gatsby';
-import { CenteredLoader } from '../components/Loader';
+import { CenteredLoader } from '../components/shared/Loader';
 import { Flex, Text, Box } from '../components/shared/base';
-import { GithubButton } from '../components/buttons';
+import { GithubButton } from '../components/shared/buttons';
 import WithCurrentUser from '../utils/auth/WithCurrentUser';
 import { loginUser } from '../utils/auth/';
 

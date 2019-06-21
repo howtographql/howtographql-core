@@ -1,30 +1,23 @@
 import * as React from 'react';
-import gql from 'graphql-tag';
 import { Mutation } from 'react-apollo';
-import { loginUser } from '../utils/auth';
-import { BookmarkButton } from './buttons';
-import { handleMutationResponse, ApiErrors } from '../utils/errorHandling';
+import { loginUser } from '../../utils/auth';
+import { BookmarkButton } from '../shared/buttons';
+import { BookmarkTutorial } from '../../utils/queries';
+import { optionalChaining } from '../../utils/helpers';
+
+import { handleMutationResponse, ApiErrors } from '../../utils/errorHandling';
 
 const BookmarkMutation = ({ tutorial }) => (
   <Mutation
-    mutation={gql`
-      mutation BookmarkTutorial($id: ID!) {
-        bookmarkTutorial(tutorialId: $id) {
-          code
-          success
-          userTutorial {
-            id
-            bookmarked
-          }
-        }
-      }
-    `}
+    mutation={BookmarkTutorial}
     variables={{
       id: tutorial.id,
     }}
   >
     {bookmark => {
-      let bookmarked = tutorial.viewerUserTutorial.bookmarked;
+      let bookmarked = optionalChaining(
+        () => tutorial.viewerUserTutorial.bookmarked,
+      );
       return (
         <BookmarkButton
           active={bookmarked}

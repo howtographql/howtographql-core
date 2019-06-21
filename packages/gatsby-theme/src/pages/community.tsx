@@ -1,8 +1,6 @@
 import * as React from 'react';
-import Layout from '../components/layout';
+import Layout from '../components/shared/layout';
 import { Content } from '../components/shared/styledHelpers';
-import { graphql } from 'gatsby';
-import TutorialListing from '../components/TutorialListing';
 import {
   Heading,
   Box,
@@ -13,37 +11,11 @@ import {
 } from '../components/shared/base';
 import { styled } from '../styles';
 import WithCurrentUser from '../utils/auth/WithCurrentUser';
+import TutorialListing from '../components/community/TutorialListing';
+import { graphql } from 'gatsby';
 
-interface CommunityProps {
-  data: Data;
-}
-
-type Data = {
-  tutorials: Tutorial;
-};
-
-type Tutorial = {
-  edges: [Edge];
-};
-
-type Edge = {
-  node: Node;
-};
-
-type Node = {
-  fileAbsolutePath: string;
-  id: string;
-  frontmatter: Frontmatter;
-};
-
-type Frontmatter = {
-  description: string;
-  tutorialTitle: string;
-};
-
-const Community: React.FunctionComponent<CommunityProps> = ({ data }) => {
+const community = ({ data }) => {
   const tutorials = data.tutorials.edges;
-
   return (
     <WithCurrentUser>
       {({ user, loading }) => {
@@ -232,4 +204,4 @@ const TutorialContent = styled(Box)`
   align-items: center;
 `;
 
-export default Community;
+export default community;
