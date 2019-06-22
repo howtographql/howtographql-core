@@ -8,6 +8,7 @@ import AuthorsProgressBox from '../tutorial/AuthorsProgressBox';
 import { Content } from '../shared/styledHelpers';
 import { graphql } from 'gatsby';
 import { optionalChaining } from '../../utils/helpers';
+import { getTutorialSlug } from '../../utils/getTutorialSlug';
 
 interface PageTemplateProps {
   data: TutorialOverviewQuery;
@@ -15,6 +16,10 @@ interface PageTemplateProps {
 
 const PageTemplate: React.FunctionComponent<PageTemplateProps> = ({ data }) => {
   let gatsbyID = optionalChaining(() => data.overview.frontmatter.id);
+  // TO DO change this component so it links to the chapter the user is currently on
+  let firstChapterPath = getTutorialSlug(
+    optionalChaining(() => data.allMdx.edges[0].node.fileAbsolutePath),
+  );
   return (
     <Layout>
       <Content>
@@ -28,7 +33,7 @@ const PageTemplate: React.FunctionComponent<PageTemplateProps> = ({ data }) => {
             />
           </Box>
           <Box width={1 / 4} m={3}>
-            <AuthorsProgressBox gatsbyID={gatsbyID} />
+            <AuthorsProgressBox gatsbyID={gatsbyID} path={firstChapterPath} />
           </Box>
         </Flex>
         <div>

@@ -22,7 +22,9 @@ export const Sidebar: React.FunctionComponent<SidebarProps> = ({
       </Card>
       <ul>
         {chapters.map(chapter => (
-          <li key={chapter}>{chapter}</li>
+          <li key={chapter.chapterTitle}>
+            <a href={chapter.chapterPath}>{chapter.chapterTitle}</a>
+          </li>
         ))}
       </ul>
       <AuthorList authors={authors} />

@@ -34,7 +34,9 @@ const TutorialLayout: React.FunctionComponent<TutorialLayoutProps> = ({
     data.pageTitles.edges.map(a => {
       return {
         chapterTitle: optionalChaining(() => a.node.frontmatter.pageTitle),
-        chapterPath: optionalChaining(() => a.node.fileAbsolutePath),
+        chapterPath: getTutorialSlug(
+          optionalChaining(() => a.node.fileAbsolutePath),
+        ),
       };
     }),
   );
@@ -45,14 +47,15 @@ const TutorialLayout: React.FunctionComponent<TutorialLayoutProps> = ({
   const chapterTitles = chapters.map(chapter => chapter.chapterTitle);
   //the number of this current chapter
   const currentChapterIndex = chapterTitles.indexOf(pageTitle);
+  //get the next chapter path
   const findNextChapterPath = () => {
     if (currentChapterIndex + 1 === chapters.length) {
       return null;
     } else {
-      return getTutorialSlug(chapters[currentChapterIndex + 1].chapterPath);
+      return chapters[currentChapterIndex + 1].chapterPath;
     }
   };
-
+  //evaluate findNextChapterPath to get the next chapter.
   const nextChapterPath = findNextChapterPath();
 
   return (
@@ -63,17 +66,14 @@ const TutorialLayout: React.FunctionComponent<TutorialLayoutProps> = ({
             <h1>{pageTitle}</h1>
           </Box>
           <Box width={1 / 8} m={2}>
-            <TabletSidebar
-              chapters={chapterTitles}
-              tutorialTitle={tutorialTitle}
-            />
+            <TabletSidebar chapters={chapters} tutorialTitle={tutorialTitle} />
           </Box>
         </Flex>
       </ShowOnTablet>
       <HideOnTablet>
         <Flex>
           <Box width={1 / 4} m={2}>
-            <Sidebar chapters={chapterTitles} tutorialTitle={tutorialTitle} />
+            <Sidebar chapters={chapters} tutorialTitle={tutorialTitle} />
           </Box>
           <Box width={3 / 4} m={2}>
             <h1>{pageTitle}</h1>

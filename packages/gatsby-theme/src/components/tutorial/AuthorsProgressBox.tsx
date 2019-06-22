@@ -12,7 +12,7 @@ import {
 import { Flex, Box } from '../shared/base';
 import { optionalChaining, percent } from '../../utils/helpers';
 
-const AuthorsProgressBox = ({ gatsbyID }) => (
+const AuthorsProgressBox = ({ gatsbyID, path }) => (
   <Query query={getTutorialbyGatsbyID} variables={{ gatsbyID: gatsbyID }}>
     {({ data }) => {
       let buttonText = 'Start Tutorial';
@@ -34,7 +34,9 @@ const AuthorsProgressBox = ({ gatsbyID }) => (
       }
       return (
         <div>
-          <TutorialButton>{buttonText}</TutorialButton>
+          <a href={path}>
+            <TutorialButton>{buttonText}</TutorialButton>
+          </a>
           {!!percentage && (
             <Box m={3}>
               <ProgressBar percentage={percentage} />
