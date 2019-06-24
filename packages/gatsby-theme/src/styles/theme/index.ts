@@ -114,6 +114,18 @@ export const sizes: Sizes = {
   // [C] Nav
   navHeight: 64,
   brandHeight: 40,
+  // Spaces
+  space: [
+    // margin and padding
+    0,
+    4,
+    8,
+    16,
+    32,
+    64,
+    128,
+    256,
+  ],
   // Font
   fontSizes: [12, 14, 16, 20, 28, 32, 48, 64],
   fontWeights: [300, 400, 600, 700],
