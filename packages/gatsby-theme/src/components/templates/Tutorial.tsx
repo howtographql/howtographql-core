@@ -22,18 +22,18 @@ const TutorialLayout: React.FunctionComponent<TutorialLayoutProps> = ({
   }
 
   //title of the chapter
-  const { pageTitle } = optionalChaining(() => data.mdx.frontmatter);
+  const { pageTitle } = optionalChaining(() => data!.mdx!.frontmatter);
   //title of the tutorial
   const tutorialTitle = optionalChaining(
-    () => data.tutorialTitle.frontmatter.tutorialTitle,
+    () => data!.tutorialTitle!.frontmatter!.tutorialTitle,
   );
   //gatsbyID to fetch user information about tutorial
-  const gatsbyID = optionalChaining(() => data.tutorialTitle.frontmatter.id);
+  const gatsbyID = optionalChaining(() => data!.tutorialTitle!.frontmatter!.id);
   //all chapters in this tutorial
   const chapters = optionalChaining(() =>
-    data.pageTitles.edges.map(a => {
+    data!.pageTitles!.edges!.map(a => {
       return {
-        chapterTitle: optionalChaining(() => a.node.frontmatter.pageTitle),
+        chapterTitle: optionalChaining(() => a!.node!.frontmatter!.pageTitle),
         chapterPath: getTutorialSlug(
           optionalChaining(() => a.node.fileAbsolutePath),
         ),
@@ -42,7 +42,6 @@ const TutorialLayout: React.FunctionComponent<TutorialLayoutProps> = ({
   );
 
   const { location } = props;
-
   //all titles of chapters in this tutorial
   const chapterTitles = chapters.map(chapter => chapter.chapterTitle);
   //the number of this current chapter

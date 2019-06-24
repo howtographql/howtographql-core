@@ -7,31 +7,24 @@ import UpvoteMutation from './UpvoteMutation';
 import BookmarkMutation from './BookmarkMutation';
 import ProgressBanner from './ProgressBanner';
 import { getTutorialbyGatsbyID } from '../../utils/queries';
+import { GetTutorialbyGatsbyIdQuery, Mdx } from '../../graphqlTypes';
 
 type TutorialListingProps = {
-  tutorial: Tutorial;
-};
-
-type Tutorial = {
-  id: string;
-  fileAbsolutePath: string;
-  frontmatter: FrontMatter;
-};
-
-type FrontMatter = {
-  id: string;
-  tutorialTitle: string;
-  description: string;
+  tutorial: Mdx;
 };
 
 const TutorialListing: React.FunctionComponent<TutorialListingProps> = ({
   tutorial,
 }) => {
-  const gatsbyID = tutorial.frontmatter.id;
-  let tutorialPath = getTutorialOverviewSlug(tutorial.fileAbsolutePath);
+  const gatsbyID = tutorial!.frontmatter!.id;
+  let tutorialPath = getTutorialOverviewSlug(tutorial!.fileAbsolutePath);
   return (
-    <Query query={getTutorialbyGatsbyID} variables={{ gatsbyID: gatsbyID }}>
+    <Query<GetTutorialbyGatsbyIdQuery>
+      query={getTutorialbyGatsbyID}
+      variables={{ gatsbyID: gatsbyID }}
+    >
       {({ data }) => {
+        const gatsbyTutorial = data!.getTutorialbyGatsbyID;
         return (
           <Card
             width={[1]}
@@ -43,20 +36,19 @@ const TutorialListing: React.FunctionComponent<TutorialListingProps> = ({
           >
             <Flex alignItems="center" justifyContent="center">
               <Box width={1 / 12}>
-                {data.getTutorialbyGatsbyID && (
+                {gatsbyTutorial && (
                   <div>
-                    <UpvoteMutation tutorial={data.getTutorialbyGatsbyID} />
-                    <BookmarkMutation tutorial={data.getTutorialbyGatsbyID} />
-                    <ProgressBanner tutorial={data.getTutorialbyGatsbyID} />
+                    <UpvoteMutation tutorial={gatsbyTutorial} />
+                    <BookmarkMutation tutorial={gatsbyTutorial} />
+                    <ProgressBanner tutorial={gatsbyTutorial} />
                   </div>
                 )}
               </Box>
-
               <Box width={11 / 12}>
                 <Link to={tutorialPath}>
-                  <Heading>{tutorial.frontmatter.tutorialTitle}</Heading>
+                  <Heading>{tutorial!.frontmatter!.tutorialTitle}</Heading>
                 </Link>
-                <Text>{tutorial.frontmatter.description}</Text>
+                <Text>{tutorial!.frontmatter!.description}</Text>
               </Box>
             </Flex>
           </Card>

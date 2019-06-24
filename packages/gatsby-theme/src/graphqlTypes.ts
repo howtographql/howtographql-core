@@ -15,7 +15,10 @@ export type Scalars = {
   JSON: any;
 };
 
-export type AuthenticateUserPayload = {
+export type AuthenticateUserPayload = PayloadInterface & {
+  readonly code: Maybe<Scalars['String']>;
+  readonly success: Scalars['Boolean'];
+  readonly message: Maybe<Scalars['String']>;
   readonly user: User;
   readonly token: Scalars['String'];
 };
@@ -66,7 +69,7 @@ export type Directory = Node & {
   readonly gid: Maybe<Scalars['Int']>;
   readonly rdev: Maybe<Scalars['Int']>;
   readonly blksize: Maybe<Scalars['Int']>;
-  readonly ino: Maybe<Scalars['Int']>;
+  readonly ino: Maybe<Scalars['Float']>;
   readonly blocks: Maybe<Scalars['Int']>;
   readonly atimeMs: Maybe<Scalars['Float']>;
   readonly mtimeMs: Maybe<Scalars['Float']>;
@@ -309,7 +312,7 @@ export type DirectoryFilterInput = {
   readonly gid: Maybe<IntQueryOperatorInput>;
   readonly rdev: Maybe<IntQueryOperatorInput>;
   readonly blksize: Maybe<IntQueryOperatorInput>;
-  readonly ino: Maybe<IntQueryOperatorInput>;
+  readonly ino: Maybe<FloatQueryOperatorInput>;
   readonly blocks: Maybe<IntQueryOperatorInput>;
   readonly atimeMs: Maybe<FloatQueryOperatorInput>;
   readonly mtimeMs: Maybe<FloatQueryOperatorInput>;
@@ -369,7 +372,7 @@ export type File = Node & {
   readonly gid: Maybe<Scalars['Int']>;
   readonly rdev: Maybe<Scalars['Int']>;
   readonly blksize: Maybe<Scalars['Int']>;
-  readonly ino: Maybe<Scalars['Int']>;
+  readonly ino: Maybe<Scalars['Float']>;
   readonly blocks: Maybe<Scalars['Int']>;
   readonly atimeMs: Maybe<Scalars['Float']>;
   readonly mtimeMs: Maybe<Scalars['Float']>;
@@ -617,7 +620,7 @@ export type FileFilterInput = {
   readonly gid: Maybe<IntQueryOperatorInput>;
   readonly rdev: Maybe<IntQueryOperatorInput>;
   readonly blksize: Maybe<IntQueryOperatorInput>;
-  readonly ino: Maybe<IntQueryOperatorInput>;
+  readonly ino: Maybe<FloatQueryOperatorInput>;
   readonly blocks: Maybe<IntQueryOperatorInput>;
   readonly atimeMs: Maybe<FloatQueryOperatorInput>;
   readonly mtimeMs: Maybe<FloatQueryOperatorInput>;
@@ -1322,7 +1325,6 @@ export enum MdxFieldsEnum {
   InternalOwner = 'internal___owner',
   InternalType = 'internal___type',
   FrontmatterTitle = 'frontmatter___title',
-  FrontmatterId = 'frontmatter___id',
   FrontmatterPath = 'frontmatter___path',
   FrontmatterPageTitle = 'frontmatter___pageTitle',
   FrontmatterDescription = 'frontmatter___description',
@@ -1332,6 +1334,7 @@ export enum MdxFieldsEnum {
   FrontmatterVideoId = 'frontmatter___videoId',
   FrontmatterParent = 'frontmatter____PARENT',
   FrontmatterDuration = 'frontmatter___duration',
+  FrontmatterId = 'frontmatter___id',
   FrontmatterTutorialTitle = 'frontmatter___tutorialTitle',
   FrontmatterBanner = 'frontmatter___banner',
   FrontmatterVideoAuthor = 'frontmatter___videoAuthor',
@@ -1371,7 +1374,6 @@ export type MdxFilterInput = {
 
 export type MdxFrontmatter = {
   readonly title: Maybe<Scalars['String']>;
-  readonly id: Maybe<Scalars['String']>;
   readonly path: Maybe<Scalars['String']>;
   readonly pageTitle: Maybe<Scalars['String']>;
   readonly description: Maybe<Scalars['String']>;
@@ -1381,6 +1383,7 @@ export type MdxFrontmatter = {
   readonly videoId: Maybe<Scalars['String']>;
   readonly _PARENT: Maybe<Scalars['String']>;
   readonly duration: Maybe<Scalars['Int']>;
+  readonly id: Maybe<Scalars['String']>;
   readonly tutorialTitle: Maybe<Scalars['String']>;
   readonly banner: Maybe<Scalars['String']>;
   readonly videoAuthor: Maybe<Scalars['String']>;
@@ -1389,7 +1392,6 @@ export type MdxFrontmatter = {
 
 export type MdxFrontmatterFilterInput = {
   readonly title: Maybe<StringQueryOperatorInput>;
-  readonly id: Maybe<StringQueryOperatorInput>;
   readonly path: Maybe<StringQueryOperatorInput>;
   readonly pageTitle: Maybe<StringQueryOperatorInput>;
   readonly description: Maybe<StringQueryOperatorInput>;
@@ -1399,6 +1401,7 @@ export type MdxFrontmatterFilterInput = {
   readonly videoId: Maybe<StringQueryOperatorInput>;
   readonly _PARENT: Maybe<StringQueryOperatorInput>;
   readonly duration: Maybe<IntQueryOperatorInput>;
+  readonly id: Maybe<StringQueryOperatorInput>;
   readonly tutorialTitle: Maybe<StringQueryOperatorInput>;
   readonly banner: Maybe<StringQueryOperatorInput>;
   readonly videoAuthor: Maybe<StringQueryOperatorInput>;
@@ -1434,7 +1437,34 @@ export type MdxSortInput = {
 };
 
 export type Mutation = {
+  /** Create tutorials from the MDX files */
+  readonly upsertTutorial: Tutorial;
+  /** An authenticated user can upvote a tutorial. */
+  readonly upvoteTutorial: UserTutorialPayload;
+  /** An authenticated user can bookmark a tutorial. */
+  readonly bookmarkTutorial: UserTutorialPayload;
+  /** An authenticated user can update their current chapter in a tutorial. */
+  readonly upsertCurrentChapter: UserTutorialPayload;
   readonly authenticate: Maybe<AuthenticateUserPayload>;
+};
+
+export type MutationUpsertTutorialArgs = {
+  gatsbyID: Scalars['String'];
+  name: Scalars['String'];
+  numberofChapters: Scalars['Int'];
+};
+
+export type MutationUpvoteTutorialArgs = {
+  tutorialId: Scalars['ID'];
+};
+
+export type MutationBookmarkTutorialArgs = {
+  tutorialId: Scalars['ID'];
+};
+
+export type MutationUpsertCurrentChapterArgs = {
+  gatsbyID: Scalars['String'];
+  chapter: Scalars['Int'];
 };
 
 export type MutationAuthenticateArgs = {
@@ -1469,78 +1499,11 @@ export type PageInfo = {
   readonly perPage: Maybe<Scalars['Int']>;
 };
 
-export type Post = {
-  readonly id: Scalars['ID'];
-  readonly title: Scalars['String'];
-  readonly content: Scalars['String'];
-  readonly published: Scalars['Boolean'];
-  readonly author: User;
-};
-
-export enum PostOrderByInput {
-  IdAsc = 'id_ASC',
-  IdDesc = 'id_DESC',
-  TitleAsc = 'title_ASC',
-  TitleDesc = 'title_DESC',
-  ContentAsc = 'content_ASC',
-  ContentDesc = 'content_DESC',
-  PublishedAsc = 'published_ASC',
-  PublishedDesc = 'published_DESC',
-  CreatedAtAsc = 'createdAt_ASC',
-  CreatedAtDesc = 'createdAt_DESC',
-  UpdatedAtAsc = 'updatedAt_ASC',
-  UpdatedAtDesc = 'updatedAt_DESC',
-}
-
-export type PostWhereInput = {
-  readonly id: Maybe<Scalars['ID']>;
-  readonly id_not: Maybe<Scalars['ID']>;
-  readonly id_in: Maybe<ReadonlyArray<Scalars['ID']>>;
-  readonly id_not_in: Maybe<ReadonlyArray<Scalars['ID']>>;
-  readonly id_lt: Maybe<Scalars['ID']>;
-  readonly id_lte: Maybe<Scalars['ID']>;
-  readonly id_gt: Maybe<Scalars['ID']>;
-  readonly id_gte: Maybe<Scalars['ID']>;
-  readonly id_contains: Maybe<Scalars['ID']>;
-  readonly id_not_contains: Maybe<Scalars['ID']>;
-  readonly id_starts_with: Maybe<Scalars['ID']>;
-  readonly id_not_starts_with: Maybe<Scalars['ID']>;
-  readonly id_ends_with: Maybe<Scalars['ID']>;
-  readonly id_not_ends_with: Maybe<Scalars['ID']>;
-  readonly title: Maybe<Scalars['String']>;
-  readonly title_not: Maybe<Scalars['String']>;
-  readonly title_in: Maybe<ReadonlyArray<Scalars['String']>>;
-  readonly title_not_in: Maybe<ReadonlyArray<Scalars['String']>>;
-  readonly title_lt: Maybe<Scalars['String']>;
-  readonly title_lte: Maybe<Scalars['String']>;
-  readonly title_gt: Maybe<Scalars['String']>;
-  readonly title_gte: Maybe<Scalars['String']>;
-  readonly title_contains: Maybe<Scalars['String']>;
-  readonly title_not_contains: Maybe<Scalars['String']>;
-  readonly title_starts_with: Maybe<Scalars['String']>;
-  readonly title_not_starts_with: Maybe<Scalars['String']>;
-  readonly title_ends_with: Maybe<Scalars['String']>;
-  readonly title_not_ends_with: Maybe<Scalars['String']>;
-  readonly content: Maybe<Scalars['String']>;
-  readonly content_not: Maybe<Scalars['String']>;
-  readonly content_in: Maybe<ReadonlyArray<Scalars['String']>>;
-  readonly content_not_in: Maybe<ReadonlyArray<Scalars['String']>>;
-  readonly content_lt: Maybe<Scalars['String']>;
-  readonly content_lte: Maybe<Scalars['String']>;
-  readonly content_gt: Maybe<Scalars['String']>;
-  readonly content_gte: Maybe<Scalars['String']>;
-  readonly content_contains: Maybe<Scalars['String']>;
-  readonly content_not_contains: Maybe<Scalars['String']>;
-  readonly content_starts_with: Maybe<Scalars['String']>;
-  readonly content_not_starts_with: Maybe<Scalars['String']>;
-  readonly content_ends_with: Maybe<Scalars['String']>;
-  readonly content_not_ends_with: Maybe<Scalars['String']>;
-  readonly published: Maybe<Scalars['Boolean']>;
-  readonly published_not: Maybe<Scalars['Boolean']>;
-  readonly author: Maybe<UserWhereInput>;
-  readonly AND: Maybe<ReadonlyArray<PostWhereInput>>;
-  readonly OR: Maybe<ReadonlyArray<PostWhereInput>>;
-  readonly NOT: Maybe<ReadonlyArray<PostWhereInput>>;
+/** The standard interface for all mutation responses */
+export type PayloadInterface = {
+  readonly code: Maybe<Scalars['String']>;
+  readonly success: Scalars['Boolean'];
+  readonly message: Maybe<Scalars['String']>;
 };
 
 export type Potrace = {
@@ -1565,8 +1528,9 @@ export enum PotraceTurnPolicy {
 }
 
 export type Query = {
-  readonly feed: ReadonlyArray<Post>;
-  readonly filterPosts: ReadonlyArray<Post>;
+  readonly tutorial: Tutorial;
+  readonly getTutorialbyGatsbyID: Tutorial;
+  readonly tutorials: Maybe<ReadonlyArray<Tutorial>>;
   readonly viewer: Maybe<Viewer>;
   readonly file: Maybe<File>;
   readonly allFile: Maybe<FileConnection>;
@@ -1584,8 +1548,16 @@ export type Query = {
   readonly allImageSharp: Maybe<ImageSharpConnection>;
 };
 
-export type QueryFilterPostsArgs = {
-  searchString: Scalars['String'];
+export type QueryTutorialArgs = {
+  id: Scalars['ID'];
+};
+
+export type QueryGetTutorialbyGatsbyIdArgs = {
+  gatsbyID: Scalars['String'];
+};
+
+export type QueryTutorialsArgs = {
+  first: Scalars['Int'];
 };
 
 export type QueryFileArgs = {
@@ -1616,7 +1588,7 @@ export type QueryFileArgs = {
   gid: Maybe<IntQueryOperatorInput>;
   rdev: Maybe<IntQueryOperatorInput>;
   blksize: Maybe<IntQueryOperatorInput>;
-  ino: Maybe<IntQueryOperatorInput>;
+  ino: Maybe<FloatQueryOperatorInput>;
   blocks: Maybe<IntQueryOperatorInput>;
   atimeMs: Maybe<FloatQueryOperatorInput>;
   mtimeMs: Maybe<FloatQueryOperatorInput>;
@@ -1732,7 +1704,7 @@ export type QueryDirectoryArgs = {
   gid: Maybe<IntQueryOperatorInput>;
   rdev: Maybe<IntQueryOperatorInput>;
   blksize: Maybe<IntQueryOperatorInput>;
-  ino: Maybe<IntQueryOperatorInput>;
+  ino: Maybe<FloatQueryOperatorInput>;
   blocks: Maybe<IntQueryOperatorInput>;
   atimeMs: Maybe<FloatQueryOperatorInput>;
   mtimeMs: Maybe<FloatQueryOperatorInput>;
@@ -2559,27 +2531,228 @@ export type StringQueryOperatorInput = {
   readonly glob: Maybe<Scalars['String']>;
 };
 
-export type User = {
+export type Tutorial = {
   readonly id: Scalars['ID'];
   readonly createdAt: Scalars['DateTime'];
   readonly updatedAt: Scalars['DateTime'];
   readonly name: Scalars['String'];
-  readonly email: Scalars['String'];
-  readonly githubHandle: Scalars['String'];
-  readonly githubUserId: Scalars['String'];
-  readonly avatarUrl: Maybe<Scalars['String']>;
-  readonly bio: Scalars['String'];
-  readonly posts: Maybe<ReadonlyArray<Post>>;
+  readonly gatsbyID: Scalars['String'];
+  readonly numberofChapters: Scalars['Int'];
+  readonly numberofStudents: Scalars['Int'];
+  readonly upvotes: Scalars['Int'];
+  readonly userTutorials: Maybe<ReadonlyArray<UserTutorial>>;
+  readonly numberOfStudents: Scalars['Int'];
+  /** The UserTutorial for the current user associated with this Tutorial. */
+  readonly viewerUserTutorial: Maybe<UserTutorial>;
 };
 
-export type UserPostsArgs = {
-  where: Maybe<PostWhereInput>;
-  orderBy: Maybe<PostOrderByInput>;
+export type TutorialUserTutorialsArgs = {
+  where: Maybe<UserTutorialWhereInput>;
+  orderBy: Maybe<UserTutorialOrderByInput>;
   skip: Maybe<Scalars['Int']>;
   after: Maybe<Scalars['String']>;
   before: Maybe<Scalars['String']>;
   first: Maybe<Scalars['Int']>;
   last: Maybe<Scalars['Int']>;
+};
+
+export type TutorialWhereInput = {
+  readonly id: Maybe<Scalars['ID']>;
+  readonly id_not: Maybe<Scalars['ID']>;
+  readonly id_in: Maybe<ReadonlyArray<Scalars['ID']>>;
+  readonly id_not_in: Maybe<ReadonlyArray<Scalars['ID']>>;
+  readonly id_lt: Maybe<Scalars['ID']>;
+  readonly id_lte: Maybe<Scalars['ID']>;
+  readonly id_gt: Maybe<Scalars['ID']>;
+  readonly id_gte: Maybe<Scalars['ID']>;
+  readonly id_contains: Maybe<Scalars['ID']>;
+  readonly id_not_contains: Maybe<Scalars['ID']>;
+  readonly id_starts_with: Maybe<Scalars['ID']>;
+  readonly id_not_starts_with: Maybe<Scalars['ID']>;
+  readonly id_ends_with: Maybe<Scalars['ID']>;
+  readonly id_not_ends_with: Maybe<Scalars['ID']>;
+  readonly createdAt: Maybe<Scalars['DateTime']>;
+  readonly createdAt_not: Maybe<Scalars['DateTime']>;
+  readonly createdAt_in: Maybe<ReadonlyArray<Scalars['DateTime']>>;
+  readonly createdAt_not_in: Maybe<ReadonlyArray<Scalars['DateTime']>>;
+  readonly createdAt_lt: Maybe<Scalars['DateTime']>;
+  readonly createdAt_lte: Maybe<Scalars['DateTime']>;
+  readonly createdAt_gt: Maybe<Scalars['DateTime']>;
+  readonly createdAt_gte: Maybe<Scalars['DateTime']>;
+  readonly updatedAt: Maybe<Scalars['DateTime']>;
+  readonly updatedAt_not: Maybe<Scalars['DateTime']>;
+  readonly updatedAt_in: Maybe<ReadonlyArray<Scalars['DateTime']>>;
+  readonly updatedAt_not_in: Maybe<ReadonlyArray<Scalars['DateTime']>>;
+  readonly updatedAt_lt: Maybe<Scalars['DateTime']>;
+  readonly updatedAt_lte: Maybe<Scalars['DateTime']>;
+  readonly updatedAt_gt: Maybe<Scalars['DateTime']>;
+  readonly updatedAt_gte: Maybe<Scalars['DateTime']>;
+  readonly name: Maybe<Scalars['String']>;
+  readonly name_not: Maybe<Scalars['String']>;
+  readonly name_in: Maybe<ReadonlyArray<Scalars['String']>>;
+  readonly name_not_in: Maybe<ReadonlyArray<Scalars['String']>>;
+  readonly name_lt: Maybe<Scalars['String']>;
+  readonly name_lte: Maybe<Scalars['String']>;
+  readonly name_gt: Maybe<Scalars['String']>;
+  readonly name_gte: Maybe<Scalars['String']>;
+  readonly name_contains: Maybe<Scalars['String']>;
+  readonly name_not_contains: Maybe<Scalars['String']>;
+  readonly name_starts_with: Maybe<Scalars['String']>;
+  readonly name_not_starts_with: Maybe<Scalars['String']>;
+  readonly name_ends_with: Maybe<Scalars['String']>;
+  readonly name_not_ends_with: Maybe<Scalars['String']>;
+  readonly gatsbyID: Maybe<Scalars['String']>;
+  readonly gatsbyID_not: Maybe<Scalars['String']>;
+  readonly gatsbyID_in: Maybe<ReadonlyArray<Scalars['String']>>;
+  readonly gatsbyID_not_in: Maybe<ReadonlyArray<Scalars['String']>>;
+  readonly gatsbyID_lt: Maybe<Scalars['String']>;
+  readonly gatsbyID_lte: Maybe<Scalars['String']>;
+  readonly gatsbyID_gt: Maybe<Scalars['String']>;
+  readonly gatsbyID_gte: Maybe<Scalars['String']>;
+  readonly gatsbyID_contains: Maybe<Scalars['String']>;
+  readonly gatsbyID_not_contains: Maybe<Scalars['String']>;
+  readonly gatsbyID_starts_with: Maybe<Scalars['String']>;
+  readonly gatsbyID_not_starts_with: Maybe<Scalars['String']>;
+  readonly gatsbyID_ends_with: Maybe<Scalars['String']>;
+  readonly gatsbyID_not_ends_with: Maybe<Scalars['String']>;
+  readonly numberofChapters: Maybe<Scalars['Int']>;
+  readonly numberofChapters_not: Maybe<Scalars['Int']>;
+  readonly numberofChapters_in: Maybe<ReadonlyArray<Scalars['Int']>>;
+  readonly numberofChapters_not_in: Maybe<ReadonlyArray<Scalars['Int']>>;
+  readonly numberofChapters_lt: Maybe<Scalars['Int']>;
+  readonly numberofChapters_lte: Maybe<Scalars['Int']>;
+  readonly numberofChapters_gt: Maybe<Scalars['Int']>;
+  readonly numberofChapters_gte: Maybe<Scalars['Int']>;
+  readonly numberofStudents: Maybe<Scalars['Int']>;
+  readonly numberofStudents_not: Maybe<Scalars['Int']>;
+  readonly numberofStudents_in: Maybe<ReadonlyArray<Scalars['Int']>>;
+  readonly numberofStudents_not_in: Maybe<ReadonlyArray<Scalars['Int']>>;
+  readonly numberofStudents_lt: Maybe<Scalars['Int']>;
+  readonly numberofStudents_lte: Maybe<Scalars['Int']>;
+  readonly numberofStudents_gt: Maybe<Scalars['Int']>;
+  readonly numberofStudents_gte: Maybe<Scalars['Int']>;
+  readonly upvotes: Maybe<Scalars['Int']>;
+  readonly upvotes_not: Maybe<Scalars['Int']>;
+  readonly upvotes_in: Maybe<ReadonlyArray<Scalars['Int']>>;
+  readonly upvotes_not_in: Maybe<ReadonlyArray<Scalars['Int']>>;
+  readonly upvotes_lt: Maybe<Scalars['Int']>;
+  readonly upvotes_lte: Maybe<Scalars['Int']>;
+  readonly upvotes_gt: Maybe<Scalars['Int']>;
+  readonly upvotes_gte: Maybe<Scalars['Int']>;
+  readonly userTutorials_every: Maybe<UserTutorialWhereInput>;
+  readonly userTutorials_some: Maybe<UserTutorialWhereInput>;
+  readonly userTutorials_none: Maybe<UserTutorialWhereInput>;
+  readonly AND: Maybe<ReadonlyArray<TutorialWhereInput>>;
+  readonly OR: Maybe<ReadonlyArray<TutorialWhereInput>>;
+  readonly NOT: Maybe<ReadonlyArray<TutorialWhereInput>>;
+};
+
+export type User = {
+  readonly id: Scalars['ID'];
+  readonly createdAt: Scalars['DateTime'];
+  readonly updatedAt: Scalars['DateTime'];
+  readonly name: Scalars['String'];
+  readonly email: Maybe<Scalars['String']>;
+  readonly githubHandle: Scalars['String'];
+  readonly githubUserId: Scalars['String'];
+  readonly avatarUrl: Maybe<Scalars['String']>;
+  readonly bio: Maybe<Scalars['String']>;
+  readonly contributor: Maybe<Scalars['Boolean']>;
+  readonly expertise: Maybe<Scalars['String']>;
+  readonly userTutorials: Maybe<ReadonlyArray<UserTutorial>>;
+};
+
+export type UserUserTutorialsArgs = {
+  where: Maybe<UserTutorialWhereInput>;
+  orderBy: Maybe<UserTutorialOrderByInput>;
+  skip: Maybe<Scalars['Int']>;
+  after: Maybe<Scalars['String']>;
+  before: Maybe<Scalars['String']>;
+  first: Maybe<Scalars['Int']>;
+  last: Maybe<Scalars['Int']>;
+};
+
+export type UserTutorial = {
+  readonly id: Scalars['ID'];
+  readonly createdAt: Scalars['DateTime'];
+  readonly updatedAt: Scalars['DateTime'];
+  readonly user: Maybe<User>;
+  readonly tutorial: Maybe<Tutorial>;
+  readonly upvoted: Maybe<Scalars['Boolean']>;
+  readonly bookmarked: Maybe<Scalars['Boolean']>;
+  readonly currentChapter: Maybe<Scalars['Int']>;
+};
+
+export enum UserTutorialOrderByInput {
+  IdAsc = 'id_ASC',
+  IdDesc = 'id_DESC',
+  CreatedAtAsc = 'createdAt_ASC',
+  CreatedAtDesc = 'createdAt_DESC',
+  UpdatedAtAsc = 'updatedAt_ASC',
+  UpdatedAtDesc = 'updatedAt_DESC',
+  UpvotedAsc = 'upvoted_ASC',
+  UpvotedDesc = 'upvoted_DESC',
+  BookmarkedAsc = 'bookmarked_ASC',
+  BookmarkedDesc = 'bookmarked_DESC',
+  CurrentChapterAsc = 'currentChapter_ASC',
+  CurrentChapterDesc = 'currentChapter_DESC',
+}
+
+export type UserTutorialPayload = PayloadInterface & {
+  readonly code: Maybe<Scalars['String']>;
+  readonly success: Scalars['Boolean'];
+  readonly message: Maybe<Scalars['String']>;
+  readonly userTutorial: Maybe<UserTutorial>;
+};
+
+export type UserTutorialWhereInput = {
+  readonly id: Maybe<Scalars['ID']>;
+  readonly id_not: Maybe<Scalars['ID']>;
+  readonly id_in: Maybe<ReadonlyArray<Scalars['ID']>>;
+  readonly id_not_in: Maybe<ReadonlyArray<Scalars['ID']>>;
+  readonly id_lt: Maybe<Scalars['ID']>;
+  readonly id_lte: Maybe<Scalars['ID']>;
+  readonly id_gt: Maybe<Scalars['ID']>;
+  readonly id_gte: Maybe<Scalars['ID']>;
+  readonly id_contains: Maybe<Scalars['ID']>;
+  readonly id_not_contains: Maybe<Scalars['ID']>;
+  readonly id_starts_with: Maybe<Scalars['ID']>;
+  readonly id_not_starts_with: Maybe<Scalars['ID']>;
+  readonly id_ends_with: Maybe<Scalars['ID']>;
+  readonly id_not_ends_with: Maybe<Scalars['ID']>;
+  readonly createdAt: Maybe<Scalars['DateTime']>;
+  readonly createdAt_not: Maybe<Scalars['DateTime']>;
+  readonly createdAt_in: Maybe<ReadonlyArray<Scalars['DateTime']>>;
+  readonly createdAt_not_in: Maybe<ReadonlyArray<Scalars['DateTime']>>;
+  readonly createdAt_lt: Maybe<Scalars['DateTime']>;
+  readonly createdAt_lte: Maybe<Scalars['DateTime']>;
+  readonly createdAt_gt: Maybe<Scalars['DateTime']>;
+  readonly createdAt_gte: Maybe<Scalars['DateTime']>;
+  readonly updatedAt: Maybe<Scalars['DateTime']>;
+  readonly updatedAt_not: Maybe<Scalars['DateTime']>;
+  readonly updatedAt_in: Maybe<ReadonlyArray<Scalars['DateTime']>>;
+  readonly updatedAt_not_in: Maybe<ReadonlyArray<Scalars['DateTime']>>;
+  readonly updatedAt_lt: Maybe<Scalars['DateTime']>;
+  readonly updatedAt_lte: Maybe<Scalars['DateTime']>;
+  readonly updatedAt_gt: Maybe<Scalars['DateTime']>;
+  readonly updatedAt_gte: Maybe<Scalars['DateTime']>;
+  readonly user: Maybe<UserWhereInput>;
+  readonly tutorial: Maybe<TutorialWhereInput>;
+  readonly upvoted: Maybe<Scalars['Boolean']>;
+  readonly upvoted_not: Maybe<Scalars['Boolean']>;
+  readonly bookmarked: Maybe<Scalars['Boolean']>;
+  readonly bookmarked_not: Maybe<Scalars['Boolean']>;
+  readonly currentChapter: Maybe<Scalars['Int']>;
+  readonly currentChapter_not: Maybe<Scalars['Int']>;
+  readonly currentChapter_in: Maybe<ReadonlyArray<Scalars['Int']>>;
+  readonly currentChapter_not_in: Maybe<ReadonlyArray<Scalars['Int']>>;
+  readonly currentChapter_lt: Maybe<Scalars['Int']>;
+  readonly currentChapter_lte: Maybe<Scalars['Int']>;
+  readonly currentChapter_gt: Maybe<Scalars['Int']>;
+  readonly currentChapter_gte: Maybe<Scalars['Int']>;
+  readonly AND: Maybe<ReadonlyArray<UserTutorialWhereInput>>;
+  readonly OR: Maybe<ReadonlyArray<UserTutorialWhereInput>>;
+  readonly NOT: Maybe<ReadonlyArray<UserTutorialWhereInput>>;
 };
 
 export type UserWhereInput = {
@@ -2697,9 +2870,25 @@ export type UserWhereInput = {
   readonly bio_not_starts_with: Maybe<Scalars['String']>;
   readonly bio_ends_with: Maybe<Scalars['String']>;
   readonly bio_not_ends_with: Maybe<Scalars['String']>;
-  readonly posts_every: Maybe<PostWhereInput>;
-  readonly posts_some: Maybe<PostWhereInput>;
-  readonly posts_none: Maybe<PostWhereInput>;
+  readonly contributor: Maybe<Scalars['Boolean']>;
+  readonly contributor_not: Maybe<Scalars['Boolean']>;
+  readonly expertise: Maybe<Scalars['String']>;
+  readonly expertise_not: Maybe<Scalars['String']>;
+  readonly expertise_in: Maybe<ReadonlyArray<Scalars['String']>>;
+  readonly expertise_not_in: Maybe<ReadonlyArray<Scalars['String']>>;
+  readonly expertise_lt: Maybe<Scalars['String']>;
+  readonly expertise_lte: Maybe<Scalars['String']>;
+  readonly expertise_gt: Maybe<Scalars['String']>;
+  readonly expertise_gte: Maybe<Scalars['String']>;
+  readonly expertise_contains: Maybe<Scalars['String']>;
+  readonly expertise_not_contains: Maybe<Scalars['String']>;
+  readonly expertise_starts_with: Maybe<Scalars['String']>;
+  readonly expertise_not_starts_with: Maybe<Scalars['String']>;
+  readonly expertise_ends_with: Maybe<Scalars['String']>;
+  readonly expertise_not_ends_with: Maybe<Scalars['String']>;
+  readonly userTutorials_every: Maybe<UserTutorialWhereInput>;
+  readonly userTutorials_some: Maybe<UserTutorialWhereInput>;
+  readonly userTutorials_none: Maybe<UserTutorialWhereInput>;
   readonly AND: Maybe<ReadonlyArray<UserWhereInput>>;
   readonly OR: Maybe<ReadonlyArray<UserWhereInput>>;
   readonly NOT: Maybe<ReadonlyArray<UserWhereInput>>;
@@ -2753,10 +2942,113 @@ export type CommunityTutorialQueryQuery = {
     readonly edges: ReadonlyArray<{
       readonly node: Pick<Mdx, 'id' | 'fileAbsolutePath'> & {
         readonly frontmatter: Maybe<
-          Pick<MdxFrontmatter, 'tutorialTitle' | 'description'>
+          Pick<MdxFrontmatter, 'id' | 'tutorialTitle' | 'description'>
         >;
       };
     }>;
+  }>;
+};
+
+export type FullStackCourseQueryQueryVariables = {};
+
+export type FullStackCourseQueryQuery = {
+  readonly frontend: Maybe<{
+    readonly edges: ReadonlyArray<{
+      readonly node: Pick<Mdx, 'id' | 'fileAbsolutePath'> & {
+        readonly frontmatter: Maybe<
+          Pick<MdxFrontmatter, 'id' | 'tutorialTitle' | 'description'>
+        >;
+      };
+    }>;
+  }>;
+  readonly backend: Maybe<{
+    readonly edges: ReadonlyArray<{
+      readonly node: Pick<Mdx, 'id' | 'fileAbsolutePath'> & {
+        readonly frontmatter: Maybe<
+          Pick<MdxFrontmatter, 'id' | 'tutorialTitle' | 'description'>
+        >;
+      };
+    }>;
+  }>;
+};
+
+export type GetTutorialbyGatsbyIdQueryVariables = {
+  gatsbyID: Scalars['String'];
+};
+
+export type GetTutorialbyGatsbyIdQuery = {
+  readonly getTutorialbyGatsbyID: Pick<
+    Tutorial,
+    'id' | 'name' | 'upvotes' | 'numberofChapters' | 'numberOfStudents'
+  > & {
+    readonly viewerUserTutorial: Maybe<
+      Pick<UserTutorial, 'id' | 'upvoted' | 'bookmarked' | 'currentChapter'>
+    >;
+  };
+};
+
+export type UpsertCurrentChapterMutationVariables = {
+  gatsbyID: Scalars['String'];
+  chapter: Scalars['Int'];
+};
+
+export type UpsertCurrentChapterMutation = {
+  readonly upsertCurrentChapter: Pick<
+    UserTutorialPayload,
+    'code' | 'success'
+  > & {
+    readonly userTutorial: Maybe<Pick<UserTutorial, 'id' | 'currentChapter'>>;
+  };
+};
+
+export type BookmarkTutorialMutationVariables = {
+  id: Scalars['ID'];
+};
+
+export type BookmarkTutorialMutation = {
+  readonly bookmarkTutorial: Pick<UserTutorialPayload, 'code' | 'success'> & {
+    readonly userTutorial: Maybe<Pick<UserTutorial, 'id' | 'bookmarked'>>;
+  };
+};
+
+export type UpvoteTutorialMutationVariables = {
+  id: Scalars['ID'];
+};
+
+export type UpvoteTutorialMutation = {
+  readonly upvoteTutorial: Pick<UserTutorialPayload, 'code' | 'success'> & {
+    readonly userTutorial: Maybe<
+      Pick<UserTutorial, 'id' | 'upvoted'> & {
+        readonly tutorial: Maybe<Pick<Tutorial, 'id' | 'upvotes'>>;
+      }
+    >;
+  };
+};
+
+export type ProfileQueryQueryVariables = {};
+
+export type ProfileQueryQuery = {
+  readonly viewer: Maybe<{
+    readonly user: Pick<
+      User,
+      'id' | 'name' | 'githubHandle' | 'avatarUrl' | 'bio'
+    > & {
+      readonly upvoted: Maybe<
+        ReadonlyArray<{
+          readonly tutorial: Maybe<Pick<Tutorial, 'id' | 'name'>>;
+        }>
+      >;
+      readonly bookmarked: Maybe<
+        ReadonlyArray<{
+          readonly tutorial: Maybe<Pick<Tutorial, 'id' | 'name'>>;
+        }>
+      >;
+      readonly progress: Maybe<
+        ReadonlyArray<{
+          readonly tutorial: Maybe<Pick<Tutorial, 'id' | 'name'>>;
+        }>
+      >;
+    };
   }>;
 };
 
@@ -2774,13 +3066,13 @@ export type TutorialMdxQuery = {
   >;
   readonly pageTitles: Maybe<{
     readonly edges: ReadonlyArray<{
-      readonly node: Pick<Mdx, 'id'> & {
+      readonly node: Pick<Mdx, 'id' | 'fileAbsolutePath'> & {
         readonly frontmatter: Maybe<Pick<MdxFrontmatter, 'pageTitle'>>;
       };
     }>;
   }>;
   readonly tutorialTitle: Maybe<{
-    readonly frontmatter: Maybe<Pick<MdxFrontmatter, 'tutorialTitle'>>;
+    readonly frontmatter: Maybe<Pick<MdxFrontmatter, 'id' | 'tutorialTitle'>>;
   }>;
 };
 
@@ -2803,7 +3095,7 @@ export type TutorialOverviewQuery = {
   readonly overview: Maybe<
     Pick<Mdx, 'id'> & {
       readonly frontmatter: Maybe<
-        Pick<MdxFrontmatter, 'tutorialTitle' | 'banner' | 'description'>
+        Pick<MdxFrontmatter, 'id' | 'tutorialTitle' | 'banner' | 'description'>
       >;
     }
   >;
