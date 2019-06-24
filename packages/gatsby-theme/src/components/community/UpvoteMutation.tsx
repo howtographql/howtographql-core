@@ -6,9 +6,13 @@ import { VoteButton } from '../shared/buttons';
 import { Heading, Flex } from '../shared/base';
 import { optionalChaining } from '../../utils/helpers';
 import { UpvoteTutorial } from '../../utils/queries';
+import { UpvoteTutorialMutation } from '../../graphqlTypes';
 
 const UpvoteMutation = ({ tutorial }) => (
-  <Mutation mutation={UpvoteTutorial} variables={{ id: tutorial.id }}>
+  <Mutation<UpvoteTutorialMutation>
+    mutation={UpvoteTutorial}
+    variables={{ id: tutorial.id }}
+  >
     {upvote => {
       let active = optionalChaining(() => tutorial.viewerUserTutorial.upvoted);
       let upvotes = optionalChaining(() => tutorial.upvotes);

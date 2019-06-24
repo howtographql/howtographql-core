@@ -4,7 +4,7 @@ import { Query } from 'react-apollo';
 import ProgressBar from '../shared/ProgressBar';
 import { TutorialButton } from '../shared/buttons';
 import { getTutorialbyGatsbyID } from '../../utils/queries';
-import { GetTutorialbyGatsbyIdQuery } from '../../graphqlTypes';
+import { GetTutorialbyGatsbyIdQuery, Maybe } from '../../graphqlTypes';
 import { getTutorialOverviewSlug } from '../../utils/getTutorialSlug';
 import { optionalChaining, percent } from '../../utils/helpers';
 

@@ -13,18 +13,6 @@ type QueryData = {
   node: Mdx;
 };
 
-// type Node = {
-//   id: string;
-//   fileAbsolutePath: string;
-//   frontmatter: Frontmatter;
-// };
-
-// type Frontmatter = {
-//   id: string;
-//   tutorialTitle: string;
-//   description: string;
-// };
-
 const CourseSection: React.FunctionComponent<CourseSectionProps> = ({
   heading,
   body,

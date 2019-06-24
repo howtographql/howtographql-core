@@ -6,7 +6,11 @@ import { SpectrumButton } from '../shared/buttons';
 
 type SidebarProps = {
   tutorialTitle: string;
-  chapters: string[];
+  chapters: Chapter;
+};
+type Chapter = {
+  chapterTitle: string;
+  chapterPath: string;
 };
 
 export const Sidebar: React.FunctionComponent<SidebarProps> = ({
@@ -22,8 +26,8 @@ export const Sidebar: React.FunctionComponent<SidebarProps> = ({
       </Card>
       <ul>
         {chapters.map(chapter => (
-          <li key={chapter.chapterTitle}>
-            <a href={chapter.chapterPath}>{chapter.chapterTitle}</a>
+          <li key={chapter!.chapterTitle}>
+            <a href={chapter!.chapterPath}>{chapter!.chapterTitle}</a>
           </li>
         ))}
       </ul>
