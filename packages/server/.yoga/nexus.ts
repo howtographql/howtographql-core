@@ -344,11 +344,12 @@ export interface NexusGenFieldTypes {
   Mutation: { // field return type
     authenticate: NexusGenRootTypes['AuthenticateUserPayload'] | null; // AuthenticateUserPayload
     bookmarkTutorial: NexusGenRootTypes['UserTutorialPayload']; // UserTutorialPayload!
+    upsertCurrentChapter: NexusGenRootTypes['UserTutorialPayload']; // UserTutorialPayload!
     upsertTutorial: NexusGenRootTypes['Tutorial']; // Tutorial!
     upvoteTutorial: NexusGenRootTypes['UserTutorialPayload']; // UserTutorialPayload!
   }
   Query: { // field return type
-    gatsbyTutorialQuery: NexusGenRootTypes['Tutorial']; // Tutorial!
+    getTutorialbyGatsbyID: NexusGenRootTypes['Tutorial']; // Tutorial!
     tutorial: NexusGenRootTypes['Tutorial']; // Tutorial!
     tutorials: NexusGenRootTypes['Tutorial'][] | null; // [Tutorial!]
     viewer: NexusGenRootTypes['Viewer'] | null; // Viewer
@@ -415,6 +416,10 @@ export interface NexusGenArgTypes {
     bookmarkTutorial: { // args
       tutorialId: string; // ID!
     }
+    upsertCurrentChapter: { // args
+      chapter: number; // Int!
+      gatsbyID: string; // String!
+    }
     upsertTutorial: { // args
       gatsbyID: string; // String!
       name: string; // String!
@@ -425,7 +430,7 @@ export interface NexusGenArgTypes {
     }
   }
   Query: {
-    gatsbyTutorialQuery: { // args
+    getTutorialbyGatsbyID: { // args
       gatsbyID: string; // String!
     }
     tutorial: { // args

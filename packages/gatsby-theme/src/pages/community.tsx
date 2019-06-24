@@ -17,127 +17,112 @@ import { graphql } from 'gatsby';
 const community = ({ data }) => {
   const tutorials = data.tutorials.edges;
   return (
-    <WithCurrentUser>
-      {({ user, loading }) => {
-        return (
-          <Layout>
-            <Flex flexDirection="column" alignItems="center" p={4}>
-              <Box
-                style={{
-                  backgroundImage: `url(${'https://i.ibb.co/S736mwr/Bg.png'})`,
-                  backgroundPosition: 'center',
-                  backgroundSize: 'cover',
-                }}
-              >
-                <Flex
-                  flexDirection="row"
-                  alignItems="center"
-                  justifyContent="center"
-                  flexWrap="wrap"
-                >
-                  <HeaderText width={1 / 4}>
-                    <Heading p={3} fontSize={5} color="#515273">
-                      Community Tutorials
-                    </Heading>
-                    <Text p={3} color="#515273">
-                      Learn from a wide range of topics. Client or server,
-                      beginner or advanced, theoretical or code-along – discover
-                      the tutorials contributed by the GraphQL community!
-                    </Text>
-                  </HeaderText>
+    <Layout>
+      <Flex flexDirection="column" alignItems="center" p={4}>
+        <Box
+          style={{
+            backgroundImage: `url(${'https://i.ibb.co/S736mwr/Bg.png'})`,
+            backgroundPosition: 'center',
+            backgroundSize: 'cover',
+          }}
+        >
+          <Flex
+            flexDirection="row"
+            alignItems="center"
+            justifyContent="center"
+            flexWrap="wrap"
+          >
+            <HeaderText width={1 / 4}>
+              <Heading p={3} fontSize={5} color="#515273">
+                Community Tutorials
+              </Heading>
+              <Text p={3} color="#515273">
+                Learn from a wide range of topics. Client or server, beginner or
+                advanced, theoretical or code-along – discover the tutorials
+                contributed by the GraphQL community!
+              </Text>
+            </HeaderText>
 
-                  <HeaderText>
-                    <img src="https://i.ibb.co/pKM9XgL/Illustration.png" />
-                  </HeaderText>
+            <HeaderText>
+              <img src="https://i.ibb.co/pKM9XgL/Illustration.png" />
+            </HeaderText>
 
-                  <FilterBox marginTop={25}>
-                    <Text p={3}>FOR FILTER BOX </Text>
-                  </FilterBox>
-                </Flex>
-              </Box>
-            </Flex>
+            <FilterBox marginTop={25}>
+              <Text p={3}>FOR FILTER BOX </Text>
+            </FilterBox>
+          </Flex>
+        </Box>
+      </Flex>
 
-            <TutorialContent>
-              <TutorialNumber m={3} width={5 / 5}>
-                <p>
-                  <span>{tutorials.length} TUTORIALS </span>
-                </p>
-              </TutorialNumber>
-              <Content>
-                {tutorials.map(tutorial => {
-                  return (
-                    <div key={tutorial.node.id}>
-                      <TutorialListing tutorial={tutorial.node} />
-                    </div>
-                  );
-                })}
-              </Content>
-            </TutorialContent>
-            <Footer height={5 / 5} p={5} paddingRight={100} paddingLeft={100}>
-              <Heading>Contributors</Heading>
-              <div>
-                l ac, feugiat convallis magna. Nam dignissim semper mauris,
-                pharetra mollis neque viverra ac. Duis semper, odio quis
-                tincidunt convallis, libero mi tristique ipsum.l ac, feugiat
-                convallis magna. Nam dignissim semper mauris, pharetra mollis
-                neque viverra ac. Duis semper, odio quis tincidunt convallis,
-                libero mi tristique ipsum.
+      <TutorialContent>
+        <TutorialNumber m={3} width={5 / 5}>
+          <p>
+            <span>{tutorials.length} TUTORIALS </span>
+          </p>
+        </TutorialNumber>
+        <Content>
+          {tutorials.map(tutorial => {
+            return (
+              <div key={tutorial.node.id}>
+                <TutorialListing tutorial={tutorial.node} />
               </div>
-              <Flex flexDirection="row" backgroundColor="orange" marginTop={5}>
-                <Box
-                  backgroundColor="#F6F6F8"
-                  p={4}
-                  width={2 / 4}
-                  alignContent="flex-start"
-                >
-                  <Heading color="#515273" textAlign="left">
-                    Nullam ultrices massa
-                  </Heading>
-                  <Text color="#515273" textAlign="left">
-                    l ac, feugiat convallis magna. Nam dignissim semper mauris,
-                    pharetra mollis neque viverra ac. Duis semper, odio quis
-                    tincidunt convallis, libero mi tristique ipsum.
-                  </Text>
-                  <Button m={3}>Write a Tutorial</Button>
-                </Box>
-                <Box p={2}>
-                  <Text fontSize={[1]} textAlign="left">
-                    CORE CONTRIBUTORS
-                  </Text>
-                  {user && (
-                    <Image
-                      width={[0.5, 0.3, 0.12]}
-                      src={user.avatarUrl}
-                      borderRadius={100}
-                    />
-                  )}
-                  <Text fontSize={[1]} textAlign="left">
-                    COURSE CONTRIBUTORS
-                  </Text>
-                  {user && (
-                    <Image
-                      width={[0.5, 0.3, 0.12]}
-                      src={user.avatarUrl}
-                      borderRadius={100}
-                    />
-                  )}
-                  <Text fontSize={[1]} textAlign="left">
-                    TUTORIAL CONTRIBUTORS
-                  </Text>
-                  {user && (
-                    <Image
-                      width={[0.5, 0.3, 0.12]}
-                      src={user.avatarUrl}
-                      borderRadius={100}
-                    />
-                  )}
-                </Box>
-              </Flex>
-            </Footer>
-          </Layout>
-        );
-      }}
-    </WithCurrentUser>
+            );
+          })}
+        </Content>
+      </TutorialContent>
+      <Footer height={5 / 5} p={5} paddingRight={100} paddingLeft={100}>
+        <Heading>Contributors</Heading>
+        <div>
+          l ac, feugiat convallis magna. Nam dignissim semper mauris, pharetra
+          mollis neque viverra ac. Duis semper, odio quis tincidunt convallis,
+          libero mi tristique ipsum.l ac, feugiat convallis magna. Nam dignissim
+          semper mauris, pharetra mollis neque viverra ac. Duis semper, odio
+          quis tincidunt convallis, libero mi tristique ipsum.
+        </div>
+        <Flex flexDirection="row" backgroundColor="orange" marginTop={5}>
+          <Box
+            backgroundColor="#F6F6F8"
+            p={4}
+            width={2 / 4}
+            alignContent="flex-start"
+          >
+            <Heading color="#515273" textAlign="left">
+              Nullam ultrices massa
+            </Heading>
+            <Text color="#515273" textAlign="left">
+              l ac, feugiat convallis magna. Nam dignissim semper mauris,
+              pharetra mollis neque viverra ac. Duis semper, odio quis tincidunt
+              convallis, libero mi tristique ipsum.
+            </Text>
+            <Button m={3}>Write a Tutorial</Button>
+          </Box>
+          <Box p={2}>
+            <Text fontSize={[1]} textAlign="left">
+              CORE CONTRIBUTORS
+            </Text>
+            <Image
+              width={[20, 30, 40]}
+              src="https://i.ibb.co/h1hf2Ss/Avatar.png"
+              borderRadius={100}
+            />
+            <Text fontSize={[1]} textAlign="left">
+              COURSE CONTRIBUTORS
+            </Text>
+            <Image
+              width={[20, 30, 40]}
+              src="https://i.ibb.co/h1hf2Ss/Avatar.png"
+            />
+            <Text fontSize={[1]} textAlign="left">
+              TUTORIAL CONTRIBUTORS
+            </Text>
+            <Image
+              width={[20, 30, 40]}
+              src="https://i.ibb.co/h1hf2Ss/Avatar.png"
+            />
+          </Box>
+        </Flex>
+      </Footer>
+    </Layout>
   );
 };
 
