@@ -25,6 +25,11 @@ type Mutation {
   bookmarkTutorial(tutorialId: ID!): UserTutorialPayload!
 
   """
+  An authenticated user can update their current chapter in a tutorial.
+  """
+  upsertCurrentChapter(chapter: Int!, gatsbyID: String!): UserTutorialPayload!
+
+  """
   Create tutorials from the MDX files
   """
   upsertTutorial(
@@ -49,7 +54,7 @@ interface PayloadInterface {
 }
 
 type Query {
-  gatsbyTutorialQuery(gatsbyID: String!): Tutorial!
+  getTutorialbyGatsbyID(gatsbyID: String!): Tutorial!
   tutorial(id: ID!): Tutorial!
   tutorials(first: Int!): [Tutorial!]
   viewer: Viewer
