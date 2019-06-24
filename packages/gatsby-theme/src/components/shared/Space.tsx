@@ -1,6 +1,6 @@
-import styled, { css } from '../style/styled';
-import { mobile } from '../style/media';
-import { SpaceSizes } from '../style/theme';
+import { styled, css } from '../../styles';
+import { mobile } from '../../styles/mobile';
+import { SpaceSizes } from '../../styles/theme/index';
 
 type Props = {
   width?: SpaceSizes;

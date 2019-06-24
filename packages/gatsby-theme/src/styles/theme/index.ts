@@ -114,19 +114,6 @@ export const sizes: Sizes = {
   // [C] Nav
   navHeight: 64,
   brandHeight: 40,
-  // Spaces
-  space: [
-    // margin and padding
-    0,
-    4,
-    8,
-    16,
-    32,
-    64,
-    128,
-    256,
-  ],
-
   // Font
   fontSizes: [12, 14, 16, 20, 28, 32, 48, 64],
   fontWeights: [300, 400, 600, 700],
@@ -141,3 +128,24 @@ export const theme: ThemeInterface = {
   ...sizes,
   ...zIndex,
 };
+
+export type SpaceSizes =
+  | 0
+  | 4
+  | 8
+  | 12
+  | 16
+  | 21
+  | 24
+  | 32
+  | 40
+  | 48
+  | 56
+  | 64
+  | 72
+  | 80
+  | 96
+  | 100
+  | 116
+  | 132
+  | 144;

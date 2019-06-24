@@ -1,6 +1,5 @@
 import { styled } from '../../styles';
 import {
-  space,
   color,
   width,
   height,
@@ -46,7 +45,6 @@ export const Box = styled('div')<BoxProps>(
   {
     boxSizing: 'border-box',
   },
-  space,
   width,
   fontSize,
   color,
