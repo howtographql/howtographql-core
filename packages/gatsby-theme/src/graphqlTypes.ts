@@ -2935,9 +2935,9 @@ export type LayoutInformationQuery = {
   }>;
 };
 
-export type CommunityTutorialQueryQueryVariables = {};
+export type CommunityTutorialQueryVariables = {};
 
-export type CommunityTutorialQueryQuery = {
+export type CommunityTutorialQuery = {
   readonly tutorials: Maybe<{
     readonly edges: ReadonlyArray<{
       readonly node: Pick<Mdx, 'id' | 'fileAbsolutePath'> & {
@@ -2949,9 +2949,9 @@ export type CommunityTutorialQueryQuery = {
   }>;
 };
 
-export type FullStackCourseQueryQueryVariables = {};
+export type FullStackCourseQueryVariables = {};
 
-export type FullStackCourseQueryQuery = {
+export type FullStackCourseQuery = {
   readonly frontend: Maybe<{
     readonly edges: ReadonlyArray<{
       readonly node: Pick<Mdx, 'id' | 'fileAbsolutePath'> & {

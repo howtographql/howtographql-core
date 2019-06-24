@@ -13,10 +13,10 @@ import { styled } from '../styles';
 import WithCurrentUser from '../utils/auth/WithCurrentUser';
 import TutorialListing from '../components/community/TutorialListing';
 import { graphql } from 'gatsby';
-import { CommunityTutorialQueryQuery } from 'src/graphqlTypes';
+import { CommunityTutorialQuery } from 'src/graphqlTypes';
 
 const community: React.FunctionComponent<{
-  data: CommunityTutorialQueryQuery;
+  data: CommunityTutorialQuery;
 }> = ({ data }) => {
   const tutorials = data!.tutorials!.edges;
   return (
@@ -130,7 +130,7 @@ const community: React.FunctionComponent<{
 };
 
 export const query = graphql`
-  query CommunityTutorialQuery {
+  query CommunityTutorial {
     tutorials: allMdx(
       filter: {
         frontmatter: { tutorialTitle: { ne: null } }
