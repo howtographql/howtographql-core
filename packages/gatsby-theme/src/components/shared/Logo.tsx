@@ -22,7 +22,7 @@ export default ({ maxHeight }: LogoProps) => {
             src={require('../../assets/icons/howtographql.svg')}
             alt=""
             height={maxHeight}
-            style={{ marginBottom: 0, marginRight: 5 }}
+            style={{ marginBottom: 0, marginRight: 5, marginLeft: 10 }}
           />
           <span>How to GraphQL</span>
         </LogoWrapper>

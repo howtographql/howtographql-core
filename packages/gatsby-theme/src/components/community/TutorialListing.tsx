@@ -33,7 +33,14 @@ const TutorialListing: React.FunctionComponent<TutorialListingProps> = ({
     <Query query={getTutorialbyGatsbyID} variables={{ gatsbyID: gatsbyID }}>
       {({ data }) => {
         return (
-          <Card width={[1]} p={4} my={4} borderRadius={8} boxShadow="small">
+          <Card
+            width={[1]}
+            p={4}
+            my={4}
+            borderRadius={8}
+            boxShadow="small"
+            backgroundColor="white"
+          >
             <Flex alignItems="center" justifyContent="center">
               <Box width={1 / 12}>
                 {data.getTutorialbyGatsbyID && (

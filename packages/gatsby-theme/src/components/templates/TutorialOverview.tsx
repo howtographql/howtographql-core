@@ -6,7 +6,11 @@ import AuthorList from '../tutorial/AuthorList';
 import TutorialHeader from '../tutorial/TutorialHeader';
 import { Heading, Flex, Box } from '../shared/base';
 import ProgressBar from '../shared/ProgressBar';
-import { GithubButton, SpectrumButton, TutorialButton } from '../shared/buttons';
+import {
+  GithubButton,
+  SpectrumButton,
+  TutorialButton,
+} from '../shared/buttons';
 import { Content } from '../shared/styledHelpers';
 import { authors } from '../../utils/sampleData';
 import { graphql } from 'gatsby';
