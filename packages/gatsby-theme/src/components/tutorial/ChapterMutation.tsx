@@ -1,24 +1,22 @@
 import * as React from 'react';
 import { upsertCurrentChapter } from '../../utils/queries';
+import {
+  UpsertCurrentChapterMutation,
+  UpsertCurrentChapterMutationVariables,
+} from '../../graphqlTypes';
 import { Mutation } from 'react-apollo';
 import { loginUser } from '../../utils/auth';
 import { handleMutationResponse, ApiErrors } from '../../utils/errorHandling';
 import { Button } from '../shared/base';
 
-type ChapterMutationProps = {
-  gatsbyID: any;
-  currentChapter: any;
-};
-
-const ChapterMutation: React.FunctionComponent<ChapterMutationProps> = ({
-  gatsbyID,
-  currentChapter,
-}) => (
-  <Mutation
+const ChapterMutation: React.FunctionComponent<
+  UpsertCurrentChapterMutationVariables
+> = ({ gatsbyID, chapter }) => (
+  <Mutation<UpsertCurrentChapterMutation>
     mutation={upsertCurrentChapter}
     variables={{
       gatsbyID: gatsbyID,
-      chapter: currentChapter,
+      chapter: chapter,
     }}
   >
     {currentChapter => {

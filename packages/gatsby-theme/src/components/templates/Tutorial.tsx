@@ -86,7 +86,7 @@ const TutorialLayout: React.FunctionComponent<TutorialLayoutProps> = ({
       <a href={nextChapterPath}>
         <ChapterMutation
           gatsbyID={gatsbyID}
-          currentChapter={currentChapterIndex + 1}
+          chapter={currentChapterIndex + 1}
         />
       </a>
     </Layout>

@@ -6,7 +6,7 @@ import { SpectrumButton } from '../shared/buttons';
 
 type SidebarProps = {
   tutorialTitle: string;
-  chapters: Chapter;
+  chapters: Chapter[];
 };
 type Chapter = {
   chapterTitle: string;
