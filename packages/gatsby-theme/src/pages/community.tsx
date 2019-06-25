@@ -55,11 +55,11 @@ const community = ({ data }) => {
       </Flex>
 
       <TutorialContent>
-        <TutorialNumber m={3} width={5 / 5}>
+        <Underline m={3} width={5 / 5}>
           <p>
             <span>{tutorials.length} TUTORIALS </span>
           </p>
-        </TutorialNumber>
+        </Underline>
         <Content>
           {tutorials.map(tutorial => {
             return (
@@ -162,7 +162,7 @@ const FilterBox = styled(Box)`
   color: white;
 `;
 
-const TutorialNumber = styled(Box)`
+export const Underline = styled(Box)`
   p {
     width: 100%;
     text-align: center;
