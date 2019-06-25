@@ -2,24 +2,29 @@ import React from 'react';
 import Layout from '../shared/layout';
 import Chapter from '../tutorial/Chapter';
 import { TutorialOverviewQuery } from 'src/graphqlTypes';
-import AuthorList from '../tutorial/AuthorList';
 import TutorialHeader from '../tutorial/TutorialHeader';
 import { Heading, Flex, Box } from '../shared/base';
-import ProgressBar from '../shared/ProgressBar';
-import {
-  GithubButton,
-  SpectrumButton,
-  TutorialButton,
-} from '../shared/buttons';
+import AuthorsProgressBox from '../tutorial/AuthorsProgressBox';
 import { Content } from '../shared/styledHelpers';
-import { authors } from '../../utils/sampleData';
 import { graphql } from 'gatsby';
+import { optionalChaining } from '../../utils/helpers';
+import { getTutorialSlug } from '../../utils/getTutorialSlug';
 
 interface PageTemplateProps {
   data: TutorialOverviewQuery;
 }
 
 const PageTemplate: React.FunctionComponent<PageTemplateProps> = ({ data }) => {
+  let gatsbyID = optionalChaining(() => data.overview.frontmatter.id);
+
+  // This is so that the start button can link to the user's current path
+  // TO DO find a better way to pass in the which chapter the user is currently on
+  const chapterPaths = optionalChaining(() =>
+    data.allMdx.edges.map(a =>
+      getTutorialSlug(optionalChaining(() => a.node.fileAbsolutePath)),
+    ),
+  );
+
   return (
     <Layout>
       <Content>
@@ -33,15 +38,10 @@ const PageTemplate: React.FunctionComponent<PageTemplateProps> = ({ data }) => {
             />
           </Box>
           <Box width={1 / 4} m={3}>
-            <TutorialButton>Continue Tutorial</TutorialButton>
-            <Box m={3}>
-              <ProgressBar percentage={33} width={100} />
-            </Box>
-            <Flex>
-              <GithubButton>Github</GithubButton>
-              <SpectrumButton>Spectrum</SpectrumButton>
-            </Flex>
-            <AuthorList authors={authors} />
+            <AuthorsProgressBox
+              gatsbyID={gatsbyID}
+              chapterPaths={chapterPaths}
+            />
           </Box>
         </Flex>
         <div>
@@ -87,6 +87,7 @@ export const query = graphql`
     ) {
       id
       frontmatter {
+        id
         tutorialTitle
         banner
         description

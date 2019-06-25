@@ -56,6 +56,7 @@ export const query = graphql`
           id
           fileAbsolutePath
           frontmatter {
+            id
             tutorialTitle
             description
           }
@@ -73,6 +74,7 @@ export const query = graphql`
           id
           fileAbsolutePath
           frontmatter {
+            id
             tutorialTitle
             description
           }

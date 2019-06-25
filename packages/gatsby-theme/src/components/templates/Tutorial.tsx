@@ -9,6 +9,7 @@ import { HideOnTablet, ShowOnTablet } from '../../utils/responsive';
 import { Flex, Box } from '../shared/base';
 import { optionalChaining } from '../../utils/helpers';
 import ChapterMutation from '../tutorial/ChapterMutation';
+import { getTutorialSlug } from '../../utils/getTutorialSlug';
 
 type TutorialLayoutProps = { data: TutorialMdxQuery } & RouterProps;
 
@@ -19,20 +20,43 @@ const TutorialLayout: React.FunctionComponent<TutorialLayoutProps> = ({
   if (!data) {
     return null;
   }
-  const { pageTitle } = data!.mdx!.frontmatter!;
-  const gatsbyID = optionalChaining(
-    () => data!.tutorialTitle!.frontmatter!.id!,
+
+  //title of the chapter
+  const { pageTitle } = optionalChaining(() => data.mdx.frontmatter);
+  //title of the tutorial
+  const tutorialTitle = optionalChaining(
+    () => data.tutorialTitle.frontmatter.tutorialTitle,
+  );
+  //gatsbyID to fetch user information about tutorial
+  const gatsbyID = optionalChaining(() => data.tutorialTitle.frontmatter.id);
+  //all chapters in this tutorial
+  const chapters = optionalChaining(() =>
+    data.pageTitles.edges.map(a => {
+      return {
+        chapterTitle: optionalChaining(() => a.node.frontmatter.pageTitle),
+        chapterPath: getTutorialSlug(
+          optionalChaining(() => a.node.fileAbsolutePath),
+        ),
+      };
+    }),
   );
 
-  const tutorialTitle = optionalChaining(
-    () => data!.tutorialTitle!.frontmatter!.tutorialTitle!,
-  );
-  const chapters =
-    optionalChaining(() =>
-      data!.pageTitles!.edges!.map(a => a.node!.frontmatter!.pageTitle!),
-    ) || [];
   const { location } = props;
-  const currentChapter = chapters.indexOf(pageTitle) + 1;
+
+  //all titles of chapters in this tutorial
+  const chapterTitles = chapters.map(chapter => chapter.chapterTitle);
+  //the number of this current chapter
+  const currentChapterIndex = chapterTitles.indexOf(pageTitle);
+  //get the next chapter path
+  const findNextChapterPath = () => {
+    if (currentChapterIndex + 1 === chapters.length) {
+      return null;
+    } else {
+      return chapters[currentChapterIndex + 1].chapterPath;
+    }
+  };
+  //evaluate findNextChapterPath to get the next chapter.
+  const nextChapterPath = findNextChapterPath();
 
   return (
     <Layout location={location}>
@@ -60,7 +84,12 @@ const TutorialLayout: React.FunctionComponent<TutorialLayoutProps> = ({
       <ShowOnTablet>
         <MDXRenderer>{data!.mdx!.code!.body}</MDXRenderer>
       </ShowOnTablet>
-      <ChapterMutation gatsbyID={gatsbyID} currentChapter={currentChapter} />
+      <a href={nextChapterPath}>
+        <ChapterMutation
+          gatsbyID={gatsbyID}
+          currentChapter={currentChapterIndex + 1}
+        />
+      </a>
     </Layout>
   );
 };
@@ -89,6 +118,7 @@ export const pageQuery = graphql`
       edges {
         node {
           id
+          fileAbsolutePath
           frontmatter {
             pageTitle
           }

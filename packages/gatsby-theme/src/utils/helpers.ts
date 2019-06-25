@@ -5,3 +5,6 @@ export function optionalChaining(func: Function) {
     return undefined;
   }
 }
+
+export const percent = (numberofChapters, currentChapter) =>
+  currentChapter ? Math.round((currentChapter / numberofChapters) * 100) : 0;

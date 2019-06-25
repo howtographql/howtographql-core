@@ -1,15 +1,23 @@
 import * as React from 'react';
 import { styled } from '../../styles';
 import { Text } from './base';
+import {percent} from "../../utils/helpers"
 
-interface ProgressBarProps extends FillerProps, ContainerProps {}
+interface ProgressBarProps extends FillerProps {
+  numberofChapters?: number;
+  currentChapter?: number;
+}
 
 const ProgressBar: React.FunctionComponent<ProgressBarProps> = ({
   percentage,
-  width,
+  numberofChapters,
+  currentChapter,
 }) => {
+  if (!percentage && numberofChapters && currentChapter) {
+    percentage = percent(currentChapter, numberofChapters)
+  }
   return (
-    <Container width={width}>
+    <Container>
       <Outside>
         <Filler percentage={percentage} />
       </Outside>
@@ -20,12 +28,8 @@ const ProgressBar: React.FunctionComponent<ProgressBarProps> = ({
   );
 };
 
-interface ContainerProps {
-  width?: number;
-}
-
-const Container = styled.div<ContainerProps>`
-  width: ${props => props.width || '100'}%;
+const Container = styled.div`
+  width: 100%;
 `;
 
 const Outside = styled.div`
@@ -38,7 +42,7 @@ const Outside = styled.div`
 `;
 
 interface FillerProps {
-  percentage: number;
+  percentage?: number;
 }
 
 const Filler = styled.div<FillerProps>`
