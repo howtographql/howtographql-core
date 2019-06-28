@@ -5,18 +5,19 @@ import { logoutUser } from '../utils/auth';
 import { navigate } from 'gatsby';
 import { Query } from 'react-apollo';
 import { PROFILE_QUERY } from '../utils/queries';
+import { ProfileQueryQuery, User, Maybe, Tutorial } from '../graphqlTypes';
 import { optionalChaining } from '../utils/helpers';
 import { CenteredLoader } from '../components/shared/Loader';
 
 const Profile = () => {
   return (
-    <Query query={PROFILE_QUERY}>
+    <Query<ProfileQueryQuery> query={PROFILE_QUERY}>
       {({ data, loading }) => {
         if (loading) {
           return <CenteredLoader />;
         }
         if (optionalChaining(() => data!.viewer!.user)) {
-          return <ProfilePage user={data.viewer.user} />;
+          return <ProfilePage user={data!.viewer!.user} />;
         }
         navigate('/signup/');
         return null;
@@ -26,26 +27,23 @@ const Profile = () => {
 };
 
 type ProfileProps = {
-  user: User;
-};
-
-type User = {
-  id: string;
-  avatarUrl: string;
-  name: string;
-  githubHandle: string;
-  bio: string;
-  upvoted: [Tutorials];
-  bookmarked: [Tutorials];
-};
-
-type Tutorials = {
-  tutorial: Tutorial;
-};
-
-type Tutorial = {
-  id: 'string';
-  name: 'string';
+  user: Pick<User, 'id' | 'name' | 'githubHandle' | 'avatarUrl' | 'bio'> & {
+    readonly upvoted: Maybe<
+      ReadonlyArray<{
+        readonly tutorial: Maybe<Pick<Tutorial, 'id' | 'name'>>;
+      }>
+    >;
+    readonly bookmarked: Maybe<
+      ReadonlyArray<{
+        readonly tutorial: Maybe<Pick<Tutorial, 'id' | 'name'>>;
+      }>
+    >;
+    readonly progress: Maybe<
+      ReadonlyArray<{
+        readonly tutorial: Maybe<Pick<Tutorial, 'id' | 'name'>>;
+      }>
+    >;
+  };
 };
 
 const ProfilePage: React.FunctionComponent<ProfileProps> = ({ user }) => {
@@ -68,7 +66,7 @@ const ProfilePage: React.FunctionComponent<ProfileProps> = ({ user }) => {
       <button onClick={() => logoutUser()}> Log out </button>
       <Heading> Upvoted Tutorials </Heading>
       <ul>
-        {user.upvoted.map(
+        {user!.upvoted!.map(
           a =>
             a.tutorial && (
               <li key={a.tutorial.id}>
@@ -79,7 +77,7 @@ const ProfilePage: React.FunctionComponent<ProfileProps> = ({ user }) => {
       </ul>
       <Heading> Bookmarked Tutorials </Heading>
       <ul>
-        {user.bookmarked.map(
+        {user!.bookmarked!.map(
           a =>
             a.tutorial && (
               <li key={a.tutorial.id}>
@@ -88,9 +86,10 @@ const ProfilePage: React.FunctionComponent<ProfileProps> = ({ user }) => {
             ),
         )}
       </ul>
+
       <Heading> In Progress Tutorials </Heading>
       <ul>
-        {user.progress.map(
+        {user!.progress!.map(
           a =>
             a.tutorial && (
               <li key={a.tutorial.id}>

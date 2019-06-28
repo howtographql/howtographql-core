@@ -4,22 +4,25 @@ import CourseSection from '../components/courses/CourseSection';
 import { Content } from '../components/shared/styledHelpers';
 import { Heading, Text } from '../components/shared/base';
 import { graphql } from 'gatsby';
+import { FullStackCourseQuery } from 'src/graphqlTypes';
 
-const courses = ({ data }) => {
+const courses: React.FunctionComponent<{
+  data: FullStackCourseQuery;
+}> = ({ data }) => {
   const courseSectionData = [
     {
       heading: `Frontend`,
       body: `Implement a web frontend for a Hacker News app that talks to a GraphQL
             API. We provide a hosted GraphQL API for you so that you can test your
             app in a real world environment.`,
-      data: data.frontend.edges,
+      data: data!.frontend!.edges,
     },
     {
       heading: `Backend`,
       body: `Implement a GraphQL API that's backed by a database. The tutorial
       teach schema design and implement features like authentication,
       filtering, pagination and a lot more`,
-      data: data.backend.edges,
+      data: data!.backend!.edges,
     },
   ];
   return (
@@ -44,7 +47,7 @@ const courses = ({ data }) => {
 };
 
 export const query = graphql`
-  query FullStackCourseQuery {
+  query FullStackCourse {
     frontend: allMdx(
       filter: {
         frontmatter: { tutorialTitle: { ne: null } }

@@ -15,12 +15,12 @@ interface PageTemplateProps {
 }
 
 const PageTemplate: React.FunctionComponent<PageTemplateProps> = ({ data }) => {
-  let gatsbyID = optionalChaining(() => data.overview.frontmatter.id);
+  let gatsbyID = optionalChaining(() => data!.overview!.frontmatter!.id);
 
   // This is so that the start button can link to the user's current path
   // TO DO find a better way to pass in the which chapter the user is currently on
   const chapterPaths = optionalChaining(() =>
-    data.allMdx.edges.map(a =>
+    data!.allMdx!.edges.map(a =>
       getTutorialSlug(optionalChaining(() => a.node.fileAbsolutePath)),
     ),
   );
@@ -29,11 +29,11 @@ const PageTemplate: React.FunctionComponent<PageTemplateProps> = ({ data }) => {
     <Layout>
       <Content>
         <Flex>
-          <Box width={3 / 4} aligncontent="center">
+          <Box width={3 / 4}>
             <TutorialHeader
               width={1 / 2}
-              title={data!.overview!.frontmatter!.tutorialTitle}
-              description={data!.overview!.frontmatter!.description}
+              title={data!.overview!.frontmatter!.tutorialTitle || 'blank'}
+              description={data!.overview!.frontmatter!.description || 'blank'}
               tags={['React', 'Apollo', 'Javascript']}
             />
           </Box>

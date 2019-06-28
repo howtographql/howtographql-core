@@ -4,13 +4,14 @@ import { Query } from 'react-apollo';
 import ProgressBar from '../shared/ProgressBar';
 import { TutorialButton } from '../shared/buttons';
 import { getTutorialbyGatsbyID } from '../../utils/queries';
+import { GetTutorialbyGatsbyIdQuery, Maybe } from '../../graphqlTypes';
 import { getTutorialOverviewSlug } from '../../utils/getTutorialSlug';
 import { optionalChaining, percent } from '../../utils/helpers';
 
 type CourseCardProps = {
-  tutorialTitle: string;
-  fileAbsolutePath: string;
-  gatsbyID: string;
+  tutorialTitle: Maybe<string>;
+  fileAbsolutePath: Maybe<string>;
+  gatsbyID: Maybe<string>;
 };
 
 const CourseCard: React.FunctionComponent<CourseCardProps> = ({
@@ -27,19 +28,23 @@ const CourseCard: React.FunctionComponent<CourseCardProps> = ({
           src="https://i.ibb.co/TcKwmwR/Icons.png"
         />
         <h3>{tutorialTitle}</h3>
-        <Query query={getTutorialbyGatsbyID} variables={{ gatsbyID: gatsbyID }}>
+        <Query<GetTutorialbyGatsbyIdQuery>
+          query={getTutorialbyGatsbyID}
+          variables={{ gatsbyID: gatsbyID }}
+        >
           {({ data }) => {
             let buttonText = 'Start Tutorial';
             let percentage = 0;
             if (
               optionalChaining(
                 () =>
-                  data.getTutorialbyGatsbyID.viewerUserTutorial.currentChapter,
+                  data!.getTutorialbyGatsbyID!.viewerUserTutorial!
+                    .currentChapter,
               )
             ) {
               percentage = percent(
-                data.getTutorialbyGatsbyID.numberofChapters,
-                data.getTutorialbyGatsbyID.viewerUserTutorial.currentChapter,
+                data!.getTutorialbyGatsbyID!.numberofChapters,
+                data!.getTutorialbyGatsbyID!.viewerUserTutorial!.currentChapter,
               );
               buttonText = 'Continue Tutorial';
               if (percentage === 100) {

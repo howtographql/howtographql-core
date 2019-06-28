@@ -13,9 +13,12 @@ import { styled } from '../styles';
 import WithCurrentUser from '../utils/auth/WithCurrentUser';
 import TutorialListing from '../components/community/TutorialListing';
 import { graphql } from 'gatsby';
+import { CommunityTutorialQuery } from 'src/graphqlTypes';
 
-const community = ({ data }) => {
-  const tutorials = data.tutorials.edges;
+const community: React.FunctionComponent<{
+  data: CommunityTutorialQuery;
+}> = ({ data }) => {
+  const tutorials = data!.tutorials!.edges;
   return (
     <Layout>
       <Flex flexDirection="column" alignItems="center" p={4}>
@@ -127,7 +130,7 @@ const community = ({ data }) => {
 };
 
 export const query = graphql`
-  query CommunityTutorialQuery {
+  query CommunityTutorial {
     tutorials: allMdx(
       filter: {
         frontmatter: { tutorialTitle: { ne: null } }
